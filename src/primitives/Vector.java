@@ -105,6 +105,6 @@ public class Vector extends Point {
      * @throws IllegalAccessException if the resulting vector is zero
      */
     public Vector normalize() throws IllegalAccessException {
-        return null;
+        return new Vector(this.xyz.reduce(this.length()));
     }
 }
