@@ -17,7 +17,7 @@ public final class Main {
       try { // test zero vector
          new Vector(0, 0, 0);
          out.println("ERROR: zero vector does not throw an exception");
-      } catch (IllegalArgumentException e) {  System.out.println("Vector Zero is not allowed");} catch (Exception ignore) {
+      } catch (IllegalArgumentException e) {} catch (Exception ignore) {
          out.println("ERROR: zero vector throws wrong exception");
       }
 

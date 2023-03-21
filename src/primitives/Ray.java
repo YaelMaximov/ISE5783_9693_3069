@@ -1,7 +1,7 @@
 package primitives;
 
 /**
- * Represents a ray in 3D space with a starting point and direction.
+ * A class representing a ray in 3D space, defined by a starting point and a direction.
  */
 public class Ray {
     /**
@@ -15,10 +15,11 @@ public class Ray {
     final Vector dir;
 
     /**
-     * Constructs a new ray with the given starting point and direction vector.
+     * Constructs a new Ray object with the specified starting point and direction vector.
+     *
      * @param p0 the starting point of the ray
      * @param dir the direction vector of the ray
-     * @throws IllegalAccessException if the direction vector is a zero vector
+     * @throws IllegalAccessException if the direction vector is the zero vector
      */
     public Ray(Point p0, Vector dir) throws IllegalAccessException {
         this.p0 = p0;
@@ -27,6 +28,7 @@ public class Ray {
 
     /**
      * Returns the starting point of the ray.
+     *
      * @return the starting point of the ray
      */
     public Point getP0() {
@@ -35,6 +37,7 @@ public class Ray {
 
     /**
      * Returns the direction vector of the ray.
+     *
      * @return the direction vector of the ray
      */
     public Vector getDir() {
