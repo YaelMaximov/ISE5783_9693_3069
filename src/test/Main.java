@@ -35,7 +35,7 @@ public final class Main {
       try {
          v1.add(new Vector(-1, -2, -3));
          out.println("ERROR: Vector + -itself does not throw an exception");
-      } catch (IllegalArgumentException e) {System.out.println(e);} catch (Exception ignore) {
+      } catch (IllegalArgumentException ignore) {} catch (Exception ignore) {
          out.println("ERROR: Vector + itself throws wrong exception");
       }
       try {
