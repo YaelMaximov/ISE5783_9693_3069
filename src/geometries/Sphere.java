@@ -37,8 +37,8 @@ public class Sphere extends RadialGeometry {
      * @return the normal vector to the sphere
      */
     @Override
-    public Vector getNormal(Point p) {
-        return null;
+    public Vector getNormal(Point p) throws IllegalAccessException {
+        return p.subtract(this.center); //צריך לפתו ווקטור חדש ? ולנרמל את הווקטור
     }
 
 }

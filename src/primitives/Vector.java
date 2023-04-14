@@ -26,7 +26,7 @@ public class Vector extends Point {
      * @param vec3 the Double3 object representing the vector
      * @throws IllegalAccessException if the vector is zero
      */
-    Vector(Double3 vec3) throws IllegalAccessException {
+    public Vector(Double3 vec3) throws IllegalAccessException {
         this(vec3.d1, vec3.d2, vec3.d3);
     }
 

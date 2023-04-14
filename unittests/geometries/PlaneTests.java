@@ -15,11 +15,11 @@ class PlaneTests {
     public void testConstructor() {
         // =============== Boundary Values Tests ==================
         //TC01: first point = second point
-        assertThrows(IllegalArgumentException.class, //
+        assertThrows(IllegalAccessException.class, //
                 () -> new Plane(new Point(1, 0, 0), new Point(1, 0, 0), new Point(0, 1, 0)),
-                "ERROR:Two points are the same point");
+               "ERROR:Two points are the same point");
         //TC02:The points are on the same line
-        assertThrows(IllegalArgumentException.class, //
+        assertThrows(IllegalAccessException.class, //
                 () -> new Plane(new Point(1, 2, 3), new Point(2,4,6), new Point(4, 8, 12)),
                 "ERROR: The points are on same line");
 

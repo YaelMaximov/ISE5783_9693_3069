@@ -20,13 +20,28 @@ public class Plane implements Geometry {
      * @param p2 a point on the plane
      * @param p3 a point on the plane
      */
-    public Plane(Point p1, Point p2, Point p3) throws IllegalAccessException {//maybe we dont need to throw ex
+    /*public Plane(Point p1, Point p2, Point p3) throws IllegalAccessException {//maybe we dont need to throw ex
         p0 = p1;
         Vector U=p1.subtract(p2);
         Vector V=p1.subtract(p3);
         Vector N=U.crossProduct(V);
         normal = N.normalize();
+    }*/
+    public Plane(Point p1, Point p2, Point p3) throws IllegalAccessException {
+        if (p1.equals(p2) || p1.equals(p3) || p2.equals(p3))
+            throw new IllegalAccessException("Two the points are the same point");
+        Vector vec1 = p2.subtract(p1);
+        Vector vec2 = p3.subtract(p2);
+        try {
+            Vector vector = vec1.crossProduct(vec2);
+            p0 = p2;
+            normal = vector.normalize();
+        } catch (Exception ex) {
+            throw new IllegalAccessException("The points are on same line");
+        }
+
     }
+
 
     /**
      * Constructs a plane from a point on the plane and the plane's normal vector.
