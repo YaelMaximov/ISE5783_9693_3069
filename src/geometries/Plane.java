@@ -3,6 +3,8 @@ package geometries;
 import primitives.Point;
 import primitives.Vector;
 
+import static primitives.Util.isZero;
+
 /**
  * The Plane class represents a plane in 3D space.
  */
@@ -18,9 +20,12 @@ public class Plane implements Geometry {
      * @param p2 a point on the plane
      * @param p3 a point on the plane
      */
-    public Plane(Point p1, Point p2, Point p3) {
+    public Plane(Point p1, Point p2, Point p3) throws IllegalAccessException {//maybe we dont need to throw ex
         p0 = p1;
-        normal = null;
+        Vector U=p1.subtract(p2);
+        Vector V=p1.subtract(p3);
+        Vector N=U.crossProduct(V);
+        normal = N.normalize();
     }
 
     /**
@@ -43,7 +48,7 @@ public class Plane implements Geometry {
      */
     @Override
     public Vector getNormal(Point p) {
-        return getNormal();
+        return normal;
     }
 
     /**
