@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe8bd2f9-6ef6-42b8-bdfe-f8503f663f41" name="Changes" comment="EX-2222-first" />
+    <list default="true" id="fe8bd2f9-6ef6-42b8-bdfe-f8503f663f41" name="Changes" comment="ff" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -214,7 +214,19 @@
       <option name="presentableId" value="LOCAL‎00008" />
       <updated>1681406176154</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL‎00009" summary="EX-22-first">
+      <created>1681467192579</created>
+      <option name="number" value="LOCAL‎00009" />
+      <option name="presentableId" value="LOCAL‎00009" />
+      <updated>1681467192579</updated>
+    </task>
+    <task id="LOCAL‎00010" summary="ff">
+      <created>1681467333452</created>
+      <option name="number" value="LOCAL‎00010" />
+      <option name="presentableId" value="LOCAL‎00010" />
+      <updated>1681467333453</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -232,7 +244,9 @@
     <MESSAGE value="EX-0-first" />
     <MESSAGE value="EX-2-first" />
     <MESSAGE value="EX-2222-first" />
-    <option name="LAST_COMMIT_MESSAGE" value="EX-2222-first" />
+    <MESSAGE value="EX-22-first" />
+    <MESSAGE value="ff" />
+    <option name="LAST_COMMIT_MESSAGE" value="ff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
