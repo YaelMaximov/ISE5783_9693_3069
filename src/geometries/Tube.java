@@ -4,6 +4,9 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
+
 /**
  * The Tube class represents an infinite tube in 3D space.
  */
@@ -14,8 +17,8 @@ public class Tube extends RadialGeometry {
     /**
      * Constructs a tube with the given radius and axis ray.
      *
-     * @param radius   the radius of the tube
-     * @param axisRay  the axis ray of the tube
+     * @param radius  the radius of the tube
+     * @param axisRay the axis ray of the tube
      */
     public Tube(double radius, Ray axisRay) {
         super(radius);
@@ -38,8 +41,20 @@ public class Tube extends RadialGeometry {
      * @return the normal vector to the tube
      */
     @Override
-    public Vector getNormal(Point p) {
-        return null;
-    }
+    public Vector getNormal(Point p) throws IllegalAccessException {
+        Point P0 = axisRay.getP0();
+        Vector v = axisRay.getDir();
+        Vector P0_P = p.subtract(P0);
+        double t = alignZero(v.dotProduct(P0_P));
+        if (isZero(t)) {
+            return P0_P.normalize();
+        }
+        Point o = P0.add(v.scale(t));
+        if (p.equals(o)) {
+            throw new IllegalArgumentException("point cannot be on the tube axis");
+        }
+        Vector n = p.subtract(o).normalize();
+        return n;
 
-}
+    }
+    }

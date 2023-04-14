@@ -14,6 +14,6 @@ public interface Geometry {
      * @param p the point on the surface of the shape
      * @return the normal vector of the point on the surface of the shape
      */
-    public Vector getNormal(Point p);
+    public Vector getNormal(Point p) throws IllegalAccessException;
 
 }
