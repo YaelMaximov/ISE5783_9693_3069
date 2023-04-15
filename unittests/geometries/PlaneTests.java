@@ -6,7 +6,10 @@ import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
+/**
+ * Unit tests for Plane class
+ * @author Moria Yaeli
+ */
 class PlaneTests {
     /**
      * Test method for {@link geometries.Plane#(primitives.Point...)}.

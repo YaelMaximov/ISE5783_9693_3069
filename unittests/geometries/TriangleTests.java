@@ -5,7 +5,10 @@ import primitives.Point;
 import primitives.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Unit tests for Triangle class
+ * @author Moria Yaeli
+ */
 class TriangleTests {
     /**
      * Test method for {@link geometries.Triangle#getNormal(primitives.Point)}.
