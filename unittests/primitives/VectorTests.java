@@ -5,13 +5,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static primitives.Util.isZero;
-
+/**
+ * Unit tests for primitives.Vector class
+ * @author Moria Yaeli
+ */
 class VectorTests {
 
 
     VectorTests() throws IllegalAccessException {
     }
-
+    /**
+     * Test method for {@link primitives.Vector#add(Vector)} ()}.
+     */
     @Test
     void testAdd() throws IllegalAccessException {
         Vector v1 =new Vector(1, 2, 3);
@@ -23,6 +28,7 @@ class VectorTests {
         assertThrows(IllegalArgumentException.class, () -> v1.add(new Vector(-1, -2, -3)),
                 "ERROR: Vector + -itself does not throw an exception");
     }
+
     @Test
     void testSubtract() throws IllegalAccessException{
         Vector v1 =new Vector(1, 2, 3);
@@ -35,7 +41,9 @@ class VectorTests {
                 "ERROR: Vector - itself does not throw an exception");
 
     }
-
+    /**
+     * Test method for {@link primitives.Vector#scale(double)} .
+     */
     @Test
     void testScaling() throws IllegalAccessException {
         Vector v1 =new Vector(1, 2, 3);
@@ -45,11 +53,13 @@ class VectorTests {
         // =============== Boundary Values Tests ==================
         // TC11: test if zero scale throws an exception
         assertThrows(IllegalArgumentException.class, () ->v1.scale(0),
-                "ERROR: Vector - itself does not throw an exception");
+                "ERROR: scale of zero doesn't throw an exception");
 
 
     }
-
+    /**
+     * Test method for {@link primitives.Vector#dotProduct(Vector)} .
+     */
     @Test
     void testDotProduct() throws IllegalAccessException {
         // ============ Equivalence Partitions Tests ==============
@@ -57,7 +67,7 @@ class VectorTests {
         assertEquals(-28,new Vector(1, 2, 3).dotProduct(new Vector(-2, -4, -6)),"ERROR: dotProduct() wrong value");
         // =============== Boundary Values Tests ==================
         // TC11: test if dotProduct() for orthogonal vectors works right and not giving zero result
-        assertTrue(isZero(new Vector(1, 2, 3).dotProduct(new Vector(0, 3, -2))), "crossProduct() result is not orthogonal to 1st operand");
+        assertTrue(isZero(new Vector(1, 2, 3).dotProduct(new Vector(0, 3, -2))), "ERROR: dotProduct() for orthogonal vectors is not zero");
 
 
 
@@ -90,7 +100,7 @@ class VectorTests {
     void testLengthSquared() throws IllegalAccessException {
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
-        assertEquals(0,new Vector(1, 2, 3).lengthSquared() - 14,"ERROR: lengthSquared() wrong value");
+        assertEquals(14,new Vector(1, 2, 3).lengthSquared() ,"ERROR: lengthSquared() wrong value");
     }
     /**
      * Test method for {@link primitives.Vector#length()}.
@@ -99,19 +109,21 @@ class VectorTests {
     void testLength() throws IllegalAccessException {
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
-        assertEquals(0,new Vector(0, 3, 4).length() - 5,"ERROR: length() wrong value");
+        assertEquals(5,new Vector(0, 3, 4).length(),"ERROR: length() wrong value");
     }
     /**
      * Test method for {@link primitives.Vector#normalize()}.
      */
     @Test
     void testNormalize() throws IllegalAccessException {
-        Vector v=new Vector(0,3,4);
-        Vector n=v.normalize();
+        Vector v = new Vector(1, 2, 3);
+        Vector u = v.normalize();
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
-        assertEquals(1d,n.lengthSquared(),0.00001,"wrong normalized vector length");
-        assertThrows(IllegalArgumentException.class,()->v.crossProduct(n),"normalized vector is not iun the same direction");
-        assertEquals(new Vector(0,0.6,0.8),n,"wrong normalized vector");
+        assertEquals(1d,u.length(),0.00001,"ERROR: the normalized vector is not a unit vector");
+        // TC02: Test cross-product between vector and its normal
+        assertThrows(IllegalArgumentException.class,()->v.crossProduct(u),"ERROR: the normalized vector is not parallel to the original one");
+        // TC03: TTest dot-product between vector and its normal
+        assertTrue(v.dotProduct(u) >= 0,"ERROR: the normalized vector is opposite to the original one");
     }
 }
