@@ -21,5 +21,8 @@ class TriangleTests {
         Vector vector = new Vector(0.0D, -0.7071067811865475D, 0.7071067811865475D);
         assertEquals(vector, triangle.getNormal(new Point(0, 0, 0)), "Bad normal to triangle");
     }
+    @Test
+    void testFindIntersectionPoints() {
+    }
 
 }

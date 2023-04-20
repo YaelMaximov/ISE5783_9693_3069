@@ -38,4 +38,8 @@ class TubeTests {
 
 
     }
+
+    @Test
+    void testFindIntersectionPoints() {
+    }
 }

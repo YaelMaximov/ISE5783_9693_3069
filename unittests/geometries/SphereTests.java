@@ -22,4 +22,7 @@ class SphereTests {
         Vector vector = new Vector(1, 0, 0);
         assertEquals(vector, sphere.getNormal(new Point(2, 1, 1)), "Bad normal to sphere");
     }
+    @Test
+    void testFindIntersectionPoints() {
+    }
 }
