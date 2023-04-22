@@ -9,7 +9,7 @@ public class Point {
     /**
      * The x, y, and z coordinates of the point.
      */
-    final Double3 xyz;
+    protected final Double3 xyz;
 
     /**
      * Constructs a new point with the given x, y, and z coordinates.

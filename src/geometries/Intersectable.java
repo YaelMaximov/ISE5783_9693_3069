@@ -16,6 +16,6 @@ public interface Intersectable {
      * @param ray the ray to intersect with this object
      * @return a list of points where the ray intersects this object, or an empty list if there are no intersections
      */
-    List<Point> findIntsersections(Ray ray);
+    List<Point> findIntsersections(Ray ray) throws IllegalAccessException;
 
 }

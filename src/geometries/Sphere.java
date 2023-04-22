@@ -4,7 +4,10 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static primitives.Util.isZero;
 
 /**
  * The Sphere class represents a sphere in 3D space.
@@ -45,7 +48,40 @@ public class Sphere extends RadialGeometry {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
-        return null;
+    public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
+
+       // Vector L= new Vector(center.subtract(ray.getP0()).xyz);
+        ray.getDir().normalize();
+        double tm= (center.subtract(ray.getP0()).dotProduct(ray.getDir()));
+        double d= Math.pow((Math.pow((center.subtract(ray.getP0()).length()), 2))-(Math.pow(tm, 2)),0.5);//האם זה בסדר להתשתמש בpow לחזקה או שזה פעולה יקרה מדי?
+        if (d>radius)//no intersections
+        {
+
+            return null;
+        }
+        double th= Math.pow((Math.pow(radius, 2))-(Math.pow(d, 2)),0.5);
+        double t1= tm-th;
+        double t2= tm+th;
+
+        if (isZero(th))//one intersection
+        {
+            ArrayList<Point> arr= new ArrayList<Point>();
+            arr.add(ray.getP0().add(ray.getDir().scale(t1)));
+            return arr;
+        }
+        else
+        {
+            if(t1>0 || t2>0)//two intersections
+            {
+                ArrayList<Point> arr= new ArrayList<Point>();
+                if(t1 >0)
+                    arr.add(ray.getP0().add(ray.getDir().scale(t1)));
+                if(t2>0)
+                    arr.add(ray.getP0().add(ray.getDir().scale(t2)));
+                return arr;
+            }
+            return null;
+        }
+
     }
 }
