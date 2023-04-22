@@ -1,11 +1,13 @@
 package geometries;
 
+
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
 import java.util.List;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 /**
@@ -88,7 +90,36 @@ public class Plane implements Geometry {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
-        return null;
+    public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
+        Point P0=ray.getP0();
+        Vector v=ray.getDir();
+
+        Vector n=normal;
+
+        if(p0.equals(P0)){
+            return null;
+        }
+        Vector P0_Q0=p0.subtract(P0);
+
+        //numerator
+        double nP0Q0=alignZero(n.dotProduct(P0_Q0));
+
+        if(isZero(nP0Q0)){
+            return null;
+        }
+
+        //denominator
+        double nv=alignZero(n.dotProduct(v));
+
+        //ray is lying in the plane axis
+        if(isZero(nv)){
+            return null;
+        }
+        double t=alignZero(nP0Q0/nv);
+        if(t<=0){
+            return null;
+        }
+        Point point=ray.getPoint(t);
+        return List.of(point);
     }
 }

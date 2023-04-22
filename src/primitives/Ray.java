@@ -43,4 +43,9 @@ public class Ray {
     public Vector getDir() {
         return dir;
     }
+    public Point getPoint(double t) throws IllegalAccessException {
+        Vector scl_p=dir.scale(t);
+        Point P=p0.add(scl_p);
+        return P;
+    }
 }

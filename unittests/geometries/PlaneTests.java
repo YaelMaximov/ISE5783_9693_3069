@@ -48,23 +48,60 @@ class PlaneTests {
 
     @Test
     void testFindIntersectionPoints() throws IllegalAccessException {
-        Plane plane= new Plane(new Point(0,0,0),new Point(1,0,0),new Point(0,1,0));
+        // Initialize the plane and ray objects
+        Point p0 = new Point(2, 2, 1);
+        Vector normal = new Vector(0, 1, 0);
+        Plane plane = new Plane(p0, normal);
+        Ray ray;
+
         // ============ Equivalence Partitions Tests ==============
-        // TC01: Ray begins out of the plane,doesn't parallel to the plane,
+        // TC01: Ray begins out of the plane, doesn't parallel to the plane,
         // doesn't orthogonal to the plane and crosses the plane (1 point)
-        Point p1 = new Point(0,-1,-1);
-        List<Point> result = plane.findIntsersections(new Ray(new Point( 0, 1,1),
-                new Vector(0,-1,-1)));
-        assertEquals(List.of(p1), result, "Ray crosses plane");
-        // TC02: Ray begins out of the plane,doesn't parallel to the plane,
+        ray = new Ray(new Point(0, 10, 0), new Vector(3,-4,0));
+        List<Point> expected = List.of(new Point(6,2,0));
+        assertEquals(expected, plane.findIntsersections(ray),"wrong point for regular ray that crosses the plane");
+
+        // TC02: Ray begins out of the plane, doesn't parallel to the plane,
         // doesn't orthogonal to the plane and doesn't cross the plane (0 points)
-        assertNull(plane.findIntsersections(new Ray(new Point(2, 2, 2), new Vector(1, 1, -1))),
-                "Ray doesn't crosses plane");
+        ray = new Ray(new Point(3,5,4), new Vector(1, 2, 1));
+        assertNull(plane.findIntsersections(ray),"regular ray that doesn't cross the plane shouldn't returned value");
+
+        // =============== Boundary Values Tests ==================
+        // **** Group: Ray's line parallel to the plane
+        // TC11: Ray in the plane (0 points)
+        ray = new Ray(new Point(3,2,1), new Vector(0, 0, 1));
+        assertNull(plane.findIntsersections(ray),"ray in the plane shouldn't returned value");
+
+        // TC12: Ray out of the plane (0 points)
+        ray = new Ray(new Point(2, 1, 2), new Vector(1, 0, 0));
+        assertNull(plane.findIntsersections(ray),"ray parallel to a plane but not in it shouldn't return value");
+
+        // **** Group: Ray's line orthogonal to the plane
+        // TC13: Ray starts before the plane (1 point)
+        ray = new Ray(new Point(2, 0, 1), new Vector(0, 1, 0));
+        expected = List.of(new Point(2, 2, 1));
+        assertEquals(expected, plane.findIntsersections(ray),"wrong value for the cross point of an orthogonal ray begins before the plane");
+
+        // TC14: Ray starts in the plane (0 points)
+        ray = new Ray(new Point(3, 2, 1), new Vector(0, 1, 0));
+        assertNull(plane.findIntsersections(ray),"orthogonal ray begins in the plane shouldn't return value");
+
+        // TC15: Ray starts after the plane (0 points)
+        ray = new Ray(new Point(2, 3, 2), new Vector(0, 1, 0));
+        assertNull(plane.findIntsersections(ray),"orthogonal ray after in the plane shouldn't return value");
+
+        // **** Group: Ray line that starts in the plane but doesn't orthogonal or parallel to it
+        // TC16: Ray starts in the plane ( points)
+        ray = new Ray(new Point(3, 2, 1), new Vector(3,-4,0));
+        assertNull(plane.findIntsersections(ray),"regular ray starts in the plane shouldn't return value");
 
 
-
-
+        // **** Group: Ray line that starts in the point defining the plane but doesn't orthogonal or parallel to it
+        // TC17: Ray starts in the point defining the plane ( points)
+        ray = new Ray(new Point(2, 2, 1), new Vector(3,-4,0));
+        assertNull(plane.findIntsersections(ray),"regular ray starts in the point defining the  plane shouldn't return value");
     }
+
 
 
 }
