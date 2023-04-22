@@ -51,10 +51,10 @@ public class Sphere extends RadialGeometry {
     public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
 
        // Vector L= new Vector(center.subtract(ray.getP0()).xyz);
-        ray.getDir().normalize();
+        ray.getDir();
         double tm= (center.subtract(ray.getP0()).dotProduct(ray.getDir()));
         double d= Math.pow((Math.pow((center.subtract(ray.getP0()).length()), 2))-(Math.pow(tm, 2)),0.5);//האם זה בסדר להתשתמש בpow לחזקה או שזה פעולה יקרה מדי?
-        if (d>radius)//no intersections
+        if (d>=radius)//no intersections
         {
 
             return null;
