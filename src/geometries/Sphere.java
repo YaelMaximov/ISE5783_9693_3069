@@ -7,6 +7,7 @@ import primitives.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 /**
@@ -49,6 +50,45 @@ public class Sphere extends RadialGeometry {
 
     @Override
     public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
+        Point p0 = ray.getP0();
+        Vector v = ray.getDir();
+        Vector u;
+        try {
+            u = center.subtract(p0);
+        }
+        catch (IllegalAccessException e){
+            return List.of(ray.getDir());// לעבור ולתקן לא נכון!!
+        }
+        double tm = alignZero(v.dotProduct(u));
+        double dSquares = tm == 0 ? u.lengthSquared() : u.lengthSquared() - tm * tm;
+        double thSquared = alignZero(radius * radius - dSquares);
+        if (thSquared <= 0)
+        {
+            return null;
+        }
+        double th = alignZero(Math.sqrt(thSquared));
+        if (th == 0)
+        {
+            return null;
+        }
+        double t1 = alignZero(tm - th);
+        double t2 = alignZero(tm + th);
+        if (t1 <= 0 && t2 <= 0)
+        {
+            return null;
+        }
+        if (t1 > 0 && t2 >0)
+        {
+            return List.of(ray.getDir(),ray.getP0());//לא נכון חייבת לחזור!!
+        }
+        if (t1 > 0)
+        {
+            return List.of(ray.getDir());//לא נכון לבדוק שובב
+        }
+        else
+            return List.of(ray.getDir());// לא נכון לבדוק שוב
+
+
 
        // Vector L= new Vector(center.subtract(ray.getP0()).xyz);
         ray.getDir();
