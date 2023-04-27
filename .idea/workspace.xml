@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex3">
-      <change beforePath="$PROJECT_DIR$/unittests/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/IntegrationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/renderer/CameraTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/CameraTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -58,11 +61,12 @@
       <recent name="C:\Users\משפחת מקסימוב\IdeaProjects\ISE5783_9693_3069\unittests\geometries" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="renderer" />
       <recent name="geometries" />
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IntegrationTests.CameraSphereIntersections">
+  <component name="RunManager" selected="JUnit.CameraTests.testConstructRay">
     <configuration name="CameraTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
@@ -94,27 +98,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntegrationTests.CameraSphereIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CameraTests.testConstructRay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
-      <option name="METHOD_NAME" value="CameraSphereIntersections" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.CameraTests" />
+      <option name="METHOD_NAME" value="testConstructRay" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlaneTests.testTestGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IntegrationTests.CameraSphereIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.PlaneTests" />
-      <option name="METHOD_NAME" value="testTestGetNormal" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
+      <option name="METHOD_NAME" value="CameraSphereIntersections" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -138,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CameraTests.testConstructRay" />
+        <item itemvalue="JUnit.CameraTest" />
+        <item itemvalue="JUnit.CameraTest.testConstructRay" />
         <item itemvalue="JUnit.IntegrationTests.CameraSphereIntersections" />
         <item itemvalue="JUnit.SphereTests.testGetNormal" />
-        <item itemvalue="JUnit.CameraTest.testConstructRay" />
-        <item itemvalue="JUnit.CameraTest" />
-        <item itemvalue="JUnit.PlaneTests.testTestGetNormal" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +214,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1682616063602</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL‎-00009" summary="Ex3">
+      <created>1682616517304</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL‎-00009" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1682616517304</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -255,17 +266,10 @@
           <line>44</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/unittests/renderer/CameraTest.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
-        <watch expression="this.plane.findIntsersections(ray)==null" />
-        <watch expression="geometry.findIntsersections(ray)" />
         <watch expression="new Ray(ZERO_POINT, new Vector(1, -1, -10)" />
         <watch expression="camera.setVPSize(8, 8).constructRay(4, 4, 1, 1)" />
       </configuration>

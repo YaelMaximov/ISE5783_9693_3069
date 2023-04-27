@@ -1,5 +1,7 @@
 package primitives;
 
+import java.util.Objects;
+
 /**
  * A class representing a ray in 3D space, defined by a starting point and a direction.
  */
@@ -17,7 +19,7 @@ public class Ray {
     /**
      * Constructs a new Ray object with the specified starting point and direction vector.
      *
-     * @param p0 the starting point of the ray
+     * @param p0  the starting point of the ray
      * @param dir the direction vector of the ray
      * @throws IllegalAccessException if the direction vector is the zero vector
      */
@@ -43,9 +45,20 @@ public class Ray {
     public Vector getDir() {
         return dir;
     }
+
     public Point getPoint(double t) throws IllegalAccessException {
-        Vector scl_p=dir.scale(t);
-        Point P=p0.add(scl_p);
+        Vector scl_p = dir.scale(t);
+        Point P = p0.add(scl_p);
         return P;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ray ray = (Ray) o;
+        return Objects.equals(p0, ray.p0) && Objects.equals(dir, ray.dir);
+    }
+
+
 }
