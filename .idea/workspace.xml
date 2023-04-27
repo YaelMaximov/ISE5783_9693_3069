@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="test for the sphere">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_04_2023_23_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_04_2023_23_13__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/IntegrationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +66,37 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SphereTests.findIntersectionsSphere">
+  <component name="RunManager" selected="JUnit.IntegrationTests.CameraSphereIntersections">
+    <configuration name="IntegrationTests.CameraSphereIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
+      <option name="METHOD_NAME" value="CameraSphereIntersections" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntegrationTests.testConstructRayOfPlane" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
+      <option name="METHOD_NAME" value="testConstructRayOfPlane" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntegrationTests.testConstructRayOfTriangle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
+      <option name="METHOD_NAME" value="testConstructRayOfTriangle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PolygonTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
@@ -98,61 +128,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SphereTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.SphereTests" />
-      <option name="METHOD_NAME" value="testGetNormal" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TriangleTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TriangleTests" />
-      <option name="METHOD_NAME" value="testGetNormal" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TubeTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TubeTests" />
-      <option name="METHOD_NAME" value="testGetNormal" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IntegrationTests.CameraSphereIntersections" />
+        <item itemvalue="JUnit.IntegrationTests.testConstructRayOfTriangle" />
+        <item itemvalue="JUnit.IntegrationTests.testConstructRayOfPlane" />
         <item itemvalue="JUnit.SphereTests.findIntersectionsSphere" />
         <item itemvalue="JUnit.PolygonTests" />
-        <item itemvalue="JUnit.TubeTests.testGetNormal" />
-        <item itemvalue="JUnit.SphereTests.testGetNormal" />
-        <item itemvalue="JUnit.TriangleTests.testGetNormal" />
       </list>
     </recent_temporary>
   </component>
