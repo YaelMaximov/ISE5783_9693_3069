@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex3">
-      <change afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/IntegrationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/CameraTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/GeometriesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/GeometriesTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,20 +36,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/משפחת מקסימוב/IdeaProjects/ISE5783_9693_3069/unittests"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="geometries" />
       <recent name="primitives" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\משפחת מקסימוב\IdeaProjects\ISE5783_9693_3069\unittests" />
       <recent name="C:\Users\משפחת מקסימוב\IdeaProjects\ISE5783_9693_3069\unitTests\geometries" />
       <recent name="C:\Users\משפחת מקסימוב\IdeaProjects\ISE5783_9693_3069\src\test" />
       <recent name="C:\Users\משפחת מקסימוב\IdeaProjects\ISE5783_9693_3069\src\primitives" />
@@ -61,30 +59,12 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\משפחת מקסימוב\IdeaProjects\ISE5783_9693_3069\unittests\geometries" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="renderer" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="geometries" />
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CameraTest">
-    <configuration name="CameraTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="renderer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.CameraTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.PlaneTests.testTestGetNormal">
     <configuration name="GeometriesTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
@@ -148,13 +128,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TriangleTests.testFindIntersectionPoints" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.TriangleTests" />
+      <option name="METHOD_NAME" value="testFindIntersectionPoints" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CameraTest" />
         <item itemvalue="JUnit.PlaneTests.testTestGetNormal" />
         <item itemvalue="JUnit.SphereTests.findIntersectionsSphere" />
         <item itemvalue="JUnit.GeometriesTests.testFindIntersections" />
         <item itemvalue="JUnit.GeometriesTests" />
+        <item itemvalue="JUnit.TriangleTests.testFindIntersectionPoints" />
       </list>
     </recent_temporary>
   </component>
@@ -208,14 +204,7 @@
       <option name="project" value="LOCAL‎" />
       <updated>1682194445651</updated>
     </task>
-    <task id="LOCAL‎-00007" summary="Ex3">
-      <created>1682536166615</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL‎-00007" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1682536166618</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
