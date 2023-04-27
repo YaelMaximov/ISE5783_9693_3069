@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="finish test of SphereTests">
+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="test for the sphere">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,22 +66,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GeometriesTests">
-    <configuration name="GeometriesTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.GeometriesTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.SphereTests.findIntersectionsSphere">
     <configuration name="PolygonTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
@@ -90,21 +77,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="geometries" />
       <option name="MAIN_CLASS_NAME" value="geometries.PolygonTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SphereTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="geometries.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.SphereTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -121,6 +93,38 @@
       <option name="PACKAGE_NAME" value="geometries" />
       <option name="MAIN_CLASS_NAME" value="geometries.SphereTests" />
       <option name="METHOD_NAME" value="findIntersectionsSphere" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SphereTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.SphereTests" />
+      <option name="METHOD_NAME" value="testGetNormal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TriangleTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="geometries.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="geometries" />
+      <option name="MAIN_CLASS_NAME" value="geometries.TriangleTests" />
+      <option name="METHOD_NAME" value="testGetNormal" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -144,11 +148,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GeometriesTests" />
-        <item itemvalue="JUnit.SphereTests" />
         <item itemvalue="JUnit.SphereTests.findIntersectionsSphere" />
         <item itemvalue="JUnit.PolygonTests" />
         <item itemvalue="JUnit.TubeTests.testGetNormal" />
+        <item itemvalue="JUnit.SphereTests.testGetNormal" />
+        <item itemvalue="JUnit.TriangleTests.testGetNormal" />
       </list>
     </recent_temporary>
   </component>
@@ -194,13 +198,7 @@
       <option name="presentableId" value="LOCAL‎00005" />
       <updated>1682188748104</updated>
     </task>
-    <task id="LOCAL‎00006" summary="finish test of SphereTests">
-      <created>1682592551629</created>
-      <option name="number" value="LOCAL‎00006" />
-      <option name="presentableId" value="LOCAL‎00006" />
-      <updated>1682592551629</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -220,8 +218,7 @@
     <MESSAGE value="EX-1-with javadoc" />
     <MESSAGE value="test for the sphere" />
     <MESSAGE value="test" />
-    <MESSAGE value="finish test of SphereTests" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish test of SphereTests" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,17 +309,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/unittests/geometries/SphereTests.java</url>
-          <line>84</line>
+          <line>87</line>
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/unittests/geometries/SphereTests.java</url>
-          <line>86</line>
+          <line>89</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/unittests/geometries/SphereTests.java</url>
-          <line>85</line>
+          <line>88</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
