@@ -1,0 +1,597 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51__Changes_.xml	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
++++ /dev/null	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_13_04_2023_22_51_[Changes]" date="1681415488195" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 13/04/2023 22:51 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51_[Changes]/shelved.patch	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
++++ /dev/null	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
+@@ -1,203 +0,0 @@
+-Index: .idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47_[Changes]/shelved.patch
+-===================================================================
+-diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47_[Changes]/shelved.patch
+-deleted file mode 100644
+---- a/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47_[Changes]/shelved.patch	(revision a13f2c6ce478e033f0aa48941eff61da0babde66)
+-+++ /dev/null	(revision a13f2c6ce478e033f0aa48941eff61da0babde66)
+-@@ -1,62 +0,0 @@
+--Index: .idea/workspace.xml
+--IDEA additional info:
+--Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+--<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"EX-1-with javadoc\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MTAu3KBuierhfHiNK1MCuunvIb\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/משפחת מקסימוב/IdeaProjects/ISE5783_9693_3069/src/test&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"primitives\" />\r\n    </key>\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\test\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\primitives\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\geometries\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.Main\" />\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"\" />\r\n      <created>1677781421735</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1677781421735</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00001\" summary=\"EX-0-first\">\r\n      <created>1679397112988</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1679397112988</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"EX-0-first\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"EX-0-first\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/test/Main.java</url>\r\n          <line>85</line>\r\n          <option name=\"timeStamp\" value=\"9\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <watches-manager>\r\n      <configuration name=\"Application\">\r\n        <watch expression=\"v1.add(v2)\" />\r\n        <watch expression=\"!v1.add(v2).equals(new Vector(-1, -2, -3))\" />\r\n        <watch expression=\"new Vector(-1, -2, -3)\" />\r\n        <watch expression=\"v1.add(v2).equals(new Vector(-1, -2, -3))\" language=\"JAVA\" />\r\n        <watch expression=\"v1.subtract(v2)\" />\r\n        <watch expression=\"new Vector(3, 6, 9)\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/ISE5783_9693_3069$Main.ic\" NAME=\"Main Coverage Results\" MODIFIED=\"1679342282667\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>test.*</FILTER>\r\n    </SUITE>\r\n  </component>\r\n</project>
+--Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+--<+>UTF-8
+--===================================================================
+--diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+----- a/.idea/workspace.xml	(revision 75d4d5f1594f6f94fa874d24a522aea5a6404408)
+--+++ b/.idea/workspace.xml	(date 1679428028298)
+--@@ -4,8 +4,8 @@
+--     <option name="autoReloadType" value="SELECTIVE" />
+--   </component>
+--   <component name="ChangeListManager">
+---    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="EX-1-with javadoc">
+---      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--+    <list default="true" id="fe8bd2f9-6ef6-42b8-bdfe-f8503f663f41" name="Changes" comment="EX-1-with javadoc">
+--+      <change beforePath="$PROJECT_DIR$/src/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Main.java" afterDir="false" />
+--     </list>
+--     <option name="SHOW_DIALOG" value="false" />
+--     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+--@@ -32,13 +32,6 @@
+--     <option name="hideEmptyMiddlePackages" value="true" />
+--     <option name="showLibraryContents" value="true" />
+--   </component>
+---  <component name="PropertiesComponent">{
+---  &quot;keyToString&quot;: {
+---    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+---    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+---    &quot;last_opened_file_path&quot;: &quot;C:/Users/משפחת מקסימוב/IdeaProjects/ISE5783_9693_3069/src/test&quot;
+---  }
+---}</component>
+--   <component name="RecentsManager">
+--     <key name="CreateClassDialog.RecentsKey">
+--       <recent name="primitives" />
+--@@ -87,6 +80,17 @@
+--     </task>
+--     <option name="localTasksCounter" value="2" />
+--     <servers />
+--+  </component>
+--+  <component name="Vcs.Log.Tabs.Properties">
+--+    <option name="TAB_STATES">
+--+      <map>
+--+        <entry key="MAIN">
+--+          <value>
+--+            <State />
+--+          </value>
+--+        </entry>
+--+      </map>
+--+    </option>
+--   </component>
+--   <component name="VcsManagerConfiguration">
+--     <MESSAGE value="EX-0-first" />
+--@@ -97,7 +101,7 @@
+--       <breakpoints>
+--         <line-breakpoint enabled="true" type="java-line">
+--           <url>file://$PROJECT_DIR$/src/test/Main.java</url>
+---          <line>85</line>
+--+          <line>86</line>
+--           <option name="timeStamp" value="9" />
+--         </line-breakpoint>
+--       </breakpoints>
+-Index: .idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47__Changes_.xml
+-===================================================================
+-diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47__Changes_.xml
+-deleted file mode 100644
+---- a/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47__Changes_.xml	(revision a13f2c6ce478e033f0aa48941eff61da0babde66)
+-+++ /dev/null	(revision a13f2c6ce478e033f0aa48941eff61da0babde66)
+-@@ -1,4 +0,0 @@
+--<changelist name="Uncommitted_changes_before_Update_at_21_03_2023_21_47_[Changes]" date="1679428056588" recycled="true" deleted="true">
+--  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47_[Changes]/shelved.patch" />
+--  <option name="DESCRIPTION" value="Uncommitted changes before Update at 21/03/2023 21:47 [Changes]" />
+--</changelist>
+-\ No newline at end of file
+-Index: .idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45__Changes_1.xml
+-===================================================================
+-diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45__Changes_1.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45__Changes_1.xml
+-deleted file mode 100644
+---- a/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45__Changes_1.xml	(revision a13f2c6ce478e033f0aa48941eff61da0babde66)
+-+++ /dev/null	(revision a13f2c6ce478e033f0aa48941eff61da0babde66)
+-@@ -1,4 +0,0 @@
+--<changelist name="Uncommitted_changes_before_Update_at_21_03_2023_20_45_[Changes]1" date="1679424440888" recycled="true" deleted="true">
+--  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45_[Changes]1/shelved.patch" />
+--  <option name="DESCRIPTION" value="Uncommitted changes before Update at 21/03/2023 20:45 [Changes]" />
+--</changelist>
+-\ No newline at end of file
+-Index: .idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45_[Changes]1/shelved.patch
+-===================================================================
+-diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45_[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45_[Changes]1/shelved.patch
+-deleted file mode 100644
+---- a/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45_[Changes]1/shelved.patch	(revision a13f2c6ce478e033f0aa48941eff61da0babde66)
+-+++ /dev/null	(revision a13f2c6ce478e033f0aa48941eff61da0babde66)
+-@@ -1,13 +0,0 @@
+--Index: src/Main.java
+--===================================================================
+--diff --git a/src/Main.java b/src/Main.java
+--deleted file mode 100644
+----- a/src/Main.java	
+--+++ /dev/null	
+--@@ -1,5 +0,0 @@
+---public class Main {
+---    public static void main(String[] args) {
+---        System.out.println("Hello world!");
+---    }
+---}
+--\ No newline at end of file
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"fe8bd2f9-6ef6-42b8-bdfe-f8503f663f41\" name=\"Changes\" comment=\"EX-1-with javadoc\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MTAu3KBuierhfHiNK1MCuunvIb\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"primitives\" />\r\n    </key>\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\test\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\primitives\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\geometries\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"test.Main\" />\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"test.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"\" />\r\n      <created>1677781421735</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1677781421735</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00001\" summary=\"EX-0-first\">\r\n      <created>1679397112988</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1679397112988</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E00002\" summary=\"EX-2-first\">\r\n      <created>1679428034627</created>\r\n      <option name=\"number\" value=\"LOCAL\u200E00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E00002\" />\r\n      <updated>1679428034628</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"EX-0-first\" />\r\n    <MESSAGE value=\"EX-2-first\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"EX-2-first\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/test/Main.java</url>\r\n          <line>88</line>\r\n          <option name=\"timeStamp\" value=\"9\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <watches-manager>\r\n      <configuration name=\"Application\">\r\n        <watch expression=\"v1.add(v2)\" />\r\n        <watch expression=\"!v1.add(v2).equals(new Vector(-1, -2, -3))\" />\r\n        <watch expression=\"new Vector(-1, -2, -3)\" />\r\n        <watch expression=\"v1.add(v2).equals(new Vector(-1, -2, -3))\" language=\"JAVA\" />\r\n        <watch expression=\"v1.subtract(v2)\" />\r\n        <watch expression=\"new Vector(3, 6, 9)\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/ISE5783_9693_3069$Main.ic\" NAME=\"Main Coverage Results\" MODIFIED=\"1679342282667\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>test.*</FILTER>\r\n    </SUITE>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision a13f2c6ce478e033f0aa48941eff61da0babde66)
+-+++ b/.idea/workspace.xml	(date 1681401805478)
+-@@ -4,9 +4,13 @@
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="fe8bd2f9-6ef6-42b8-bdfe-f8503f663f41" name="Changes" comment="EX-1-with javadoc">
+-+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="EX-1-with javadoc">
+-+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45_[Changes]1/shelved.patch" beforeDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45__Changes_.xml" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_20_45__Changes_1.xml" beforeDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47_[Changes]/shelved.patch" beforeDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2023_21_47__Changes_.xml" beforeDir="false" />
+-       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Main.java" afterDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-@@ -33,6 +37,13 @@
+-     <option name="hideEmptyMiddlePackages" value="true" />
+-     <option name="showLibraryContents" value="true" />
+-   </component>
+-+  <component name="PropertiesComponent">{
+-+  &quot;keyToString&quot;: {
+-+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-+    &quot;last_opened_file_path&quot;: &quot;C:/Users/משפחת מקסימוב/IdeaProjects/ISE5783_9693_3069/src/test&quot;
+-+  }
+-+}</component>
+-   <component name="RecentsManager">
+-     <key name="CreateClassDialog.RecentsKey">
+-       <recent name="primitives" />
+-@@ -79,41 +90,22 @@
+-       <option name="project" value="LOCAL‎" />
+-       <updated>1679397112988</updated>
+-     </task>
+--    <task id="LOCAL‎00002" summary="EX-2-first">
+--      <created>1679428034627</created>
+--      <option name="number" value="LOCAL‎00002" />
+--      <option name="presentableId" value="LOCAL‎00002" />
+--      <updated>1679428034628</updated>
+-+    <task id="LOCAL‎-00002" summary="EX-1-with javadoc">
+-+      <created>1679425684535</created>
+-+      <option name="number" value="00002" />
+-+      <option name="presentableId" value="LOCAL‎-00002" />
+-+      <option name="project" value="LOCAL‎" />
+-+      <updated>1679425684535</updated>
+-     </task>
+-     <option name="localTasksCounter" value="3" />
+-     <servers />
+-   </component>
+--  <component name="Vcs.Log.Tabs.Properties">
+--    <option name="TAB_STATES">
+--      <map>
+--        <entry key="MAIN">
+--          <value>
+--            <State />
+--          </value>
+--        </entry>
+--      </map>
+--    </option>
+--  </component>
+-   <component name="VcsManagerConfiguration">
+-     <MESSAGE value="EX-0-first" />
+--    <MESSAGE value="EX-2-first" />
+--    <option name="LAST_COMMIT_MESSAGE" value="EX-2-first" />
+-+    <MESSAGE value="EX-1-with javadoc" />
+-+    <option name="LAST_COMMIT_MESSAGE" value="EX-1-with javadoc" />
+-   </component>
+-   <component name="XDebuggerManager">
+--    <breakpoint-manager>
+--      <breakpoints>
+--        <line-breakpoint enabled="true" type="java-line">
+--          <url>file://$PROJECT_DIR$/src/test/Main.java</url>
+--          <line>88</line>
+--          <option name="timeStamp" value="9" />
+--        </line-breakpoint>
+--      </breakpoints>
+--    </breakpoint-manager>
+-     <watches-manager>
+-       <configuration name="Application">
+-         <watch expression="v1.add(v2)" />
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_16_33__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_16_33__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_16_33__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_16_33__Changes_.xml	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
++++ /dev/null	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_14_04_2023_16_33_[Changes]" date="1681479204078" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_16_33_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 14/04/2023 16:33 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: unittests/geometries/PlaneTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package geometries;\r\n\r\nimport org.junit.jupiter.api.Test;\r\nimport primitives.Point;\r\nimport primitives.Ray;\r\nimport primitives.Vector;\r\n\r\nimport java.util.List;\r\n\r\nimport static org.junit.jupiter.api.Assertions.*;\r\n\r\n/**\r\n * Unit tests for Plane class\r\n * @author Moria Yaeli\r\n */\r\nclass PlaneTests {\r\n    /**\r\n     * Test method for {@link geometries.Plane#(primitives.Point...)}.\r\n     */\r\n    @Test\r\n    public void testConstructor() {\r\n        // =============== Boundary Values Tests ==================\r\n        //TC01: first point = second point\r\n        assertThrows(IllegalAccessException.class, //\r\n                () -> new Plane(new Point(1, 0, 0), new Point(1, 0, 0), new Point(0, 1, 0)),\r\n               \"ERROR:Two points are the same point\");\r\n        //TC02:The points are on the same line\r\n        assertThrows(IllegalAccessException.class, //\r\n                () -> new Plane(new Point(1, 2, 3), new Point(2,4,6), new Point(4, 8, 12)),\r\n                \"ERROR: The points are on same line\");\r\n\r\n    }\r\n\r\n    /**\r\n     * Test method for {@link geometries.Plane#getNormal(primitives.Point)}.\r\n     * */\r\n    @Test\r\n    void testTestGetNormal() throws IllegalAccessException {\r\n        // ============ Equivalence Partitions Tests ==============\r\n        // TC01: There is a simple single test here\r\n        Plane plane= new Plane(new Point(1,0,0),new Point(0,1,0),new Point(0,0,0));\r\n\r\n        assertEquals(new Vector(0,0,1), plane.getNormal(new Point(1, 0,0)), \"Bad normal to plane\");\r\n    }\r\n    /**\r\n     * Test method for {@link geometries.Plane#findIntsersections(Ray)} .\r\n     */\r\n\r\n    @Test\r\n    void testFindIntersectionPoints() throws IllegalAccessException {\r\n        Plane plane= new Plane(new Point(0,0,0),new Point(1,0,0),new Point(0,1,0));\r\n        // ============ Equivalence Partitions Tests ==============\r\n        // TC01: Ray begins out of the plane,doesn't parallel to the plane,\r\n        // doesn't orthogonal to the plane and crosses the plane (1 point)\r\n        Point p1 = new Point(0,-1,-1);\r\n        List<Point> result = plane.findIntsersections(new Ray(new Point( 0, 1,1),\r\n                new Vector(0,-1,-1)));\r\n        assertEquals(List.of(p1), result, \"Ray crosses plane\");\r\n        // TC02: Ray begins out of the plane,doesn't parallel to the plane,\r\n        // doesn't orthogonal to the plane and doesn't cross the plane (0 points)\r\n        assertNull(plane.findIntsersections(new Ray(new Point(2, 2, 2), new Vector(1, 1, -1))),\r\n                \"Ray doesn't crosses plane\");\r\n\r\n\r\n\r\n\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/unittests/geometries/PlaneTests.java b/unittests/geometries/PlaneTests.java
+--- a/unittests/geometries/PlaneTests.java	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
++++ b/unittests/geometries/PlaneTests.java	(date 1682091885383)
+@@ -48,23 +48,60 @@
+ 
+     @Test
+     void testFindIntersectionPoints() throws IllegalAccessException {
+-        Plane plane= new Plane(new Point(0,0,0),new Point(1,0,0),new Point(0,1,0));
++        // Initialize the plane and ray objects
++        Point p0 = new Point(2, 2, 1);
++        Vector normal = new Vector(0, 1, 0);
++        Plane plane = new Plane(p0, normal);
++        Ray ray;
++
+         // ============ Equivalence Partitions Tests ==============
+-        // TC01: Ray begins out of the plane,doesn't parallel to the plane,
++        // TC01: Ray begins out of the plane, doesn't parallel to the plane,
+         // doesn't orthogonal to the plane and crosses the plane (1 point)
+-        Point p1 = new Point(0,-1,-1);
+-        List<Point> result = plane.findIntsersections(new Ray(new Point( 0, 1,1),
+-                new Vector(0,-1,-1)));
+-        assertEquals(List.of(p1), result, "Ray crosses plane");
+-        // TC02: Ray begins out of the plane,doesn't parallel to the plane,
++        ray = new Ray(new Point(0, 10, 0), new Vector(3,-4,0));
++        List<Point> expected = List.of(new Point(6,2,0));
++        assertEquals(expected, plane.findIntsersections(ray),"wrong point for regular ray that crosses the plane");
++
++        // TC02: Ray begins out of the plane, doesn't parallel to the plane,
+         // doesn't orthogonal to the plane and doesn't cross the plane (0 points)
+-        assertNull(plane.findIntsersections(new Ray(new Point(2, 2, 2), new Vector(1, 1, -1))),
+-                "Ray doesn't crosses plane");
++        ray = new Ray(new Point(3,5,4), new Vector(1, 2, 1));
++        assertNull(plane.findIntsersections(ray),"regular ray that doesn't cross the plane shouldn't returned value");
++
++        // =============== Boundary Values Tests ==================
++        // **** Group: Ray's line parallel to the plane
++        // TC11: Ray in the plane (0 points)
++        ray = new Ray(new Point(3,2,1), new Vector(0, 0, 1));
++        assertNull(plane.findIntsersections(ray),"ray in the plane shouldn't returned value");
+ 
++        // TC12: Ray out of the plane (0 points)
++        ray = new Ray(new Point(2, 1, 2), new Vector(1, 0, 0));
++        assertNull(plane.findIntsersections(ray),"ray parallel to a plane but not in it shouldn't return value");
+ 
++        // **** Group: Ray's line orthogonal to the plane
++        // TC13: Ray starts before the plane (1 point)
++        ray = new Ray(new Point(2, 0, 1), new Vector(0, 1, 0));
++        expected = List.of(new Point(2, 2, 1));
++        assertEquals(expected, plane.findIntsersections(ray),"wrong value for the cross point of an orthogonal ray begins before the plane");
+ 
++        // TC14: Ray starts in the plane (0 points)
++        ray = new Ray(new Point(3, 2, 1), new Vector(0, 1, 0));
++        assertNull(plane.findIntsersections(ray),"orthogonal ray begins in the plane shouldn't return value");
+ 
++        // TC15: Ray starts after the plane (0 points)
++        ray = new Ray(new Point(2, 3, 2), new Vector(0, 1, 0));
++        assertNull(plane.findIntsersections(ray),"orthogonal ray after in the plane shouldn't return value");
++
++        // **** Group: Ray line that starts in the plane but doesn't orthogonal or parallel to it
++        // TC16: Ray starts in the plane ( points)
++        ray = new Ray(new Point(3, 2, 1), new Vector(3,-4,0));
++        assertNull(plane.findIntsersections(ray),"regular ray starts in the plane shouldn't return value");
++
++
++        // **** Group: Ray line that starts in the point defining the plane but doesn't orthogonal or parallel to it
++        // TC17: Ray starts in the point defining the plane ( points)
++        ray = new Ray(new Point(2, 2, 1), new Vector(3,-4,0));
++        assertNull(plane.findIntsersections(ray),"regular ray starts in the point defining the  plane shouldn't return value");
+     }
+ 
+ 
++
+ }
+\ No newline at end of file
+Index: src/geometries/Triangle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package geometries;\r\n\r\nimport primitives.Point;\r\n\r\n/**\r\n * The Triangle class represents a triangle in 3D space.\r\n */\r\npublic class Triangle extends Polygon {\r\n\r\n    /**\r\n     * Constructs a triangle with the given vertices.\r\n     *\r\n     * @param vertices the vertices of the triangle\r\n     * @throws IllegalAccessException if less than 3 vertices are given\r\n     */\r\n    public Triangle(Point... vertices) throws IllegalAccessException {\r\n        super(vertices);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/geometries/Triangle.java b/src/geometries/Triangle.java
+--- a/src/geometries/Triangle.java	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
++++ b/src/geometries/Triangle.java	(date 1682192037600)
+@@ -1,6 +1,10 @@
+ package geometries;
+ 
+ import primitives.Point;
++import primitives.Ray;
++import primitives.Vector;
++
++import java.util.List;
+ 
+ /**
+  * The Triangle class represents a triangle in 3D space.
+@@ -8,13 +12,47 @@
+ public class Triangle extends Polygon {
+ 
+     /**
+-     * Constructs a triangle with the given vertices.
+-     *
+-     * @param vertices the vertices of the triangle
+-     * @throws IllegalAccessException if less than 3 vertices are given
++     Constructs a Triangle object with the given points.
++     @param p1 the first Point of the triangle
++     @param p2 the second Point of the triangle
++     @param p3 the third Point of the triangle
++     @throws IllegalAccessException if any of the given points are null
+      */
+-    public Triangle(Point... vertices) throws IllegalAccessException {
+-        super(vertices);
++    public Triangle(Point p1,Point p2,Point p3) throws IllegalAccessException {
++        super(p1,p2,p3);
+     }
++    public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
++        if(this.plane.findIntsersections(ray)==null){
++            return null;
++        };
++
++        Point P0=ray.getP0();
++        Vector v=ray.getDir();
++
++        Point P1=this.vertices.get(0);
++        Point P2=this.vertices.get(1);
++        Point P3=this.vertices.get(2);
++
++        Vector v1=P1.subtract(P0);
++        Vector v2=P2.subtract(P0);
++        Vector v3=P3.subtract(P0);
++
++        double n1v=v1.crossProduct(v2).normalize().dotProduct(v);
++        double n2v=v2.crossProduct(v3).normalize().dotProduct(v);
++        double n3v=v3.crossProduct(v1).normalize().dotProduct(v);
++        if((n1v==0)||(n2v==0)||(n3v==0)){
++            return null;
++        } else if ((n1v>0)&&(n2v>0)&&(n3v>0)) {
++            return this.plane.findIntsersections(ray);
++        } else if ((n1v<0)&&(n2v<0)&&(n3v<0)) {
++            return this.plane.findIntsersections(ray);
++        }
++        else{
++            return null;
++        }
++
++
++    }
++
+ 
+-}
++    }
+Index: src/geometries/Intersectable.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package geometries;\r\n\r\nimport primitives.Point;\r\nimport primitives.Ray;\r\n\r\nimport java.util.List;\r\n\r\n/**\r\n * The Intersectable interface represents a geometric object that can be intersected by a ray.\r\n */\r\npublic interface Intersectable {\r\n\r\n    /**\r\n     * Returns a list of points where the specified ray intersects this object.\r\n     *\r\n     * @param ray the ray to intersect with this object\r\n     * @return a list of points where the ray intersects this object, or an empty list if there are no intersections\r\n     */\r\n    List<Point> findIntsersections(Ray ray);\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/geometries/Intersectable.java b/src/geometries/Intersectable.java
+--- a/src/geometries/Intersectable.java	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
++++ b/src/geometries/Intersectable.java	(date 1682023951086)
+@@ -16,6 +16,6 @@
+      * @param ray the ray to intersect with this object
+      * @return a list of points where the ray intersects this object, or an empty list if there are no intersections
+      */
+-    List<Point> findIntsersections(Ray ray);
++    List<Point> findIntsersections(Ray ray) throws IllegalAccessException;
+ 
+ }
+Index: src/geometries/Polygon.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package geometries;\r\n\r\nimport static primitives.Util.isZero;\r\n\r\nimport java.util.List;\r\n\r\nimport primitives.Point;\r\nimport primitives.Ray;\r\nimport primitives.Vector;\r\n\r\n/** Polygon class represents two-dimensional polygon in 3D Cartesian coordinate\r\n * system\r\n * @author Dan */\r\npublic class Polygon implements Geometry {\r\n   /** List of polygon's vertices */\r\n   protected final List<Point> vertices;\r\n   /** Associated plane in which the polygon lays */\r\n   protected final Plane       plane;\r\n   private final int           size;\r\n\r\n   /** Polygon constructor based on vertices list. The list must be ordered by edge\r\n    * path. The polygon must be convex.\r\n    * @param  vertices                 list of vertices according to their order by\r\n    *                                  edge path\r\n    * @throws IllegalArgumentException in any case of illegal combination of\r\n    *                                  vertices:\r\n    *                                  <ul>\r\n    *                                  <li>Less than 3 vertices</li>\r\n    *                                  <li>Consequent vertices are in the same\r\n    *                                  point\r\n    *                                  <li>The vertices are not in the same\r\n    *                                  plane</li>\r\n    *                                  <li>The order of vertices is not according\r\n    *                                  to edge path</li>\r\n    *                                  <li>Three consequent vertices lay in the\r\n    *                                  same line (180&#176; angle between two\r\n    *                                  consequent edges)\r\n    *                                  <li>The polygon is concave (not convex)</li>\r\n    *                                  </ul>\r\n    */\r\n   public Polygon(Point... vertices) throws IllegalAccessException {\r\n      if (vertices.length < 3)\r\n         throw new IllegalArgumentException(\"A polygon can't have less than 3 vertices\");\r\n      this.vertices = List.of(vertices);\r\n      size          = vertices.length;\r\n\r\n      // Generate the plane according to the first three vertices and associate the\r\n      // polygon with this plane.\r\n      // The plane holds the invariant normal (orthogonal unit) vector to the polygon\r\n      plane         = new Plane(vertices[0], vertices[1], vertices[2]);\r\n      if (size == 3) return; // no need for more tests for a Triangle\r\n\r\n      Vector  n        = plane.getNormal();\r\n      // Subtracting any subsequent points will throw an IllegalArgumentException\r\n      // because of Zero Vector if they are in the same point\r\n      Vector  edge1    = vertices[vertices.length - 1].subtract(vertices[vertices.length - 2]);\r\n      Vector  edge2    = vertices[0].subtract(vertices[vertices.length - 1]);\r\n\r\n      // Cross Product of any subsequent edges will throw an IllegalArgumentException\r\n      // because of Zero Vector if they connect three vertices that lay in the same\r\n      // line.\r\n      // Generate the direction of the polygon according to the angle between last and\r\n      // first edge being less than 180 deg. It is hold by the sign of its dot product\r\n      // with\r\n      // the normal. If all the rest consequent edges will generate the same sign -\r\n      // the\r\n      // polygon is convex (\"kamur\" in Hebrew).\r\n      boolean positive = edge1.crossProduct(edge2).dotProduct(n) > 0;\r\n      for (var i = 1; i < vertices.length; ++i) {\r\n         // Test that the point is in the same plane as calculated originally\r\n         if (!isZero(vertices[i].subtract(vertices[0]).dotProduct(n)))\r\n            throw new IllegalArgumentException(\"All vertices of a polygon must lay in the same plane\");\r\n         // Test the consequent edges have\r\n         edge1 = edge2;\r\n         edge2 = vertices[i].subtract(vertices[i - 1]);\r\n         if (positive != (edge1.crossProduct(edge2).dotProduct(n) > 0))\r\n            throw new IllegalArgumentException(\"All vertices must be ordered and the polygon must be convex\");\r\n      }\r\n   }\r\n\r\n   @Override\r\n   public Vector getNormal(Point point) { return plane.getNormal(); }\r\n\r\n   @Override\r\n   public List<Point> findIntsersections(Ray ray) {\r\n      return null;\r\n   }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/geometries/Polygon.java b/src/geometries/Polygon.java
+--- a/src/geometries/Polygon.java	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
++++ b/src/geometries/Polygon.java	(date 1682186139038)
+@@ -82,7 +82,7 @@
+    public Vector getNormal(Point point) { return plane.getNormal(); }
+ 
+    @Override
+-   public List<Point> findIntsersections(Ray ray) {
++   public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
+       return null;
+    }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"Ex2\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/geometries/Geometries.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/geometries/Intersectable.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/geometries/Geometry.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/geometries/Geometry.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/geometries/Plane.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/geometries/Plane.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/geometries/Polygon.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/geometries/Polygon.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/geometries/Sphere.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/geometries/Sphere.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/geometries/Tube.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/geometries/Tube.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/unittests/geometries/PlaneTests.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/unittests/geometries/PlaneTests.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/unittests/geometries/PolygonTests.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/unittests/geometries/PolygonTests.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/unittests/geometries/SphereTests.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/unittests/geometries/SphereTests.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/unittests/geometries/TriangleTests.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/unittests/geometries/TriangleTests.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/unittests/geometries/TubeTests.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/unittests/geometries/TubeTests.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"JUnit5 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MTAu3KBuierhfHiNK1MCuunvIb\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\": \"JUnit5\",\r\n    \"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5\": \"\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"geometries\" />\r\n      <recent name=\"primitives\" />\r\n    </key>\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unitTests\\geometries\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\test\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\primitives\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\geometries\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unittests\\geometries\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"geometries\" />\r\n      <recent name=\"primitives\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.PolygonTests\">\r\n    <configuration name=\"PlaneTests.testTestGetNormal\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"geometries.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"geometries\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"geometries.PlaneTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"testTestGetNormal\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PolygonTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"geometries.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"geometries\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"geometries.PolygonTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"SphereTests.testGetNormal\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"geometries.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"geometries\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"geometries.SphereTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"testGetNormal\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TriangleTests.testGetNormal\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"geometries.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"geometries\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"geometries.TriangleTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"testGetNormal\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TubeTests.testGetNormal\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"geometries.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"geometries\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"geometries.TubeTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"testGetNormal\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.PolygonTests\" />\r\n        <item itemvalue=\"JUnit.TubeTests.testGetNormal\" />\r\n        <item itemvalue=\"JUnit.SphereTests.testGetNormal\" />\r\n        <item itemvalue=\"JUnit.TriangleTests.testGetNormal\" />\r\n        <item itemvalue=\"JUnit.PlaneTests.testTestGetNormal\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"\" />\r\n      <created>1677781421735</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1677781421735</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00001\" summary=\"EX-0-first\">\r\n      <created>1679397112988</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1679397112988</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E00002\" summary=\"EX-2-first\">\r\n      <created>1679428034627</created>\r\n      <option name=\"number\" value=\"LOCAL\u200E00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E00002\" />\r\n      <updated>1679428034628</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00003\" summary=\"EX-1-with javadoc\">\r\n      <created>1681415518169</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681415518169</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00004\" summary=\"EX-1-with javadoc\">\r\n      <created>1681467201958</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681467201958</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00005\" summary=\"Ex2\">\r\n      <created>1681588212150</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681588212150</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"EX-0-first\" />\r\n    <MESSAGE value=\"EX-2-first\" />\r\n    <MESSAGE value=\"EX-1-with javadoc\" />\r\n    <MESSAGE value=\"tests for vector and point\" />\r\n    <MESSAGE value=\"Ex2\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Ex2\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/unittests/geometries/PlaneTests.java</url>\r\n          <line>20</line>\r\n          <properties class=\"geometries.PlaneTests\" method=\"testConstructor\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"16\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/geometries/Tube.java</url>\r\n          <line>49</line>\r\n          <option name=\"timeStamp\" value=\"25\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <watches-manager>\r\n      <configuration name=\"Application\">\r\n        <watch expression=\"v1.add(v2)\" />\r\n        <watch expression=\"!v1.add(v2).equals(new Vector(-1, -2, -3))\" />\r\n        <watch expression=\"new Vector(-1, -2, -3)\" />\r\n        <watch expression=\"v1.add(v2).equals(new Vector(-1, -2, -3))\" language=\"JAVA\" />\r\n        <watch expression=\"v1.subtract(v2)\" />\r\n        <watch expression=\"new Vector(3, 6, 9)\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/ISE5783_9693_3069$Main.ic\" NAME=\"Main Coverage Results\" MODIFIED=\"1679342282667\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>test.*</FILTER>\r\n    </SUITE>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
++++ b/.idea/workspace.xml	(date 1682186139522)
+@@ -5,19 +5,16 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex2">
+-      <change afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_04_2023_22_51__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2023_16_33__Changes_.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/unittests/geometries/PlaneTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTests.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/unittests/geometries/PolygonTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PolygonTests.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/unittests/geometries/TubeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TubeTests.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -73,8 +70,8 @@
+       <recent name="primitives" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="JUnit.PolygonTests">
+-    <configuration name="PlaneTests.testTestGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++  <component name="RunManager" selected="JUnit.PlaneTests.testFindIntersectionPoints">
++    <configuration name="PlaneTests.testFindIntersectionPoints" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ISE5783_9693_3069" />
+       <extension name="coverage">
+         <pattern>
+@@ -84,7 +81,7 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="geometries" />
+       <option name="MAIN_CLASS_NAME" value="geometries.PlaneTests" />
+-      <option name="METHOD_NAME" value="testTestGetNormal" />
++      <option name="METHOD_NAME" value="testFindIntersectionPoints" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -155,11 +152,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="JUnit.PlaneTests.testFindIntersectionPoints" />
+         <item itemvalue="JUnit.PolygonTests" />
+         <item itemvalue="JUnit.TubeTests.testGetNormal" />
+         <item itemvalue="JUnit.SphereTests.testGetNormal" />
+         <item itemvalue="JUnit.TriangleTests.testGetNormal" />
+-        <item itemvalue="JUnit.PlaneTests.testTestGetNormal" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -206,7 +203,14 @@
+       <option name="project" value="LOCAL‎" />
+       <updated>1681588212150</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL‎-00006" summary="Ex2">
++      <created>1681983797462</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL‎-00006" />
++      <option name="project" value="LOCAL‎" />
++      <updated>1681983797462</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+Index: src/primitives/Ray.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package primitives;\r\n\r\n/**\r\n * A class representing a ray in 3D space, defined by a starting point and a direction.\r\n */\r\npublic class Ray {\r\n    /**\r\n     * The starting point of the ray.\r\n     */\r\n    final Point p0;\r\n\r\n    /**\r\n     * The normalized direction vector of the ray.\r\n     */\r\n    final Vector dir;\r\n\r\n    /**\r\n     * Constructs a new Ray object with the specified starting point and direction vector.\r\n     *\r\n     * @param p0 the starting point of the ray\r\n     * @param dir the direction vector of the ray\r\n     * @throws IllegalAccessException if the direction vector is the zero vector\r\n     */\r\n    public Ray(Point p0, Vector dir) throws IllegalAccessException {\r\n        this.p0 = p0;\r\n        this.dir = dir.normalize();\r\n    }\r\n\r\n    /**\r\n     * Returns the starting point of the ray.\r\n     *\r\n     * @return the starting point of the ray\r\n     */\r\n    public Point getP0() {\r\n        return p0;\r\n    }\r\n\r\n    /**\r\n     * Returns the direction vector of the ray.\r\n     *\r\n     * @return the direction vector of the ray\r\n     */\r\n    public Vector getDir() {\r\n        return dir;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/primitives/Ray.java b/src/primitives/Ray.java
+--- a/src/primitives/Ray.java	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
++++ b/src/primitives/Ray.java	(date 1682025463592)
+@@ -43,4 +43,9 @@
+     public Vector getDir() {
+         return dir;
+     }
++    public Point getPoint(double t) throws IllegalAccessException {
++        Vector scl_p=dir.scale(t);
++        Point P=p0.add(scl_p);
++        return P;
++    }
+ }
+Index: src/geometries/Plane.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package geometries;\r\n\r\nimport primitives.Point;\r\nimport primitives.Ray;\r\nimport primitives.Vector;\r\n\r\nimport java.util.List;\r\n\r\nimport static primitives.Util.isZero;\r\n\r\n/**\r\n * The Plane class represents a plane in 3D space.\r\n */\r\npublic class Plane implements Geometry {\r\n\r\n    private final Point p0;\r\n    private final Vector normal;\r\n\r\n    /**\r\n     * Constructs a plane from three points on the plane.\r\n     *\r\n     * @param p1 a point on the plane\r\n     * @param p2 a point on the plane\r\n     * @param p3 a point on the plane\r\n     */\r\n    /*public Plane(Point p1, Point p2, Point p3) throws IllegalAccessException {//maybe we dont need to throw ex\r\n        p0 = p1;\r\n        Vector U=p1.subtract(p2);\r\n        Vector V=p1.subtract(p3);\r\n        Vector N=U.crossProduct(V);\r\n        normal = N.normalize();\r\n    }*/\r\n    public Plane(Point p1, Point p2, Point p3) throws IllegalAccessException {\r\n        if (p1.equals(p2) || p1.equals(p3) || p2.equals(p3))\r\n            throw new IllegalAccessException(\"Two the points are the same point\");\r\n        Vector vec1 = p2.subtract(p1);\r\n        Vector vec2 = p3.subtract(p2);\r\n        try {\r\n            Vector vector = vec1.crossProduct(vec2);\r\n            p0 = p2;\r\n            normal = vector.normalize();\r\n        } catch (Exception ex) {\r\n            throw new IllegalAccessException(\"The points are on same line\");\r\n        }\r\n\r\n    }\r\n\r\n\r\n    /**\r\n     * Constructs a plane from a point on the plane and the plane's normal vector.\r\n     *\r\n     * @param p a point on the plane\r\n     * @param v the normal vector of the plane\r\n     * @throws IllegalAccessException if the vector is the zero vector\r\n     */\r\n    public Plane(Point p, Vector v) throws IllegalAccessException {\r\n        p0 = p;\r\n        normal = v.normalize();\r\n    }\r\n\r\n    /**\r\n     * Returns the normal vector of the plane at a given point.\r\n     *\r\n     * @param p a point on the plane (unused)\r\n     * @return the normal vector of the plane\r\n     */\r\n    @Override\r\n    public Vector getNormal(Point p) {\r\n        return normal;\r\n    }\r\n\r\n    /**\r\n     * Returns the base point of the plane.\r\n     *\r\n     * @return the base point of the plane\r\n     */\r\n    public Point getP0() {\r\n        return p0;\r\n    }\r\n\r\n    /**\r\n     * Returns the normal vector of the plane.\r\n     *\r\n     * @return the normal vector of the plane\r\n     */\r\n    public Vector getNormal() {\r\n        return normal;\r\n    }\r\n\r\n    @Override\r\n    public List<Point> findIntsersections(Ray ray) {\r\n        return null;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/geometries/Plane.java b/src/geometries/Plane.java
+--- a/src/geometries/Plane.java	(revision 54ec2665e0fe1fe27661cc95a71858a4ba2e70ff)
++++ b/src/geometries/Plane.java	(date 1682073587036)
+@@ -1,11 +1,13 @@
+ package geometries;
+ 
++
+ import primitives.Point;
+ import primitives.Ray;
+ import primitives.Vector;
+ 
+ import java.util.List;
+ 
++import static primitives.Util.alignZero;
+ import static primitives.Util.isZero;
+ 
+ /**
+@@ -88,7 +90,36 @@
+     }
+ 
+     @Override
+-    public List<Point> findIntsersections(Ray ray) {
+-        return null;
++    public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
++        Point P0=ray.getP0();
++        Vector v=ray.getDir();
++
++        Vector n=normal;
++
++        if(p0.equals(P0)){
++            return null;
++        }
++        Vector P0_Q0=p0.subtract(P0);
++
++        //numerator
++        double nP0Q0=alignZero(n.dotProduct(P0_Q0));
++
++        if(isZero(nP0Q0)){
++            return null;
++        }
++
++        //denominator
++        double nv=alignZero(n.dotProduct(v));
++
++        //ray is lying in the plane axis
++        if(isZero(nv)){
++            return null;
++        }
++        double t=alignZero(nP0Q0/nv);
++        if(t<=0){
++            return null;
++        }
++        Point point=ray.getPoint(t);
++        return List.of(point);
+     }
+ }
+\ No newline at end of file
