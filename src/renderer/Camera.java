@@ -82,4 +82,16 @@ public class Camera {
     public Vector getvRight() {
         return vRight;
     }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
 }
