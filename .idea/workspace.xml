@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="test for the sphere">
+      <change afterPath="$PROJECT_DIR$/unittests/geometries/GeometriesTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,9 +151,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.SphereTests.findIntersectionsSphere" />
-        <item itemvalue="JUnit.SphereTests.testGetNormal" />
         <item itemvalue="JUnit.PolygonTests" />
         <item itemvalue="JUnit.TubeTests.testGetNormal" />
+        <item itemvalue="JUnit.SphereTests.testGetNormal" />
         <item itemvalue="JUnit.TriangleTests.testGetNormal" />
       </list>
     </recent_temporary>
@@ -197,13 +200,7 @@
       <option name="presentableId" value="LOCAL‎00005" />
       <updated>1682188748104</updated>
     </task>
-    <task id="LOCAL‎00006" summary="test for the sphere">
-      <created>1682193921699</created>
-      <option name="number" value="LOCAL‎00006" />
-      <option name="presentableId" value="LOCAL‎00006" />
-      <updated>1682193921699</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -240,6 +237,16 @@
           <url>file://$PROJECT_DIR$/src/geometries/Tube.java</url>
           <line>49</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometries/Sphere.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometries/Sphere.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
