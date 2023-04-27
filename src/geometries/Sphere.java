@@ -55,73 +55,30 @@ public class Sphere extends RadialGeometry {
         Vector u;
         try {
             u = center.subtract(p0);
-        }
-        catch (IllegalAccessException e){
-            return List.of(ray.getDir());// לעבור ולתקן לא נכון!!
+        } catch (IllegalAccessException e) {
+            return null;// לעבור ולתקן לא נכון!!
         }
         double tm = alignZero(v.dotProduct(u));
         double dSquares = tm == 0 ? u.lengthSquared() : u.lengthSquared() - tm * tm;
         double thSquared = alignZero(radius * radius - dSquares);
-        if (thSquared <= 0)
-        {
+        if (thSquared <= 0) {
             return null;
         }
         double th = alignZero(Math.sqrt(thSquared));
-        if (th == 0)
-        {
+        if (th == 0) {
             return null;
         }
         double t1 = alignZero(tm - th);
         double t2 = alignZero(tm + th);
-        if (t1 <= 0 && t2 <= 0)
-        {
+        if (t1 <= 0 && t2 <= 0) {
             return null;
         }
-        if (t1 > 0 && t2 >0)
-        {
-            return List.of(ray.getDir(),ray.getP0());//לא נכון חייבת לחזור!!
+        if (t1 > 0 && t2 > 0) {
+            return List.of(ray.getP0().add(ray.getDir().scale(t1)), ray.getP0().add(ray.getDir().scale(t2)));//לא נכון חייבת לחזור!!
         }
-        if (t1 > 0)
-        {
-            return List.of(ray.getDir());//לא נכון לבדוק שובב
-        }
-        else
-            return List.of(ray.getDir());// לא נכון לבדוק שוב
-
-
-
-       // Vector L= new Vector(center.subtract(ray.getP0()).xyz);
-        ray.getDir();
-        double tm= (center.subtract(ray.getP0()).dotProduct(ray.getDir()));
-        double d= Math.pow((Math.pow((center.subtract(ray.getP0()).length()), 2))-(Math.pow(tm, 2)),0.5);//האם זה בסדר להתשתמש בpow לחזקה או שזה פעולה יקרה מדי?
-        if (d>=radius)//no intersections
-        {
-
-            return null;
-        }
-        double th= Math.pow((Math.pow(radius, 2))-(Math.pow(d, 2)),0.5);
-        double t1= tm-th;
-        double t2= tm+th;
-
-        if (isZero(th))//one intersection
-        {
-            ArrayList<Point> arr= new ArrayList<Point>();
-            arr.add(ray.getP0().add(ray.getDir().scale(t1)));
-            return arr;
-        }
-        else
-        {
-            if(t1>0 || t2>0)//two intersections
-            {
-                ArrayList<Point> arr= new ArrayList<Point>();
-                if(t1 >0)
-                    arr.add(ray.getP0().add(ray.getDir().scale(t1)));
-                if(t2>0)
-                    arr.add(ray.getP0().add(ray.getDir().scale(t2)));
-                return arr;
-            }
-            return null;
-        }
-
+        if (t1 > 0) {
+            return List.of(ray.getP0().add(ray.getDir().scale(t1)));//לא נכון לבדוק שובב
+        } else
+            return List.of(ray.getP0().add(ray.getDir().scale(t2)));// לא נכון לבדוק שוב
     }
 }
