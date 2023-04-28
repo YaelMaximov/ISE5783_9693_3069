@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex3">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/IntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/CameraTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +58,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IntegrationTests.testConstructRayOfTriangle">
+  <component name="RunManager" selected="JUnit.IntegrationTests">
     <configuration name="CameraTest.testConstructRay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
@@ -75,7 +75,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CameraTests.testConstructRay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CameraTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
         <pattern>
@@ -85,18 +85,16 @@
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
       <option name="MAIN_CLASS_NAME" value="renderer.CameraTests" />
-      <option name="METHOD_NAME" value="testConstructRay" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntegrationTests.CameraSphereIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
-      <option name="METHOD_NAME" value="CameraSphereIntersections" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -123,11 +121,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.IntegrationTests.testConstructRayOfTriangle" />
+        <item itemvalue="JUnit.IntegrationTests" />
         <item itemvalue="JUnit.IntegrationTests.testConstructRayOfPlane" />
+        <item itemvalue="JUnit.IntegrationTests.testConstructRayOfTriangle" />
+        <item itemvalue="JUnit.CameraTests" />
         <item itemvalue="JUnit.CameraTest.testConstructRay" />
-        <item itemvalue="JUnit.CameraTests.testConstructRay" />
-        <item itemvalue="JUnit.IntegrationTests.CameraSphereIntersections" />
       </list>
     </recent_temporary>
   </component>
@@ -230,15 +228,6 @@
           </properties>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/unittests/IntegrationTests.java</url>
-          <line>65</line>
-          <properties class="IntegrationTests" method="testConstructRayOfPlane">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/geometries/Tube.java</url>
           <line>49</line>
@@ -251,8 +240,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/unittests/IntegrationTests.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="58" />
+          <line>97</line>
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
