@@ -19,8 +19,6 @@ public class Geometries implements Intersectable {
     }
 
     public void add(Intersectable... geometries) {
-
-
     }
 
     @Override

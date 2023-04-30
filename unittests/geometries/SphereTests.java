@@ -42,7 +42,7 @@ class SphereTests {
         List<Point> result = sphere4.findIntsersections(new Ray(new Point(-1, 0, 0),
                 new Vector(3, 1, 0)));
         /* assertEquals(2, result.size(), "Wrong number of points");
-        if (result.get(0).xyz > result.get(1).xyz)
+        if (result.get(0).getX() > result.get(1).getX())
             result = List.of(result.get(1), result.get(0));
         assertEquals(List.of(p1, p2), result, "Ray crosses sphere");*/
 
