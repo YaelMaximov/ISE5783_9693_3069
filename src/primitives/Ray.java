@@ -1,5 +1,6 @@
 package primitives;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -58,6 +59,27 @@ public class Ray {
         if (o == null || getClass() != o.getClass()) return false;
         Ray ray = (Ray) o;
         return Objects.equals(p0, ray.p0) && Objects.equals(dir, ray.dir);
+    }
+
+    public Point findClosestPoint(List<Point> pointList)
+    {
+        if(pointList.isEmpty())
+        {
+            return null;
+        }
+        Point minPoint=new Point(pointList.get(0).xyz);
+        double min=p0.distance(pointList.get(0));
+        double d;
+        for (Point pl:pointList)
+        {
+            d=p0.distance(pl);
+            if(d<min)
+            {
+                minPoint=pl;
+                min=d;
+            }
+        }
+        return minPoint;
     }
 
 
