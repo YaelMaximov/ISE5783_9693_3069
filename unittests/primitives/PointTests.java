@@ -23,6 +23,7 @@ class PointTests {
         //there are no boundary tests
 
 
+
     }
     /**
      * Test method for {@link primitives.Point#subtract(primitives.Point)}.
