@@ -21,28 +21,44 @@ public class Geometries implements Intersectable {
     public void add(Intersectable... geometries) {
     }
 
-    @Override
+    //    @Override
+//    public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
+//        boolean found_inter = false;
+//        if (intersectables ==null)
+//        {return null;}
+//        for (Intersectable geometry : intersectables) {
+//            if (geometry.findIntsersections(ray) != null) {
+//                found_inter = true;
+//                break;
+//            }
+//        }
+//        if (found_inter) {
+//            List<Point> Intersections=new LinkedList<>();
+//            for (Intersectable geometry : intersectables) {
+//                if (geometry.findIntsersections(ray) != null) {
+//                    Intersections.addAll(geometry.findIntsersections(ray));
+//                }
+//            }
+//            return Intersections;
+//        } else {
+//            return null;
+//        }
     public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
-        boolean found_inter = false;
-        if (intersectables ==null)
-        {return null;}
+        List<Point> Intersections = null;
+        boolean created = false;
         for (Intersectable geometry : intersectables) {
             if (geometry.findIntsersections(ray) != null) {
-                found_inter = true;
-                break;
-            }
-        }
-        if (found_inter) {
-            List<Point> Intersections=new LinkedList<>();
-            for (Intersectable geometry : intersectables) {
-                if (geometry.findIntsersections(ray) != null) {
+                if (!created) {
+                    Intersections = geometry.findIntsersections(ray);
+                    created = true;
+                } else {
                     Intersections.addAll(geometry.findIntsersections(ray));
                 }
             }
-            return Intersections;
-        } else {
-            return null;
         }
-
+        if (created) {
+            return Intersections;
+        }
+        return null;
     }
 }

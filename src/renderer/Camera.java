@@ -7,6 +7,9 @@ import primitives.Vector;
 
 import java.util.MissingResourceException;
 
+import java.util.MissingResourceException;
+
+import static java.lang.Double.isNaN;
 import static primitives.Util.isZero;
 
 /**
@@ -122,12 +125,43 @@ public class Camera {
         return this;
     }
 
-    public Camera setRayTracerBase(RayTracerBase rayTracerBase) {
+    public Camera setRayTracer(RayTracerBase rayTracerBase) {
         this.rayTracerBase = rayTracerBase;
         return this;
     }
-    public void renderImage(){
-
+    private Color castRay(Ray ray) throws IllegalAccessException {
+        Color color=rayTracerBase.traceRay(ray);
+        return color;
+    }
+    public void renderImage() throws IllegalAccessException {
+        if(imageWriter==null || rayTracerBase==null ||isNaN(width) || isNaN(height) || isNaN(distance)){
+//            throw new MissingResourceException("missing resources","Camera","one of...");
+            if(imageWriter==null){
+                throw new MissingResourceException("missing resources","Camera","imageWriter");
+            }
+            if(rayTracerBase==null){
+                throw new MissingResourceException("missing resources","Camera","rayTracerBase");
+            }
+            if(isNaN(width)){
+                throw new MissingResourceException("missing resources","Camera","width");
+            }
+            if(isNaN(height) ){
+                throw new MissingResourceException("missing resources","Camera","height");
+            }
+            if(isNaN(distance)){
+                throw new MissingResourceException("missing resources","Camera","distance");
+            }
+            throw new UnsupportedOperationException();
+        }
+        int nX=this.imageWriter.getNx();
+        int nY=this.imageWriter.getNy();
+        for(int j=0; j<nX;j++) {
+            for (int i = 0; i < nY; i++) {
+                Ray ray=constructRay(nX,nY,j,i);
+                Color color=castRay(ray);//check
+                imageWriter.writePixel(i,j, color);
+            }
+        }
     }
     public void printGrid(int interval, Color color)
     {
