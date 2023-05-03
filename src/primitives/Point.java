@@ -6,6 +6,7 @@ import java.util.Objects;
  * Represents a point in 3D space with x, y, and z coordinates.
  */
 public class Point {
+
     /**
      * The x, y, and z coordinates of the point.
      */
@@ -25,7 +26,7 @@ public class Point {
      * Constructs a new point from a Double3 object.
      * @param double3 the Double3 object containing the x, y, and z coordinates of the point
      */
-    Point(Double3 double3) {
+    public Point(Double3 double3) {
         xyz = new Double3(double3.d1, double3.d2, double3.d3);
     }
 

@@ -1,8 +1,11 @@
 package renderer;
 
+import primitives.Color;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
+
+import java.util.MissingResourceException;
 
 import static primitives.Util.isZero;
 
@@ -126,6 +129,30 @@ public class Camera {
     public void renderImage(){
 
     }
+    public void printGrid(int interval, Color color)
+    {
+        if(imageWriter==null)
+        {
+            throw new MissingResourceException("imageWriter","Camera","The vale of image writer is null");
+        }
+        for(int i=0; i<imageWriter.getNx();i++)
+            for(int j=0; j<imageWriter.getNy();j++)
+                if(i%interval==0 ||j%interval ==0)
+                    imageWriter.writePixel(j, i, color);
+        imageWriter.writeToImage();
+    }
+    public  void writeToImage()
+    {
+        if(imageWriter==null)
+        {
+            throw new MissingResourceException("imageWriter","Camera","The vale of image writer is null");
+        }
+        imageWriter.writeToImage();
+
+
+
+    }
+
 }
 
 
