@@ -7,11 +7,11 @@ public class AmbientLight {
     public static final Color NONE = Color.BLACK;
     public static final Double3 KA0 = Double3.ZERO;
     Color intensity;
-    AmbientLight(Color IA, Double3 KA){
+    public AmbientLight(Color IA, Double3 KA){
         this.intensity = IA.scale(KA);
     }
 
-    AmbientLight(Color IA, double KA)
+    public AmbientLight(Color IA, double KA)
     {
         this.intensity = IA.scale(KA);
     }

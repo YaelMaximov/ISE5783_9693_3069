@@ -20,6 +20,9 @@ public class Camera {
     private double width;
     private double height;
 
+    private ImageWriter imageWriter;
+    private RayTracerBase rayTracerBase;
+
     /**
      * Constructs a camera with the given position and orientation vectors.
      *
@@ -47,22 +50,7 @@ public class Camera {
      * @param height The height of the view plane.
      * @return The camera object itself, for method chaining.
      */
-    public Camera setVPSize(double width, double height) {
-        this.width = width;
-        this.height = height;
-        return this;
-    }
 
-    /**
-     * Sets the distance of the view plane from the camera.
-     *
-     * @param distance The distance of the view plane from the camera.
-     * @return The camera object itself, for method chaining.
-     */
-    public Camera setVPDistance(double distance) {
-        this.distance = distance;
-        return this;
-    }
 
     /**
      * Constructs a ray from the camera passing through a specified pixel on the view plane.
@@ -109,6 +97,34 @@ public class Camera {
      */
     public Point getP0() {
         return p0;
+    }
+    public Camera setVPSize(double width, double height) {
+        this.width = width;
+        this.height = height;
+        return this;
+    }
+
+    /**
+     * Sets the distance of the view plane from the camera.
+     *
+     * @param distance The distance of the view plane from the camera.
+     * @return The camera object itself, for method chaining.
+     */
+    public Camera setVPDistance(double distance) {
+        this.distance = distance;
+        return this;
+    }
+    public Camera setImageWriter(ImageWriter imageWriter) {
+        this.imageWriter = imageWriter;
+        return this;
+    }
+
+    public Camera setRayTracerBase(RayTracerBase rayTracerBase) {
+        this.rayTracerBase = rayTracerBase;
+        return this;
+    }
+    public void renderImage(){
+
     }
 }
 
