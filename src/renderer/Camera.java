@@ -104,6 +104,16 @@ public class Camera {
     public Point getP0() {
         return p0;
     }
+
+    /**
+     * Sets the viewport size of this Camera object to the specified width and height.
+     * The viewport is the area of the screen where the Camera's view is displayed.
+     *
+     * @param width  the width of the viewport, in pixels
+     * @param height the height of the viewport, in pixels
+     * @return a reference to this Camera object, for method chaining
+     */
+
     public Camera setVPSize(double width, double height) {
         this.width = width;
         this.height = height;
@@ -120,73 +130,112 @@ public class Camera {
         this.distance = distance;
         return this;
     }
+
+    /**
+     * Sets the {@link ImageWriter} object to be used for rendering the image.
+     *
+     * @param imageWriter the {@link ImageWriter} object to be used for rendering the image
+     * @return a reference to this Camera object, for method chaining
+     */
     public Camera setImageWriter(ImageWriter imageWriter) {
         this.imageWriter = imageWriter;
         return this;
     }
 
+    /**
+     * Sets the {@link RayTracerBase} object to be used for casting rays and generating colors.
+     *
+     * @param rayTracerBase the {@link RayTracerBase} object to be used for casting rays and generating colors
+     * @return a reference to this Camera object, for method chaining
+     */
     public Camera setRayTracer(RayTracerBase rayTracerBase) {
         this.rayTracerBase = rayTracerBase;
         return this;
     }
+
+    /**
+     * Casts a ray and returns the resulting color.
+     *
+     * @param ray the ray to cast
+     * @return the color of the object that the ray intersects with
+     * @throws IllegalAccessException if the ray tracer has not been set for this Camera object
+     */
     private Color castRay(Ray ray) throws IllegalAccessException {
-        Color color=rayTracerBase.traceRay(ray);
+        Color color = rayTracerBase.traceRay(ray);
         return color;
     }
+
+    /**
+     * Renders the image by tracing rays for each pixel and writing the resulting colors to the {@link ImageWriter} object.
+     *
+     * @throws IllegalAccessException if any required resources (such as the image writer or ray tracer) are missing or null
+     */
     public void renderImage() throws IllegalAccessException {
-        if(imageWriter==null || rayTracerBase==null ||isNaN(width) || isNaN(height) || isNaN(distance)){
-            if(imageWriter==null){
-                throw new MissingResourceException("missing resources","Camera","imageWriter");
+        if (imageWriter == null || rayTracerBase == null || isNaN(width) || isNaN(height) || isNaN(distance)) {
+            if (imageWriter == null) {
+                throw new MissingResourceException("missing resources", "Camera", "imageWriter");
             }
-            if(rayTracerBase==null){
-                throw new MissingResourceException("missing resources","Camera","rayTracerBase");
+            if (rayTracerBase == null) {
+                throw new MissingResourceException("missing resources", "Camera", "rayTracerBase");
             }
-            if(isNaN(width)){
-                throw new MissingResourceException("missing resources","Camera","width");
+            if (isNaN(width)) {
+                throw new MissingResourceException("missing resources", "Camera", "width");
             }
-            if(isNaN(height) ){
-                throw new MissingResourceException("missing resources","Camera","height");
+            if (isNaN(height)) {
+                throw new MissingResourceException("missing resources", "Camera", "height");
             }
-            if(isNaN(distance)){
-                throw new MissingResourceException("missing resources","Camera","distance");
+            if (isNaN(distance)) {
+                throw new MissingResourceException("missing resources", "Camera", "distance");
             }
             throw new UnsupportedOperationException();
         }
-        int nX=this.imageWriter.getNx();
-        int nY=this.imageWriter.getNy();
+        int nX = this.imageWriter.getNx();
+        int nY = this.imageWriter.getNy();
         for (int i = 0; i < nY; i++)
-            for(int j=0; j<nX;j++) {
-            {
-                Ray ray=constructRay(nX,nY,j,i);
-                Color color=castRay(ray);//check
-                imageWriter.writePixel(j,i, color);
+            for (int j = 0; j < nX; j++) {
+                {
+                    Ray ray = constructRay(nX, nY, j, i);
+                    Color color = castRay(ray);
+                    imageWriter.writePixel(j, i, color);
+                }
+            }
+    }
+
+    /**
+     * Prints a grid on the image with the given interval and color.
+     *
+     * @param interval The interval between grid lines.
+     * @param color    The color of the grid lines.
+     * @throws MissingResourceException If the imageWriter is null.
+     */
+    public void printGrid(int interval, Color color) throws MissingResourceException {
+        if (imageWriter == null) {
+            throw new MissingResourceException("imageWriter", "Camera", "The value of imageWriter is null.");
+        }
+        for (int i = 0; i < imageWriter.getNx(); i++) {
+            for (int j = 0; j < imageWriter.getNy(); j++) {
+                if (i % interval == 0 || j % interval == 0) {
+                    imageWriter.writePixel(j, i, color);
+                }
             }
         }
-    }
-    public void printGrid(int interval, Color color)
-    {
-        if(imageWriter==null)
-        {
-            throw new MissingResourceException("imageWriter","Camera","The vale of image writer is null");
-        }
-        for(int i=0; i<imageWriter.getNx();i++)
-            for(int j=0; j<imageWriter.getNy();j++)
-                if(i%interval==0 ||j%interval ==0)
-                    imageWriter.writePixel(j, i, color);
         imageWriter.writeToImage();
     }
-    public  void writeToImage()
-    {
-        if(imageWriter==null)
-        {
-            throw new MissingResourceException("imageWriter","Camera","The vale of image writer is null");
+
+    /**
+     * Writes the image to file using the ImageWriter.
+     *
+     * @throws MissingResourceException If the imageWriter is null.
+     */
+    public void writeToImage() throws MissingResourceException {
+        if (imageWriter == null) {
+            throw new MissingResourceException("imageWriter", "Camera", "The value of imageWriter is null.");
         }
         imageWriter.writeToImage();
-
-
-
     }
 
 }
+
+
 
 

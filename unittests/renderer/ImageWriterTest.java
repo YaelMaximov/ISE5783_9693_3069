@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Test;
 import primitives.Color;
 
 class ImageWriterTest {
+    /**
+     * Tests the writePixel method of the ImageWriter class with a grid pattern of colors.
+     * Creates a new ImageWriter object with dimensions 800x500 and writes pixels to it
+     * with alternating colors based on a grid pattern.
+     */
     @Test
     public void WritePixelTest1()
     {
