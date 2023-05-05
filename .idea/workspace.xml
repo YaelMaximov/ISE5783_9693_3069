@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex4">
+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
@@ -26,6 +26,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="76795180-ef40-4dc8-9201-f84ffc325402" />
+        <option name="url" value="https://github.com/YaelMaximov/ISE5783_9693_3069.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -59,7 +72,7 @@
       <recent name="primitives" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IntegrationTests.testConstructRayOfTriangle">
+  <component name="RunManager" selected="JUnit.RenderTests.basicRenderTwoColorTest">
     <configuration name="IntegrationTests.CameraSphereIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <option name="PACKAGE_NAME" value="" />
@@ -123,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RenderTests.basicRenderTwoColorTest" />
+        <item itemvalue="JUnit.RenderTests" />
         <item itemvalue="JUnit.IntegrationTests.testConstructRayOfTriangle" />
         <item itemvalue="JUnit.IntegrationTests.testConstructRayOfPlane" />
         <item itemvalue="JUnit.IntegrationTests.CameraSphereIntersections" />
-        <item itemvalue="JUnit.RenderTests.basicRenderTwoColorTest" />
-        <item itemvalue="JUnit.RenderTests" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +214,14 @@
       <option name="presentableId" value="LOCAL‎00009" />
       <updated>1682689830483</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL‎-00010" summary="Ex5">
+      <created>1683150345318</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL‎-00010" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1683150345318</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -223,7 +243,8 @@
     <MESSAGE value="Ex2" />
     <MESSAGE value="Ex3" />
     <MESSAGE value="finish PRO 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish PRO 4" />
+    <MESSAGE value="Ex5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ex5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -248,21 +269,15 @@
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/unittests/IntegrationTests.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="67" />
+          <url>file://$PROJECT_DIR$/unittests/renderer/RenderTest.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="76" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
-        <watch expression="new Ray(ZERO_POINT, new Vector(1, -1, -10)" />
-        <watch expression="camera.setVPSize(8, 8).constructRay(4, 4, 1, 1)" />
+        <watch expression="this" />
       </configuration>
       <configuration name="Application">
         <watch expression="v1.add(v2)" />

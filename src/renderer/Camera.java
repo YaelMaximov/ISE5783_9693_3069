@@ -135,7 +135,6 @@ public class Camera {
     }
     public void renderImage() throws IllegalAccessException {
         if(imageWriter==null || rayTracerBase==null ||isNaN(width) || isNaN(height) || isNaN(distance)){
-//            throw new MissingResourceException("missing resources","Camera","one of...");
             if(imageWriter==null){
                 throw new MissingResourceException("missing resources","Camera","imageWriter");
             }
@@ -155,11 +154,12 @@ public class Camera {
         }
         int nX=this.imageWriter.getNx();
         int nY=this.imageWriter.getNy();
-        for(int j=0; j<nX;j++) {
-            for (int i = 0; i < nY; i++) {
+        for (int i = 0; i < nY; i++)
+            for(int j=0; j<nX;j++) {
+            {
                 Ray ray=constructRay(nX,nY,j,i);
                 Color color=castRay(ray);//check
-                imageWriter.writePixel(i,j, color);
+                imageWriter.writePixel(j,i, color);
             }
         }
     }
