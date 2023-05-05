@@ -3,11 +3,12 @@ package scene;
 import geometries.Geometries;
 import lighting.AmbientLight;
 import primitives.Color;
+import primitives.Double3;
 
 public class Scene {
     public String name;
     public Color background = Color.BLACK;
-    public AmbientLight ambientLight;
+    public AmbientLight ambientLight = new AmbientLight(AmbientLight.NONE, Double3.ZERO) ;
     public Geometries geometries = new Geometries();
 
     public Scene(String nameScene) {
