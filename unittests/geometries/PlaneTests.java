@@ -43,7 +43,7 @@ class PlaneTests {
         assertEquals(new Vector(0,0,1), plane.getNormal(new Point(1, 0,0)), "Bad normal to plane");
     }
     /**
-     * Test method for {@link geometries.Plane#findIntsersections(Ray)} .
+     * Test method for {@link Intersectable#findIntsersections(Ray)} .
      */
 
     @Test

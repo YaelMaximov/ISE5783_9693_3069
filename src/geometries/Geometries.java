@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Geometries implements Intersectable {
+public class Geometries extends Intersectable {
     private List<Intersectable> intersectables;
 
     public Geometries() {
@@ -61,6 +61,11 @@ public class Geometries implements Intersectable {
         if (created) {
             return Intersections;
         }
+        return null;
+    }
+
+    @Override
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
         return null;
     }
 }
