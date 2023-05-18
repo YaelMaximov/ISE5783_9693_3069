@@ -85,4 +85,9 @@ public class Polygon extends Geometry {
    public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
       return null;
    }
+
+   @Override
+   protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
+      return null;
+   }
 }

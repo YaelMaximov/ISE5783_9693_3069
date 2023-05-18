@@ -46,8 +46,9 @@ public abstract class Intersectable {
 
     }
     protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException;
-    public List<GeoPoint> findGeoIntersections(Ray ray) throws IllegalAccessException {
-        return findGeoIntersectionsHelper(ray);
+    public final List<GeoPoint> findGeoIntersections(Ray ray) throws IllegalAccessException {
+        List<GeoPoint> geoPointList= findGeoIntersectionsHelper(ray/*Double.POSITIVE_INFINITY*/);
+        return geoPointList;
     }
 
 }

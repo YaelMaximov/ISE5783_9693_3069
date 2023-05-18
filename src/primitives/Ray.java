@@ -1,5 +1,7 @@
 package primitives;
 
+import geometries.Intersectable;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -61,26 +63,45 @@ public class Ray {
         return Objects.equals(p0, ray.p0) && Objects.equals(dir, ray.dir);
     }
 
-    public Point findClosestPoint(List<Point> pointList)
-    {
-        if(pointList.isEmpty())
-        {
+    public Point findClosestPoint(List<Point> pointList) {
+        if (pointList.isEmpty()) {
             return null;
         }
-        Point minPoint=new Point(pointList.get(0).xyz);
-        double min=p0.distance(pointList.get(0));
+        Point minPoint = new Point(pointList.get(0).xyz);
+        double min = p0.distance(pointList.get(0));
         double d;
-        for (Point pl:pointList)
-        {
-            d=p0.distance(pl);
-            if(d<min)
-            {
-                minPoint=pl;
-                min=d;
+        for (Point pl : pointList) {
+            d = p0.distance(pl);
+            if (d < min) {
+                minPoint = pl;
+                min = d;
             }
         }
         return minPoint;
     }
 
+    /**
+     * Looking for the GeoPoint closest to the beginning of the fund of all the points received
+     *
+     * @param pointList List of Intersections of GeoPoint
+     * @return The closest GeoPoint to the beginning of the ray
+     */
+    public Intersectable.GeoPoint findClosestGeoPoint(List<Intersectable.GeoPoint> pointList) {
+        if (pointList.isEmpty()) {
+            return null;
+        }
+        Intersectable.GeoPoint minPoint = new Intersectable.GeoPoint(pointList.get(0).geometry, pointList.get(0).point);
+        double min = p0.distance(pointList.get(0).point);
+        double d;
+        for (Intersectable.GeoPoint pl : pointList) {
+            d = p0.distance(pl.point);
+            if (d < min) {
+                minPoint = pl;
+                min = d;
+            }
+        }
+        return minPoint;
 
+
+    }
 }
