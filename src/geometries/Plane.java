@@ -5,6 +5,7 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static primitives.Util.alignZero;
@@ -91,35 +92,58 @@ public class Plane extends Geometry {
 
     @Override
     public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
-        Point P0=ray.getP0();
-        Vector v=ray.getDir();
+        Point P0 = ray.getP0();
+        Vector v = ray.getDir();
 
-        Vector n=normal;
+        Vector n = normal;
 
-        if(p0.equals(P0)){
+        if (p0.equals(P0)) {
             return null;
         }
-        Vector P0_Q0=p0.subtract(P0);
+        Vector P0_Q0 = p0.subtract(P0);
 
         //numerator
-        double nP0Q0=alignZero(n.dotProduct(P0_Q0));
+        double nP0Q0 = alignZero(n.dotProduct(P0_Q0));
 
-        if(isZero(nP0Q0)){
+        if (isZero(nP0Q0)) {
             return null;
         }
 
         //denominator
-        double nv=alignZero(n.dotProduct(v));
+        double nv = alignZero(n.dotProduct(v));
 
         //ray is lying in the plane axis
-        if(isZero(nv)){
+        if (isZero(nv)) {
             return null;
         }
-        double t=alignZero(nP0Q0/nv);
-        if(t<=0){
+        double t = alignZero(nP0Q0 / nv);
+        if (t <= 0) {
             return null;
         }
-        Point point=ray.getPoint(t);
+        Point point = ray.getPoint(t);
         return List.of(point);
+    }
+
+    @Override
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
+        Point p0 = ray.getP0();
+        ray.getDir().normalize();
+        double nv = this.normal.dotProduct(ray.getDir());
+        if (isZero(nv))//there is not any intersection
+            return null;
+        double t = normal.scale(-1).dotProduct(p0.subtract(p0).scale(1 / nv));
+        if (isZero(t)) {//The  first point of the ray in the plan(0 point)
+            return null;
+        }
+        if (t < 0) {//The first point of the ray in the plain(o point)
+            return null;
+        } else {
+            ArrayList<GeoPoint> arrayList = new ArrayList<GeoPoint>();
+            Point point = p0.add(ray.getDir().scale(t));
+            arrayList.add(new GeoPoint(this, point));
+            return arrayList;
+        }
+
+
     }
 }

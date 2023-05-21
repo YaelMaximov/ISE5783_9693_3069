@@ -40,18 +40,17 @@ public class RayTracerBasic extends RayTracerBase {
         // Find the closest intersection point
         Intersectable.GeoPoint closestPoint = ray.findClosestGeoPoint(list);
         // Calculate the color of the point using the scene's ambient light
-        return calcColor(closestPoint,ray);
+        return calcColor(closestPoint);
     }
 
     /**
      * Calculates the color of the given point using the scene's ambient light.
-     *
-     * @param closesPoint the point to calculate the color for
+     * @param gp the point to calculate the color for
      * @return the color of the point using the scene's ambient light
      */
-    private Color calcColor(Intersectable.GeoPoint closesPoint,Ray ray){
-        return scene.ambientLight.getIntensity();
+    private Color calcColor(Intersectable.GeoPoint gp) {
+        return scene.ambientLight.getIntensity()
+                .add(gp.geometry.getEmission());
     }
-
 }
 
