@@ -1,0 +1,1080 @@
+Index: src/scene/Scene.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package scene;\r\n\r\nimport geometries.Geometries;\r\nimport lighting.AmbientLight;\r\nimport primitives.Color;\r\nimport primitives.Double3;\r\n\r\n/**\r\n * Represents a scene in 3D space, containing a name, background color, ambient light, and geometries.\r\n */\r\npublic class Scene {\r\n    /**\r\n     * The name of the scene.\r\n     */\r\n    public String name;\r\n\r\n    /**\r\n     * The background color of the scene.\r\n     */\r\n    public Color background = Color.BLACK;\r\n\r\n    /**\r\n     * The ambient light in the scene.\r\n     */\r\n    public AmbientLight ambientLight = new AmbientLight(AmbientLight.NONE, Double3.ZERO);\r\n\r\n    /**\r\n     * The geometries in the scene.\r\n     */\r\n    public Geometries geometries = new Geometries();\r\n\r\n    /**\r\n     * Constructs a new Scene object with the given name.\r\n     *\r\n     * @param nameScene the name of the scene\r\n     */\r\n    public Scene(String nameScene) {\r\n        name = nameScene;\r\n        geometries = new Geometries();\r\n    }\r\n\r\n    /**\r\n     * Sets the background color of the scene and returns the Scene object.\r\n     *\r\n     * @param background the new background color of the scene\r\n     * @return the Scene object\r\n     */\r\n    public Scene setBackground(Color background) {\r\n        this.background = background;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Sets the ambient light of the scene and returns the Scene object.\r\n     *\r\n     * @param ambientLight the new ambient light of the scene\r\n     * @return the Scene object\r\n     */\r\n    public Scene setAmbientLight(AmbientLight ambientLight) {\r\n        this.ambientLight = ambientLight;\r\n        return this;\r\n    }\r\n\r\n    /**\r\n     * Sets the geometries of the scene and returns the Scene object.\r\n     *\r\n     * @param geometries the new geometries of the scene\r\n     * @return the Scene object\r\n     */\r\n    public Scene setGeometries(Geometries geometries) {\r\n        this.geometries = geometries;\r\n        return this;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/scene/Scene.java b/src/scene/Scene.java
+--- a/src/scene/Scene.java	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
++++ b/src/scene/Scene.java	(date 1684425250416)
+@@ -2,9 +2,13 @@
+ 
+ import geometries.Geometries;
+ import lighting.AmbientLight;
++import lighting.LightSource;
+ import primitives.Color;
+ import primitives.Double3;
+ 
++import java.util.LinkedList;
++import java.util.List;
++
+ /**
+  * Represents a scene in 3D space, containing a name, background color, ambient light, and geometries.
+  */
+@@ -29,6 +33,8 @@
+      */
+     public Geometries geometries = new Geometries();
+ 
++    List<LightSource> lights=new LinkedList<>();
++
+     /**
+      * Constructs a new Scene object with the given name.
+      *
+@@ -70,5 +76,15 @@
+     public Scene setGeometries(Geometries geometries) {
+         this.geometries = geometries;
+         return this;
++    }
++    /**
++     * Sets the lights of the scene and returns the Scene object.
++     *
++     * @param lights the new lights of the scene
++     * @return the Scene object
++     */
++    public Scene setLights(List<LightSource> lights) {
++        this.lights = lights;
++        return this;
+     }
+ }
+Index: src/geometries/Geometry.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package geometries;\r\n\r\nimport primitives.Point;\r\nimport primitives.Vector;\r\n\r\n/**\r\n * The Geometry interface defines methods that all geometric shapes should implement.\r\n */\r\npublic interface Geometry extends Intersectable{\r\n\r\n    /**\r\n     * Returns the normal vector of a point on the surface of the shape.\r\n     *\r\n     * @param p the point on the surface of the shape\r\n     * @return the normal vector of the point on the surface of the shape\r\n     */\r\n    public Vector getNormal(Point p) throws IllegalAccessException;\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/geometries/Geometry.java b/src/geometries/Geometry.java
+--- a/src/geometries/Geometry.java	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
++++ b/src/geometries/Geometry.java	(date 1684426098490)
+@@ -1,5 +1,6 @@
+ package geometries;
+ 
++import primitives.Material;
+ import primitives.Point;
+ import primitives.Vector;
+ 
+@@ -8,6 +9,7 @@
+  */
+ public interface Geometry extends Intersectable{
+ 
++
+     /**
+      * Returns the normal vector of a point on the surface of the shape.
+      *
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35_[Changes]/shelved.patch	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
++++ /dev/null	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
+@@ -1,372 +0,0 @@
+-Index: src/renderer/Camera.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package renderer;\r\n\r\nimport primitives.Point;\r\nimport primitives.Ray;\r\nimport primitives.Vector;\r\n\r\nimport static primitives.Util.isZero;\r\n\r\npublic class Camera {\r\n    private Point p0;\r\n\r\n    private Vector vUp;\r\n    private Vector vTo;\r\n    private Vector vRight;\r\n\r\n    private double distance;\r\n    private double width;\r\n    private double height;\r\n\r\n    public Camera(Point p0, Vector vUp, Vector vTo) throws IllegalAccessException {\r\n        if(!isZero(vTo.dotProduct(vUp)))\r\n        {\r\n            throw new IllegalArgumentException(\"vTo and vUp are not orthogonal\");\r\n        }\r\n        this.p0 = p0;\r\n\r\n        this.vUp = vUp.normalize();\r\n        this.vTo = vTo.normalize();\r\n\r\n        vRight=this.vTo.crossProduct((this.vUp));\r\n    }\r\n    public Camera setVPSize(double width, double height){\r\n        this.width=width;\r\n        this.height=height;\r\n        return this;\r\n    }\r\n    public Camera setVPDistance(double distance){\r\n        this.distance=distance;\r\n        return this;\r\n    }\r\n    public Ray constructRay(int nX, int nY, int j, int i) throws IllegalAccessException {\r\n        //view plane center point\r\n        Point Pc=p0.add(vTo.scale(distance));\r\n\r\n        //pixels ratios\r\n        double Rx=width/nX;\r\n        double Ry=height/nY;\r\n\r\n        //Pij point[i,j] in view plane coordinates\r\n        Point Pij=Pc;\r\n\r\n        //delta values for moving on the view-plane\r\n        double Xj=(j-(nX-1)/2d)*Rx;\r\n        double Yi=-(i-(nY-1)/2d)*Ry;\r\n\r\n        if(!isZero(Xj)){\r\n            Pij=Pij.add(vRight.scale(Xj));\r\n        }\r\n        if(!isZero(Yi)){\r\n            Pij=Pij.add(vUp.scale(Yi));\r\n        }\r\n\r\n        //vector from camera's eye in the direction of point(i,j) in the view-plane\r\n        Vector Vij=Pij.subtract(p0);\r\n\r\n        return new Ray(p0,Vij);\r\n    }\r\n\r\n\r\n    public Point getP0() {\r\n        return p0;\r\n    }\r\n\r\n    public Vector getvUp() {\r\n        return vUp;\r\n    }\r\n\r\n    public Vector getvTo() {\r\n        return vTo;\r\n    }\r\n\r\n    public Vector getvRight() {\r\n        return vRight;\r\n    }\r\n\r\n    public double getDistance() {\r\n        return distance;\r\n    }\r\n\r\n    public double getWidth() {\r\n        return width;\r\n    }\r\n\r\n    public double getHeight() {\r\n        return height;\r\n    }\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/renderer/Camera.java b/src/renderer/Camera.java
+---- a/src/renderer/Camera.java	(revision 6c4ded59ffcfeb3c3647609c1ed3eec9e91479b5)
+-+++ b/src/renderer/Camera.java	(date 1682624934485)
+-@@ -6,6 +6,9 @@
+- 
+- import static primitives.Util.isZero;
+- 
+-+/**
+-+ * Camera class represents a virtual camera in a 3D scene.
+-+ */
+- public class Camera {
+-     private Point p0;
+- 
+-@@ -17,9 +20,16 @@
+-     private double width;
+-     private double height;
+- 
+-+    /**
+-+     * Constructs a camera with the given position and orientation vectors.
+-+     *
+-+     * @param p0  The position of the camera.
+-+     * @param vUp The up vector of the camera.
+-+     * @param vTo The direction vector the camera is pointing towards.
+-+     * @throws IllegalAccessException If vUp and vTo are not orthogonal.
+-+     */
+-     public Camera(Point p0, Vector vUp, Vector vTo) throws IllegalAccessException {
+--        if(!isZero(vTo.dotProduct(vUp)))
+--        {
+-+        if (!isZero(vTo.dotProduct(vUp))) {
+-             throw new IllegalArgumentException("vTo and vUp are not orthogonal");
+-         }
+-         this.p0 = p0;
+-@@ -27,71 +37,79 @@
+-         this.vUp = vUp.normalize();
+-         this.vTo = vTo.normalize();
+- 
+--        vRight=this.vTo.crossProduct((this.vUp));
+-+        vRight = this.vTo.crossProduct((this.vUp));
+-     }
+--    public Camera setVPSize(double width, double height){
+--        this.width=width;
+--        this.height=height;
+-+
+-+    /**
+-+     * Sets the size of the view plane.
+-+     *
+-+     * @param width  The width of the view plane.
+-+     * @param height The height of the view plane.
+-+     * @return The camera object itself, for method chaining.
+-+     */
+-+    public Camera setVPSize(double width, double height) {
+-+        this.width = width;
+-+        this.height = height;
+-         return this;
+-     }
+--    public Camera setVPDistance(double distance){
+--        this.distance=distance;
+-+
+-+    /**
+-+     * Sets the distance of the view plane from the camera.
+-+     *
+-+     * @param distance The distance of the view plane from the camera.
+-+     * @return The camera object itself, for method chaining.
+-+     */
+-+    public Camera setVPDistance(double distance) {
+-+        this.distance = distance;
+-         return this;
+-     }
+-+
+-+    /**
+-+     * Constructs a ray from the camera passing through a specified pixel on the view plane.
+-+     *
+-+     * @param nX The number of pixels in the x-axis of the view plane.
+-+     * @param nY The number of pixels in the y-axis of the view plane.
+-+     * @param j  The x-coordinate of the pixel.
+-+     * @param i  The y-coordinate of the pixel.
+-+     * @return A ray passing through the specified pixel.
+-+     * @throws IllegalAccessException If vUp and vTo are not orthogonal.
+-+     */
+-     public Ray constructRay(int nX, int nY, int j, int i) throws IllegalAccessException {
+-         //view plane center point
+--        Point Pc=p0.add(vTo.scale(distance));
+-+        Point Pc = p0.add(vTo.scale(distance));
+- 
+-         //pixels ratios
+--        double Rx=width/nX;
+--        double Ry=height/nY;
+-+        double Rx = width / nX;
+-+        double Ry = height / nY;
+- 
+-         //Pij point[i,j] in view plane coordinates
+--        Point Pij=Pc;
+-+        Point Pij = Pc;
+- 
+-         //delta values for moving on the view-plane
+--        double Xj=(j-(nX-1)/2d)*Rx;
+--        double Yi=-(i-(nY-1)/2d)*Ry;
+-+        double Xj = (j - (nX - 1) / 2d) * Rx;
+-+        double Yi = -(i - (nY - 1) / 2d) * Ry;
+- 
+--        if(!isZero(Xj)){
+--            Pij=Pij.add(vRight.scale(Xj));
+-+        if (!isZero(Xj)) {
+-+            Pij = Pij.add(vRight.scale(Xj));
+-         }
+--        if(!isZero(Yi)){
+--            Pij=Pij.add(vUp.scale(Yi));
+-+        if (!isZero(Yi)) {
+-+            Pij = Pij.add(vUp.scale(Yi));
+-         }
+- 
+-         //vector from camera's eye in the direction of point(i,j) in the view-plane
+--        Vector Vij=Pij.subtract(p0);
+-+        Vector Vij = Pij.subtract(p0);
+- 
+--        return new Ray(p0,Vij);
+-+        return new Ray(p0, Vij);
+-     }
+- 
+--
+-+    /**
+-+     * Returns the position of the camera.
+-+     *
+-+     * @return The position of the camera.
+-+     */
+-     public Point getP0() {
+-         return p0;
+-     }
+--
+--    public Vector getvUp() {
+--        return vUp;
+--    }
+--
+--    public Vector getvTo() {
+--        return vTo;
+--    }
+--
+--    public Vector getvRight() {
+--        return vRight;
+--    }
+-+}
+- 
+--    public double getDistance() {
+--        return distance;
+--    }
+- 
+--    public double getWidth() {
+--        return width;
+--    }
+--
+--    public double getHeight() {
+--        return height;
+--    }
+--}
+-Index: unittests/IntegrationTests.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>import geometries.Geometry;\r\nimport geometries.Sphere;\r\nimport org.junit.jupiter.api.Test;\r\nimport primitives.Point;\r\nimport primitives.Ray;\r\nimport primitives.Vector;\r\nimport renderer.Camera;\r\n\r\nimport java.lang.reflect.Array;\r\nimport java.util.LinkedList;\r\nimport java.util.List;\r\n\r\nimport static org.junit.jupiter.api.Assertions.assertEquals;\r\nimport static org.junit.jupiter.api.Assertions.assertNull;\r\n\r\npublic class IntegrationTests {\r\n\r\n    int findNumberOfIntersecions(Camera camera,Geometry geometry) throws IllegalAccessException {\r\n        int points=0;\r\n        for (int i = 0; i <= 2; i++){\r\n            for (int j = 0; j <= 2; j++){\r\n                Ray ray=camera.constructRay(3,3,j,i);\r\n                if(geometry.findIntsersections(ray)!=null){\r\n                    points+=geometry.findIntsersections(ray).size();\r\n                }\r\n            }\r\n        }\r\n        return points;\r\n\r\n    }\r\n    @Test\r\n    void CameraSphereIntersections() throws IllegalAccessException {\r\n        Camera camera=new Camera(new Point(0,0,0),new Vector(0,-1,0),new Vector(0,0,-1));\r\n        camera.setVPSize(3,3);\r\n        camera.setVPDistance(1);\r\n\r\n        // TC01: small sphere in front of view plane(2 points)\r\n        Sphere sphere=new Sphere(1,new Point(0,0,-3));\r\n        assertEquals(2,findNumberOfIntersecions(camera,sphere),\"wrong number of intersection points \");\r\n\r\n        camera=new Camera(new Point(0,0,0.5),new Vector(0,-1,0),new Vector(0,0,-1));\r\n        camera.setVPSize(3,3);\r\n        camera.setVPDistance(1);\r\n\r\n        // TC02: big sphere in front of view plane(18 points)\r\n        sphere=new Sphere(2.5,new Point(0,0,-2.5));\r\n        assertEquals(18,findNumberOfIntersecions(camera,sphere),\"wrong number of intersection points \");\r\n\r\n        // TC03: the corners rays of the view plane doesn't cross the sphere  (10 points)\r\n        sphere=new Sphere(2,new Point(0,0,-2));\r\n        assertEquals(10,findNumberOfIntersecions(camera,sphere),\"wrong number of intersection points \");\r\n\r\n        // TC04: sphere behind the view plane (0 points)\r\n        sphere=new Sphere(0.5,new Point(0,0,1));\r\n        assertEquals(0,findNumberOfIntersecions(camera,sphere),\"wrong number of intersection points \");\r\n\r\n\r\n\r\n    }\r\n    @Test\r\n    void CameraPlaneIntersections() {\r\n    }\r\n    @Test\r\n    void CameraTriangleIntersections() {\r\n    }\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/unittests/IntegrationTests.java b/unittests/IntegrationTests.java
+---- a/unittests/IntegrationTests.java	(revision 6c4ded59ffcfeb3c3647609c1ed3eec9e91479b5)
+-+++ b/unittests/IntegrationTests.java	(date 1682625387682)
+-@@ -6,28 +6,39 @@
+- import primitives.Vector;
+- import renderer.Camera;
+- 
+--import java.lang.reflect.Array;
+--import java.util.LinkedList;
+--import java.util.List;
+--
+- import static org.junit.jupiter.api.Assertions.assertEquals;
+--import static org.junit.jupiter.api.Assertions.assertNull;
+- 
+-+/**
+-+ * Integration tests for the camera with different geometries
+-+ */
+- public class IntegrationTests {
+- 
+--    int findNumberOfIntersecions(Camera camera,Geometry geometry) throws IllegalAccessException {
+-+    /**
+-+     * Find the number of intersection points between a geometry and a camera's view plane
+-+     * @param camera The camera to use
+-+     * @param geometry The geometry to check
+-+     * @param nX Number of pixels in the x axis
+-+     * @param nY Number of pixels in the y axis
+-+     * @return The total number of intersection points found
+-+     * @throws IllegalAccessException If the camera constructs an illegal ray
+-+     */
+-+    int findNumberOfIntersecions(Camera camera, Geometry geometry, int nX, int nY) throws IllegalAccessException {
+-         int points=0;
+--        for (int i = 0; i <= 2; i++){
+--            for (int j = 0; j <= 2; j++){
+--                Ray ray=camera.constructRay(3,3,j,i);
+-+        for (int i = 0; i <= nY; i++){
+-+            for (int j = 0; j <= nX; j++){
+-+                Ray ray=camera.constructRay(nX,nY,j,i);
+-                 if(geometry.findIntsersections(ray)!=null){
+-                     points+=geometry.findIntsersections(ray).size();
+-                 }
+-             }
+-         }
+-         return points;
+--
+-     }
+-+
+-+    /**
+-+     * Test camera-sphere intersection with different scenarios
+-+     * @throws IllegalAccessException If the camera constructs an illegal ray
+-+     */
+-     @Test
+-     void CameraSphereIntersections() throws IllegalAccessException {
+-         Camera camera=new Camera(new Point(0,0,0),new Vector(0,-1,0),new Vector(0,0,-1));
+-@@ -36,7 +47,7 @@
+- 
+-         // TC01: small sphere in front of view plane(2 points)
+-         Sphere sphere=new Sphere(1,new Point(0,0,-3));
+--        assertEquals(2,findNumberOfIntersecions(camera,sphere),"wrong number of intersection points ");
+-+        assertEquals(2,findNumberOfIntersecions(camera,sphere,3 ,3 ),"wrong number of intersection points ");
+- 
+-         camera=new Camera(new Point(0,0,0.5),new Vector(0,-1,0),new Vector(0,0,-1));
+-         camera.setVPSize(3,3);
+-@@ -44,22 +55,27 @@
+- 
+-         // TC02: big sphere in front of view plane(18 points)
+-         sphere=new Sphere(2.5,new Point(0,0,-2.5));
+--        assertEquals(18,findNumberOfIntersecions(camera,sphere),"wrong number of intersection points ");
+-+        assertEquals(18,findNumberOfIntersecions(camera,sphere, 3, 3),"wrong number of intersection points ");
+- 
+-         // TC03: the corners rays of the view plane doesn't cross the sphere  (10 points)
+-         sphere=new Sphere(2,new Point(0,0,-2));
+--        assertEquals(10,findNumberOfIntersecions(camera,sphere),"wrong number of intersection points ");
+-+        assertEquals(10,findNumberOfIntersecions(camera,sphere,3 , 3),"wrong number of intersection points ");
+- 
+-         // TC04: sphere behind the view plane (0 points)
+-         sphere=new Sphere(0.5,new Point(0,0,1));
+--        assertEquals(0,findNumberOfIntersecions(camera,sphere),"wrong number of intersection points ");
+--
+--
+--
+-+        assertEquals(0,findNumberOfIntersecions(camera,sphere,3 ,3 ),"wrong number of intersection points ");
+-     }
+-+
+-+    /**
+-+     * Test camera-plane intersection with different scenarios
+-+     */
+-     @Test
+-     void CameraPlaneIntersections() {
+-     }
+-+
+-+    /**
+-+     * Test camera-triangle intersection with different scenarios
+-+     */
+-     @Test
+-     void CameraTriangleIntersections() {
+-     }
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"Ex3\">\r\n      <change afterPath=\"$PROJECT_DIR$/unittests/renderer/CameraTests.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/primitives/Ray.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/primitives/Ray.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/unittests/renderer/CameraTest.java\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"JUnit5 Test Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MTAu3KBuierhfHiNK1MCuunvIb\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"geometries\" />\r\n      <recent name=\"primitives\" />\r\n    </key>\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unitTests\\geometries\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\test\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\primitives\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\geometries\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unittests\\renderer\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unittests\\geometries\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"renderer\" />\r\n      <recent name=\"geometries\" />\r\n      <recent name=\"primitives\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.CameraTests.testConstructRay\">\r\n    <configuration name=\"CameraTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"renderer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"renderer\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"renderer.CameraTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CameraTest.testConstructRay\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"renderer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"renderer\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"renderer.CameraTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testConstructRay\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CameraTests.testConstructRay\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"renderer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"renderer\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"renderer.CameraTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"testConstructRay\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"IntegrationTests.CameraSphereIntersections\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"IntegrationTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"CameraSphereIntersections\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"SphereTests.testGetNormal\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"geometries.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"geometries\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"geometries.SphereTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"testGetNormal\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.CameraTests.testConstructRay\" />\r\n        <item itemvalue=\"JUnit.CameraTest\" />\r\n        <item itemvalue=\"JUnit.CameraTest.testConstructRay\" />\r\n        <item itemvalue=\"JUnit.IntegrationTests.CameraSphereIntersections\" />\r\n        <item itemvalue=\"JUnit.SphereTests.testGetNormal\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"\" />\r\n      <created>1677781421735</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1677781421735</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00001\" summary=\"EX-0-first\">\r\n      <created>1679397112988</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1679397112988</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E00002\" summary=\"EX-2-first\">\r\n      <created>1679428034627</created>\r\n      <option name=\"number\" value=\"LOCAL\u200E00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E00002\" />\r\n      <updated>1679428034628</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00003\" summary=\"EX-1-with javadoc\">\r\n      <created>1681415518169</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681415518169</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00004\" summary=\"EX-1-with javadoc\">\r\n      <created>1681467201958</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681467201958</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00005\" summary=\"Ex2\">\r\n      <created>1681588212150</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681588212150</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00006\" summary=\"Ex3\">\r\n      <created>1682194445651</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1682194445651</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00007\" summary=\"Ex3\">\r\n      <created>1682602415731</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1682602415731</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00008\" summary=\"Ex3\">\r\n      <created>1682616063602</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1682616063602</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00009\" summary=\"Ex3\">\r\n      <created>1682616517304</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1682616517304</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"10\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"EX-0-first\" />\r\n    <MESSAGE value=\"EX-2-first\" />\r\n    <MESSAGE value=\"EX-1-with javadoc\" />\r\n    <MESSAGE value=\"tests for vector and point\" />\r\n    <MESSAGE value=\"Ex2\" />\r\n    <MESSAGE value=\"Ex3\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Ex3\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/unittests/geometries/PlaneTests.java</url>\r\n          <line>20</line>\r\n          <properties class=\"geometries.PlaneTests\" method=\"testConstructor\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"16\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/geometries/Tube.java</url>\r\n          <line>49</line>\r\n          <option name=\"timeStamp\" value=\"25\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/unittests/geometries/TriangleTests.java</url>\r\n          <line>44</line>\r\n          <option name=\"timeStamp\" value=\"42\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <watches-manager>\r\n      <configuration name=\"JUnit\">\r\n        <watch expression=\"new Ray(ZERO_POINT, new Vector(1, -1, -10)\" />\r\n        <watch expression=\"camera.setVPSize(8, 8).constructRay(4, 4, 1, 1)\" />\r\n      </configuration>\r\n      <configuration name=\"Application\">\r\n        <watch expression=\"v1.add(v2)\" />\r\n        <watch expression=\"!v1.add(v2).equals(new Vector(-1, -2, -3))\" />\r\n        <watch expression=\"new Vector(-1, -2, -3)\" />\r\n        <watch expression=\"v1.add(v2).equals(new Vector(-1, -2, -3))\" language=\"JAVA\" />\r\n        <watch expression=\"v1.subtract(v2)\" />\r\n        <watch expression=\"new Vector(3, 6, 9)\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/ISE5783_9693_3069$IntegrationTests_CameraSphereIntersections.ic\" NAME=\"IntegrationTests.CameraSphereIntersections Coverage Results\" MODIFIED=\"1682615393927\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n    <SUITE FILE_PATH=\"coverage/ISE5783_9693_3069$Main.ic\" NAME=\"Main Coverage Results\" MODIFIED=\"1679342282667\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>test.*</FILTER>\r\n    </SUITE>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision 6c4ded59ffcfeb3c3647609c1ed3eec9e91479b5)
+-+++ b/.idea/workspace.xml	(date 1682625387697)
+-@@ -4,11 +4,10 @@
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex3">
+--      <change afterPath="$PROJECT_DIR$/unittests/renderer/CameraTests.java" afterDir="false" />
+-+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex4">
+-       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/unittests/renderer/CameraTest.java" beforeDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/unittests/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/IntegrationTests.java" afterDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-@@ -66,7 +65,7 @@
+-       <recent name="primitives" />
+-     </key>
+-   </component>
+--  <component name="RunManager" selected="JUnit.CameraTests.testConstructRay">
+-+  <component name="RunManager" selected="JUnit.IntegrationTests.CameraSphereIntersections">
+-     <configuration name="CameraTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-       <module name="ISE5783_9693_3069" />
+-       <extension name="coverage">
+-@@ -114,27 +113,20 @@
+-         <option name="Make" enabled="true" />
+-       </method>
+-     </configuration>
+--    <configuration name="IntegrationTests.CameraSphereIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-+    <configuration name="IntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-       <module name="ISE5783_9693_3069" />
+-       <option name="PACKAGE_NAME" value="" />
+-       <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
+--      <option name="METHOD_NAME" value="CameraSphereIntersections" />
+--      <option name="TEST_OBJECT" value="method" />
+-+      <option name="TEST_OBJECT" value="class" />
+-       <method v="2">
+-         <option name="Make" enabled="true" />
+-       </method>
+-     </configuration>
+--    <configuration name="SphereTests.testGetNormal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-+    <configuration name="IntegrationTests.CameraSphereIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-       <module name="ISE5783_9693_3069" />
+--      <extension name="coverage">
+--        <pattern>
+--          <option name="PATTERN" value="geometries.*" />
+--          <option name="ENABLED" value="true" />
+--        </pattern>
+--      </extension>
+--      <option name="PACKAGE_NAME" value="geometries" />
+--      <option name="MAIN_CLASS_NAME" value="geometries.SphereTests" />
+--      <option name="METHOD_NAME" value="testGetNormal" />
+-+      <option name="PACKAGE_NAME" value="" />
+-+      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
+-+      <option name="METHOD_NAME" value="CameraSphereIntersections" />
+-       <option name="TEST_OBJECT" value="method" />
+-       <method v="2">
+-         <option name="Make" enabled="true" />
+-@@ -142,11 +134,11 @@
+-     </configuration>
+-     <recent_temporary>
+-       <list>
+-+        <item itemvalue="JUnit.IntegrationTests.CameraSphereIntersections" />
+-+        <item itemvalue="JUnit.IntegrationTests" />
+-         <item itemvalue="JUnit.CameraTests.testConstructRay" />
+-         <item itemvalue="JUnit.CameraTest" />
+-         <item itemvalue="JUnit.CameraTest.testConstructRay" />
+--        <item itemvalue="JUnit.IntegrationTests.CameraSphereIntersections" />
+--        <item itemvalue="JUnit.SphereTests.testGetNormal" />
+-       </list>
+-     </recent_temporary>
+-   </component>
+-@@ -221,7 +213,14 @@
+-       <option name="project" value="LOCAL‎" />
+-       <updated>1682616517304</updated>
+-     </task>
+--    <option name="localTasksCounter" value="10" />
+-+    <task id="LOCAL‎-00010" summary="Ex4">
+-+      <created>1682622655488</created>
+-+      <option name="number" value="00010" />
+-+      <option name="presentableId" value="LOCAL‎-00010" />
+-+      <option name="project" value="LOCAL‎" />
+-+      <updated>1682622655488</updated>
+-+    </task>
+-+    <option name="localTasksCounter" value="11" />
+-     <servers />
+-   </component>
+-   <component name="Vcs.Log.Tabs.Properties">
+-@@ -242,7 +241,8 @@
+-     <MESSAGE value="tests for vector and point" />
+-     <MESSAGE value="Ex2" />
+-     <MESSAGE value="Ex3" />
+--    <option name="LAST_COMMIT_MESSAGE" value="Ex3" />
+-+    <MESSAGE value="Ex4" />
+-+    <option name="LAST_COMMIT_MESSAGE" value="Ex4" />
+-   </component>
+-   <component name="XDebuggerManager">
+-     <breakpoint-manager>
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35__Changes_.xml	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
++++ /dev/null	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_28_04_2023_13_35_[Changes]" date="1682678133471" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 28/04/2023 13:35 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43__Changes_.xml	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
++++ /dev/null	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_30_04_2023_11_43_[Changes]" date="1682844233328" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 30/04/2023 11:43 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43_[Changes]/shelved.patch	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
++++ /dev/null	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
+@@ -1,57 +0,0 @@
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"Ex3\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/unittests/IntegrationTests.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/unittests/IntegrationTests.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/unittests/renderer/CameraTest.java\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"JUnit5 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MTAu3KBuierhfHiNK1MCuunvIb\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"geometries\" />\r\n      <recent name=\"primitives\" />\r\n    </key>\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unitTests\\geometries\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\test\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\primitives\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\geometries\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unittests\\renderer\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unittests\\geometries\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"geometries\" />\r\n      <recent name=\"primitives\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.IntegrationTests.testConstructRayOfTriangle\">\r\n    <configuration name=\"CameraTest.testConstructRay\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"renderer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"renderer\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"renderer.CameraTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testConstructRay\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CameraTests.testConstructRay\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"renderer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"renderer\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"renderer.CameraTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"testConstructRay\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"IntegrationTests.CameraSphereIntersections\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"IntegrationTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"CameraSphereIntersections\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"IntegrationTests.testConstructRayOfPlane\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"IntegrationTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"testConstructRayOfPlane\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"IntegrationTests.testConstructRayOfTriangle\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"IntegrationTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"testConstructRayOfTriangle\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.IntegrationTests.testConstructRayOfTriangle\" />\r\n        <item itemvalue=\"JUnit.IntegrationTests.testConstructRayOfPlane\" />\r\n        <item itemvalue=\"JUnit.CameraTest.testConstructRay\" />\r\n        <item itemvalue=\"JUnit.CameraTests.testConstructRay\" />\r\n        <item itemvalue=\"JUnit.IntegrationTests.CameraSphereIntersections\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"\" />\r\n      <created>1677781421735</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1677781421735</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00001\" summary=\"EX-0-first\">\r\n      <created>1679397112988</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1679397112988</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E00002\" summary=\"EX-2-first\">\r\n      <created>1679428034627</created>\r\n      <option name=\"number\" value=\"LOCAL\u200E00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E00002\" />\r\n      <updated>1679428034628</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00003\" summary=\"EX-1-with javadoc\">\r\n      <created>1681415518169</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681415518169</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00004\" summary=\"EX-1-with javadoc\">\r\n      <created>1681467201958</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681467201958</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00005\" summary=\"Ex2\">\r\n      <created>1681588212150</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681588212150</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00006\" summary=\"Ex3\">\r\n      <created>1682194445651</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1682194445651</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00007\" summary=\"Ex3\">\r\n      <created>1682602415731</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1682602415731</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00008\" summary=\"Ex3\">\r\n      <created>1682616063602</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1682616063602</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"9\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"EX-0-first\" />\r\n    <MESSAGE value=\"EX-2-first\" />\r\n    <MESSAGE value=\"EX-1-with javadoc\" />\r\n    <MESSAGE value=\"tests for vector and point\" />\r\n    <MESSAGE value=\"Ex2\" />\r\n    <MESSAGE value=\"Ex3\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Ex3\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/unittests/geometries/PlaneTests.java</url>\r\n          <line>20</line>\r\n          <properties class=\"geometries.PlaneTests\" method=\"testConstructor\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"16\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/unittests/IntegrationTests.java</url>\r\n          <line>65</line>\r\n          <properties class=\"IntegrationTests\" method=\"testConstructRayOfPlane\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"57\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/geometries/Tube.java</url>\r\n          <line>49</line>\r\n          <option name=\"timeStamp\" value=\"25\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/unittests/geometries/TriangleTests.java</url>\r\n          <line>44</line>\r\n          <option name=\"timeStamp\" value=\"42\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/unittests/IntegrationTests.java</url>\r\n          <line>86</line>\r\n          <option name=\"timeStamp\" value=\"58\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <watches-manager>\r\n      <configuration name=\"JUnit\">\r\n        <watch expression=\"this.plane.findIntsersections(ray)==null\" />\r\n        <watch expression=\"geometry.findIntsersections(ray)\" />\r\n        <watch expression=\"new Ray(ZERO_POINT, new Vector(1, -1, -10)\" />\r\n        <watch expression=\"camera.setVPSize(8, 8).constructRay(4, 4, 1, 1)\" />\r\n      </configuration>\r\n      <configuration name=\"Application\">\r\n        <watch expression=\"v1.add(v2)\" />\r\n        <watch expression=\"!v1.add(v2).equals(new Vector(-1, -2, -3))\" />\r\n        <watch expression=\"new Vector(-1, -2, -3)\" />\r\n        <watch expression=\"v1.add(v2).equals(new Vector(-1, -2, -3))\" language=\"JAVA\" />\r\n        <watch expression=\"v1.subtract(v2)\" />\r\n        <watch expression=\"new Vector(3, 6, 9)\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/ISE5783_9693_3069$IntegrationTests_CameraSphereIntersections.ic\" NAME=\"IntegrationTests.CameraSphereIntersections Coverage Results\" MODIFIED=\"1682615393927\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n    <SUITE FILE_PATH=\"coverage/ISE5783_9693_3069$Main.ic\" NAME=\"Main Coverage Results\" MODIFIED=\"1679342282667\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>test.*</FILTER>\r\n    </SUITE>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision 3213695eacc38a2082b5e796cbf12c11e7ff86b4)
+-+++ b/.idea/workspace.xml	(date 1682844210919)
+-@@ -4,10 +4,8 @@
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex3">
+-+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex4">
+-       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/unittests/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/IntegrationTests.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/unittests/renderer/CameraTest.java" beforeDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-@@ -195,7 +193,14 @@
+-       <option name="project" value="LOCAL‎" />
+-       <updated>1682616063602</updated>
+-     </task>
+--    <option name="localTasksCounter" value="9" />
+-+    <task id="LOCAL‎-00009" summary="Ex4">
+-+      <created>1682678302890</created>
+-+      <option name="number" value="00009" />
+-+      <option name="presentableId" value="LOCAL‎-00009" />
+-+      <option name="project" value="LOCAL‎" />
+-+      <updated>1682678302890</updated>
+-+    </task>
+-+    <option name="localTasksCounter" value="10" />
+-     <servers />
+-   </component>
+-   <component name="Vcs.Log.Tabs.Properties">
+-@@ -216,7 +221,8 @@
+-     <MESSAGE value="tests for vector and point" />
+-     <MESSAGE value="Ex2" />
+-     <MESSAGE value="Ex3" />
+--    <option name="LAST_COMMIT_MESSAGE" value="Ex3" />
+-+    <MESSAGE value="Ex4" />
+-+    <option name="LAST_COMMIT_MESSAGE" value="Ex4" />
+-   </component>
+-   <component name="XDebuggerManager">
+-     <breakpoint-manager>
+-@@ -233,7 +239,7 @@
+-         <line-breakpoint enabled="true" type="java-method">
+-           <url>file://$PROJECT_DIR$/unittests/IntegrationTests.java</url>
+-           <line>65</line>
+--          <properties class="IntegrationTests" method="testConstructRayOfPlane">
+-+          <properties class="IntegrationTests">
+-             <option name="EMULATED" value="true" />
+-             <option name="WATCH_EXIT" value="false" />
+-           </properties>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"PRO 5-\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/lighting/AmbientLight.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/lighting/AmbientLight.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/renderer/RayTracerBase.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/renderer/RayTracerBase.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/renderer/RayTracerBasic.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/renderer/RayTracerBasic.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/scene/Scene.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/scene/Scene.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"JUnit5 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MTAu3KBuierhfHiNK1MCuunvIb\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\" value=\"JUnit5\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5\" value=\"\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"scene\" />\r\n      <recent name=\"geometries\" />\r\n      <recent name=\"primitives\" />\r\n    </key>\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unitTests\\geometries\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\test\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\primitives\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\src\\geometries\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unittests\\renderer\" />\r\n      <recent name=\"C:\\Users\\משפחת מקסימוב\\IdeaProjects\\ISE5783_9693_3069\\unittests\\geometries\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"primitives\" />\r\n      <recent name=\"geometries\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.RayTest\">\r\n    <configuration name=\"ImageWriterTest.WritePixelTest1\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"renderer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"renderer\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"renderer.ImageWriterTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"WritePixelTest1\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"IntegrationTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"IntegrationTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"RayTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"primitives.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"primitives\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"primitives.RayTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"RayTest.findClosestPoin\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"primitives.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"primitives\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"primitives.RayTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"findClosestPoin\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"RenderTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ISE5783_9693_3069\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"renderer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"renderer\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"renderer.RenderTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.RayTest\" />\r\n        <item itemvalue=\"JUnit.RayTest.findClosestPoin\" />\r\n        <item itemvalue=\"JUnit.RenderTests\" />\r\n        <item itemvalue=\"JUnit.ImageWriterTest.WritePixelTest1\" />\r\n        <item itemvalue=\"JUnit.IntegrationTests\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"56e13de4-d6b6-40fc-8784-02a4db7270a4\" name=\"Changes\" comment=\"\" />\r\n      <created>1677781421735</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1677781421735</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00001\" summary=\"EX-0-first\">\r\n      <created>1679397112988</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1679397112988</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E00002\" summary=\"EX-2-first\">\r\n      <created>1679428034627</created>\r\n      <option name=\"number\" value=\"LOCAL\u200E00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E00002\" />\r\n      <updated>1679428034628</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00003\" summary=\"EX-1-with javadoc\">\r\n      <created>1681415518169</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681415518169</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00004\" summary=\"EX-1-with javadoc\">\r\n      <created>1681467201958</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681467201958</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00005\" summary=\"Ex2\">\r\n      <created>1681588212150</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1681588212150</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00006\" summary=\"Ex3\">\r\n      <created>1682194445651</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1682194445651</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00007\" summary=\"Ex3\">\r\n      <created>1682602415731</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1682602415731</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00008\" summary=\"Ex3\">\r\n      <created>1682616063602</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1682616063602</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E00009\" summary=\"finish PRO 4\">\r\n      <created>1682689830483</created>\r\n      <option name=\"number\" value=\"LOCAL\u200E00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E00009\" />\r\n      <updated>1682689830483</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E00010\" summary=\"PRO 5- start\">\r\n      <created>1682844281482</created>\r\n      <option name=\"number\" value=\"LOCAL\u200E00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E00010\" />\r\n      <updated>1682844281482</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E00011\" summary=\"PRO 5- start new\">\r\n      <created>1682844436074</created>\r\n      <option name=\"number\" value=\"LOCAL\u200E00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E00011\" />\r\n      <updated>1682844436074</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"12\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"EX-0-first\" />\r\n    <MESSAGE value=\"EX-2-first\" />\r\n    <MESSAGE value=\"EX-1-with javadoc\" />\r\n    <MESSAGE value=\"tests for vector and point\" />\r\n    <MESSAGE value=\"Ex2\" />\r\n    <MESSAGE value=\"Ex3\" />\r\n    <MESSAGE value=\"finish PRO 4\" />\r\n    <MESSAGE value=\"PRO 5\" />\r\n    <MESSAGE value=\"PRO 5- start\" />\r\n    <MESSAGE value=\"PRO 5- start new\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"PRO 5- start new\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/unittests/geometries/PlaneTests.java</url>\r\n          <line>20</line>\r\n          <properties class=\"geometries.PlaneTests\" method=\"testConstructor\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"16\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/geometries/Tube.java</url>\r\n          <line>49</line>\r\n          <option name=\"timeStamp\" value=\"25\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/unittests/geometries/TriangleTests.java</url>\r\n          <line>44</line>\r\n          <option name=\"timeStamp\" value=\"42\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/unittests/IntegrationTests.java</url>\r\n          <line>102</line>\r\n          <option name=\"timeStamp\" value=\"62\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/unittests/primitives/RayTest.java</url>\r\n          <line>9</line>\r\n          <option name=\"timeStamp\" value=\"64\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <watches-manager>\r\n      <configuration name=\"JUnit\">\r\n        <watch expression=\"this.plane.findIntsersections(ray)==null\" />\r\n        <watch expression=\"geometry.findIntsersections(ray)\" />\r\n        <watch expression=\"new Ray(ZERO_POINT, new Vector(1, -1, -10)\" />\r\n        <watch expression=\"camera.setVPSize(8, 8).constructRay(4, 4, 1, 1)\" />\r\n      </configuration>\r\n      <configuration name=\"Application\">\r\n        <watch expression=\"v1.add(v2)\" />\r\n        <watch expression=\"!v1.add(v2).equals(new Vector(-1, -2, -3))\" />\r\n        <watch expression=\"new Vector(-1, -2, -3)\" />\r\n        <watch expression=\"v1.add(v2).equals(new Vector(-1, -2, -3))\" language=\"JAVA\" />\r\n        <watch expression=\"v1.subtract(v2)\" />\r\n        <watch expression=\"new Vector(3, 6, 9)\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/ISE5783_9693_3069$IntegrationTests_CameraSphereIntersections.ic\" NAME=\"IntegrationTests.CameraSphereIntersections Coverage Results\" MODIFIED=\"1682615393927\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n    <SUITE FILE_PATH=\"coverage/ISE5783_9693_3069$Main.ic\" NAME=\"Main Coverage Results\" MODIFIED=\"1679342282667\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>test.*</FILTER>\r\n    </SUITE>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
++++ b/.idea/workspace.xml	(date 1684426098849)
+@@ -4,11 +4,20 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO 5-">
++    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="Ex5">
++      <change afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/lighting/Light.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/primitives/Material.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_04_2023_13_35__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_04_2023_11_43__Changes_.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/lighting/AmbientLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/AmbientLight.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scene/Scene.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -19,8 +28,8 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="Interface" />
+         <option value="JUnit5 Test Class" />
++        <option value="Interface" />
+         <option value="Class" />
+       </list>
+     </option>
+@@ -28,6 +37,19 @@
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;
++  }
++}</component>
++  <component name="GithubPullRequestsUISettings">
++    <option name="selectedUrlAndAccountId">
++      <UrlAndAccount>
++        <option name="accountId" value="76795180-ef40-4dc8-9201-f84ffc325402" />
++        <option name="url" value="https://github.com/YaelMaximov/ISE5783_9693_3069.git" />
++      </UrlAndAccount>
++    </option>
++  </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+@@ -36,14 +58,9 @@
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+-  </component>
+-  <component name="PropertiesComponent">
+-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+   </component>
+   <component name="RecentsManager">
+     <key name="CreateClassDialog.RecentsKey">
+-      <recent name="scene" />
+       <recent name="geometries" />
+       <recent name="primitives" />
+     </key>
+@@ -61,68 +78,57 @@
+       <recent name="C:\Users\משפחת מקסימוב\IdeaProjects\ISE5783_9693_3069\unittests\geometries" />
+     </key>
+     <key name="CreateTestDialog.RecentsKey">
+-      <recent name="primitives" />
+       <recent name="geometries" />
++      <recent name="primitives" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="JUnit.RayTest">
+-    <configuration name="ImageWriterTest.WritePixelTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++  <component name="RunManager" selected="JUnit.RenderTests">
++    <configuration name="IntegrationTests.CameraSphereIntersections" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ISE5783_9693_3069" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="renderer.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <option name="PACKAGE_NAME" value="renderer" />
+-      <option name="MAIN_CLASS_NAME" value="renderer.ImageWriterTest" />
+-      <option name="METHOD_NAME" value="WritePixelTest1" />
++      <option name="PACKAGE_NAME" value="" />
++      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
++      <option name="METHOD_NAME" value="CameraSphereIntersections" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="IntegrationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="IntegrationTests.testConstructRayOfPlane" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ISE5783_9693_3069" />
+       <option name="PACKAGE_NAME" value="" />
+       <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="METHOD_NAME" value="testConstructRayOfPlane" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="RayTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="IntegrationTests.testConstructRayOfTriangle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ISE5783_9693_3069" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="primitives.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <option name="PACKAGE_NAME" value="primitives" />
+-      <option name="MAIN_CLASS_NAME" value="primitives.RayTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="PACKAGE_NAME" value="" />
++      <option name="MAIN_CLASS_NAME" value="IntegrationTests" />
++      <option name="METHOD_NAME" value="testConstructRayOfTriangle" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="RayTest.findClosestPoin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="RenderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ISE5783_9693_3069" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="primitives.*" />
++          <option name="PATTERN" value="renderer.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="primitives" />
+-      <option name="MAIN_CLASS_NAME" value="primitives.RayTest" />
+-      <option name="METHOD_NAME" value="findClosestPoin" />
+-      <option name="TEST_OBJECT" value="method" />
++      <option name="PACKAGE_NAME" value="renderer" />
++      <option name="MAIN_CLASS_NAME" value="renderer.RenderTests" />
++      <option name="TEST_OBJECT" value="class" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="RenderTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="RenderTests.basicRenderTwoColorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ISE5783_9693_3069" />
+       <extension name="coverage">
+         <pattern>
+@@ -132,18 +138,19 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="renderer" />
+       <option name="MAIN_CLASS_NAME" value="renderer.RenderTests" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="METHOD_NAME" value="basicRenderTwoColorTest" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="JUnit.RayTest" />
+-        <item itemvalue="JUnit.RayTest.findClosestPoin" />
+         <item itemvalue="JUnit.RenderTests" />
+-        <item itemvalue="JUnit.ImageWriterTest.WritePixelTest1" />
+-        <item itemvalue="JUnit.IntegrationTests" />
++        <item itemvalue="JUnit.RenderTests.basicRenderTwoColorTest" />
++        <item itemvalue="JUnit.IntegrationTests.testConstructRayOfTriangle" />
++        <item itemvalue="JUnit.IntegrationTests.testConstructRayOfPlane" />
++        <item itemvalue="JUnit.IntegrationTests.CameraSphereIntersections" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -217,19 +224,14 @@
+       <option name="presentableId" value="LOCAL‎00009" />
+       <updated>1682689830483</updated>
+     </task>
+-    <task id="LOCAL‎00010" summary="PRO 5- start">
+-      <created>1682844281482</created>
+-      <option name="number" value="LOCAL‎00010" />
+-      <option name="presentableId" value="LOCAL‎00010" />
+-      <updated>1682844281482</updated>
++    <task id="LOCAL‎-00010" summary="Ex5">
++      <created>1683150345318</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL‎-00010" />
++      <option name="project" value="LOCAL‎" />
++      <updated>1683150345318</updated>
+     </task>
+-    <task id="LOCAL‎00011" summary="PRO 5- start new">
+-      <created>1682844436074</created>
+-      <option name="number" value="LOCAL‎00011" />
+-      <option name="presentableId" value="LOCAL‎00011" />
+-      <updated>1682844436074</updated>
+-    </task>
+-    <option name="localTasksCounter" value="12" />
++    <option name="localTasksCounter" value="11" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -251,10 +253,8 @@
+     <MESSAGE value="Ex2" />
+     <MESSAGE value="Ex3" />
+     <MESSAGE value="finish PRO 4" />
+-    <MESSAGE value="PRO 5" />
+-    <MESSAGE value="PRO 5- start" />
+-    <MESSAGE value="PRO 5- start new" />
+-    <option name="LAST_COMMIT_MESSAGE" value="PRO 5- start new" />
++    <MESSAGE value="Ex5" />
++    <option name="LAST_COMMIT_MESSAGE" value="Ex5" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+@@ -279,23 +279,15 @@
+           <option name="timeStamp" value="42" />
+         </line-breakpoint>
+         <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/unittests/IntegrationTests.java</url>
+-          <line>102</line>
+-          <option name="timeStamp" value="62" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/unittests/primitives/RayTest.java</url>
+-          <line>9</line>
+-          <option name="timeStamp" value="64" />
++          <url>file://$PROJECT_DIR$/unittests/renderer/RenderTest.java</url>
++          <line>43</line>
++          <option name="timeStamp" value="76" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+     <watches-manager>
+       <configuration name="JUnit">
+-        <watch expression="this.plane.findIntsersections(ray)==null" />
+-        <watch expression="geometry.findIntsersections(ray)" />
+-        <watch expression="new Ray(ZERO_POINT, new Vector(1, -1, -10)" />
+-        <watch expression="camera.setVPSize(8, 8).constructRay(4, 4, 1, 1)" />
++        <watch expression="this" />
+       </configuration>
+       <configuration name="Application">
+         <watch expression="v1.add(v2)" />
+Index: src/lighting/LightSource.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/lighting/LightSource.java b/src/lighting/LightSource.java
+new file mode 100644
+--- /dev/null	(date 1684340012902)
++++ b/src/lighting/LightSource.java	(date 1684340012902)
+@@ -0,0 +1,11 @@
++package lighting;
++
++import primitives.Color;
++import primitives.Point;
++import primitives.Vector;
++
++public interface LightSource {
++    public Color getIntensity(Point p);
++    public Vector getL(Point p);
++
++}
+Index: src/lighting/DirectionalLight.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/lighting/DirectionalLight.java b/src/lighting/DirectionalLight.java
+new file mode 100644
+--- /dev/null	(date 1684424973079)
++++ b/src/lighting/DirectionalLight.java	(date 1684424973079)
+@@ -0,0 +1,22 @@
++package lighting;
++
++import primitives.Color;
++import primitives.Point;
++import primitives.Vector;
++
++public class DirectionalLight extends Light{
++    private Vector direction;
++
++    public DirectionalLight(Color intensity, Vector direction) {
++        super(intensity);
++        this.direction = direction;
++    }
++    public Vector getL(Point p){
++        return direction;
++    }
++    public Color getIntensity(Point p){
++        return getIntensity();
++
++    }
++
++}
+Index: src/lighting/PointLight.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/lighting/PointLight.java b/src/lighting/PointLight.java
+new file mode 100644
+--- /dev/null	(date 1684424936953)
++++ b/src/lighting/PointLight.java	(date 1684424936953)
+@@ -0,0 +1,44 @@
++package lighting;
++
++import primitives.Color;
++import primitives.Point;
++import primitives.Vector;
++
++public class PointLight extends Light{
++    Point position;
++    private double kC=1;
++    private double kL=0;
++    private double kQ=0;
++
++    public PointLight(Color intensity, Point position) {
++        super(intensity);
++        this.position = position;
++    }
++
++    public PointLight setkC(double kC) {
++        this.kC = kC;
++        return this;
++    }
++
++    public PointLight setkL(double kL) {
++        this.kL = kL;
++        return this;
++    }
++
++    public PointLight setkQ(double kQ) {
++        this.kQ = kQ;
++        return this;
++    }
++    public Vector getL(Point p) throws IllegalAccessException {
++        Vector L=p.subtract(position);
++        return L;
++    }
++    public Color getIntensity(Point p) throws IllegalAccessException {
++        double d=position.distance(p);
++        double denominator=kC+kL*d+kQ*Math.pow(d,2);
++        Color IL=getIntensity().scale(1/d);
++        return IL;
++
++    }
++
++}
+Index: src/lighting/SpotLight.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/lighting/SpotLight.java b/src/lighting/SpotLight.java
+new file mode 100644
+--- /dev/null	(date 1684424936971)
++++ b/src/lighting/SpotLight.java	(date 1684424936971)
+@@ -0,0 +1,20 @@
++package lighting;
++
++import primitives.Color;
++import primitives.Point;
++import primitives.Vector;
++
++public class SpotLight extends PointLight{
++    private Vector direction;
++
++    public SpotLight(Color intensity, Point position, Vector direction) {
++        super(intensity, position);
++        this.direction = direction;
++    }
++    public Color getIntensity(Point p) throws IllegalAccessException {
++        Color basic=super.getIntensity(p);
++        double max=Math.max(0,direction.dotProduct(getL(p)));
++        Color IL=basic.scale(max);
++        return IL;
++    }
++}
+Index: src/lighting/AmbientLight.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package lighting;\r\n\r\nimport primitives.Color;\r\nimport primitives.Double3;\r\n\r\n/**\r\n * Represents an ambient light in a scene.\r\n */\r\npublic class AmbientLight {\r\n    /**\r\n     * A color representing no ambient light.\r\n     */\r\n    public static final Color NONE = Color.BLACK;\r\n\r\n    /**\r\n     * A vector representing the ambient reflection coefficient for each color component (red, green, and blue).\r\n     */\r\n    public static final Double3 KA0 = Double3.ZERO;\r\n\r\n    private Color intensity;\r\n\r\n    /**\r\n     * Constructs a new AmbientLight object with the given intensity and ambient reflection coefficient vector.\r\n     *\r\n     * @param IA the intensity of the ambient light\r\n     * @param KA the ambient reflection coefficient vector\r\n     */\r\n    public AmbientLight(Color IA, Double3 KA) {\r\n        this.intensity = IA.scale(KA);\r\n    }\r\n\r\n    /**\r\n     * Constructs a new AmbientLight object with the given intensity and ambient reflection coefficient.\r\n     *\r\n     * @param IA the intensity of the ambient light\r\n     * @param KA the ambient reflection coefficient\r\n     */\r\n    public AmbientLight(Color IA, double KA) {\r\n        this.intensity = IA.scale(KA);\r\n    }\r\n\r\n    /**\r\n     * Returns the intensity of the ambient light.\r\n     *\r\n     * @return the intensity of the ambient light\r\n     */\r\n    public Color getIntensity() {\r\n        return intensity;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/lighting/AmbientLight.java b/src/lighting/AmbientLight.java
+--- a/src/lighting/AmbientLight.java	(revision 4b510056da9821faccb2ab7be202a5e80f6cab9f)
++++ b/src/lighting/AmbientLight.java	(date 1684339881774)
+@@ -1,12 +1,13 @@
+ package lighting;
+ 
++import geometries.Polygon;
+ import primitives.Color;
+ import primitives.Double3;
+ 
+ /**
+  * Represents an ambient light in a scene.
+  */
+-public class AmbientLight {
++public class AmbientLight extends Light {
+     /**
+      * A color representing no ambient light.
+      */
+@@ -17,7 +18,6 @@
+      */
+     public static final Double3 KA0 = Double3.ZERO;
+ 
+-    private Color intensity;
+ 
+     /**
+      * Constructs a new AmbientLight object with the given intensity and ambient reflection coefficient vector.
+@@ -26,7 +26,7 @@
+      * @param KA the ambient reflection coefficient vector
+      */
+     public AmbientLight(Color IA, Double3 KA) {
+-        this.intensity = IA.scale(KA);
++        super(IA.scale(KA));
+     }
+ 
+     /**
+@@ -36,15 +36,8 @@
+      * @param KA the ambient reflection coefficient
+      */
+     public AmbientLight(Color IA, double KA) {
+-        this.intensity = IA.scale(KA);
++        super(IA.scale(KA));
+     }
+ 
+-    /**
+-     * Returns the intensity of the ambient light.
+-     *
+-     * @return the intensity of the ambient light
+-     */
+-    public Color getIntensity() {
+-        return intensity;
+-    }
++
+ }
+Index: src/primitives/Material.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/primitives/Material.java b/src/primitives/Material.java
+new file mode 100644
+--- /dev/null	(date 1684425662730)
++++ b/src/primitives/Material.java	(date 1684425662730)
+@@ -0,0 +1,31 @@
++package primitives;
++
++public class Material {
++    public Double3 kD=Double3.ZERO;
++    public Double3 kS=Double3.ZERO;
++    public int nShininess=0;
++
++    public Material setkD(Double3 kD) {
++        this.kD = kD;
++        return this;
++    }
++    public Material setkD(double kD) {
++        this.kD =new Double3(kD);
++        return this;
++    }
++
++
++    public Material setkS(Double3 kS) {
++        this.kS = kS;
++        return this;
++    }
++    public Material setkS(double kS) {
++        this.kS =new Double3(kS);
++        return this;
++    }
++
++    public Material setnShininess(int nShininess) {
++        this.nShininess = nShininess;
++        return this;
++    }
++}
+Index: src/lighting/Light.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/lighting/Light.java b/src/lighting/Light.java
+new file mode 100644
+--- /dev/null	(date 1684344055983)
++++ b/src/lighting/Light.java	(date 1684344055983)
+@@ -0,0 +1,30 @@
++package lighting;
++
++import primitives.Color;
++/**
++
++ The Light class is an abstract class representing a light source in a lighting system.
++ It provides a common interface for accessing the intensity of the light.
++ */
++
++abstract class Light {
++     private Color intensity;
++
++    /**
++     * Constructs a Light object with the specified intensity.
++     *
++     * @param intensity the color intensity of the light
++     */
++    protected Light(Color intensity) {
++        this.intensity = intensity;
++    }
++
++    /**
++     * Returns the intensity of the light.
++     *
++     * @return the color intensity of the light
++     */
++    public Color getIntensity() {
++        return intensity;
++    }
++}
