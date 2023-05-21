@@ -170,7 +170,7 @@ public class Camera {
      *
      * @throws IllegalAccessException if any required resources (such as the image writer or ray tracer) are missing or null
      */
-    public void renderImage() throws IllegalAccessException {
+    public Camera renderImage() throws IllegalAccessException {
         if (imageWriter == null || rayTracerBase == null || isNaN(width) || isNaN(height) || isNaN(distance)) {
             if (imageWriter == null) {
                 throw new MissingResourceException("missing resources", "Camera", "imageWriter");
@@ -199,6 +199,7 @@ public class Camera {
                     imageWriter.writePixel(j, i, color);
                 }
             }
+        return this;
     }
 
     /**
@@ -227,12 +228,14 @@ public class Camera {
      *
      * @throws MissingResourceException If the imageWriter is null.
      */
-    public void writeToImage() throws MissingResourceException {
+    public Camera writeToImage() throws MissingResourceException {
         if (imageWriter == null) {
             throw new MissingResourceException("imageWriter", "Camera", "The value of imageWriter is null.");
         }
         imageWriter.writeToImage();
+        return this;
     }
+
 
 }
 

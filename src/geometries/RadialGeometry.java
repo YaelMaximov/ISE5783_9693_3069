@@ -3,7 +3,7 @@ package geometries;
 /**
  * The RadialGeometry class represents a geometric object with a radius, such as a sphere or cylinder.
  */
-public abstract class RadialGeometry implements Geometry {
+public abstract class RadialGeometry extends Geometry {
 
     protected double radius;
 

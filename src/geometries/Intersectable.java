@@ -11,13 +11,13 @@ import java.util.Objects;
  */
 public abstract class Intersectable {
 
-    /**
-     * Returns a list of points where the specified ray intersects this object.
-     *
-     * @param ray the ray to intersect with this object
-     * @return a list of points where the ray intersects this object, or an empty list if there are no intersections
-     */
-    public abstract List<Point> findIntsersections(Ray ray) throws IllegalAccessException;
+//    /**
+//     * Returns a list of points where the specified ray intersects this object.
+//     *
+//     * @param ray the ray to intersect with this object
+//     * @return a list of points where the ray intersects this object, or an empty list if there are no intersections
+//     */
+//    public abstract List<Point> findIntsersections(Ray ray) throws IllegalAccessException;
 
     public static class GeoPoint{
         public Geometry geometry;
