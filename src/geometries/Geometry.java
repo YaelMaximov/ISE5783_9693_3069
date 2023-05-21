@@ -1,13 +1,15 @@
 package geometries;
 
 import primitives.Color;
+import primitives.Material;
 import primitives.Point;
 import primitives.Vector;
 
 /**
  * The Geometry interface defines methods that all geometric shapes should implement.
  */
-public abstract class Geometry extends Intersectable{
+public abstract class Geometry extends Intersectable {
+    private Material material=new Material();
 
     protected Color emission = Color.BLACK;
 
@@ -28,4 +30,12 @@ public abstract class Geometry extends Intersectable{
      */
     public abstract Vector getNormal(Point p) throws IllegalAccessException;
 
+    public Material getMaterial() {
+        return material;
+    }
+
+    public Geometry setMaterial(Material material) {
+        this.material = material;
+        return this;
+    }
 }

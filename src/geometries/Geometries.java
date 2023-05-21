@@ -4,7 +4,6 @@ import primitives.Point;
 import primitives.Ray;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -67,18 +66,6 @@ public class Geometries extends Intersectable {
 
     @Override
     protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
-        List<GeoPoint> arrayList=new ArrayList<GeoPoint>();
-        for (Intersectable geo: intersectables) {
-            int i=0;
-            if (geo.findGeoIntersections(ray) != null) {
-                arrayList.add((GeoPoint) geo.findGeoIntersections(ray/*maxDistance*/).get(i));
-                i++;
-            }
-        }
-        if(arrayList.isEmpty())
-        {
-            return null;
-        }
-        return arrayList;
+        return null;
     }
 }
