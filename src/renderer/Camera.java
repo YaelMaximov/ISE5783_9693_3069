@@ -191,8 +191,8 @@ public class Camera {
         }
         int nX = this.imageWriter.getNx();
         int nY = this.imageWriter.getNy();
-        for (int i = 0; i < nY; i++)
-            for (int j = 0; j < nX; j++) {
+        for (int i= 0; i< nX; i++)
+            for  (int j = 0; j < nY; j++){
                 {
                     Ray ray = constructRay(nX, nY, j, i);
                     Color color = castRay(ray);
@@ -228,12 +228,12 @@ public class Camera {
      *
      * @throws MissingResourceException If the imageWriter is null.
      */
-    public Camera writeToImage() throws MissingResourceException {
+    public void writeToImage() throws MissingResourceException {
         if (imageWriter == null) {
             throw new MissingResourceException("imageWriter", "Camera", "The value of imageWriter is null.");
         }
         imageWriter.writeToImage();
-        return this;
+        //return this;
     }
 
 
