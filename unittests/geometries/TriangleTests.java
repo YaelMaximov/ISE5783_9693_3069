@@ -35,14 +35,14 @@ class TriangleTests {
         // ============ Equivalence Partitions Tests ==============
         // TC01: intersection point in the triangle(1 point)
         ray = new Ray(new Point(3,1,0), new Vector(-1,1,1));
-        List<Intersectable.GeoPoint> expected = List.of(new Intersectable.GeoPoint(triangle,new Point(2,2,1)));
-        assertEquals(expected, triangle.findGeoIntersections(ray),"wrong point for regular ray that crosses the plane inside the triangle");
+        List<Point> expected = List.of(new Point(2,2,1));
+        assertEquals(expected, triangle.findIntersections(ray),"wrong point for regular ray that crosses the plane inside the triangle");
         // TC02: intersection point out of the triangle in front of one of the edges(0 points)
         ray = new Ray(new Point(3,1,0), new Vector(0,1,2));
-        assertNull(triangle.findGeoIntersections(ray),"intersection point out of the triangle in front of one of the edges shouldn't returned value");
+        assertNull(triangle.findIntersections(ray),"intersection point out of the triangle in front of one of the edges shouldn't returned value");
         // TC03: intersection point out of the triangle in front of one of the vertices(0 points)
         ray = new Ray(new Point(3,1,0), new Vector(-1,1,3));
-        assertNull(triangle.findGeoIntersections(ray),"intersection point on one of the vertices shouldn't returned value");
+        assertNull(triangle.findIntersections(ray),"intersection point on one of the vertices shouldn't returned value");
 
 
 
@@ -50,13 +50,13 @@ class TriangleTests {
         // =============== Boundary Values Tests ==================
         // TC11: intersection point on one of the edges(0 points)
         ray = new Ray(new Point(3,1,0), new Vector(0,1,1));
-        assertNull(triangle.findGeoIntersections(ray),"intersection point on one of the edges shouldn't returned value");
+        assertNull(triangle.findIntersections(ray),"intersection point on one of the edges shouldn't returned value");
         // TC12: intersection point on one of the vertices(0 points)
         ray = new Ray(new Point(3,1,0), new Vector(1,1,0));
-        assertNull(triangle.findGeoIntersections(ray),"intersection point on one of the vertices shouldn't returned value");
+        assertNull(triangle.findIntersections(ray),"intersection point on one of the vertices shouldn't returned value");
         // TC13: intersection point on the continuation of one of the edges(0 points)
         ray = new Ray(new Point(3,1,0), new Vector(-3,1,4));
-        assertNull(triangle.findGeoIntersections(ray),"intersection point on the continuation of one of the edges shouldn't returned value");
+        assertNull(triangle.findIntersections(ray),"intersection point on the continuation of one of the edges shouldn't returned value");
     }
 
 }

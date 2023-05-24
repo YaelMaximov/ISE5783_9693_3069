@@ -11,6 +11,7 @@ public class SpotLight extends PointLight{
         super(intensity, position);
         this.direction = direction.normalize();
     }
+
     public Color getIntensity(Point p) throws IllegalAccessException {
         Color basic=super.getIntensity(p);
         double max=Math.max(0,direction.dotProduct(getL(p)));//maybe normalize needed
