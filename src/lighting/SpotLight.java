@@ -13,8 +13,8 @@ public class SpotLight extends PointLight{
     }
     public Color getIntensity(Point p) throws IllegalAccessException {
         Color basic=super.getIntensity(p);
-        double max=Math.max(0,direction.dotProduct(getL(p).normalize()));
+        double max=Math.max(0,direction.dotProduct(getL(p)));//maybe normalize needed
         Color IL=basic.scale(max);
-        return IL;
+        return IL;//all the functions it uses looks fine
     }
 }
