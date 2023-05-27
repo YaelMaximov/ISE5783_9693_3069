@@ -31,7 +31,7 @@ public class PointLight extends Light implements LightSource{
     }
     public Vector getL(Point p) throws IllegalAccessException {
         Vector L=p.subtract(position);
-        return L.normalize();//it is already normalized
+        return L.normalize();
     }
     public Color getIntensity(Point p) throws IllegalAccessException {
         double d=position.distance(p);
