@@ -90,7 +90,7 @@ public class Plane extends Geometry {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException  {
         Point P0=ray.getP0();
         Vector v=ray.getDir();
 
@@ -120,6 +120,25 @@ public class Plane extends Geometry {
             return null;
         }
         Point point=ray.getPoint(t);
-        return List.of(point);
+        return List.of(new GeoPoint(this, point));
     }
+//@Override
+//protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
+//    Point p0 = ray.getP0();
+//    ray.getDir().normalize();
+//    double nv = this.normal.dotProduct(ray.getDir());
+//    if (isZero(nv))//there is not any intersection
+//        return null;
+//    double t = normal.scale(-1).dotProduct(p0.subtract(p0).scale(1 / nv));
+//    if (isZero(t)) {//The  first point of the ray in the plan(0 point)
+//        return null;
+//    }
+//    if (t < 0) {//The first point of the ray in the plain(o point)
+//        return null;
+//    } else {
+//        ArrayList<GeoPoint> arrayList = new ArrayList<GeoPoint>();
+//        Point point = p0.add(ray.getDir().scale(t));
+//        arrayList.add(new GeoPoint(this, point));
+//        return arrayList;
+//    }
 }

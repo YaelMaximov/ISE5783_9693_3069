@@ -6,7 +6,7 @@ import primitives.Double3;
 /**
  * Represents an ambient light in a scene.
  */
-public class AmbientLight {
+public class AmbientLight extends Light {
     /**
      * A color representing no ambient light.
      */
@@ -17,7 +17,7 @@ public class AmbientLight {
      */
     public static final Double3 KA0 = Double3.ZERO;
 
-    private Color intensity;
+    //private Color intensity;
 
     /**
      * Constructs a new AmbientLight object with the given intensity and ambient reflection coefficient vector.
@@ -26,7 +26,7 @@ public class AmbientLight {
      * @param KA the ambient reflection coefficient vector
      */
     public AmbientLight(Color IA, Double3 KA) {
-        this.intensity = IA.scale(KA);
+        super(IA.scale(KA));
     }
 
     /**
@@ -36,7 +36,7 @@ public class AmbientLight {
      * @param KA the ambient reflection coefficient
      */
     public AmbientLight(Color IA, double KA) {
-        this.intensity = IA.scale(KA);
+        super(IA.scale(KA));
     }
 
     /**
@@ -44,7 +44,7 @@ public class AmbientLight {
      *
      * @return the intensity of the ambient light
      */
-    public Color getIntensity() {
-        return intensity;
-    }
+    //public Color getIntensity() {
+    //    return intensity;
+    //}
 }

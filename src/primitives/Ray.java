@@ -1,5 +1,8 @@
 package primitives;
 
+import geometries.Geometries;
+import geometries.Intersectable;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -61,18 +64,18 @@ public class Ray {
         return Objects.equals(p0, ray.p0) && Objects.equals(dir, ray.dir);
     }
 
-    public Point findClosestPoint(List<Point> pointList)
+    public Intersectable.GeoPoint findClosestGeoPoint(List<Intersectable.GeoPoint> pointList)
     {
         if(pointList.isEmpty())
         {
             return null;
         }
-        Point minPoint=new Point(pointList.get(0).xyz);
-        double min=p0.distance(pointList.get(0));
+        Intersectable.GeoPoint minPoint=new Intersectable.GeoPoint(pointList.get(0).geometry,pointList.get(0).point);
+        double min=p0.distance(pointList.get(0).point);
         double d;
-        for (Point pl:pointList)
+        for (Intersectable.GeoPoint pl:pointList)
         {
-            d=p0.distance(pl);
+            d=p0.distance(pl.point);
             if(d<min)
             {
                 minPoint=pl;

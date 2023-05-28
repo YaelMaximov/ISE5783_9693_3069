@@ -64,9 +64,4 @@ public class Tube extends RadialGeometry {
     public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
         return null;
     }
-
-    @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
-        return null;
-    }
 }

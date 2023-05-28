@@ -11,11 +11,11 @@ public class DirectionalLight extends Light implements LightSource{
         super(intensity);
         this.direction = direction.normalize();
     }
-    public Vector getL(Point p) {
-        return direction;
+    public Vector getL(Point p) throws  IllegalAccessException {
+        return direction.normalize();
     }
     public Color getIntensity(Point p){
-        return getIntensity();
+        return super.getIntensity();
 
     }
 

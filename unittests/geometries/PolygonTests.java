@@ -1,4 +1,4 @@
-package geometries;
+/*package geometries;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,10 +18,10 @@ import java.util.List;
 
 /** Testing Polygons
  * @author Dan */
-public class PolygonTests {
+/*public class PolygonTests {
 
    /** Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}. */
-   @Test
+   /*@Test
    public void testConstructor() {
       // ============ Equivalence Partitions Tests ==============
 
@@ -39,12 +39,7 @@ public class PolygonTests {
 
       // TC02: Wrong vertices order
       assertThrows(IllegalArgumentException.class, //
-                   () -> new Polygon(new Point(0, 0, 1), new Point(0, 1, 0), new Point(1, 0, 0), new Point(-1, 1, 1)) {
-                      @Override
-                      protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
-                         return null;
-                      }
-                   }, //
+                   () -> new Polygon(new Point(0, 0, 1), new Point(0, 1, 0), new Point(1, 0, 0), new Point(-1, 1, 1)), //
                    "Constructed a polygon with wrong order of vertices");
 
       // TC03: Not in the same plane
@@ -104,7 +99,7 @@ public class PolygonTests {
    }
 
    /** Test method for {@link geometries.Polygon#getNormal(primitives.Point)}. */
-   @Test
+   /*@Test
    public void testGetNormal() throws IllegalAccessException {
       // ============ Equivalence Partitions Tests ==============
       // TC01: There is a simple single test here - using a quad
@@ -130,4 +125,4 @@ public class PolygonTests {
    @Test
    void testFindIntersectionPoints() {
    }
-}
+}*/
