@@ -60,7 +60,7 @@ public class RayTracerBasic extends RayTracerBase {
     }
     private Double3 calcSpecular(Material material,Vector n,Vector l,double nl,Vector v) throws IllegalAccessException {
         //r = l − 2 ∙ (l ∙ n )∙ n
-        Vector r=l.subtract(l.crossProduct(n).crossProduct(n).scale(2));
+        Vector r=l.subtract(n.scale(nl*2)).normalize();//stoped here
         //ks*(max(0,-v*r))^nsh)
         return material.kS.scale(Math.pow(Math.max(0,v.scale(-1).dotProduct(r)),material.nShininess));
     }
@@ -69,7 +69,7 @@ public class RayTracerBasic extends RayTracerBase {
         Vector v = ray.getDir ();
         Vector n = gp.geometry.getNormal(gp.point);
         double nv = alignZero(n.dotProduct(v));
-        if (nv == 0) {
+        if (nv ==0) {
             return color;
         }
         Material material = gp.geometry.getMaterial();
@@ -79,8 +79,8 @@ public class RayTracerBasic extends RayTracerBase {
             double nl = alignZero(n.dotProduct(l));
             //* nv
             if (nl* nv >0) { // sign(nl) == sing(nv)
-                Color iL = lightSource.getIntensity(gp.point);
-                color = color.add(iL.scale(calcDiffusive(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));
+                Color iL = lightSource.getIntensity(gp.point);//check what happends here
+                color = color.add(iL.scale(calcDiffusive(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));//check what is the effect of each of them
             }
         }
         return color;
