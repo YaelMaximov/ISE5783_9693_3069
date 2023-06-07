@@ -70,7 +70,7 @@ public class ShadowTests {
    public void sphereTriangleSpot1() throws IllegalAccessException {
       sphereTriangleHelper("shadowSphereTriangleSpot1", //
                            new Triangle(new Point(-70, -40, 0), new Point(-40, -70, 0), new Point(-68, -68, -4)), //
-                           new Point(-88, -88, 120));
+                           new Point(-100, -100, 200));
    }
 
    /** Sphere-Triangle shading - move spot even more close */
@@ -78,7 +78,7 @@ public class ShadowTests {
    public void sphereTriangleSpot2() throws IllegalAccessException {
       sphereTriangleHelper("shadowSphereTriangleSpot2", //
                            new Triangle(new Point(-70, -40, 0), new Point(-40, -70, 0), new Point(-68, -68, -4)), //
-                           new Point(-76, -76, 70));
+                           new Point(-100, -100, 250));
    }
 
    /** Produce a picture of a two triangles lighted by a spot light with a Sphere

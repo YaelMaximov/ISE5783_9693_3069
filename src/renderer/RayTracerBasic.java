@@ -88,21 +88,48 @@ public class RayTracerBasic extends RayTracerBase {
         }
         return color;
     }
-    private boolean unshaded(GeoPoint gp, Vector l, Vector n,LightSource light) throws IllegalAccessException {
+    /**
+     * Determines whether a given point is unshaded by a light source in the scene.
+     * The point is considered unshaded if there are no intersections between the point and the light source.
+     *
+     * @param gp     The GeoPoint representing the point to be checked for shading.
+     * @param l      The direction vector from the light source to the point.
+     * @param n      The normal vector at the point.
+     * @param light  The LightSource to check for shading.
+     * @return       {@code true} if the point is unshaded by the light source, {@code false} otherwise.
+     * @throws IllegalAccessException if an illegal access exception occurs during the calculation.
+     */
+    private boolean unshaded(GeoPoint gp, Vector l, Vector n, LightSource light) throws IllegalAccessException {
+        // Compute the opposite direction of the light vector
         Vector lightDirection = l.scale(-1);
-        Vector epsVector = n.scale(n.dotProduct(lightDirection)> 0? DELTA:-DELTA);
-        Point point=gp.point.add(epsVector);
-        Ray lightRay =new Ray(point,lightDirection);
+
+        // Calculate an epsilon vector to slightly move the point in the direction of the normal
+        Vector epsVector = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
+
+        // Move the point slightly in the direction of the normal
+        Point point = gp.point.add(epsVector);
+
+        // Create a ray from the adjusted point towards the light source
+        Ray lightRay = new Ray(point, lightDirection);
+
+        // Find intersections between the light ray and the geometries in the scene
         List<Point> intersection = scene.geometries.findIntersections(lightRay);
-        if (intersection ==null) return true;
-        for(Point point1: intersection){
-            double d=point1.distance(lightRay.getP0());
-            if(d<light.getDistance(point1))
+
+        // If there are no intersections, the point is unshaded
+        if (intersection == null)
+            return true;
+
+        // Check if any intersection point is closer to the light source than the current point
+        for (Point point1 : intersection) {
+            double d = point1.distance(lightRay.getP0());
+            if (d < light.getDistance(point1))
                 return false;
         }
-        return true;
 
+        // If no closer intersection point is found, the point is unshaded
+        return true;
     }
+
 
 }
 
