@@ -47,23 +47,14 @@ public class Geometries extends Intersectable {
 //            return null;
 //        }
     public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
-        List<GeoPoint> Intersections = null;
-        boolean created = false;
+        List<GeoPoint> Intersections =null;
         for (Intersectable geometry : intersectables) {
-            if (geometry.findGeoIntersectionsHelper(ray) != null) {
-                if (!created) {
-                    Intersections = geometry.findGeoIntersectionsHelper(ray);
-                    created = true;
-                } else {
-                    Intersections.addAll(geometry.findGeoIntersectionsHelper(ray));
-                }
+            var temp = geometry.findGeoIntersections(ray);
+            if (temp != null){
+                if (Intersections == null) Intersections = new LinkedList<>();
+                Intersections.addAll(temp);
             }
         }
-        if (created) {
-            return Intersections;
-        }
-        return null;
+        return Intersections;
     }
-
-
 }

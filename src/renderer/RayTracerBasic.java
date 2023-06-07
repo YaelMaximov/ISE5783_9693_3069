@@ -15,6 +15,7 @@ import static primitives.Util.alignZero;
  * A basic implementation of a RayTracer.
  */
 public class RayTracerBasic extends RayTracerBase {
+    private static final double DELTA = 0.1;
 
     /**
      * Constructs a new RayTracerBasic object with the given scene.
@@ -52,7 +53,7 @@ public class RayTracerBasic extends RayTracerBase {
      * @return the color of the point using the scene's ambient light
      */
     private Color calcColor(GeoPoint gp,Ray ray) throws IllegalAccessException {
-        return   scene.ambientLight.getIntensity().add(calcLocalEffects(gp,ray));
+        return   scene.ambientLight.getIntensity().add(gp.geometry.getEmission()).add(calcLocalEffects(gp,ray));
     }
     private Double3 calcDiffusive(Material material,double nl){
         //kd*|l*n|
@@ -79,11 +80,28 @@ public class RayTracerBasic extends RayTracerBase {
             double nl = alignZero(n.dotProduct(l));
             //* nv
             if (nl* nv >0) { // sign(nl) == sing(nv)
+                if(unshaded(gp,l,n,lightSource)){
                 Color iL = lightSource.getIntensity(gp.point);//check what happends here
                 color = color.add(iL.scale(calcDiffusive(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));//check what is the effect of each of them
             }
+          }
         }
         return color;
+    }
+    private boolean unshaded(GeoPoint gp, Vector l, Vector n,LightSource light) throws IllegalAccessException {
+        Vector lightDirection = l.scale(-1);
+        Vector epsVector = n.scale(n.dotProduct(lightDirection)> 0? DELTA:-DELTA);
+        Point point=gp.point.add(epsVector);
+        Ray lightRay =new Ray(point,lightDirection);
+        List<Point> intersection = scene.geometries.findIntersections(lightRay);
+        if (intersection ==null) return true;
+        for(Point point1: intersection){
+            double d=point1.distance(lightRay.getP0());
+            if(d<light.getDistance(point1))
+                return false;
+        }
+        return true;
+
     }
 
 }
