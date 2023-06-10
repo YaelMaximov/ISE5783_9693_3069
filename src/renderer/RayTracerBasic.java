@@ -16,6 +16,9 @@ import static primitives.Util.alignZero;
  */
 public class RayTracerBasic extends RayTracerBase {
 
+    private static final double DELTA = 0.1;
+
+
     /**
      * Constructs a new RayTracerBasic object with the given scene.
      *
@@ -46,13 +49,9 @@ public class RayTracerBasic extends RayTracerBase {
         return calcColor(closestPoint,ray);
     }
 
-    /**
-     * Calculates the color of the given point using the scene's ambient light.
-     * @param gp the point to calculate the color for
-     * @return the color of the point using the scene's ambient light
-     */
-    private Color calcColor(GeoPoint gp,Ray ray) throws IllegalAccessException {
-        return   scene.ambientLight.getIntensity().add(calcLocalEffects(gp,ray));
+    private Color calcColor(GeoPoint closesPoint, Ray ray) throws IllegalAccessException {
+        // point.geometry.setEmission(scene.ambientLight.getIntensity());
+        return scene.ambientLight.getIntensity().add(closesPoint.geometry.getEmission()).add(calcLocalEffects(closesPoint, ray));
     }
     private Double3 calcDiffusive(Material material,double nl){
         //kd*|l*n|
@@ -64,26 +63,51 @@ public class RayTracerBasic extends RayTracerBase {
         //ks*(max(0,-v*r))^nsh)
         return material.kS.scale(Math.pow(Math.max(0,v.scale(-1).dotProduct(r)),material.nShininess));
     }
-    private Color calcLocalEffects(Intersectable.GeoPoint gp, Ray ray) throws IllegalAccessException {
+    private Color calcLocalEffects(GeoPoint gp, Ray ray) throws IllegalAccessException {
         Color color = gp.geometry.getEmission();
-        Vector v = ray.getDir ();
-        Vector n = gp.geometry.getNormal(gp.point);
+        Vector v = ray.getDir().normalize();
+        Vector n = gp.geometry.getNormal(gp.point).normalize();
         double nv = alignZero(n.dotProduct(v));
-        if (nv ==0) {
-            return color;
-        }
-        Material material = gp.geometry.getMaterial();
-
+        if (nv == 0) return color;
+        Material mat = gp.geometry.getMaterial();
         for (LightSource lightSource : scene.lights) {
-            Vector l = lightSource.getL(gp.point);
+            Vector l = lightSource.getL(gp.point).normalize();
             double nl = alignZero(n.dotProduct(l));
-            //* nv
-            if (nl* nv >0) { // sign(nl) == sing(nv)
-                Color iL = lightSource.getIntensity(gp.point);//check what happends here
-                color = color.add(iL.scale(calcDiffusive(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));//check what is the effect of each of them
+            if (nl * nv > 0) { // sign(nl) == sing(nv)
+                if ((unshaded( lightSource,l, n,gp))) {
+                    Color iL = lightSource.getIntensity(gp.point);
+                    try {
+                        color = color.add(iL.scale(calcDiffusive(mat, nl)),
+                                iL.scale(calcSpecular(mat, n, l, nl, v)));
+                    } catch (Exception e) {
+                        color = color.add(iL.scale(calcDiffusive(mat, nl).scale(-1.d)),
+                                iL.scale(calcSpecular(mat, n, l, nl, v)));
+                    }
+                }
             }
+
         }
         return color;
     }
+
+
+
+    private boolean unshaded(LightSource light,Vector l, Vector n, GeoPoint gp) throws IllegalAccessException {
+        Vector lightDirection = l.scale(-1); // from point to light source
+        Vector epsVector = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
+        Point point = gp.point.add(epsVector);
+        Ray lightRay = new Ray(point, lightDirection);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay/*, gp.point.distance(lightRay.getP0())*/);
+                                                                                                          if (intersections == null) return true;
+        for (GeoPoint geo : intersections) {
+            double d = geo.point.distance(lightRay.getP0());
+            if (d > light.getDistance(geo.point))
+                //if (gp.geometry.getMaterial().kT.equals(0))
+                    return false;
+        }
+        return true;
+
+    }
+
 
 }

@@ -19,6 +19,7 @@ public interface LightSource {
      * @throws IllegalAccessException
      */
     public Vector getL(Point p) throws IllegalAccessException;
+    double getDistance(Point point);
 
 
 

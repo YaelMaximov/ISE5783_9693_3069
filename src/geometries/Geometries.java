@@ -1,8 +1,6 @@
 package geometries;
 
-import primitives.Point;
 import primitives.Ray;
-import primitives.Vector;
 
 
 import java.util.Arrays;
@@ -46,16 +44,16 @@ public class Geometries extends Intersectable {
 //        } else {
 //            return null;
 //        }
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException {
         List<GeoPoint> Intersections = null;
         boolean created = false;
         for (Intersectable geometry : intersectables) {
-            if (geometry.findGeoIntersectionsHelper(ray) != null) {
+            if (geometry.findGeoIntersectionsHelper(ray, maxDistance) != null) {
                 if (!created) {
-                    Intersections = geometry.findGeoIntersectionsHelper(ray);
+                    Intersections = geometry.findGeoIntersectionsHelper(ray,maxDistance);
                     created = true;
                 } else {
-                    Intersections.addAll(geometry.findGeoIntersectionsHelper(ray));
+                    Intersections.addAll(geometry.findGeoIntersectionsHelper(ray, maxDistance));
                 }
             }
         }

@@ -80,7 +80,7 @@ public class Sphere extends RadialGeometry {
 //            return List.of(ray.getP0().add(ray.getDir().scale(t2)));// לא נכון לבדוק שוב
 //    }
     @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException {
         Point p0 = ray.getP0();
         Vector v = ray.getDir();
         Vector u;

@@ -22,8 +22,8 @@ public class Triangle extends Polygon {
         super(p1,p2,p3);
     }
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
-        if(this.plane.findGeoIntersectionsHelper(ray)==null){
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException {
+        if(this.plane.findGeoIntersectionsHelper(ray, maxDistance)==null){
             return null;
         };
 
@@ -44,10 +44,10 @@ public class Triangle extends Polygon {
         if((n1v==0)||(n2v==0)||(n3v==0)){
             return null;
         } else if ((n1v>0)&&(n2v>0)&&(n3v>0)) {
-            Point point = plane.findGeoIntersectionsHelper(ray).get(0).point;
+            Point point = plane.findGeoIntersectionsHelper(ray, maxDistance).get(0).point;
             return  List.of(new GeoPoint(this, point));
         } else if ((n1v<0)&&(n2v<0)&&(n3v<0)) {
-            Point point = plane.findGeoIntersectionsHelper(ray).get(0).point;
+            Point point = plane.findGeoIntersectionsHelper(ray, maxDistance).get(0).point;
             return  List.of(new GeoPoint(this, point));
         }
         else{

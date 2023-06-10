@@ -91,7 +91,7 @@ public abstract class Polygon extends Geometry {
    }
 
    @Override
-   public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
+   public List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) throws IllegalAccessException {
       return null;
    }
 }
