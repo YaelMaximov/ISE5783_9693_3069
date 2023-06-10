@@ -21,10 +21,10 @@ public class LightsTests {
             .setAmbientLight(new AmbientLight(new Color(WHITE), new Double3(0.15)));
 
     private final Camera camera1 = new Camera(new Point(0, 0, 1000),
-             new Vector(0, 1, 0),new Vector(0, 0, -1))
+            new Vector(0, 1, 0), new Vector(0, 0, -1))
             .setVPSize(150, 150).setVPDistance(1000);
     private final Camera camera2 = new Camera(new Point(0, 0, 1000),
-            new Vector(0, 1, 0),new Vector(0, 0, -1))
+            new Vector(0, 1, 0), new Vector(0, 0, -1))
             .setVPSize(200, 200).setVPDistance(1000);
 
     private static final int SHININESS = 301;
@@ -58,17 +58,17 @@ public class LightsTests {
     private final Point trianglesLightPosition = new Point(30, 10, -100);
     private final Vector trianglesLightDirection = new Vector(-2, -2, -2);
 
-    private final Geometry sphere = new Sphere(SPHERE_RADIUS,sphereCenter)
+    private final Geometry sphere = new Sphere(SPHERE_RADIUS, sphereCenter)
             .setEmission(sphereColor).setMaterial(new Material().setkD(KD).setkS(KS).setnShininess(SHININESS));
     private final Geometry triangle1 = new Triangle(vertices[0], vertices[1], vertices[2])
             .setMaterial(material);
     private final Geometry triangle2 = new Triangle(vertices[0], vertices[1], vertices[3])
             .setMaterial(material);
 
-   public LightsTests() throws IllegalAccessException {
-   }
+    public LightsTests() throws IllegalAccessException {
+    }
 
-   /**
+    /**
      * Produce a picture of a sphere lighted by a directional light
      */
     @Test
@@ -117,6 +117,25 @@ public class LightsTests {
     }
 
     /**
+     * Produce a picture of a sphere lighted by all the lights
+     */
+    @Test
+    public void sphereAllLights() throws IllegalAccessException {
+
+        scene1.geometries.add(sphere);
+        scene1.lights.add(new DirectionalLight(new Color(500, 200, 100), new Vector(1, 0, 0.5)));//purple
+        scene1.lights.add(new PointLight(new Color(800, 600, 0), new Point(80, -60, 25)).setkL(0.001).setkQ(0.0002));//yellow
+        scene1.lights.add(new SpotLight(new Color(300, 800, 0), new Point(90, 80, 25), new Vector(-1, -1, -0.5))
+                .setkL(0.01).setkQ(0.0001));//green-blue
+
+        ImageWriter imageWriter = new ImageWriter("sphereAllLights", 500, 500);
+        camera1.setImageWriter(imageWriter) //
+                .setRayTracer(new RayTracerBasic(scene1)) //
+                .renderImage() //
+                .writeToImage(); //
+    }
+
+    /**
      * Produce a picture of two triangles lighted by a directional light
      */
     @Test
@@ -157,6 +176,24 @@ public class LightsTests {
                 .setkL(0.001).setkQ(0.0001));
 
         ImageWriter imageWriter = new ImageWriter("lightTrianglesSpot", 500, 500);
+        camera2.setImageWriter(imageWriter) //
+                .setRayTracer(new RayTracerBasic(scene2)) //
+                .renderImage() //
+                .writeToImage(); //
+    }
+    /**
+     * Produce a picture of two triangles lighted by a spotlight
+     */
+    @Test
+    public void trianglesAllLights() throws IllegalAccessException {
+        scene2.geometries.add(triangle1, triangle2);
+        scene2.lights.add(new DirectionalLight(new Color(50,0,100), new Vector(1, 1, -0.5)));
+        scene2.lights.add(new PointLight(new Color(800,100,300), new Point(-10,-70,-110))
+                .setkL(0.001).setkQ(0.0002));//red-purple
+        scene2.lights.add(new SpotLight(new Color(150,200,800), new Point(40,0,-100), new Vector(-2,1,-2))
+                .setkL(0.001).setkQ(0.0001));//blue
+
+        ImageWriter imageWriter = new ImageWriter("TrianglesAllLights", 500, 500);
         camera2.setImageWriter(imageWriter) //
                 .setRayTracer(new RayTracerBasic(scene2)) //
                 .renderImage() //

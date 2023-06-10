@@ -15,8 +15,9 @@ import static primitives.Util.alignZero;
  * A basic implementation of a RayTracer.
  */
 public class RayTracerBasic extends RayTracerBase {
-
     private static final double DELTA = 0.1;
+    private static final int MAX_CALC_COLOR_LEVEL = 10;
+    private static final double MIN_CALC_COLOR_K = 0.001;
 
 
     /**
@@ -49,9 +50,13 @@ public class RayTracerBasic extends RayTracerBase {
         return calcColor(closestPoint,ray);
     }
 
-    private Color calcColor(GeoPoint closesPoint, Ray ray) throws IllegalAccessException {
-        // point.geometry.setEmission(scene.ambientLight.getIntensity());
-        return scene.ambientLight.getIntensity().add(closesPoint.geometry.getEmission()).add(calcLocalEffects(closesPoint, ray));
+    /**
+     * Calculates the color of the given point using the scene's ambient light.
+     * @param gp the point to calculate the color for
+     * @return the color of the point using the scene's ambient light
+     */
+    private Color calcColor(GeoPoint gp,Ray ray) throws IllegalAccessException {
+        return   scene.ambientLight.getIntensity().add(gp.geometry.getEmission()).add(calcLocalEffects(gp,ray));
     }
     private Double3 calcDiffusive(Material material,double nl){
         //kd*|l*n|
@@ -63,51 +68,71 @@ public class RayTracerBasic extends RayTracerBase {
         //ks*(max(0,-v*r))^nsh)
         return material.kS.scale(Math.pow(Math.max(0,v.scale(-1).dotProduct(r)),material.nShininess));
     }
-    private Color calcLocalEffects(GeoPoint gp, Ray ray) throws IllegalAccessException {
+    private Color calcLocalEffects(Intersectable.GeoPoint gp, Ray ray) throws IllegalAccessException {
         Color color = gp.geometry.getEmission();
-        Vector v = ray.getDir().normalize();
-        Vector n = gp.geometry.getNormal(gp.point).normalize();
+        Vector v = ray.getDir ();
+        Vector n = gp.geometry.getNormal(gp.point);
         double nv = alignZero(n.dotProduct(v));
-        if (nv == 0) return color;
-        Material mat = gp.geometry.getMaterial();
-        for (LightSource lightSource : scene.lights) {
-            Vector l = lightSource.getL(gp.point).normalize();
-            double nl = alignZero(n.dotProduct(l));
-            if (nl * nv > 0) { // sign(nl) == sing(nv)
-                if ((unshaded( lightSource,l, n,gp))) {
-                    Color iL = lightSource.getIntensity(gp.point);
-                    try {
-                        color = color.add(iL.scale(calcDiffusive(mat, nl)),
-                                iL.scale(calcSpecular(mat, n, l, nl, v)));
-                    } catch (Exception e) {
-                        color = color.add(iL.scale(calcDiffusive(mat, nl).scale(-1.d)),
-                                iL.scale(calcSpecular(mat, n, l, nl, v)));
-                    }
-                }
-            }
+        if (nv ==0) {
+            return color;
+        }
+        Material material = gp.geometry.getMaterial();
 
+        for (LightSource lightSource : scene.lights) {
+            Vector l = lightSource.getL(gp.point);
+            double nl = alignZero(n.dotProduct(l));
+            //* nv
+            if (nl* nv >0) { // sign(nl) == sing(nv)
+                if(unshaded(gp,l,n,lightSource)){
+                Color iL = lightSource.getIntensity(gp.point);//check what happends here
+                color = color.add(iL.scale(calcDiffusive(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));//check what is the effect of each of them
+            }
+          }
         }
         return color;
     }
+    /**
+     * Determines whether a given point is unshaded by a light source in the scene.
+     * The point is considered unshaded if there are no intersections between the point and the light source.
+     *
+     * @param gp     The GeoPoint representing the point to be checked for shading.
+     * @param l      The direction vector from the light source to the point.
+     * @param n      The normal vector at the point.
+     * @param light  The LightSource to check for shading.
+     * @return       {@code true} if the point is unshaded by the light source, {@code false} otherwise.
+     * @throws IllegalAccessException if an illegal access exception occurs during the calculation.
+     */
+    private boolean unshaded(GeoPoint gp, Vector l, Vector n, LightSource light) throws IllegalAccessException {
+        // Compute the opposite direction of the light vector
+        Vector lightDirection = l.scale(-1);
 
-
-
-    private boolean unshaded(LightSource light,Vector l, Vector n, GeoPoint gp) throws IllegalAccessException {
-        Vector lightDirection = l.scale(-1); // from point to light source
+        // Calculate an epsilon vector to slightly move the point in the direction of the normal
         Vector epsVector = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
-        Point point = gp.point.add(epsVector);
-        Ray lightRay = new Ray(point, lightDirection);
-        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay/*, gp.point.distance(lightRay.getP0())*/);
-                                                                                                          if (intersections == null) return true;
-        for (GeoPoint geo : intersections) {
-            double d = geo.point.distance(lightRay.getP0());
-            if (d > light.getDistance(geo.point))
-                //if (gp.geometry.getMaterial().kT.equals(0))
-                    return false;
-        }
-        return true;
 
+        // Move the point slightly in the direction of the normal
+        Point point = gp.point.add(epsVector);
+
+        // Create a ray from the adjusted point towards the light source
+        Ray lightRay = new Ray(point, lightDirection);
+
+        // Find intersections between the light ray and the geometries in the scene
+        List<Point> intersection = scene.geometries.findIntersections(lightRay);
+
+        // If there are no intersections, the point is unshaded
+        if (intersection == null)
+            return true;
+
+        // Check if any intersection point is closer to the light source than the current point
+        for (Point point1 : intersection) {
+            double d = point1.distance(lightRay.getP0());
+            if (d < light.getDistance(point1))
+                return false;
+        }
+
+        // If no closer intersection point is found, the point is unshaded
+        return true;
     }
 
 
 }
+

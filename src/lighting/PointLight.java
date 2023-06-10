@@ -46,5 +46,8 @@ public class PointLight extends Light implements LightSource{
         return IL;//all the functions it uses looks fine
 
     }
+    public double getDistance(Point point){
+       return point.distance(position);
+    }
 
 }
