@@ -10,6 +10,7 @@ import geometries.Intersectable.GeoPoint;
 import java.util.List;
 
 import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * A basic implementation of a RayTracer.
@@ -39,13 +40,13 @@ public class RayTracerBasic extends RayTracerBase {
     @Override
     public Color traceRay(Ray ray) throws IllegalAccessException {
         // Find intersections of the ray with objects in the scene
-        List<Intersectable.GeoPoint> list = scene.geometries.findGeoIntersections(ray);
-        if (list == null) {
-            // If there are no intersections, return the background color of the scene
-            return scene.background;
-        }
-        // Find the closest intersection point
-        Intersectable.GeoPoint closestPoint = ray.findClosestGeoPoint(list);
+//        List<Intersectable.GeoPoint> list = scene.geometries.findGeoIntersections(ray);
+//        if (list == null) {
+//            // If there are no intersections, return the background color of the scene
+//            return scene.background;
+//        }
+//        // Find the closest intersection point
+        Intersectable.GeoPoint closestPoint = findClosestIntersection(ray);
         // Calculate the color of the point using the scene's ambient light
         return calcColor(closestPoint,ray);
     }
@@ -55,8 +56,31 @@ public class RayTracerBasic extends RayTracerBase {
      * @param gp the point to calculate the color for
      * @return the color of the point using the scene's ambient light
      */
-    private Color calcColor(GeoPoint gp,Ray ray) throws IllegalAccessException {
-        return   scene.ambientLight.getIntensity().add(gp.geometry.getEmission()).add(calcLocalEffects(gp,ray));
+//    private Color calcColor(GeoPoint gp,Ray ray) throws IllegalAccessException {
+//        return   scene.ambientLight.getIntensity().add(gp.geometry.getEmission()).add(calcLocalEffects(gp,ray));
+//    }
+    private Color calcGlobalEffects(GeoPoint gp, Ray ray,
+                                    int level, Double3 k) throws IllegalAccessException {
+        Color color = Color.BLACK;
+        Vector v = ray.getDir();
+        Vector n = gp.geometry.getNormal(gp.point);
+        Material material = gp.geometry.getMaterial();
+        return calcColorGLobalEffect(constructReflectedRay(gp, v, n),level, k, material.kR).add(calcColorGLobalEffect(constructRefractedRay(gp, v, n),level, k, material.kT));}
+    private Color calcColorGLobalEffect(Ray ray, int level, Double3 k, Double3 kx) throws IllegalAccessException {Double3 kkx = k.product(kx);
+        if (kkx.lowerThan(MIN_CALC_COLOR_K)) return Color.BLACK;
+        GeoPoint gp = findClosestIntersection(ray);
+        if (gp == null) return scene.background.scale(kx);
+        return isZero(gp.geometry.getNormal(gp.point).dotProduct(ray.getDir()))? Color.BLACK : calcColor(gp, ray,
+                level - 1, kkx).scale(kx);}
+    private Color calcColor(GeoPoint intersection, Ray ray) throws IllegalAccessException {
+        Color color = scene.ambientLight.getIntensity()
+                .add(calcLocalEffects(intersection, ray));
+    }
+    //original
+    private Color calcColor(GeoPoint intersection, Ray ray,int level, double k) throws IllegalAccessException {
+        Color color = calcLocalEffects(intersection, ray);
+        return 1 == level ? color
+                : color.add(calcGlobalEffects(intersection, ray, level, k));
     }
     private Double3 calcDiffusive(Material material,double nl){
         //kd*|l*n|
@@ -132,6 +156,40 @@ public class RayTracerBasic extends RayTracerBase {
         // If no closer intersection point is found, the point is unshaded
         return true;
     }
+    private Ray constructReflectedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
+        // Compute the opposite direction of the light vector
+        Vector rayDir = v.scale(-1);
+
+        // Calculate an epsilon vector to slightly move the point in the direction of the normal
+        Vector epsVector = n.scale(n.dotProduct(rayDir) > 0 ? DELTA : -DELTA);
+
+        // Move the point slightly in the direction of the normal
+        Point point = gp.point.add(epsVector);
+
+        return new Ray(point,v);
+
+    }
+    private Ray constructRefractedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
+        double nv = alignZero(n.dotProduct(v));
+        Vector r=v.subtract(n.scale(nv*2)).normalize();
+        // Compute the opposite direction of the light vector
+        Vector rayDir = r.scale(-1);
+
+        // Calculate an epsilon vector to slightly move the point in the direction of the normal
+        Vector epsVector = n.scale(n.dotProduct(rayDir) > 0 ? DELTA : -DELTA);
+
+        // Move the point slightly in the direction of the normal
+        Point point = gp.point.add(epsVector);
+        return  new Ray(point,r);
+    }
+    private GeoPoint findClosestIntersection(Ray ray) throws IllegalAccessException {
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);
+        if(intersections.size()==0)
+            return null;
+        GeoPoint closestPoint = ray.findClosestGeoPoint(intersections);
+        return closestPoint;
+    }
+
 
 
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7-stated step 2">
+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
     </list>
@@ -304,7 +304,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1686158510391</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL‎-00022" summary="PRO7-stated step 2">
+      <created>1686562746504</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL‎-00022" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686562746504</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -348,7 +355,8 @@
     <MESSAGE value="PRO 7-some of the pictures works fine" />
     <MESSAGE value="PRO 7.1" />
     <MESSAGE value="PRO7-stated step 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="PRO7-stated step 2" />
+    <MESSAGE value="PRO7- 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="PRO7- 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
