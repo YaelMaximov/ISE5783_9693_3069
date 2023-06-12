@@ -84,7 +84,7 @@ public class RayTracerBasic extends RayTracerBase {
             //* nv
             if (nl* nv >0) { // sign(nl) == sing(nv)
                 if(unshaded(gp,l,n,lightSource)){
-                Color iL = lightSource.getIntensity(gp.point);//check what happends here
+                Color iL = lightSource.getIntensity(gp.point);
                 color = color.add(iL.scale(calcDiffusive(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));//check what is the effect of each of them
             }
           }
