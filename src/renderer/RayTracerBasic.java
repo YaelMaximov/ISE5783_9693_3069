@@ -18,6 +18,7 @@ import static primitives.Util.isZero;
 public class RayTracerBasic extends RayTracerBase {
     private static final double DELTA = 0.1;
     private static final int MAX_CALC_COLOR_LEVEL = 10;
+    private static final double INITIAL_K = 1.0;
     private static final double MIN_CALC_COLOR_K = 0.001;
 
 
@@ -73,7 +74,7 @@ public class RayTracerBasic extends RayTracerBase {
     }
     private Color calcColor(GeoPoint intersection, Ray ray) throws IllegalAccessException {
         //non recursive
-        return calcColor(intersection, ray,MAX_CALC_COLOR_LEVEL,new Double3(MIN_CALC_COLOR_K)).
+        return calcColor(intersection, ray,MAX_CALC_COLOR_LEVEL,new Double3(INITIAL_K)).
                 add(scene.ambientLight.getIntensity());
 
     }
@@ -129,7 +130,8 @@ public class RayTracerBasic extends RayTracerBase {
      * @throws IllegalAccessException if an illegal access exception occurs during the calculation.
      */
     private boolean unshaded(GeoPoint gp, Vector l, Vector n, LightSource light) throws IllegalAccessException {
-         if(gp.geometry.getMaterial().kT== Double3.ZERO){
+        //if it is not transparent than check the shadows else -if it is transparent return that there is no shadow
+         if (gp.geometry.getMaterial().kT== Double3.ZERO){
             // Compute the opposite direction of the light vector
             Vector lightDirection = l.scale(-1);
 
@@ -175,19 +177,6 @@ public class RayTracerBasic extends RayTracerBase {
         return material.kS.scale(Math.pow(Math.max(0,v.scale(-1).dotProduct(r)),material.nShininess));
     }
     private Ray constructReflectedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
-        // Compute the opposite direction of the light vector
-        Vector rayDir = v.scale(-1);
-
-        // Calculate an epsilon vector to slightly move the point in the direction of the normal
-        Vector epsVector = n.scale(n.dotProduct(rayDir) > 0 ? DELTA : -DELTA);
-
-        // Move the point slightly in the direction of the normal
-        Point point = gp.point.add(epsVector);
-
-        return new Ray(point,v);
-
-    }
-    private Ray constructRefractedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
         double nv = alignZero(n.dotProduct(v));
         Vector r=v.subtract(n.scale(nv*2)).normalize();
         // Compute the opposite direction of the light vector
@@ -199,11 +188,29 @@ public class RayTracerBasic extends RayTracerBase {
         // Move the point slightly in the direction of the normal
         Point point = gp.point.add(epsVector);
         return  new Ray(point,r);
+
+
+    }
+    private Ray constructRefractedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
+        // Compute the opposite direction of the light vector
+        Vector rayDir = v.scale(-1);
+
+        // Calculate an epsilon vector to slightly move the point in the direction of the normal
+        Vector epsVector = n.scale(n.dotProduct(rayDir) > 0 ? DELTA : -DELTA);
+
+        // Move the point slightly in the direction of the normal
+        Point point = gp.point.add(epsVector);
+
+        return new Ray(point,v);
     }
     private GeoPoint findClosestIntersection(Ray ray) throws IllegalAccessException {
         List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);
         if(intersections==null)
             return null;
+        if(intersections.size()==2)
+        { GeoPoint closestPoint = ray.findClosestGeoPoint(intersections);
+            return closestPoint;
+        }
         GeoPoint closestPoint = ray.findClosestGeoPoint(intersections);
         return closestPoint;
     }

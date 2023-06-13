@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- 2">
-      <change afterPath="$PROJECT_DIR$/unittests/renderer/ReflectionRefractionTests.java" afterDir="false" />
+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- added ReflectionRefractionTests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
     </list>
@@ -318,7 +317,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1686588801171</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL‎-00024" summary="PRO7- added ReflectionRefractionTests">
+      <created>1686595192779</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL‎-00024" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686595192779</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -363,7 +369,8 @@
     <MESSAGE value="PRO 7.1" />
     <MESSAGE value="PRO7-stated step 2" />
     <MESSAGE value="PRO7- 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="PRO7- 2" />
+    <MESSAGE value="PRO7- added ReflectionRefractionTests" />
+    <option name="LAST_COMMIT_MESSAGE" value="PRO7- added ReflectionRefractionTests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -383,20 +390,20 @@
           <line>122</line>
           <option name="timeStamp" value="110" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
           <line>200</line>
           <option name="timeStamp" value="129" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
           <line>201</line>
           <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
-          <line>162</line>
-          <option name="timeStamp" value="139" />
+          <line>213</line>
+          <option name="timeStamp" value="145" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -409,6 +416,10 @@
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="calcColorGLobalEffect(constructRefractedRay(gp, v, n),level, k, material.kT)" />
+        <watch expression="calcColor(intersection, ray,MAX_CALC_COLOR_LEVEL,new Double3(MIN_CALC_COLOR_K)" />
+      </configuration>
       <configuration name="Application">
         <watch expression="v1.add(v2)" />
         <watch expression="!v1.add(v2).equals(new Vector(-1, -2, -3))" />
