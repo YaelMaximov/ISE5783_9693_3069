@@ -131,9 +131,10 @@ public class RayTracerBasic extends RayTracerBase {
      */
     private boolean unshaded(GeoPoint gp, Vector l, Vector n, LightSource light) throws IllegalAccessException {
         //if it is not transparent than check the shadows else -if it is transparent return that there is no shadow
-         if (gp.geometry.getMaterial().kT== Double3.ZERO){
+
             // Compute the opposite direction of the light vector
-            Vector lightDirection = l.scale(-1);
+             //
+             Vector lightDirection = l.scale(-1);
 
             // Calculate an epsilon vector to slightly move the point in the direction of the normal
             Vector epsVector = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
@@ -145,25 +146,23 @@ public class RayTracerBasic extends RayTracerBase {
             Ray lightRay = new Ray(point, lightDirection);
 
             // Find intersections between the light ray and the geometries in the scene
-            List<Point> intersection = scene.geometries.findIntersections(lightRay);
+            List<Point> intersection = scene.geometries.findIntersections(lightRay);//why it can't be geo point?
 
             // If there are no intersections, the point is unshaded
             if (intersection == null)
                 return true;
 
-            // Check if any intersection point is closer to the light source than the current point
-            for (Point point1 : intersection) {
-                double d = point1.distance(lightRay.getP0());
-                if (d < light.getDistance(point1))
-                    return false;
-            }
+             // Check if any intersection point is closer to the light source than the current point
+             for (Point point1 : intersection) {
+                 //the distance between the point and the light source
+                 double d = point1.distance(lightRay.getP0());
+                 if (d < light.getDistance(point) && gp.geometry.getMaterial().kT== Double3.ZERO)
+                     return false;
+             }
 
-            // If no closer intersection point is found, the point is unshaded
-            return true;
-        }
-      else{
-            return true;
-        }
+             // If no closer intersection point is found, the point is unshaded
+             return true;
+
 
      }
     private Double3 calcDiffusive(Material material,double nl){
@@ -179,11 +178,9 @@ public class RayTracerBasic extends RayTracerBase {
     private Ray constructReflectedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
         double nv = alignZero(n.dotProduct(v));
         Vector r=v.subtract(n.scale(nv*2)).normalize();
-        // Compute the opposite direction of the light vector
-        Vector rayDir = r.scale(-1);
 
         // Calculate an epsilon vector to slightly move the point in the direction of the normal
-        Vector epsVector = n.scale(n.dotProduct(rayDir) > 0 ? DELTA : -DELTA);
+        Vector epsVector = n.scale(n.dotProduct(r) > 0 ? DELTA : -DELTA);
 
         // Move the point slightly in the direction of the normal
         Point point = gp.point.add(epsVector);
@@ -193,10 +190,10 @@ public class RayTracerBasic extends RayTracerBase {
     }
     private Ray constructRefractedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
         // Compute the opposite direction of the light vector
-        Vector rayDir = v.scale(-1);
+       // Vector rayDir = v.scale(-1);
 
         // Calculate an epsilon vector to slightly move the point in the direction of the normal
-        Vector epsVector = n.scale(n.dotProduct(rayDir) > 0 ? DELTA : -DELTA);
+        Vector epsVector = n.scale(n.dotProduct(v) > 0 ? DELTA : -DELTA);
 
         // Move the point slightly in the direction of the normal
         Point point = gp.point.add(epsVector);
@@ -207,12 +204,9 @@ public class RayTracerBasic extends RayTracerBase {
         List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);
         if(intersections==null)
             return null;
-        if(intersections.size()==2)
-        { GeoPoint closestPoint = ray.findClosestGeoPoint(intersections);
-            return closestPoint;
-        }
         GeoPoint closestPoint = ray.findClosestGeoPoint(intersections);
         return closestPoint;
+
     }
 
 
