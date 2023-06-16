@@ -111,10 +111,10 @@ public class RayTracerBasic extends RayTracerBase {
             //* nv
             if (nl* nv >0) { // sign(nl) == sing(nv)
                 if(unshaded(gp,l,n,lightSource)){
-                Color iL = lightSource.getIntensity(gp.point);
-                color = color.add(iL.scale(calcDiffusive(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));//check what is the effect of each of them
+                    Color iL = lightSource.getIntensity(gp.point);
+                    color = color.add(iL.scale(calcDiffusive(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));//check what is the effect of each of them
+                }
             }
-          }
         }
         return color;
     }
@@ -131,7 +131,7 @@ public class RayTracerBasic extends RayTracerBase {
      */
     private boolean unshaded(GeoPoint gp, Vector l, Vector n, LightSource light) throws IllegalAccessException {
         //if it is not transparent than check the shadows else -if it is transparent return that there is no shadow
-         if (gp.geometry.getMaterial().kT== Double3.ZERO){
+        if (gp.geometry.getMaterial().kT== Double3.ZERO){
             // Compute the opposite direction of the light vector
             Vector lightDirection = l.scale(-1);
 
@@ -161,11 +161,11 @@ public class RayTracerBasic extends RayTracerBase {
             // If no closer intersection point is found, the point is unshaded
             return true;
         }
-      else{
+        else{
             return true;
         }
 
-     }
+    }
     private Double3 calcDiffusive(Material material,double nl){
         //kd*|l*n|
         return material.kD.scale(Math.abs(nl));
@@ -218,4 +218,3 @@ public class RayTracerBasic extends RayTracerBase {
 
 
 }
-

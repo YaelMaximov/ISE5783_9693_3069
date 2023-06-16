@@ -1,8 +1,9 @@
 package geometries;
 
-import primitives.*;
-
-import java.util.List;
+import primitives.Color;
+import primitives.Material;
+import primitives.Point;
+import primitives.Vector;
 
 /**
  * The Geometry interface defines methods that all geometric shapes should implement.
@@ -37,6 +38,4 @@ public abstract class Geometry extends Intersectable {
         this.material = material;
         return this;
     }
-
-    public abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException;
 }

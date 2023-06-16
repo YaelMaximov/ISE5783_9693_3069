@@ -5,7 +5,7 @@ import primitives.Point;
 import primitives.Vector;
 
 public class PointLight extends Light implements LightSource{
-    private Point position;
+    Point position;
     private double kC=1;
     private double kL=0;
     private double kQ=0;
@@ -33,12 +33,6 @@ public class PointLight extends Light implements LightSource{
         Vector L=p.subtract(position);
         return L.normalize();
     }
-
-    @Override
-    public double getDistance(Point point) {
-        return point.distance(position);
-    }
-
     public Color getIntensity(Point p) throws IllegalAccessException {
         double d=position.distance(p);
         double denominator=kC+kL*d+kQ*Math.pow(d,2);
@@ -47,9 +41,7 @@ public class PointLight extends Light implements LightSource{
 
     }
     public double getDistance(Point point){
-       return point.distance(position);
+        return point.distance(position);
     }
 
 }
-
-

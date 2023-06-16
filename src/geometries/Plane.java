@@ -90,7 +90,7 @@ public class Plane extends Geometry {
     }
 
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException  {
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException  {
         Point P0=ray.getP0();
         Vector v=ray.getDir();
 
