@@ -38,5 +38,5 @@ public abstract class Geometry extends Intersectable {
         return this;
     }
 
-    public abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException;
+    public abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException;
 }

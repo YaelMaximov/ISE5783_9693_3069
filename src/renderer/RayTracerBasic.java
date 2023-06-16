@@ -132,6 +132,18 @@ public class RayTracerBasic extends RayTracerBase {
         // If no closer intersection point is found, the point is unshaded
         return true;
     }
+    private Ray constructReflectedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
+        double nv = alignZero(n.dotProduct(v));
+        Vector r=v.subtract(n.scale(nv*2)).normalize();
+        return  new Ray(gp.point,r);
+    }
+    private GeoPoint findClosestIntersection(Ray ray) throws IllegalAccessException {
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);
+        if(intersections.size()==0)
+            return null;
+        GeoPoint closestPoint = ray.findClosestGeoPoint(intersections);
+        return closestPoint;
+    }
 
 
 }
