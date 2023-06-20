@@ -24,6 +24,7 @@ public class Geometries extends Intersectable {
         intersectables.addAll(Arrays.asList(geometries));//check
     }
 
+
     //    @Override
 //    public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
 //        boolean found_inter = false;
@@ -56,5 +57,9 @@ public class Geometries extends Intersectable {
             }
         }
         return Intersections;
+    }
+
+    public void add(List<Triangle> triangles) {
+        intersectables.addAll((triangles));
     }
 }

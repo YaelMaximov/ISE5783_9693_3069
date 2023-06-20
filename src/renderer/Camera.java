@@ -228,12 +228,12 @@ public class Camera {
      *
      * @throws MissingResourceException If the imageWriter is null.
      */
-    public void writeToImage() throws MissingResourceException {
+    public Camera writeToImage() throws MissingResourceException {
         if (imageWriter == null) {
             throw new MissingResourceException("imageWriter", "Camera", "The value of imageWriter is null.");
         }
         imageWriter.writeToImage();
-        //return this;
+        return this;
     }
 
 

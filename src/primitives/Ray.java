@@ -9,6 +9,7 @@ import java.util.Objects;
  * A class representing a ray in 3D space, defined by a starting point and a direction.
  */
 public class Ray {
+    private static final double DELTA = 0.1;
     /**
      * The starting point of the ray.
      */
@@ -29,6 +30,16 @@ public class Ray {
     public Ray(Point p0, Vector dir) throws IllegalAccessException {
         this.p0 = p0;
         this.dir = dir.normalize();
+    }
+    public Ray(Point point, Vector lightDirection,Vector n) throws IllegalAccessException {
+        this.dir = lightDirection;
+        // Calculate an epsilon vector to slightly move the point in the direction of the normal
+        Vector epsVector = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
+
+        // Move the point slightly in the direction of the normal
+        this.p0 = point.add(epsVector);
+
+
     }
 
     /**
