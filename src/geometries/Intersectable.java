@@ -46,14 +46,22 @@ public abstract class Intersectable {
 
     }
 
-    protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException;
-    public List<GeoPoint> findGeoIntersections(Ray ray) throws IllegalAccessException {
-        return findGeoIntersectionsHelper(ray);
-    }
+
     public List<Point> findIntersections(Ray ray) throws IllegalAccessException {
         var geoList = findGeoIntersections(ray);
         return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
     }
+
+    public final List<GeoPoint> findGeoIntersections(Ray ray) throws IllegalAccessException {
+        return findGeoIntersections(ray, Double.POSITIVE_INFINITY);
+    }
+    public final List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) throws IllegalAccessException {
+        return findGeoIntersectionsHelper(ray, maxDistance);
+    }
+
+
+    protected abstract List<GeoPoint>
+    findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException;
 
 
 
