@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- added ReflectionRefractionTests">
-      <change afterPath="$PROJECT_DIR$/unittests/pictures/TeapotTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/pictures/building.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/pictures/snowMan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/pictures/Snow_man.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/pictures/picture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/geometries/TubeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TubeTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/building.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/StlShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/snowMan.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +70,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.building.building">
+  <component name="RunManager" selected="JUnit.picture.front">
     <configuration name="LightsTests.sphereAllLights" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
@@ -104,7 +103,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="building.building" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Snow_man.front" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
         <pattern>
@@ -113,30 +112,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="pictures" />
-      <option name="MAIN_CLASS_NAME" value="pictures.building" />
-      <option name="METHOD_NAME" value="building" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="snowMan.front" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pictures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pictures" />
-      <option name="MAIN_CLASS_NAME" value="pictures.snowMan" />
+      <option name="MAIN_CLASS_NAME" value="pictures.Snow_man" />
       <option name="METHOD_NAME" value="front" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="snowMan.side" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StlShape.building" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
         <pattern>
@@ -145,8 +128,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="pictures" />
-      <option name="MAIN_CLASS_NAME" value="pictures.snowMan" />
-      <option name="METHOD_NAME" value="side" />
+      <option name="MAIN_CLASS_NAME" value="pictures.StlShape" />
+      <option name="METHOD_NAME" value="building" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="picture.front" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pictures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pictures" />
+      <option name="MAIN_CLASS_NAME" value="pictures.picture" />
+      <option name="METHOD_NAME" value="front" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -154,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.building.building" />
+        <item itemvalue="JUnit.picture.front" />
         <item itemvalue="JUnit.LightsTests.trianglesAllLights" />
-        <item itemvalue="JUnit.snowMan.front" />
-        <item itemvalue="JUnit.snowMan.side" />
         <item itemvalue="JUnit.LightsTests.sphereAllLights" />
+        <item itemvalue="JUnit.Snow_man.front" />
+        <item itemvalue="JUnit.StlShape.building" />
       </list>
     </recent_temporary>
   </component>
@@ -348,7 +347,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1686924503953</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL‎-00027" summary="PRO7- added ReflectionRefractionTests">
+      <created>1687266433935</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL‎-00027" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687266433935</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -429,28 +435,14 @@
           <line>72</line>
           <option name="timeStamp" value="146" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/unittests/pictures/building.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="160" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/unittests/pictures/snowMan.java</url>
-          <line>90</line>
-          <properties class="pictures.snowMan" method="side">
+          <url>file://$PROJECT_DIR$/unittests/pictures/Snow_man.java</url>
+          <line>20</line>
+          <properties class="pictures.Snow_man">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/unittests/lighting/LightsTests.java</url>
-          <line>187</line>
-          <properties class="lighting.LightsTests" method="trianglesAllLights">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="156" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
