@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- added ReflectionRefractionTests">
+      <change afterPath="$PROJECT_DIR$/unittests/pictures/TeapotTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/pictures/building.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/pictures/snowMan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +71,8 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReflectionRefractionTests">
-    <configuration name="LightsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.building.building">
+    <configuration name="LightsTests.sphereAllLights" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
         <pattern>
@@ -75,80 +82,83 @@
       </extension>
       <option name="PACKAGE_NAME" value="lighting" />
       <option name="MAIN_CLASS_NAME" value="lighting.LightsTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReflectionRefractionTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="renderer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ReflectionRefractionTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReflectionRefractionTests.trianglesTransparentSphere" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="renderer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ReflectionRefractionTests" />
-      <option name="METHOD_NAME" value="trianglesTransparentSphere" />
+      <option name="METHOD_NAME" value="sphereAllLights" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReflectionRefractionTests.twoSpheres" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LightsTests.trianglesAllLights" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="renderer.*" />
+          <option name="PATTERN" value="lighting.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ReflectionRefractionTests" />
-      <option name="METHOD_NAME" value="twoSpheres" />
+      <option name="PACKAGE_NAME" value="lighting" />
+      <option name="MAIN_CLASS_NAME" value="lighting.LightsTests" />
+      <option name="METHOD_NAME" value="trianglesAllLights" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShadowTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="building.building" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="renderer.*" />
+          <option name="PATTERN" value="pictures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ShadowTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="pictures" />
+      <option name="MAIN_CLASS_NAME" value="pictures.building" />
+      <option name="METHOD_NAME" value="building" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="snowMan.front" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pictures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pictures" />
+      <option name="MAIN_CLASS_NAME" value="pictures.snowMan" />
+      <option name="METHOD_NAME" value="front" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="snowMan.side" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pictures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pictures" />
+      <option name="MAIN_CLASS_NAME" value="pictures.snowMan" />
+      <option name="METHOD_NAME" value="side" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ReflectionRefractionTests" />
-        <item itemvalue="JUnit.ReflectionRefractionTests.trianglesTransparentSphere" />
-        <item itemvalue="JUnit.ShadowTests" />
-        <item itemvalue="JUnit.ReflectionRefractionTests.twoSpheres" />
-        <item itemvalue="JUnit.LightsTests" />
+        <item itemvalue="JUnit.building.building" />
+        <item itemvalue="JUnit.LightsTests.trianglesAllLights" />
+        <item itemvalue="JUnit.snowMan.front" />
+        <item itemvalue="JUnit.snowMan.side" />
+        <item itemvalue="JUnit.LightsTests.sphereAllLights" />
       </list>
     </recent_temporary>
   </component>
@@ -331,7 +341,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1686648637887</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL‎-00026" summary="PRO7- added ReflectionRefractionTests">
+      <created>1686924503953</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL‎-00026" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1686924503953</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -411,6 +428,29 @@
           <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
           <line>72</line>
           <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unittests/pictures/building.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/unittests/pictures/snowMan.java</url>
+          <line>90</line>
+          <properties class="pictures.snowMan" method="side">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/unittests/lighting/LightsTests.java</url>
+          <line>187</line>
+          <properties class="lighting.LightsTests" method="trianglesAllLights">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="156" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

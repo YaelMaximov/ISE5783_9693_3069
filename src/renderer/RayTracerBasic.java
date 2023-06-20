@@ -81,7 +81,7 @@ public class RayTracerBasic extends RayTracerBase {
 
     private Color calcColor(GeoPoint intersection, Ray ray,int level, Double3 k) throws IllegalAccessException {
         //recursive-original method
-        Color color = calcLocalEffects(intersection, ray);
+        Color color = calcLocalEffects(intersection,ray,k);
         return 1 == level ? color
                 : color.add(calcGlobalEffects(intersection, ray, level, k));
     }
@@ -95,7 +95,7 @@ public class RayTracerBasic extends RayTracerBase {
 
 
 
-    private Color calcLocalEffects(Intersectable.GeoPoint gp, Ray ray) throws IllegalAccessException {
+    private Color calcLocalEffects(Intersectable.GeoPoint gp, Ray ray,Double3 k) throws IllegalAccessException {
         Color color = gp.geometry.getEmission();
         Vector v = ray.getDir ();
         Vector n = gp.geometry.getNormal(gp.point);
@@ -109,9 +109,10 @@ public class RayTracerBasic extends RayTracerBase {
             Vector l = lightSource.getL(gp.point);
             double nl = alignZero(n.dotProduct(l));
             //* nv
-            if (nl* nv >0) { // sign(nl) == sing(nv)
-                if(unshaded(gp,l,n,lightSource)){
-                Color iL = lightSource.getIntensity(gp.point);
+            if (nl* nv >0) {
+                Double3 ktr=transparency(gp,lightSource,l,n);// sign(nl) == sing(nv)
+                if(new Double3(MIN_CALC_COLOR_K).lowerThan((ktr.product(k)))){
+                Color iL = lightSource.getIntensity(gp.point).scale(ktr);
                 color = color.add(iL.scale(calcDiffusive(material, nl)), iL.scale(calcSpecular(material, n, l, nl, v)));//check what is the effect of each of them
             }
           }
@@ -135,28 +136,28 @@ public class RayTracerBasic extends RayTracerBase {
             // Compute the opposite direction of the light vector
              //
              Vector lightDirection = l.scale(-1);
-
-            // Calculate an epsilon vector to slightly move the point in the direction of the normal
-            Vector epsVector = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
-
-            // Move the point slightly in the direction of the normal
-            Point point = gp.point.add(epsVector);
+//
+//            // Calculate an epsilon vector to slightly move the point in the direction of the normal
+//            Vector epsVector = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
+//
+//            // Move the point slightly in the direction of the normal
+//            Point point = gp.point.add(epsVector);
 
             // Create a ray from the adjusted point towards the light source
-            Ray lightRay = new Ray(point, lightDirection);
+            Ray lightRay = new Ray(gp.point, lightDirection,gp.geometry.getNormal(gp.point));
 
             // Find intersections between the light ray and the geometries in the scene
-            List<Point> intersection = scene.geometries.findIntersections(lightRay);//why it can't be geo point?
+            List<GeoPoint> intersection = scene.geometries.findGeoIntersections(lightRay);//why it can't be geo point?
 
             // If there are no intersections, the point is unshaded
             if (intersection == null)
                 return true;
 
              // Check if any intersection point is closer to the light source than the current point
-             for (Point point1 : intersection) {
+             for (GeoPoint point1 : intersection) {
                  //the distance between the point and the light source
-                 double d = point1.distance(lightRay.getP0());
-                 if (d < light.getDistance(point) && gp.geometry.getMaterial().kT== Double3.ZERO)
+                 double d = point1.point.distance(lightRay.getP0());
+                 if (d < light.getDistance(gp.point) && point1.geometry.getMaterial().kT== Double3.ZERO)
                      return false;
              }
 
@@ -165,6 +166,24 @@ public class RayTracerBasic extends RayTracerBase {
 
 
      }
+    private Double3 transparency(GeoPoint geoPoint, LightSource lightSource, Vector l, Vector n) throws IllegalAccessException {
+        Vector lightDirection = l.scale(-1); // from point to light source
+        Ray lightRay = new Ray(geoPoint.point, lightDirection, n);
+        List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
+
+        Double3 ktr = Double3.ONE;
+        if (intersections == null) return ktr;
+
+        double distance = lightSource.getDistance(geoPoint.point);
+
+        for (GeoPoint intersection : intersections) {
+
+            if (distance > intersection.point.distance(geoPoint.point)) {
+                ktr = ktr.product(intersection.geometry.getMaterial().kT);
+            }
+        }
+        return ktr;
+    }
     private Double3 calcDiffusive(Material material,double nl){
         //kd*|l*n|
         return material.kD.scale(Math.abs(nl));
@@ -179,12 +198,12 @@ public class RayTracerBasic extends RayTracerBase {
         double nv = alignZero(n.dotProduct(v));
         Vector r=v.subtract(n.scale(nv*2)).normalize();
 
-        // Calculate an epsilon vector to slightly move the point in the direction of the normal
-        Vector epsVector = n.scale(n.dotProduct(r) > 0 ? DELTA : -DELTA);
-
-        // Move the point slightly in the direction of the normal
-        Point point = gp.point.add(epsVector);
-        return  new Ray(point,r);
+//        // Calculate an epsilon vector to slightly move the point in the direction of the normal
+//        Vector epsVector = n.scale(n.dotProduct(r) > 0 ? DELTA : -DELTA);
+//
+//        // Move the point slightly in the direction of the normal
+//        Point point = gp.point.add(epsVector);
+        return new Ray(gp.point,r,gp.geometry.getNormal(gp.point));
 
 
     }
@@ -192,13 +211,13 @@ public class RayTracerBasic extends RayTracerBase {
         // Compute the opposite direction of the light vector
        // Vector rayDir = v.scale(-1);
 
-        // Calculate an epsilon vector to slightly move the point in the direction of the normal
-        Vector epsVector = n.scale(n.dotProduct(v) > 0 ? DELTA : -DELTA);
+//        // Calculate an epsilon vector to slightly move the point in the direction of the normal
+//        Vector epsVector = n.scale(n.dotProduct(v) > 0 ? DELTA : -DELTA);
+//
+//        // Move the point slightly in the direction of the normal
+//        Point point = gp.point.add(epsVector);
 
-        // Move the point slightly in the direction of the normal
-        Point point = gp.point.add(epsVector);
-
-        return new Ray(point,v);
+        return new Ray(gp.point,v,gp.geometry.getNormal(gp.point));
     }
     private GeoPoint findClosestIntersection(Ray ray) throws IllegalAccessException {
         List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);

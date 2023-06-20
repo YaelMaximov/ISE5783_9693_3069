@@ -123,7 +123,7 @@ public class LightsTests {
     public void sphereAllLights() throws IllegalAccessException {
 
         scene1.geometries.add(sphere);
-        scene1.lights.add(new DirectionalLight(new Color(500, 200, 100), new Vector(1, 0, 0.5)));//purple
+       scene1.lights.add(new DirectionalLight(new Color(500, 200, 100), new Vector(1, 0, 0.5)));//purple
         scene1.lights.add(new PointLight(new Color(800, 600, 0), new Point(80, -60, 25)).setkL(0.001).setkQ(0.0002));//yellow
         scene1.lights.add(new SpotLight(new Color(300, 800, 0), new Point(90, 80, 25), new Vector(-1, -1, -0.5))
                 .setkL(0.01).setkQ(0.0001));//green-blue
