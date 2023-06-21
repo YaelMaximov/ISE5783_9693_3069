@@ -25,26 +25,30 @@ public class Plane extends Geometry {
      * @param p2 a point on the plane
      * @param p3 a point on the plane
      */
-    /*public Plane(Point p1, Point p2, Point p3) throws IllegalAccessException {//maybe we dont need to throw ex
-        p0 = p1;
-        Vector U=p1.subtract(p2);
-        Vector V=p1.subtract(p3);
-        Vector N=U.crossProduct(V);
-        normal = N.normalize();
-    }*/
-    public Plane(Point p1, Point p2, Point p3) throws IllegalAccessException {
-        if (p1.equals(p2) || p1.equals(p3) || p2.equals(p3))
-            throw new IllegalAccessException("Two the points are the same point");
-        Vector vec1 = p2.subtract(p1);
-        Vector vec2 = p3.subtract(p2);
-        try {
-            Vector vector = vec1.crossProduct(vec2);
-            p0 = p2;
-            normal = vector.normalize();
-        } catch (Exception ex) {
-            throw new IllegalAccessException("The points are on same line");
-        }
 
+    public Plane(Point p1, Point p2, Point p3) throws IllegalAccessException {
+        // check that all three points are different
+
+        if (p1.equals(p2) || p1.equals(p3) || p2.equals(p3))
+            throw new IllegalArgumentException("points must be different");
+
+        p0 = p1;
+
+        // generate two vectors from the three points
+        Vector U = p2.subtract(p1);
+        Vector V = p3.subtract(p1);
+        Vector N;
+
+        // attempt to get cross product vector of the above vectors
+        // if exception is thrown all three points are
+        // on same line and cannot represent a plane
+        try {
+            N = U.crossProduct(V);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("The three points are on same line, can not represent a Plane");
+        }
+        // set plane's normal vector to normalized result of cross product vector
+        normal = N.normalize();
     }
 
 
@@ -94,7 +98,7 @@ public class Plane extends Geometry {
      * @param ray ray towards the plane
      * @return  immutable list of one intersection point as  {@link GeoPoint} object
      */
-    @Override
+
     protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) throws IllegalAccessException {
         Point P0 = ray.getP0();
         Vector v = ray.getDir();
@@ -132,7 +136,7 @@ public class Plane extends Geometry {
         double t = alignZero(nQMinusP0 / nv);
         if (t > 0 && alignZero(t-maxDistance) <= 0){
             //return immutable List
-            return List.of(new GeoPoint(this, ray.getP0()));
+            return List.of(new GeoPoint(this, ray.getPoint(t)));
         }
         // no intersection point  - ray and plane in opposite  direction
         return null;

@@ -1,10 +1,10 @@
 package pictures;
 
+import geometries.Geometries;
 import geometries.Intersectable;
 import geometries.Triangle;
 import lighting.AmbientLight;
 import lighting.DirectionalLight;
-import lighting.PointLight;
 import org.junit.jupiter.api.Test;
 import primitives.Color;
 import primitives.Point;
@@ -21,10 +21,9 @@ import java.nio.ByteOrder;
 import java.util.LinkedList;
 import java.util.List;
 
-public class building {
-    private Scene scene = new Scene("Test scene");
-    private static List<Triangle> convertSTLToTriangles(String filePath) {
-        List<Triangle> triangles = new LinkedList<>();
+public class StlShape {
+    List<Triangle> triangles = new LinkedList<>();
+    public StlShape(String filePath) {
 
         try (RandomAccessFile binaryFile = new RandomAccessFile(filePath, "r")) {
             byte[] header = new byte[80];
@@ -67,22 +66,10 @@ public class building {
             e.printStackTrace();
         }
 
-        return triangles;
     }
-    @Test
-    public void building() throws IllegalAccessException {
-        Camera camera = new Camera(new Point(0, 0, 500),new Vector(0.5, 1, 0), new Vector(0, 0, -1)) //
-                .setVPSize(2500, 2500).setVPDistance(10000); //
 
-        scene.setAmbientLight(new AmbientLight(new Color(255, 255, 255), 0.1));
-        List<Triangle> triangles=convertSTLToTriangles("C:/Users/משפחת מקסימוב/IdeaProjects/ISE5783_9693_3069/stl/files/20mmTestCube_repaired.stl");
-        scene.geometries.add(triangles);
-        scene.lights.add(new DirectionalLight(new Color(500, 200, 100), new Vector(0.5, 1, 0)));
-        ImageWriter imageWriter = new ImageWriter("building", 500, 500);
-        camera.setImageWriter(imageWriter) //
-                .setRayTracer(new RayTracerBasic(scene)) //
-                .renderImage() //
-                .writeToImage(); //
+    public List<Triangle> getGeometries() {
+        return triangles;
     }
 
 

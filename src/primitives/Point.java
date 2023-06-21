@@ -69,6 +69,27 @@ public class Point {
     public double distance(Point other){
         return Math.sqrt(distanceSquared(other));
     }
+    /**
+     * get X axis coordinate of a point
+     * @return X axis coordinate - (double)
+     */
+    public double getX() {
+        return xyz.d1;
+    }
+
+    /**
+     * get Y axis coordinate of a point
+     * @return Y axis coordinate - (double)
+     */
+    public double getY() {
+        return xyz.d2;
+    }
+
+    /**
+     * get Z axis coordinate of a point
+     * @return Z axis coordinate - (double)
+     */
+    public double getZ() { return xyz.d3; }
 
     /**
      * Compares this point to another object for equality.
