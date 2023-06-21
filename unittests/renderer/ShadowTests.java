@@ -37,7 +37,7 @@ public class ShadowTests {
          .writeToImage();
    }
 
-   /** Produce a picture of a sphere and triangle with point light and shade */
+   /** Produce a Pictures of a sphere and triangle with point light and shade */
    @Test
    public void sphereTriangleInitial() throws IllegalAccessException {
       sphereTriangleHelper("shadowSphereTriangleInitial", //
@@ -81,7 +81,7 @@ public class ShadowTests {
                            new Point(-100, -100, 250));
    }
 
-   /** Produce a picture of a two triangles lighted by a spot light with a Sphere
+   /** Produce a Pictures of a two triangles lighted by a spot light with a Sphere
     * producing a shading */
    @Test
    public void trianglesSphere() throws IllegalAccessException {

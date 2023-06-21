@@ -23,7 +23,7 @@ public class Picther {
     private Scene scene = new Scene("Test scene");
 
     /**
-     * Produce a picture of a sphere lighted by a spot light
+     * Produce a Pictures of a sphere lighted by a spot light
      */
     @Test
     public void twoSpheres() throws IllegalAccessException {
@@ -48,7 +48,7 @@ public class Picther {
 
 
     /**
-     * Produce a picture of a two triangles lighted by a spot light with a
+     * Produce a Pictures of a two triangles lighted by a spot light with a
      * partially
      * transparent Sphere producing partial shadow
      */
