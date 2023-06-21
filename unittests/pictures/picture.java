@@ -14,6 +14,7 @@ import renderer.ImageWriter;
 import renderer.RayTracerBasic;
 import scene.Scene;
 
+import static java.awt.Color.BLUE;
 import static java.awt.Color.WHITE;
 
 public class picture {
@@ -60,11 +61,9 @@ public class picture {
 
     @Test
     public void front() throws IllegalAccessException {
-        Snow_man snowMan=new Snow_man(new Point(0,0,0));
-        //snowMan.getGeometries()
-        //StlShape walls=new StlShape("stl/files/fairyHouse.stl");
-       // scene1.geometries.add(walls.getGeometries());
-        scene1.geometries.add(snowMan.getGeometries(),sky,floor);
+        Point p1=new Point(0, -10, -50);
+        Cube building=new Cube(p1,15d,15d,30d).setCubeEmission(new Color(12,12,200));
+        scene1.geometries.add(building.getGeometries(),sky,floor);
         scene1.lights.add(new DirectionalLight(new Color(500, 200, 100), new Vector(1, -1, -0.5)));//purple
         //scene1.lights.add(new DirectionalLight(new Color(500, 0, 0), new Vector(0, -1, -0.5)));
         scene1.lights.add(new PointLight(new Color(500, 200, 100), new Point(60, 80, -760))

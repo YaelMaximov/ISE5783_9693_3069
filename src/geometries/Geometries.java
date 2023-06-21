@@ -25,40 +25,45 @@ public class Geometries extends Intersectable {
     }
 
 
-    //    @Override
-//    public List<Point> findIntsersections(Ray ray) throws IllegalAccessException {
-//        boolean found_inter = false;
-//        if (intersectables ==null)
-//        {return null;}
+
+//    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
+//        List<GeoPoint> Intersections =null;
 //        for (Intersectable geometry : intersectables) {
-//            if (geometry.findIntsersections(ray) != null) {
-//                found_inter = true;
-//                break;
+//            var temp = geometry.findGeoIntersections(ray);
+//            if (temp != null){
+//                if (Intersections == null) Intersections = new LinkedList<>();
+//                Intersections.addAll(temp);
 //            }
 //        }
-//        if (found_inter) {
-//            List<Point> Intersections=new LinkedList<>();
-//            for (Intersectable geometry : intersectables) {
-//                if (geometry.findIntsersections(ray) != null) {
-//                    Intersections.addAll(geometry.findIntsersections(ray));
-//                }
-//            }
-//            return Intersections;
-//        } else {
-//            return null;
-//        }
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
-        List<GeoPoint> Intersections =null;
-        for (Intersectable geometry : intersectables) {
-            var temp = geometry.findGeoIntersections(ray);
-            if (temp != null){
-                if (Intersections == null) Intersections = new LinkedList<>();
-                Intersections.addAll(temp);
+//        return Intersections;
+//    }
+    /**
+     * find intersection between ray and all geometries in the geometry collection
+     * @param ray ray towards the composite of geometries
+     * @return  immutable list of intersection points as  {@link GeoPoint} objects
+     */
+    @Override
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) throws IllegalAccessException {
+        List<GeoPoint> result = null;   // intersection points
+
+        //for each geometry in intersect-able collection check intersection points
+        for (var item: intersectables) {
+
+            // get intersection point for each specific item, (item can be either geometry/nested composite of geometries)
+            List<GeoPoint> itemList = item.findGeoIntersections(ray,maxDistance);
+
+            // points were found , add to composite's total intersection points list
+            if(itemList != null) {
+                if(result==null){
+                    result= new LinkedList<>();
+                }
+                result.addAll(itemList);
             }
         }
-        return Intersections;
-    }
+        // return list of points - null if no intersection points were found
+        return result;
 
+    }
     public void add(List<Triangle> triangles) {
         intersectables.addAll((triangles));
     }

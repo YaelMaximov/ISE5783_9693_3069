@@ -87,14 +87,6 @@ public class RayTracerBasic extends RayTracerBase {
     }
 
 
-
-
-
-
-
-
-
-
     private Color calcLocalEffects(Intersectable.GeoPoint gp, Ray ray,Double3 k) throws IllegalAccessException {
         Color color = gp.geometry.getEmission();
         Vector v = ray.getDir ();
@@ -136,12 +128,6 @@ public class RayTracerBasic extends RayTracerBase {
             // Compute the opposite direction of the light vector
              //
              Vector lightDirection = l.scale(-1);
-//
-//            // Calculate an epsilon vector to slightly move the point in the direction of the normal
-//            Vector epsVector = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
-//
-//            // Move the point slightly in the direction of the normal
-//            Point point = gp.point.add(epsVector);
 
             // Create a ray from the adjusted point towards the light source
             Ray lightRay = new Ray(gp.point, lightDirection,gp.geometry.getNormal(gp.point));
@@ -197,25 +183,11 @@ public class RayTracerBasic extends RayTracerBase {
     private Ray constructReflectedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
         double nv = alignZero(n.dotProduct(v));
         Vector r=v.subtract(n.scale(nv*2)).normalize();
-
-//        // Calculate an epsilon vector to slightly move the point in the direction of the normal
-//        Vector epsVector = n.scale(n.dotProduct(r) > 0 ? DELTA : -DELTA);
-//
-//        // Move the point slightly in the direction of the normal
-//        Point point = gp.point.add(epsVector);
         return new Ray(gp.point,r,gp.geometry.getNormal(gp.point));
 
 
     }
     private Ray constructRefractedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
-        // Compute the opposite direction of the light vector
-       // Vector rayDir = v.scale(-1);
-
-//        // Calculate an epsilon vector to slightly move the point in the direction of the normal
-//        Vector epsVector = n.scale(n.dotProduct(v) > 0 ? DELTA : -DELTA);
-//
-//        // Move the point slightly in the direction of the normal
-//        Point point = gp.point.add(epsVector);
 
         return new Ray(gp.point,v,gp.geometry.getNormal(gp.point));
     }
