@@ -69,7 +69,7 @@ public class LightsTests {
     }
 
     /**
-     * Produce a picture of a sphere lighted by a directional light
+     * Produce a Pictures of a sphere lighted by a directional light
      */
     @Test
     public void sphereDirectional() throws IllegalAccessException {
@@ -85,7 +85,7 @@ public class LightsTests {
     }
 
     /**
-     * Produce a picture of a sphere lighted by a point light
+     * Produce a Pictures of a sphere lighted by a point light
      */
     @Test
     public void spherePoint() throws IllegalAccessException {
@@ -101,7 +101,7 @@ public class LightsTests {
     }
 
     /**
-     * Produce a picture of a sphere lighted by a spotlight
+     * Produce a Pictures of a sphere lighted by a spotlight
      */
     @Test
     public void sphereSpot() throws IllegalAccessException {
@@ -117,7 +117,7 @@ public class LightsTests {
     }
 
     /**
-     * Produce a picture of a sphere lighted by all the lights
+     * Produce a Pictures of a sphere lighted by all the lights
      */
     @Test
     public void sphereAllLights() throws IllegalAccessException {
@@ -136,7 +136,7 @@ public class LightsTests {
     }
 
     /**
-     * Produce a picture of two triangles lighted by a directional light
+     * Produce a Pictures of two triangles lighted by a directional light
      */
     @Test
     public void trianglesDirectional() throws IllegalAccessException {
@@ -151,7 +151,7 @@ public class LightsTests {
     }
 
     /**
-     * Produce a picture of two triangles lighted by a point light
+     * Produce a Pictures of two triangles lighted by a point light
      */
     @Test
     public void trianglesPoint() throws IllegalAccessException {
@@ -167,7 +167,7 @@ public class LightsTests {
     }
 
     /**
-     * Produce a picture of two triangles lighted by a spotlight
+     * Produce a Pictures of two triangles lighted by a spotlight
      */
     @Test
     public void trianglesSpot() throws IllegalAccessException {
@@ -182,7 +182,7 @@ public class LightsTests {
                 .writeToImage(); //
     }
     /**
-     * Produce a picture of two triangles lighted by a spotlight
+     * Produce a Pictures of two triangles lighted by a spotlight
      */
     @Test
     public void trianglesAllLights() throws IllegalAccessException {
@@ -201,7 +201,7 @@ public class LightsTests {
     }
 
 //    /**
-//     * Produce a picture of a sphere lighted by a narrow spotlight
+//     * Produce a Pictures of a sphere lighted by a narrow spotlight
 //     */
 //    @Test
 //    public void sphereSpotSharp() throws IllegalAccessException {
@@ -218,7 +218,7 @@ public class LightsTests {
 //    }
 //
 //    /**
-//     * Produce a picture of two triangles lighted by a narrow spotlight
+//     * Produce a Pictures of two triangles lighted by a narrow spotlight
 //     */
 //    @Test
 //    public void trianglesSpotSharp() {

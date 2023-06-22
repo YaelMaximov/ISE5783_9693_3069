@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="a">
-      <change afterPath="$PROJECT_DIR$/unittests/pictures/StreetLamp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- added ReflectionRefractionTests" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +31,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/Users/משפחת מקסימוב/IdeaProjects/ISE5783_9693_3069/unittests/geometries"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="scene" />
@@ -59,18 +61,66 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.StreetLamp.front">
-    <configuration name="CameraTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.Pictures">
+    <configuration name="Pictures" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="renderer.*" />
+          <option name="PATTERN" value="pictures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.CameraTests" />
+      <option name="PACKAGE_NAME" value="pictures" />
+      <option name="MAIN_CLASS_NAME" value="pictures.Pictures" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Pictures.front" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pictures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pictures" />
+      <option name="MAIN_CLASS_NAME" value="pictures.Pictures" />
+      <option name="METHOD_NAME" value="front" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Pictures.halfSide" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pictures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pictures" />
+      <option name="MAIN_CLASS_NAME" value="pictures.Pictures" />
+      <option name="METHOD_NAME" value="halfSide" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Pictures.side" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ISE5783_9693_3069" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pictures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pictures" />
+      <option name="MAIN_CLASS_NAME" value="pictures.Pictures" />
+      <option name="METHOD_NAME" value="side" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -90,59 +140,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShadowTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="renderer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.ShadowTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StreetLamp.front" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pictures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pictures" />
-      <option name="MAIN_CLASS_NAME" value="pictures.StreetLamp" />
-      <option name="METHOD_NAME" value="front" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="picture" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ISE5783_9693_3069" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pictures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pictures" />
-      <option name="MAIN_CLASS_NAME" value="pictures.picture" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.StreetLamp.front" />
-        <item itemvalue="JUnit.picture" />
-        <item itemvalue="JUnit.ShadowTests" />
+        <item itemvalue="JUnit.Pictures" />
+        <item itemvalue="JUnit.Pictures.halfSide" />
+        <item itemvalue="JUnit.Pictures.front" />
+        <item itemvalue="JUnit.Pictures.side" />
         <item itemvalue="JUnit.ReflectionRefractionTests" />
-        <item itemvalue="JUnit.CameraTests" />
       </list>
     </recent_temporary>
   </component>
@@ -339,13 +343,28 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687266433935</updated>
     </task>
-    <task id="LOCAL‎00028" summary="a">
-      <created>1687428915413</created>
-      <option name="number" value="LOCAL‎00028" />
-      <option name="presentableId" value="LOCAL‎00028" />
-      <updated>1687428915413</updated>
+    <task id="LOCAL‎-00028" summary="PRO7- added ReflectionRefractionTests">
+      <created>1687355023924</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL‎-00028" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687355023924</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL‎-00029" summary="PRO7- added ReflectionRefractionTests">
+      <created>1687385264108</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL‎-00029" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687385264108</updated>
+    </task>
+    <task id="LOCAL‎-00030" summary="PRO7- added ReflectionRefractionTests">
+      <created>1687440131886</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL‎-00030" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687440131886</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -391,8 +410,7 @@
     <MESSAGE value="PRO7-stated step 2" />
     <MESSAGE value="PRO7- 2" />
     <MESSAGE value="PRO7- added ReflectionRefractionTests" />
-    <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <option name="LAST_COMMIT_MESSAGE" value="PRO7- added ReflectionRefractionTests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -421,6 +439,11 @@
           <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
           <line>72</line>
           <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/unittests/pictures/Pictures.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/unittests/pictures/Snow_man.java</url>
@@ -458,11 +481,11 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ISE5783_9693_3069$IntegrationTests_CameraSphereIntersections.ic" NAME="IntegrationTests.CameraSphereIntersections Coverage Results" MODIFIED="1682615393927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ISE5783_9693_3069$LightsTests.ic" NAME="LightsTests Coverage Results" MODIFIED="1684691922031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>lighting.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/ISE5783_9693_3069$Main.ic" NAME="Main Coverage Results" MODIFIED="1679342282667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ISE5783_9693_3069$LightsTests.ic" NAME="LightsTests Coverage Results" MODIFIED="1684691922031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>lighting.*</FILTER>
     </SUITE>
   </component>
 </project>

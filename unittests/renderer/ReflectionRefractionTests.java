@@ -22,7 +22,7 @@ import scene.Scene;
 public class ReflectionRefractionTests {
    private Scene scene = new Scene("Test scene");
 
-   /** Produce a picture of a sphere lighted by a spot light */
+   /** Produce a Pictures of a sphere lighted by a spot light */
    @Test
    public void twoSpheres() throws IllegalAccessException {
       Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 1, 0),new Vector(0, 0, -1)) //
@@ -43,7 +43,7 @@ public class ReflectionRefractionTests {
               .writeToImage();
    }
 
-   /** Produce a picture of a sphere lighted by a spot light */
+   /** Produce a Pictures of a sphere lighted by a spot light */
    @Test
    public void twoSpheresOnMirrors() throws IllegalAccessException {
       Camera camera = new Camera(new Point(0, 0, 10000),new Vector(0, 1, 0), new Vector(0, 0, -1)) //
@@ -76,7 +76,7 @@ public class ReflectionRefractionTests {
               .writeToImage();
    }
 
-   /** Produce a picture of a two triangles lighted by a spot light with a
+   /** Produce a Pictures of a two triangles lighted by a spot light with a
     * partially
     * transparent Sphere producing partial shadow */
    @Test

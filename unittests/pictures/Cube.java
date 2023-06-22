@@ -3,6 +3,7 @@ package pictures;
 import geometries.Geometries;
 import geometries.Polygon;
 import primitives.Color;
+import primitives.Material;
 import primitives.Point;
 import primitives.Vector;
 
@@ -42,6 +43,15 @@ public class Cube {
         back = (Polygon) back.setEmission(color);
         rightSide = (Polygon) rightSide.setEmission(color);
         leftSide = (Polygon) leftSide.setEmission(color);
+        return this;
+    }
+    public Cube setCubeMaterial(Material mt) {
+        top = (Polygon) top.setMaterial(mt);
+        base = (Polygon) base.setMaterial(mt);
+        front = (Polygon) front.setMaterial(mt);
+        back = (Polygon) back.setMaterial(mt);
+        rightSide = (Polygon) rightSide.setMaterial(mt);
+        leftSide = (Polygon) leftSide.setMaterial(mt);
         return this;
     }
 
