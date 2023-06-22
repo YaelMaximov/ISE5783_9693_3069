@@ -29,7 +29,7 @@ public class Pictures {
     private final Camera camera2 = new Camera(new Point(1000, 0, -50),
             new Vector(0, 1, 0), new Vector(-1, 0, 0))
             .setVPSize(150, 150).setVPDistance(1000);//side
-    private final Camera camera3 = new Camera(new Point(1000, 0, 1000),
+    private final Camera camera3 = new Camera(new Point(1100, 0, 1000),
             new Vector(0, 1, 0), new Vector(-1, 0, -1))
             .setVPSize(150, 150).setVPDistance(1000);//half-side
 
@@ -85,7 +85,7 @@ public class Pictures {
         Point p2=new Point(d1-x*0.1, d2+70d, d3-z*0.1);
         Point p3=new Point(d1+x*0.1,d2+70d-x,d3+z);
 
-        Base base=new Base(p1,z,x,40d).setBaseEmission(new Color(232,194,128)).setBaseMaterial(material);
+        Base base=new Base(p1,z,x,40d,0.8).setBaseEmission(new Color(232,194,128)).setBaseMaterial(material);
         Cube building=new Cube(p1.add(new Vector(0,40d,0)),z,x,y).setCubeEmission(new Color(232,194,128)).setCubeMaterial(material);
         Pyramid p=new Pyramid(p2,z+z*0.2,x+x*0.2,30d).setPyramidEmission(new Color(126,147,229)).setPyramidMaterial(material);
         Clock clock=new Clock(p3,l).setClockEmission(new Color(255,255,255),new Color(218,178,86)).setClockMaterial(material);

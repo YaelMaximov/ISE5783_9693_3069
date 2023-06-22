@@ -12,10 +12,10 @@ public class Base {
     Cube c2;
     Cube c3;
     final private double Height=3d;
-    public Base(Point p1, double z, double x, double y) throws IllegalAccessException {
+    public Base(Point p1, double z, double x, double y,double k) throws IllegalAccessException {
         c1 = new Cube(p1, z, x, Height);
-        Point start = p1.add(new Vector((x-0.8*x)/2, Height, (z-0.8*z)/2));
-        c2 = new Cube(start, z * 0.8, x * 0.8, y - 2 * Height);
+        Point start = p1.add(new Vector((x-k*x)/2, Height, (z-k*z)/2));
+        c2 = new Cube(start, z * k, x * k, y - 2 * Height);
         start = p1.add(new Vector(0, y - Height, 0));
         c3 = new Cube(start, z, x, Height);
     }

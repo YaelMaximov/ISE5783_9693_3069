@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- added ReflectionRefractionTests">
-      <change afterPath="$PROJECT_DIR$/unittests/pictures/Base.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/pictures/Clock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unittests/pictures/Pyramid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unittests/pictures/CylinderCube.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/Picther.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/Picther.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Cube.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Cube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Pictures.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/ReflectionRefractionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/ReflectionRefractionTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/ShadowTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/ShadowTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/Pictures.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Pictures.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,8 +148,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.Pictures" />
-        <item itemvalue="JUnit.Pictures.front" />
         <item itemvalue="JUnit.Pictures.halfSide" />
+        <item itemvalue="JUnit.Pictures.front" />
         <item itemvalue="JUnit.Pictures.side" />
         <item itemvalue="JUnit.ReflectionRefractionTests" />
       </list>
@@ -361,7 +355,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687355023924</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL‎-00029" summary="PRO7- added ReflectionRefractionTests">
+      <created>1687385264108</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL‎-00029" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687385264108</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
