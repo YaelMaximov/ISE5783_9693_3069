@@ -1,5 +1,6 @@
 package pictures;
 
+import geometries.Cylinder;
 import geometries.Geometry;
 import geometries.Plane;
 import lighting.DirectionalLight;
@@ -23,30 +24,49 @@ public class Pictures {
     private Scene scene1 = new Scene("front");
     private final Color sphereLightColor = new Color(800, 500, 0);
 
-    private final Camera camera1 = new Camera(new Point(0, 0, 1000),
+    private final Camera camera1 = new Camera(new Point(0, 0, 1500),
             new Vector(0, 1, 0), new Vector(0, 0, -1))
             .setVPSize(150, 150).setVPDistance(1000);//front
-    private final Camera camera2 = new Camera(new Point(1000, 0, -50),
+    private final Camera camera2 = new Camera(new Point(2000, 0, -520),
             new Vector(0, 1, 0), new Vector(-1, 0, 0))
             .setVPSize(150, 150).setVPDistance(1000);//side
-    private final Camera camera3 = new Camera(new Point(1100, 0, 1000),
+
+//    private final Camera camera4 = new Camera(new Point(1600, 0, -520),
+//            new Vector(0, 1, 0), new Vector(1, 0, 0))
+//            .setVPSize(150, 150).setVPDistance(1000);//side
+    private final Camera camera3 = new Camera(new Point(2000, 0, 1500),
             new Vector(0, 1, 0), new Vector(-1, 0, -1))
             .setVPSize(150, 150).setVPDistance(1000);//half-side
 
     private final Material material = new Material().setkD(KD3).setkS(KS3).setnShininess(SHININESS);
 
-
+    private static final Color skyColor =new Color(44,56,144);
+    private final Material skyMaterial = new Material().setkR(0.3);
+    private final Material waterMaterial = new Material().setkT(0.7).setkR(0.3);
     private final Geometry sky1 =new Plane(new Point(-150, 50, -3000), new Point(-150, 250, -3000), new Point(150, 250, -3000))
-            .setEmission(new Color(17,45,81)).setMaterial(material);
+            .setEmission(skyColor).setMaterial(material);
     private final Geometry sky2 =new Plane(new Point(-3000, 50,-150), new Point(-3000, 250, -3000), new Point(-3000,250, -60))
-            .setEmission(new Color(17,45,81)).setMaterial(material);
+            .setEmission(skyColor).setMaterial(material);
     private final Geometry sky3 =new Plane(new Point(3000, 50,-150), new Point(3000, 250, -3000), new Point(3000,250, -60))
-            .setEmission(new Color(17,45,81)).setMaterial(material);
+            .setEmission(skyColor).setMaterial(material);
+    Ray ray1=new Ray(new Point(80,230,-2998),new Vector(0,0,1));
+
+    private final Geometry moon=new Cylinder(ray1,20d,1d).setEmission(new Color(255,255,255));
+
+    Ray ray2=new Ray(new Point(90,230,-2998),new Vector(0,0,1));
+
+    private final Geometry shadow=new Cylinder(ray2,20d,1d).setEmission(skyColor);
+
 
     //new Color(143,211,240)
     private final Geometry floor =new Plane(new Point(1500, -100, -1500), new Point(-1500, -100, -1500),
-            new Point(670, -100, 3000)).setEmission(new Color(128,128,128))//
-            .setMaterial(material);
+            new Point(670, -100, 3000)).setEmission(new Color(39,45,74))//
+            .setMaterial(waterMaterial);
+//    private final Geometry water =new Plane(new Point(1500, -105, -1500), new Point(-1500, -100, -1500),
+//            new Point(670, -100, 3000)).setEmission(new Color(102,169,162))//
+//            .setMaterial(waterMaterial);
+    private final Cube floor1 =new Cube(new Point(-1200, -100, -2400),2100,5).setCubeEmission(new Color(39,45,100)).setCubeMaterial(material);
+
     public void  setupCamera(Camera camera,String fileName) throws IllegalAccessException
     {
         ImageWriter imageWriter = new ImageWriter(fileName, 500, 500);
@@ -58,10 +78,11 @@ public class Pictures {
     public void  setupLights(Scene scene) throws IllegalAccessException
     {
         //scene.lights.add(new DirectionalLight(sphereLightColor,new Vector(0, 0, -1)));
-        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(200, 200, 30))
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(200, 200, -10))
                 .setkL(0.0001).setkQ(0.00002));
+
         scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(240, 240, -2998))
-                .setkL(0.0001).setkQ(0.0002));
+                .setkL(0.0001).setkQ(0.00002));
         scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(150,150, -2998))
                 .setkL(0.0001).setkQ(0.0002));
         scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(-40, 250, -2998))
@@ -71,26 +92,35 @@ public class Pictures {
         scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(-230, 200, -2998))
                 .setkL(0.0001).setkQ(0.0002));
 
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(-2998, 240, -700))
+                .setkL(0.0001).setkQ(0.00002));
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(-2998,150, -650))
+                .setkL(0.0001).setkQ(0.0002));
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(-2998, 250, -500))
+                .setkL(0.0001).setkQ(0.0002));
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(-2998, 100, -430))
+                .setkL(0.0001).setkQ(0.0002));
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(-2998, 200, -380))
+                .setkL(0.0001).setkQ(0.0002));
+
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(2998, 240, -700))
+                .setkL(0.0001).setkQ(0.00002));
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(2998,150, -650))
+                .setkL(0.0001).setkQ(0.0002));
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(2998, 250, -500))
+                .setkL(0.0001).setkQ(0.0002));
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(2998, 100, -430))
+                .setkL(0.0001).setkQ(0.0002));
+        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(2998, 200, -380))
+                .setkL(0.0001).setkQ(0.0002));
+
     }
-    public void  setupGeometries(Scene scene) throws IllegalAccessException
-    {
-        double d1=-10;
-        double d2=-50;
-        double d3=-130;
-        double x=27d;
-        double y=30d;
-        double z=27d;
-        double l=x-0.2*x;
-        Point p1=new Point(d1, d2, d3);
-        Point p2=new Point(d1-x*0.1, d2+70d, d3-z*0.1);
-        Point p3=new Point(d1+x*0.1,d2+70d-x,d3+z);
 
-        Base base=new Base(p1,z,x,40d,0.8).setBaseEmission(new Color(232,194,128)).setBaseMaterial(material);
-        Cube building=new Cube(p1.add(new Vector(0,40d,0)),z,x,y).setCubeEmission(new Color(232,194,128)).setCubeMaterial(material);
-        Pyramid p=new Pyramid(p2,z+z*0.2,x+x*0.2,30d).setPyramidEmission(new Color(126,147,229)).setPyramidMaterial(material);
-        Clock clock=new Clock(p3,l).setClockEmission(new Color(255,255,255),new Color(218,178,86)).setClockMaterial(material);
+    public void  setupBuilding(Scene scene) throws IllegalAccessException{
+        Point p=new Point(-10, -95, -480);
+        Building b=new Building(p,30,100);
+        scene.geometries.add(b.getGeometries(),sky1,sky2,sky3,floor,floor1.getGeometries(),shadow,moon);
 
-        scene1.geometries.add(clock.getGeometries(),p.getGeometries(),base.getGeometries(),building.getGeometries(),sky1,sky2,sky3,floor);
     }
 
 
@@ -101,7 +131,7 @@ public class Pictures {
 
     @Test
     public void front() throws IllegalAccessException {
-        setupGeometries(scene1);
+        setupBuilding(scene1);
         setupLights(scene1);
         setupCamera(camera1,"front");
 
@@ -109,13 +139,19 @@ public class Pictures {
     }
     @Test
     public void side() throws IllegalAccessException {
-        setupGeometries(scene1);
+        setupBuilding(scene1);
         setupLights(scene1);
         setupCamera(camera2,"side");
     }
+//    @Test
+//    public void otherside() throws IllegalAccessException {
+//        setupGeometries(scene1);
+//        setupLights(scene1);
+//        setupCamera(camera4,"side2");
+//    }
     @Test
     public void halfSide() throws IllegalAccessException {
-        setupGeometries(scene1);
+        setupBuilding(scene1);
         setupLights(scene1);
         setupCamera(camera3,"half_side");
     }

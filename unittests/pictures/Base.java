@@ -7,26 +7,39 @@ import primitives.Material;
 import primitives.Point;
 import primitives.Vector;
 
+import java.util.List;
+
 public class Base {
     Cube c1;
     Cube c2;
     Cube c3;
-    final private double Height=3d;
-    public Base(Point p1, double z, double x, double y,double k) throws IllegalAccessException {
-        c1 = new Cube(p1, z, x, Height);
-        Point start = p1.add(new Vector((x-k*x)/2, Height, (z-k*z)/2));
-        c2 = new Cube(start, z * k, x * k, y - 2 * Height);
+    final public double Height=1.5d;
+    public Base(Point p1, double zx, double y,double k) throws IllegalAccessException {
+        c1 = new Cube(p1, zx, Height);
+        Point start = p1.add(new Vector((zx-k*zx)/2, Height, (zx-k*zx)/2));
+        c2 = new Cube(start, zx * k, y - 2 * Height);
         start = p1.add(new Vector(0, y - Height, 0));
-        c3 = new Cube(start, z, x, Height);
+        c3 = new Cube(start, zx, Height);
     }
+
+    public Vector getC1Normal(Point p) throws IllegalAccessException {
+        Vector normal=c1.top.getNormal(p);
+        if(normal.getY()<0)
+            return new Vector(normal.getX(), -1*normal.getY(), normal.getZ() );
+        return normal;
+    }
+    public List<Point> points() {
+        return  List.of(c1.p2,c1.p3,c1.p4);
+
+    }
+
     public Geometries getGeometries() {
         return new Geometries(c1.getGeometries(),c2.getGeometries(),c3.getGeometries());
     }
-
-    public Base setBaseEmission(Color color) {
-        c1 = c1.setCubeEmission(color);
-        c2 = c2.setCubeEmission(color);
-        c3 = c3.setCubeEmission(color);
+    public Base setBaseEmission(Color color1,Color color2) {
+        c1 = c1.setCubeEmission(color1);
+        c2 = c2.setCubeEmission(color2);
+        c3 = c3.setCubeEmission(color1);
 
         return this;
     }
