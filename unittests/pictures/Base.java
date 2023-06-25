@@ -23,9 +23,7 @@ public class Base {
     }
 
     public Vector getC1Normal(Point p) throws IllegalAccessException {
-        Vector normal=c1.top.getNormal(p);
-        if(normal.getY()<0)
-            return new Vector(normal.getX(), -1*normal.getY(), normal.getZ() );
+        Vector normal=c1.getCubeTopNormal(p);
         return normal;
     }
     public List<Point> points() {

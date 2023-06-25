@@ -63,6 +63,12 @@ public class Cube {
         leftSide = (Polygon) leftSide.setMaterial(mt);
         return this;
     }
+    public Vector getCubeTopNormal(Point p) throws IllegalAccessException {
+        Vector normal=top.getNormal(p);
+        if(normal.getY()<0)
+            return new Vector(normal.getX(), -1*normal.getY(), normal.getZ() );
+        return normal;
+    }
 
 
 }

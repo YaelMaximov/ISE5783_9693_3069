@@ -25,7 +25,7 @@ public class Building {
      final Color Light_Building_Color=new Color(219,199,129);
      //
      //new Color(228,218,193);
-     final Color Pyramid_Color=new Color(104,152,159);
+     final Color Pyramid_Color=new Color(99,138,189);
      //new Color(132,175,158);
 
      private final Material material = new Material().setkD(KD3).setkS(KS3).setnShininess(SHININESS);
@@ -41,8 +41,8 @@ public class Building {
      CylinderBase smallB2;
 
      Pyramid pyramid;
-     public  Building(Point p,double zx,double y) throws IllegalAccessException {
-          //
+     public  Building(Point p,double zx) throws IllegalAccessException {
+
           double nextY=4.5d;
           firstB1=new Base(p,zx,nextY,0.8).setBaseEmission(Light_Building_Color,Dark_Building_Color).setBaseMaterial(material);//base1
           Point nextP=p.add(new Vector(0,nextY,0));//for second
