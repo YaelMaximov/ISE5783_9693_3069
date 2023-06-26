@@ -14,11 +14,11 @@ public class Pyramid {
     Triangle t3;
     Triangle t4;
     Polygon base;
-    public Pyramid(Point p1, double z, double x, double y) throws IllegalAccessException {
-        Point p2 = p1.add(new Vector(x, 0, 0));
-        Point p3 = p2.add(new Vector(0, 0, z));
-        Point p4 = p1.add(new Vector(0, 0, z));
-        Point p5 = p1.add(new Vector(x/2, y, z/2));
+    public Pyramid(Point p1, double zx, double y) throws IllegalAccessException {
+        Point p2 = p1.add(new Vector(zx, 0, 0));
+        Point p3 = p2.add(new Vector(0, 0, zx));
+        Point p4 = p1.add(new Vector(0, 0, zx));
+        Point p5 = p1.add(new Vector(zx/2, y, zx/2));
         base = new Polygon(p1,p2,p3,p4);
         t1=new Triangle(p1,p2,p5);
         t2=new Triangle(p2,p3,p5);

@@ -19,7 +19,7 @@ public class Clock {
         Point p4=p1.add(new Vector(0,l,0));
         frame=new Polygon(p1,p2,p3,p4);
         Point center1=p1.add(new Vector(l/2,l/2,0));
-        double radius1=(l/2)-l*0.1;
+        double radius1=(l/2)-l*0.08;
         Ray ray1=new Ray(center1,frame.getNormal(center1));
         circle1=new Cylinder(ray1,radius1,Height);
 
@@ -33,14 +33,14 @@ public class Clock {
         Ray ray3=new Ray(center3,frame.getNormal(center3));
         circle3=new Cylinder(ray3,radius3,Height);
 
-        Point h1=center3.add(new Vector(-0.3,0,2));
-        Point h2=center3.add(new Vector(0.3,0,2));
+        Point h1=center3.add(new Vector(-0.4,0,2));
+        Point h2=center3.add(new Vector(0.4,0,2));
         Point h3=h2.add(new Vector(0,radius3*0.9,2));
-        Point h4=h1.add(new Vector(0.3,radius3*0.9,2));
+        Point h4=h1.add(new Vector(0,radius3*0.9,2));
         longHand=new Polygon(h1,h2,h3,h4);
 
-        Point hs1=center3.add(new Vector(0,-0.3,2));
-        Point hs2=center3.add(new Vector(0,0.3,2));
+        Point hs1=center3.add(new Vector(0,-0.4,2));
+        Point hs2=center3.add(new Vector(0,0.4,2));
         Point hs3=hs2.add(new Vector(radius3*0.6,0,2));
         Point hs4=hs1.add(new Vector(radius3*0.6,0,2));
 

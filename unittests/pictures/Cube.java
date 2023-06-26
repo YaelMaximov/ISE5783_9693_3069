@@ -14,15 +14,24 @@ public class Cube {
     Polygon back;
     Polygon rightSide;
     Polygon leftSide;
+    Point p2 ;
+    Point p3;
+    Point p4;
 
-    public Cube(Point p1, double z, double x, double y) throws IllegalAccessException {
-        Point p2 = p1.add(new Vector(x, 0, 0));
-        Point p3 = p2.add(new Vector(0, 0, z));
-        Point p4 = p1.add(new Vector(0, 0, z));
-        Point p5 = p1.add(new Vector(0, y, 0));
-        Point p6 = p2.add(new Vector(0, y, 0));
-        Point p7 = p3.add(new Vector(0, y, 0));
-        Point p8 = p4.add(new Vector(0, y, 0));
+    Point p5 ;
+    Point p6 ;
+    Point p7 ;
+    Point p8 ;
+
+
+    public Cube(Point p1, double zx, double y) throws IllegalAccessException {
+         p2 = p1.add(new Vector(zx, 0, 0));
+         p3 = p2.add(new Vector(0, 0, zx));
+         p4 = p1.add(new Vector(0, 0, zx));
+         p5 = p1.add(new Vector(0, y, 0));
+         p6 = p2.add(new Vector(0, y, 0));
+         p7 = p3.add(new Vector(0, y, 0));
+         p8 = p4.add(new Vector(0, y, 0));
 
         top = new Polygon(p5, p6, p7, p8);
         base = new Polygon(p1, p2, p3, p4);
@@ -53,6 +62,12 @@ public class Cube {
         rightSide = (Polygon) rightSide.setMaterial(mt);
         leftSide = (Polygon) leftSide.setMaterial(mt);
         return this;
+    }
+    public Vector getCubeTopNormal(Point p) throws IllegalAccessException {
+        Vector normal=top.getNormal(p);
+        if(normal.getY()<0)
+            return new Vector(normal.getX(), -1*normal.getY(), normal.getZ() );
+        return normal;
     }
 
 
