@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- picture 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Pictures.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Pictures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +34,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/משפחת מקסימוב/IdeaProjects/ISE5783_9693_3069/unittests/geometries&quot;
-  }
-}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="scene" />
@@ -64,7 +59,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Pictures.front">
+  <component name="RunManager" selected="JUnit.Pictures.halfSide">
     <configuration name="Pictures" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
@@ -146,9 +141,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Pictures.halfSide" />
         <item itemvalue="JUnit.Pictures.front" />
         <item itemvalue="JUnit.RenderTests.basicRenderTwoColorTest" />
-        <item itemvalue="JUnit.Pictures.halfSide" />
         <item itemvalue="JUnit.Pictures" />
         <item itemvalue="JUnit.Pictures.otherside" />
       </list>
@@ -451,7 +446,8 @@
     <MESSAGE value="PRO7- added ReflectionRefractionTests" />
     <MESSAGE value="PRO7- picture" />
     <MESSAGE value="PRO7- picture 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="PRO7- picture 1" />
+    <MESSAGE value="mini pro1" />
+    <option name="LAST_COMMIT_MESSAGE" value="mini pro1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -507,11 +503,11 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ISE5783_9693_3069$IntegrationTests_CameraSphereIntersections.ic" NAME="IntegrationTests.CameraSphereIntersections Coverage Results" MODIFIED="1682615393927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ISE5783_9693_3069$Main.ic" NAME="Main Coverage Results" MODIFIED="1679342282667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/ISE5783_9693_3069$LightsTests.ic" NAME="LightsTests Coverage Results" MODIFIED="1684691922031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>lighting.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ISE5783_9693_3069$Main.ic" NAME="Main Coverage Results" MODIFIED="1679342282667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test.*</FILTER>
     </SUITE>
   </component>
 </project>

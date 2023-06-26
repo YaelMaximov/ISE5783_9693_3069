@@ -12,11 +12,15 @@ import java.util.MissingResourceException;
 import static java.lang.Double.isNaN;
 import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
+import java.util.stream.*;
 
 /**
  * Camera class represents a virtual camera in a 3D scene.
  */
 public class Camera {
+
+    private int threadsCount;
+    private PixelManager pixelManager;
     private Point p0;
 
     private Vector vUp;
@@ -28,6 +32,8 @@ public class Camera {
     private double height;
 
     private int nss;
+
+
 
     private ImageWriter imageWriter;
     private RayTracerBase rayTracerBase;
@@ -107,6 +113,10 @@ public class Camera {
     public Point getP0() {
         return p0;
     }
+    public Camera setThreadsCount(int threadsCount) {
+        this.threadsCount = threadsCount;
+        return this;
+    }
 
     /**
      * Sets the viewport size of this Camera object to the specified width and height.
@@ -160,16 +170,16 @@ public class Camera {
         return this;
     }
 
-    /**
-     * Casts a ray and returns the resulting color.
-     *
-     * @param ray the ray to cast
-     * @return the color of the object that the ray intersects with
-     * @throws IllegalAccessException if the ray tracer has not been set for this Camera object
+
+    /** Cast ray from camera and color a pixel
+     * @param nX resolution on X axis (number of pixels in row)
+     * @param nY resolution on Y axis (number of pixels in column)
+     * @param col pixel's column number (pixel index in row)
+     * @param row pixel's row number (pixel index in column)
      */
-    private Color castRay(Ray ray) throws IllegalAccessException {
-        Color color = rayTracerBase.traceRay(ray);
-        return color;
+    private void castRay(int nX, int nY, int col, int row) throws IllegalAccessException {
+        imageWriter.writePixel(col, row, rayTracerBase.traceRay(constructRay(nX, nY, col, row)));
+        pixelManager.pixelDone();
     }
     private List<Ray> constructBeamSuperSampling(int nX, int nY, int j, int i) throws IllegalAccessException {
         //creating rays
@@ -293,14 +303,27 @@ public class Camera {
         }
         int nX = this.imageWriter.getNx();
         int nY = this.imageWriter.getNy();
-        for (int i= 0; i< nX; i++)
-            for  (int j = 0; j < nY; j++){
-                {
-                    Ray ray = constructRay(nX, nY, j, i);
-                    Color color = castRay(ray);
-                    imageWriter.writePixel(j, i, color);
-                }
-            }
+        pixelManager = new PixelManager(nY, nX,100d);//לחזור
+        if (threadsCount == 0) {
+            for (int i = 0; i < nY; ++i)
+                for (int j = 0; j < nX; ++j)
+                    castRay(nX, nY, j, i);
+        }
+        else {
+            var threads = new LinkedList<Thread>(); // list of threads
+            while (threadsCount-- > 0) // add appropriate number of threads
+                threads.add(new Thread(() -> { // add a thread with its code
+                    Pixel pixel; // current pixel(row,col)
+                    // allocate pixel(row,col) in loop until there are no more pixels
+                    while ((pixel = pixelManager.nextPixel()) != null)
+                        // cast ray through pixel (and color it – inside castRay)
+                        castRay(nX, nY, pixel.col(), pixel.row());
+                }));
+            // start all the threads
+            for (var thread : threads) thread.start();
+            // wait until all the threads have finished
+            try { for (var thread : threads) thread.join(); } catch (InterruptedException ignore) {}
+        }
         return this;
     }
 
