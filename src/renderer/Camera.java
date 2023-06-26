@@ -339,7 +339,28 @@ public class Camera {
         imageWriter.writeToImage();
         return this;
     }
-
+    private Color castBeamAdaptiveSuperSampling(int i, int j) throws IllegalAccessException {
+        Ray ray = constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i);
+        Color centerColor = rayTracerBase.traceRay(center);
+        return calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor);
+    }
+    private  Color calcAdaptiveSuperSampling(int nX, int nY, int j, int i, int maxLevel, Color centerColor) throws IllegalAccessException {
+        if (maxLevel <= 0 )
+            return centerColor;
+        Color color = centerColor;
+        Ray[] beam = new Ray[]{constructRay(2 * nX, 2 * nY, 2 * j, 2 * i),
+                constructRay(2 * nX, 2 * nY, 2 * j, 2 * i + 1),
+                constructRay(2 * nX, 2 * nY, 2 * j + 1, 2 * i),
+                constructRay(2 * nX, 2 * nY, 2 * j + 1 , 2 * i + 1)};
+        for (int ray = 0; ray < 4; ray ++){
+            Color currentColor = rayTracerBase.traceRay(beam[ray]);
+            if (!currentColor.equals(centerColor))
+                currentColor = calcAdaptiveSuperSampling(2 * nX, 2 * nY,
+                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1),currentColor)
+            color = color.add(currentColor);
+        }
+        return color.reduce(5);
+    }
 
 }
 
