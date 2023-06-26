@@ -19,8 +19,7 @@ import java.util.stream.*;
  */
 public class Camera {
 
-    private int threadsCount;
-    private PixelManager pixelManager;
+
     private Point p0;
 
     private Vector vUp;
@@ -37,6 +36,10 @@ public class Camera {
 
     private ImageWriter imageWriter;
     private RayTracerBase rayTracerBase;
+
+    private int threadsCount;
+    private PixelManager pixelManager;
+    private long printInterval = 0l;
 
     /**
      * Constructs a camera with the given position and orientation vectors.
@@ -303,7 +306,7 @@ public class Camera {
         }
         int nX = this.imageWriter.getNx();
         int nY = this.imageWriter.getNy();
-        pixelManager = new PixelManager(nY, nX,100d);//לחזור
+        pixelManager = new PixelManager(nY, nX,printInterval);//לחזור
         if (threadsCount == 0) {
             for (int i = 0; i < nY; ++i)
                 for (int j = 0; j < nX; ++j)
@@ -313,7 +316,7 @@ public class Camera {
             var threads = new LinkedList<Thread>(); // list of threads
             while (threadsCount-- > 0) // add appropriate number of threads
                 threads.add(new Thread(() -> { // add a thread with its code
-                    Pixel pixel; // current pixel(row,col)
+                    PixelManager.Pixel pixel; // current pixel(row,col)
                     // allocate pixel(row,col) in loop until there are no more pixels
                     while ((pixel = pixelManager.nextPixel()) != null)
                         // cast ray through pixel (and color it – inside castRay)
@@ -340,7 +343,7 @@ public class Camera {
         return this;
     }
     private Color castBeamAdaptiveSuperSampling(int i, int j) throws IllegalAccessException {
-        Ray ray = constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i);
+        Ray center = constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i);
         Color centerColor = rayTracerBase.traceRay(center);
         return calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor);
     }
@@ -356,7 +359,7 @@ public class Camera {
             Color currentColor = rayTracerBase.traceRay(beam[ray]);
             if (!currentColor.equals(centerColor))
                 currentColor = calcAdaptiveSuperSampling(2 * nX, 2 * nY,
-                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1),currentColor)
+                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1),currentColor);
             color = color.add(currentColor);
         }
         return color.reduce(5);
