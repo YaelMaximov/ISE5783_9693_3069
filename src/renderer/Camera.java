@@ -5,11 +5,12 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
-import java.util.MissingResourceException;
+import java.util.*;
 
 import java.util.MissingResourceException;
 
 import static java.lang.Double.isNaN;
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 /**
@@ -25,6 +26,8 @@ public class Camera {
     private double distance;
     private double width;
     private double height;
+
+    private int nss;
 
     private ImageWriter imageWriter;
     private RayTracerBase rayTracerBase;
@@ -130,6 +133,10 @@ public class Camera {
         this.distance = distance;
         return this;
     }
+    public Camera setNss(int nss) {
+        this.nss = nss;
+        return this;
+    }
 
     /**
      * Sets the {@link ImageWriter} object to be used for rendering the image.
@@ -164,12 +171,107 @@ public class Camera {
         Color color = rayTracerBase.traceRay(ray);
         return color;
     }
+    private List<Ray> constructBeamSuperSampling(int nX, int nY, int j, int i) throws IllegalAccessException {
+        //creating rays
+        List<Ray> beam= new LinkedList<>();
+        //add the ray of the center of the pixel
+        beam.add(constructRay(nX,nY,j,i));
+        //calculate the measures of each pixel
+        double ry = height / nY;
+        double rx = width / nX;
+        //find how many steps to go on the x and y coordinates
+        double yScale = alignZero((j-nX/2d)*rx+rx/2d);
+        double xScale = alignZero((i-nY/2d)*ry+ry/2d);
+        //get to the middle of the picture by adding the right distance
+        Point pixelCenter = p0.add(vTo.scale(distance));
+        if(!isZero(yScale))
+            pixelCenter = pixelCenter.add(vRight.scale(yScale));
+        if (!isZero(xScale))
+            pixelCenter = pixelCenter.add(vUp.scale(-1*xScale));
+        Random rand = new Random();
+        for (int c = 0; c<nss; c++) {
+            //the rand returns randomly true or false and according to it positive or negative random number is chosen
+            double dxfactor =  rand.nextBoolean() ? rand.nextDouble() : -1 *
+                    rand.nextDouble();
+            double dyfactor = rand.nextBoolean() ? rand.nextDouble() : -1 *
+                    rand.nextDouble();
+            double dx = rx * dxfactor;
+            double dy = ry * dyfactor;
+            Point randomPoint = pixelCenter;
+            if (!isZero(dx))
+                randomPoint = randomPoint.add(vRight.scale(dx));
+            if (!isZero(dy))
+                randomPoint = randomPoint.add(vUp.scale(-1 * dy));
+            beam.add(new Ray(p0, randomPoint.subtract(p0)));
+        }
+        return beam;
+    }
+    private Color castBeamSuperSampling(int j, int i) throws IllegalAccessException {
+        List<Ray> beam = constructBeamSuperSampling (imageWriter.getNx(),imageWriter.getNy(), j, i);
+        Color color = Color.BLACK;
+        for (Ray ray : beam){
+            color = color.add(rayTracerBase.traceRay(ray));//?
+        }
+        return color.reduce(nss);
+    }
 
     /**
      * Renders the image by tracing rays for each pixel and writing the resulting colors to the {@link ImageWriter} object.
      *
      * @throws IllegalAccessException if any required resources (such as the image writer or ray tracer) are missing or null
      */
+    public Camera renderImageSuperSampling() throws IllegalAccessException {
+        if (imageWriter == null || rayTracerBase == null || isNaN(width) || isNaN(height) || isNaN(distance)) {
+            if (imageWriter == null) {
+                throw new MissingResourceException("missing resources", "Camera", "imageWriter");
+            }
+            if (rayTracerBase == null) {
+                throw new MissingResourceException("missing resources", "Camera", "rayTracerBase");
+            }
+            if (isNaN(width)) {
+                throw new MissingResourceException("missing resources", "Camera", "width");
+            }
+            if (isNaN(height)) {
+                throw new MissingResourceException("missing resources", "Camera", "height");
+            }
+            if (isNaN(distance)) {
+                throw new MissingResourceException("missing resources", "Camera", "distance");
+            }
+            throw new UnsupportedOperationException();
+        }
+        int nX = this.imageWriter.getNx();
+        int nY = this.imageWriter.getNy();
+        for (int i= 0; i< nX; i++)
+            for  (int j = 0; j < nY; j++){
+                {
+                    //Ray ray = constructRay(nX, nY, j, i);
+                    Color color = castBeamSuperSampling(j,i);
+                    imageWriter.writePixel(j, i, color);
+                }
+            }
+        return this;
+    }
+
+    /**
+     * Prints a grid on the image with the given interval and color.
+     *
+     * @param interval The interval between grid lines.
+     * @param color    The color of the grid lines.
+     * @throws MissingResourceException If the imageWriter is null.
+     */
+    public void printGrid(int interval, Color color) throws MissingResourceException {
+        if (imageWriter == null) {
+            throw new MissingResourceException("imageWriter", "Camera", "The value of imageWriter is null.");
+        }
+        for (int i = 0; i < imageWriter.getNx(); i++) {
+            for (int j = 0; j < imageWriter.getNy(); j++) {
+                if (i % interval == 0 || j % interval == 0) {
+                    imageWriter.writePixel(j, i, color);
+                }
+            }
+        }
+        imageWriter.writeToImage();
+    }
     public Camera renderImage() throws IllegalAccessException {
         if (imageWriter == null || rayTracerBase == null || isNaN(width) || isNaN(height) || isNaN(distance)) {
             if (imageWriter == null) {
@@ -200,27 +302,6 @@ public class Camera {
                 }
             }
         return this;
-    }
-
-    /**
-     * Prints a grid on the image with the given interval and color.
-     *
-     * @param interval The interval between grid lines.
-     * @param color    The color of the grid lines.
-     * @throws MissingResourceException If the imageWriter is null.
-     */
-    public void printGrid(int interval, Color color) throws MissingResourceException {
-        if (imageWriter == null) {
-            throw new MissingResourceException("imageWriter", "Camera", "The value of imageWriter is null.");
-        }
-        for (int i = 0; i < imageWriter.getNx(); i++) {
-            for (int j = 0; j < imageWriter.getNy(); j++) {
-                if (i % interval == 0 || j % interval == 0) {
-                    imageWriter.writePixel(j, i, color);
-                }
-            }
-        }
-        imageWriter.writeToImage();
     }
 
     /**

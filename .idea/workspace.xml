@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- picture 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Cube.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Cube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Pictures.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Pictures.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/StreetLamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/StreetLamp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/Clock.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Clock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +66,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Pictures.halfSide">
+  <component name="RunManager" selected="JUnit.Pictures.front">
     <configuration name="Pictures" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
@@ -132,17 +130,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Pictures.side" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RenderTests.basicRenderTwoColorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pictures.*" />
+          <option name="PATTERN" value="renderer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="pictures" />
-      <option name="MAIN_CLASS_NAME" value="pictures.Pictures" />
-      <option name="METHOD_NAME" value="side" />
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.RenderTests" />
+      <option name="METHOD_NAME" value="basicRenderTwoColorTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -150,11 +148,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Pictures.front" />
+        <item itemvalue="JUnit.RenderTests.basicRenderTwoColorTest" />
         <item itemvalue="JUnit.Pictures.halfSide" />
         <item itemvalue="JUnit.Pictures" />
-        <item itemvalue="JUnit.Pictures.front" />
         <item itemvalue="JUnit.Pictures.otherside" />
-        <item itemvalue="JUnit.Pictures.side" />
       </list>
     </recent_temporary>
   </component>
@@ -393,7 +391,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687652220510</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL‎-00034" summary="PRO7- picture 1">
+      <created>1687702579956</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL‎-00034" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1687702579956</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -455,16 +460,6 @@
           <url>file://$PROJECT_DIR$/src/geometries/Triangle.java</url>
           <line>36</line>
           <option name="timeStamp" value="84" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
-          <line>200</line>
-          <option name="timeStamp" value="129" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/renderer/Camera.java</url>
-          <line>201</line>
-          <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
