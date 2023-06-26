@@ -11,8 +11,11 @@ import org.junit.jupiter.api.Test;
 import primitives.*;
 import renderer.Camera;
 import renderer.ImageWriter;
+import renderer.RayTracerBase;
 import renderer.RayTracerBasic;
 import scene.Scene;
+
+import java.util.List;
 
 import static java.awt.Color.BLUE;
 
@@ -51,6 +54,7 @@ public class Pictures {
     private final Geometry moon2 = new Sphere(20, new Point(90,230,-2998)).setEmission(new Color(17,45,81));
     private final Geometry s = new Sphere(5d, new Point(45,0,-20)).setEmission(new Color(255,255,255)) //
             .setMaterial(new Material().setkD(0.5).setkS(0.5).setnShininess(30));
+
 
     //new Color(143,211,240)
     private final Geometry floor =new Plane(new Point(1500, -100, -1500), new Point(-1500, -100, -1500),
@@ -137,4 +141,6 @@ public class Pictures {
         setupLights(scene1);
         setupCamera(camera3,"half_side");
     }
+
+
 }
