@@ -313,15 +313,13 @@ public class Camera {
                 randomPoint = randomPoint.add(vRight.scale(dx));
             if (!isZero(dy))
                 randomPoint = randomPoint.add(vUp.scale(-1 * dy));
+
             beam.add(new Ray(p0, randomPoint.subtract(p0)));
         }
         return beam;
     }
-    private Color castBeamAdaptiveSuperSampling(int i, int j) throws IllegalAccessException {
-        Ray center = constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i);
-        Color centerColor = rayTracerBase.traceRay(center);
-        return calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor);
-    }
+
+
     private  Color calcAdaptiveSuperSampling(int nX, int nY, int j, int i, int maxLevel, Color centerColor) throws IllegalAccessException {
         if (maxLevel <= 0 )
             return centerColor;
@@ -339,12 +337,22 @@ public class Camera {
         }
         return color.reduce(5);
     }
+
+    private Color castBeamAdaptiveSuperSampling(int i, int j) throws IllegalAccessException {
+        Ray center = constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i);
+        Color centerColor = rayTracerBase.traceRay(center);
+        return calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor);
+    }
+
     private Color castBeamSuperSampling(int j, int i) throws IllegalAccessException {
+        //  שולחת לפונקציה כדי ליצור קרניים
         List<Ray> beam = constructBeamSuperSampling (imageWriter.getNx(),imageWriter.getNy(), j, i);
         Color color = Color.BLACK;
+        // סוכם את הצבעים שכל קרן מחזירה
         for (Ray ray : beam){
             color = color.add(rayTracerBase.traceRay(ray));//?
         }
+        // מחזיר ממוצע
         return color.reduce(nss);
     }
     public Camera renderImageSuperSampling() throws IllegalAccessException {
@@ -372,7 +380,7 @@ public class Camera {
             for  (int j = 0; j < nY; j++){
                 {
                     //Ray ray = constructRay(nX, nY, j, i);
-                    Color color = castBeamSuperSampling(j,i);
+                    Color color = castBeamAdaptiveSuperSampling(j,i);
                     imageWriter.writePixel(j, i, color);
                 }
             }

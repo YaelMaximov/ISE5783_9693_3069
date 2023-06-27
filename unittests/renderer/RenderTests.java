@@ -34,10 +34,9 @@ public class RenderTests {
       // right
       Camera camera = new Camera(new Point(Double3.ZERO), new Vector(0, 1, 0), new Vector(0, 0, -1)) //
               .setVPDistance(100) //
-              .setVPSize(500, 500) .setNss(300)//
+              .setVPSize(500, 500) .setNss(300).setMaxLevelAdaptiveSS(3)//
               .setImageWriter(new ImageWriter("base render test", 1000, 1000))
               .setRayTracer(new RayTracerBasic(scene));
-
       camera.renderImageSuperSampling();
       camera.printGrid(100, new Color(YELLOW));
       camera.writeToImage();
