@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="mini pro1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-    </list>
+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="mini pro2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -410,7 +407,13 @@
       <option name="presentableId" value="LOCAL‎00037" />
       <updated>1687786991510</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL‎00038" summary="mini pro2">
+      <created>1687858848213</created>
+      <option name="number" value="LOCAL‎00038" />
+      <option name="presentableId" value="LOCAL‎00038" />
+      <updated>1687858848213</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -459,7 +462,8 @@
     <MESSAGE value="PRO7- picture" />
     <MESSAGE value="PRO7- picture 1" />
     <MESSAGE value="mini pro1" />
-    <option name="LAST_COMMIT_MESSAGE" value="mini pro1" />
+    <MESSAGE value="mini pro2" />
+    <option name="LAST_COMMIT_MESSAGE" value="mini pro2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
