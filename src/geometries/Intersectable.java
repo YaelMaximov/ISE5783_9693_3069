@@ -2,6 +2,7 @@ package geometries;
 
 import primitives.Point;
 import primitives.Ray;
+import primitives.Vector;
 
 import java.util.List;
 import java.util.Objects;
@@ -10,6 +11,8 @@ import java.util.Objects;
  * The Intersectable interface represents a geometric object that can be intersected by a ray.
  */
 public abstract class Intersectable {
+    protected boolean bvhIsOn=true;
+    public BoundingBox box;
 
 //    /**
 //     * Returns a list of points where the specified ray intersects this object.
@@ -19,6 +22,55 @@ public abstract class Intersectable {
 //     */
 //    public abstract List<Point> findIntsersections(Ray ray) throws IllegalAccessException;
 
+    public class BoundingBox{
+        public Point minimums;
+        public Point maximums;
+        public BoundingBox(Point min,Point max){
+            minimums=min;
+            maximums=max;
+        }
+
+    }
+    public boolean isIntersectingBoundingBox(Ray ray){
+        if (!bvhIsOn || box ==null)
+            return true;
+        Vector dir= ray.getDir();
+        Point p0=ray.getP0();
+        double tMin = (box.minimums.getX()-p0.getX()) / dir.getX();
+        double tMax = (box.maximums.getX()-p0.getX()) / dir.getX();
+        if (tMin>tMax){
+            double temp=tMin;
+            tMin=tMax;
+            tMax=temp;
+        }
+        double tyMin = (box.minimums.getY()-p0.getY()) / dir.getY();
+        double tyMax = (box.maximums.getY()-p0.getY()) / dir.getY();
+        if (tyMin > tyMax) {
+            double temp=tyMin;
+            tyMin=tyMax;
+            tyMax=temp;
+        }
+        if((tMin>tyMax)||(tyMin > tMax))
+            return false;
+        if (tyMin > tMin)
+            tMin=tyMin;
+        if (tyMax< tMax)
+            tMax=tyMax;
+        double tzMin = (box.minimums.getZ()-p0.getZ()) / dir.getZ();
+        double tzMax = (box.maximums.getZ()-p0.getZ()) / dir.getZ();
+        if (tzMin > tzMax){
+            double temp = tzMin;
+            tzMin =tzMax;
+            tzMax = temp;
+        }
+        if ((tMin > tzMax)||(tzMin > tMax))
+            return false;
+        if(tzMin>tMin)
+            tMin = tzMin;
+        if (tzMax<tMax)
+            tMax = tzMax;
+        return true;
+    }
     public static class GeoPoint{
         public Geometry geometry;
         public Point point;
@@ -62,6 +114,8 @@ public abstract class Intersectable {
 
     protected abstract List<GeoPoint>
     findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException;
+
+    //protected abstract void createBoundingBox() throws IllegalAccessException;
 
 
 
