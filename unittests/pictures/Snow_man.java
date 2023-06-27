@@ -26,7 +26,7 @@ public class Snow_man {
     private final Geometry button2;
     private final Geometry button3;
 
-    public Snow_man(Point baseCenter) {
+    public Snow_man(Point baseCenter) throws IllegalAccessException {
         sphere1 = new Sphere(16d, new Point(0, -10, -50))
                 .setEmission(sphereColor).setMaterial(new Material().setkD(KD).setkS(KS).setnShininess(SHININESS));
         sphere2 = new Sphere(20d, new Point(0, -35, -50))

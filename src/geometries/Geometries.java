@@ -67,4 +67,8 @@ public class Geometries extends Intersectable {
     public void add(List<Triangle> triangles) {
         intersectables.addAll((triangles));
     }
+
+    protected void createBoundingBox() throws IllegalAccessException {
+
+    }
 }

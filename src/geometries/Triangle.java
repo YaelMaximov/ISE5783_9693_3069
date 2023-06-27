@@ -24,6 +24,7 @@ public class Triangle extends Polygon {
      */
     public Triangle(Point p1, Point p2, Point p3) throws IllegalAccessException {
         super(p1, p2, p3);
+        if (bvhIsOn) createBoundingBox();
     }
 
     /**
@@ -34,6 +35,8 @@ public class Triangle extends Polygon {
      */
     @Override
     protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException {
+        if(!box.isIntersectingBoundingBox(ray)) return null;
+
         // check if ray intersects plane containing the triangle
         List<GeoPoint> result = plane.findGeoIntersections(ray);
         // no intersections
@@ -92,45 +95,5 @@ public class Triangle extends Polygon {
                 ", plane = " + plane;
     }
 }
-//    @Override
-//    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
-//        /*List<Point> list = new ArrayList<Point>(findIntsersections(ray));
-//        List<GeoPoint> geoPointList = new ArrayList<GeoPoint>();
-//        int i=0;
-//
-//        for (Point geoPoint : list) {
-//            Geometry geometry = null;
-//            GeoPoint geoPoint1=new GeoPoint(geometry,geoPoint);
-//            geoPointList.add(i,geoPoint1);
-//            i++;
-//        }
-//        return geoPointList;*/
-//        if (plane.findIntsersections(ray) == null)
-//            return null;
-//        Point P0 = ray.getP0();
-//        Point p1 = vertices.get(0);
-//        Point p2 = vertices.get(1);
-//        Point p3 = vertices.get(2);
-//        Vector V1 = p1.subtract(P0);
-//        Vector V2 = p2.subtract(P0);
-//        Vector V3 = p3.subtract(P0);
-//        Vector N1 = V1.crossProduct(V2).normalize();
-//        Vector N2 = V2.crossProduct(V3).normalize();
-//        Vector N3 = V3.crossProduct(V1).normalize();
-//        double vn1 = ray.getDir().dotProduct(N1);
-//        double vn2 = ray.getDir().dotProduct(N2);
-//        double vn3 = ray.getDir().dotProduct(N3);
-//        if (vn1 == 0 && vn2 == 0 || vn2 == 0 && vn3 == 0 || vn1 == 0 && vn3 == 0)
-//            return null;
-//        if (vn1 >= 0 && vn2 >= 0 && vn3 >= 0 || vn1 <= 0 && vn2 <= 0 && vn3 <= 0) {
-//            Point point = plane.findIntsersections(ray).get(0);
-//            GeoPoint geoPoint = new GeoPoint(this, point);
-//            ArrayList<GeoPoint> listGeo = new ArrayList<GeoPoint>();
-//
-//            return listGeo;
-//
-//        }
-//        return null;
-//    }
 
 
