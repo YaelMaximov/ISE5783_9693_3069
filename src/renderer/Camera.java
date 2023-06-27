@@ -339,12 +339,16 @@ public class Camera {
         imageWriter.writeToImage();
         return this;
     }
+
     private Color castBeamAdaptiveSuperSampling(int i, int j) throws IllegalAccessException {
+        // הקרן נבנת על ידי המידות של התמונה
         Ray ray = constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i);
-        Color centerColor = rayTracerBase.traceRay(center);
-        return calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor);
+        // Color centerColor = rayTracerBase.traceRay(center);
+        //return calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor);
+        return null;
     }
     private  Color calcAdaptiveSuperSampling(int nX, int nY, int j, int i, int maxLevel, Color centerColor) throws IllegalAccessException {
+        //אם רמת הרקורסיה שווה 0 נחזיר את צבע הפיקסל המרכזי
         if (maxLevel <= 0 )
             return centerColor;
         Color color = centerColor;
@@ -354,11 +358,14 @@ public class Camera {
                 constructRay(2 * nX, 2 * nY, 2 * j + 1 , 2 * i + 1)};
         for (int ray = 0; ray < 4; ray ++){
             Color currentColor = rayTracerBase.traceRay(beam[ray]);
+            // בודק אם הצבע הנוכחי שונה מהצבע של נקודת מרכז
             if (!currentColor.equals(centerColor))
+                // אם כן הצבע מתוקן ע''י קריאה קרוסבית לפונקציה
                 currentColor = calcAdaptiveSuperSampling(2 * nX, 2 * nY,
-                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1),currentColor)
+                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1),currentColor);
             color = color.add(currentColor);
         }
+        // צבירת הצבעים והחזרה של הצבע הממוצע
         return color.reduce(5);
     }
 
