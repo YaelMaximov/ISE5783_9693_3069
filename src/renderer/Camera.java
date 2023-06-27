@@ -40,6 +40,7 @@ public class Camera {
     private int threadsCount;
     private PixelManager pixelManager;
     private long printInterval = 0l;
+    private int maxLevelAdaptiveSS;
 
     /**
      * Constructs a camera with the given position and orientation vectors.
@@ -150,6 +151,10 @@ public class Camera {
         this.nss = nss;
         return this;
     }
+    public Camera setMaxLevelAdaptiveSS(int maxLevelAdaptiveSS) {
+        this.maxLevelAdaptiveSS = maxLevelAdaptiveSS;
+        return this;
+    }
 
     /**
      * Sets the {@link ImageWriter} object to be used for rendering the image.
@@ -184,86 +189,15 @@ public class Camera {
         imageWriter.writePixel(col, row, rayTracerBase.traceRay(constructRay(nX, nY, col, row)));
         pixelManager.pixelDone();
     }
-    private List<Ray> constructBeamSuperSampling(int nX, int nY, int j, int i) throws IllegalAccessException {
-        //creating rays
-        List<Ray> beam= new LinkedList<>();
-        //add the ray of the center of the pixel
-        beam.add(constructRay(nX,nY,j,i));
-        //calculate the measures of each pixel
-        double ry = height / nY;
-        double rx = width / nX;
-        //find how many steps to go on the x and y coordinates
-        double yScale = alignZero((j-nX/2d)*rx+rx/2d);
-        double xScale = alignZero((i-nY/2d)*ry+ry/2d);
-        //get to the middle of the picture by adding the right distance
-        Point pixelCenter = p0.add(vTo.scale(distance));
-        if(!isZero(yScale))
-            pixelCenter = pixelCenter.add(vRight.scale(yScale));
-        if (!isZero(xScale))
-            pixelCenter = pixelCenter.add(vUp.scale(-1*xScale));
-        Random rand = new Random();
-        for (int c = 0; c<nss; c++) {
-            //the rand returns randomly true or false and according to it positive or negative random number is chosen
-            double dxfactor =  rand.nextBoolean() ? rand.nextDouble() : -1 *
-                    rand.nextDouble();
-            double dyfactor = rand.nextBoolean() ? rand.nextDouble() : -1 *
-                    rand.nextDouble();
-            double dx = rx * dxfactor;
-            double dy = ry * dyfactor;
-            Point randomPoint = pixelCenter;
-            if (!isZero(dx))
-                randomPoint = randomPoint.add(vRight.scale(dx));
-            if (!isZero(dy))
-                randomPoint = randomPoint.add(vUp.scale(-1 * dy));
-            beam.add(new Ray(p0, randomPoint.subtract(p0)));
-        }
-        return beam;
-    }
-    private Color castBeamSuperSampling(int j, int i) throws IllegalAccessException {
-        List<Ray> beam = constructBeamSuperSampling (imageWriter.getNx(),imageWriter.getNy(), j, i);
-        Color color = Color.BLACK;
-        for (Ray ray : beam){
-            color = color.add(rayTracerBase.traceRay(ray));//?
-        }
-        return color.reduce(nss);
-    }
+
+
 
     /**
      * Renders the image by tracing rays for each pixel and writing the resulting colors to the {@link ImageWriter} object.
      *
      * @throws IllegalAccessException if any required resources (such as the image writer or ray tracer) are missing or null
      */
-    public Camera renderImageSuperSampling() throws IllegalAccessException {
-        if (imageWriter == null || rayTracerBase == null || isNaN(width) || isNaN(height) || isNaN(distance)) {
-            if (imageWriter == null) {
-                throw new MissingResourceException("missing resources", "Camera", "imageWriter");
-            }
-            if (rayTracerBase == null) {
-                throw new MissingResourceException("missing resources", "Camera", "rayTracerBase");
-            }
-            if (isNaN(width)) {
-                throw new MissingResourceException("missing resources", "Camera", "width");
-            }
-            if (isNaN(height)) {
-                throw new MissingResourceException("missing resources", "Camera", "height");
-            }
-            if (isNaN(distance)) {
-                throw new MissingResourceException("missing resources", "Camera", "distance");
-            }
-            throw new UnsupportedOperationException();
-        }
-        int nX = this.imageWriter.getNx();
-        int nY = this.imageWriter.getNy();
-        for (int i= 0; i< nX; i++)
-            for  (int j = 0; j < nY; j++){
-                {
-                    //Ray ray = constructRay(nX, nY, j, i);
-                    Color color = castBeamSuperSampling(j,i);
-                    imageWriter.writePixel(j, i, color);
-                }
-            }
-        return this;
-    }
+
 
     /**
      * Prints a grid on the image with the given interval and color.
@@ -320,7 +254,13 @@ public class Camera {
                     // allocate pixel(row,col) in loop until there are no more pixels
                     while ((pixel = pixelManager.nextPixel()) != null)
                         // cast ray through pixel (and color it – inside castRay)
-                        castRay(nX, nY, pixel.col(), pixel.row());
+                    {
+                        try {
+                            castRay(nX, nY, pixel.col(), pixel.row());
+                        } catch (IllegalAccessException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
                 }));
             // start all the threads
             for (var thread : threads) thread.start();
@@ -341,6 +281,41 @@ public class Camera {
         }
         imageWriter.writeToImage();
         return this;
+    }
+    private List<Ray> constructBeamSuperSampling(int nX, int nY, int j, int i) throws IllegalAccessException {
+        //creating rays
+        List<Ray> beam= new LinkedList<>();
+        //add the ray of the center of the pixel
+        beam.add(constructRay(nX,nY,j,i));
+        //calculate the measures of each pixel
+        double ry = height / nY;
+        double rx = width / nX;
+        //find how many steps to go on the x and y coordinates
+        double yScale = alignZero((j-nX/2d)*rx+rx/2d);
+        double xScale = alignZero((i-nY/2d)*ry+ry/2d);
+        //get to the middle of the picture by adding the right distance
+        Point pixelCenter = p0.add(vTo.scale(distance));
+        if(!isZero(yScale))
+            pixelCenter = pixelCenter.add(vRight.scale(yScale));
+        if (!isZero(xScale))
+            pixelCenter = pixelCenter.add(vUp.scale(-1*xScale));
+        Random rand = new Random();
+        for (int c = 0; c<nss; c++) {
+            //the rand returns randomly true or false and according to it positive or negative random number is chosen
+            double dxfactor =  rand.nextBoolean() ? rand.nextDouble() : -1 *
+                    rand.nextDouble();
+            double dyfactor = rand.nextBoolean() ? rand.nextDouble() : -1 *
+                    rand.nextDouble();
+            double dx = rx * dxfactor;
+            double dy = ry * dyfactor;
+            Point randomPoint = pixelCenter;
+            if (!isZero(dx))
+                randomPoint = randomPoint.add(vRight.scale(dx));
+            if (!isZero(dy))
+                randomPoint = randomPoint.add(vUp.scale(-1 * dy));
+            beam.add(new Ray(p0, randomPoint.subtract(p0)));
+        }
+        return beam;
     }
     private Color castBeamAdaptiveSuperSampling(int i, int j) throws IllegalAccessException {
         Ray center = constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i);
@@ -364,6 +339,46 @@ public class Camera {
         }
         return color.reduce(5);
     }
+    private Color castBeamSuperSampling(int j, int i) throws IllegalAccessException {
+        List<Ray> beam = constructBeamSuperSampling (imageWriter.getNx(),imageWriter.getNy(), j, i);
+        Color color = Color.BLACK;
+        for (Ray ray : beam){
+            color = color.add(rayTracerBase.traceRay(ray));//?
+        }
+        return color.reduce(nss);
+    }
+    public Camera renderImageSuperSampling() throws IllegalAccessException {
+        if (imageWriter == null || rayTracerBase == null || isNaN(width) || isNaN(height) || isNaN(distance)) {
+            if (imageWriter == null) {
+                throw new MissingResourceException("missing resources", "Camera", "imageWriter");
+            }
+            if (rayTracerBase == null) {
+                throw new MissingResourceException("missing resources", "Camera", "rayTracerBase");
+            }
+            if (isNaN(width)) {
+                throw new MissingResourceException("missing resources", "Camera", "width");
+            }
+            if (isNaN(height)) {
+                throw new MissingResourceException("missing resources", "Camera", "height");
+            }
+            if (isNaN(distance)) {
+                throw new MissingResourceException("missing resources", "Camera", "distance");
+            }
+            throw new UnsupportedOperationException();
+        }
+        int nX = this.imageWriter.getNx();
+        int nY = this.imageWriter.getNy();
+        for (int i= 0; i< nX; i++)
+            for  (int j = 0; j < nY; j++){
+                {
+                    //Ray ray = constructRay(nX, nY, j, i);
+                    Color color = castBeamSuperSampling(j,i);
+                    imageWriter.writePixel(j, i, color);
+                }
+            }
+        return this;
+    }
+
 
 }
 

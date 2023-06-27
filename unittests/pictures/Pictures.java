@@ -26,17 +26,17 @@ public class Pictures {
 
     private final Camera camera1 = new Camera(new Point(0, 0, 1500),
             new Vector(0, 1, 0), new Vector(0, 0, -1))
-            .setVPSize(150, 150).setVPDistance(1000).setNss(300);//front
+            .setVPSize(150, 150).setVPDistance(1000).setNss(9).setThreadsCount(0);//front
     private final Camera camera2 = new Camera(new Point(2000, 0, -520),
             new Vector(0, 1, 0), new Vector(-1, 0, 0))
-            .setVPSize(150, 150).setVPDistance(1000).setNss(300);//side
+            .setVPSize(150, 150).setVPDistance(1000).setNss(300).setThreadsCount(0);//side
 
 //    private final Camera camera4 = new Camera(new Point(1600, 0, -520),
 //            new Vector(0, 1, 0), new Vector(1, 0, 0))
 //            .setVPSize(150, 150).setVPDistance(1000);//side
     private final Camera camera3 = new Camera(new Point(2000, 0, 1500),
             new Vector(0, 1, 0), new Vector(-1, 0, -1))
-            .setVPSize(150, 150).setVPDistance(1000).setNss(300);//half-side
+            .setVPSize(150, 150).setVPDistance(1000).setNss(300).setThreadsCount(0);//half-side
 
     private final Material material = new Material().setkD(KD3).setkS(KS3).setnShininess(SHININESS);
 
@@ -60,7 +60,7 @@ public class Pictures {
         ImageWriter imageWriter = new ImageWriter(fileName, 500, 500);
         camera.setImageWriter(imageWriter) //
                 .setRayTracer(new RayTracerBasic(scene)) //
-                .renderImageSuperSampling() //
+                .renderImage() //
                 .writeToImage();
     }
     public void  setupLights() throws IllegalAccessException
@@ -167,12 +167,12 @@ public class Pictures {
 
 
     }
-//    @Test
-//    public void side() throws IllegalAccessException {
-//        setupBuilding();
-//        setupNight();
-//        setupCamera(camera2,"side");
-//    }
+    @Test
+    public void side() throws IllegalAccessException {
+        setupBuilding();
+        setupNight();
+        setupCamera(camera2,"side");
+    }
 //    @Test
 //    public void otherside() throws IllegalAccessException {
 //        setupGeometries(scene);
