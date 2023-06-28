@@ -4,10 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- picture 1">
+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="mini pro2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lighting/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/PixelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/PixelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/Clock.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Clock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/Cube.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Cube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/Pyramid.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Pyramid.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -412,7 +424,13 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687811054567</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL‎00038" summary="mini pro2">
+      <created>1687866820557</created>
+      <option name="number" value="LOCAL‎00038" />
+      <option name="presentableId" value="LOCAL‎00038" />
+      <updated>1687866820557</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -460,7 +478,8 @@
     <MESSAGE value="PRO7- added ReflectionRefractionTests" />
     <MESSAGE value="PRO7- picture" />
     <MESSAGE value="PRO7- picture 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="PRO7- picture 1" />
+    <MESSAGE value="mini pro2" />
+    <option name="LAST_COMMIT_MESSAGE" value="mini pro2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -477,8 +496,12 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
-          <line>72</line>
           <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/geometries/Cylinder.java</url>
+          <line>167</line>
+          <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/unittests/pictures/Snow_man.java</url>

@@ -61,16 +61,22 @@ class PixelManager {
      * @return true if next pixel is allocated, false if there are no more pixels */
     Pixel nextPixel() {
         synchronized (mutexNext) {
+            // אומר שכל הפיקסלים עובדו אין יותר פיקסליים לעיבוד
             if (cRow == maxRows) return null;
-
+// כדי לעבור לעמודה הבאה
             ++cCol;
+            // זה אומר שיש יותר פיקסליים בשורה הנוכחית לעיבוד
             if (cCol < maxCols)
+            // יוצר אוביקט חדש עם הערכיים הנוכחים ומחזיר אותו
                 return new Pixel(cRow, cCol);
-
+//כל הפיקסליים בשורה הנוכחית עובדו
             cCol = 0;
+            // כדי לעבור לשורה הבאה
             ++cRow;
+            ///יד עוד שורות לעיבוד
             if (cRow < maxRows)
                 return new Pixel(cRow, cCol);
+            // אם אף אחד מהתנאים לא מתקיים זה אומר שכל השורות והעמודות עובדו
         }
         return null;
     }
@@ -79,15 +85,22 @@ class PixelManager {
     void pixelDone() {
         boolean flag       = false;
         int     percentage = 0;
+        //בלוק מסונכרן הוא מבטיח שרק שרשןור אחד יכול לגשת ולשנות משתנים משופים כמו פיקסלים
         synchronized (mutexPixels) {
+            // ציון שהפיקסל עבר עיבוד
             ++pixels;
+            // דגל ההדפבה דלוק מציין שהדפסת התקדמות מופעלת
             if (print) {
+                //מחשב את אחוז ההתתקדמות הנוכחי על ידי חלוקת הפיקסלים בכמות הפיקסלים סהכ ןהכפלתם ב10000
                 percentage = (int) (1000l * pixels / totalPixels);
+                // בודק אם האחוז שחושב פחות אחוז  תנאי זה קובע אם יש להדפיס את ההתקדמות או לא
                 if (percentage - lastPrinted >= printInterval) {
+                   // מעדכן לאוחז המוכחי
                     lastPrinted = percentage;
                     flag        = true;
                 }
             }
+            // מדפיס את אחוז ההתקדמות
             if (flag) System.out.printf(PRINT_FORMAT, percentage / 10d);
         }
     }

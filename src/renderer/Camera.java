@@ -240,6 +240,7 @@ public class Camera {
         }
         int nX = this.imageWriter.getNx();
         int nY = this.imageWriter.getNy();
+        // אחראי לניהול הפיקסליים לעיבוד
         pixelManager = new PixelManager(nY, nX,printInterval);//לחזור
         if (threadsCount == 0) {
             for (int i = 0; i < nY; ++i)
@@ -247,14 +248,19 @@ public class Camera {
                     castRay(nX, nY, j, i);
         }
         else {
+            //  רישמה של שירשורים
             var threads = new LinkedList<Thread>(); // list of threads
+            // שרשורים הוסף מספר מתאים של חוטים
             while (threadsCount-- > 0) // add appropriate number of threads
+                //הוסף שרשור עם הקוד שלו
                 threads.add(new Thread(() -> { // add a thread with its code
                     PixelManager.Pixel pixel; // current pixel(row,col)
                     // allocate pixel(row,col) in loop until there are no more pixels
+                    //אתר פיקסל(שורה,קול) בלולאה עד שלא יהיו יותר פיקסלים
                     while ((pixel = pixelManager.nextPixel()) != null)
                         // cast ray through pixel (and color it – inside castRay)
                     {
+                        //להטיל קרן דרך פיקסל (וצבוע אותה - בתוך castRay)
                         try {
                             castRay(nX, nY, pixel.col(), pixel.row());
                         } catch (IllegalAccessException e) {
@@ -262,8 +268,10 @@ public class Camera {
                         }
                     }
                 }));
+            //להתחיל את כל השרשורים
             // start all the threads
             for (var thread : threads) thread.start();
+            //חכה עד שכל האשכולות יסתיימו
             // wait until all the threads have finished
             try { for (var thread : threads) thread.join(); } catch (InterruptedException ignore) {}
         }
@@ -282,30 +290,39 @@ public class Camera {
         imageWriter.writeToImage();
         return this;
     }
+    /**
+     * Constructs a beam for super-sampling at a given pixel coordinates (j, i).
+     *
+     * @param nX The number of pixels in the X direction.
+     * @param nY The number of pixels in the Y direction.
+     * @param j  The X coordinate of the pixel.
+     * @param i  The Y coordinate of the pixel.
+     * @return A list of rays for super-sampling at the specified pixel.
+     * @throws IllegalAccessException if an illegal access occurs.
+     */
     private List<Ray> constructBeamSuperSampling(int nX, int nY, int j, int i) throws IllegalAccessException {
-        //creating rays
-        List<Ray> beam= new LinkedList<>();
-        //add the ray of the center of the pixel
-        beam.add(constructRay(nX,nY,j,i));
-        //calculate the measures of each pixel
+        // Creating rays
+        List<Ray> beam = new LinkedList<>();
+        // Add the ray at the center of the pixel
+        beam.add(constructRay(nX, nY, j, i));
+        // Calculate the measures of each pixel
         double ry = height / nY;
         double rx = width / nX;
-        //find how many steps to go on the x and y coordinates
-        double yScale = alignZero((j-nX/2d)*rx+rx/2d);
-        double xScale = alignZero((i-nY/2d)*ry+ry/2d);
-        //get to the middle of the picture by adding the right distance
+        // Find how many steps to go on the x and y coordinates
+        double yScale = alignZero((j - nX / 2d) * rx + rx / 2d);
+        double xScale = alignZero((i - nY / 2d) * ry + ry / 2d);
+        // Get to the middle of the picture by adding the right distance
         Point pixelCenter = p0.add(vTo.scale(distance));
-        if(!isZero(yScale))
+        if (!isZero(yScale))
             pixelCenter = pixelCenter.add(vRight.scale(yScale));
         if (!isZero(xScale))
-            pixelCenter = pixelCenter.add(vUp.scale(-1*xScale));
+            pixelCenter = pixelCenter.add(vUp.scale(-1 * xScale));
         Random rand = new Random();
-        for (int c = 0; c<nss; c++) {
-            //the rand returns randomly true or false and according to it positive or negative random number is chosen
-            double dxfactor =  rand.nextBoolean() ? rand.nextDouble() : -1 *
-                    rand.nextDouble();
-            double dyfactor = rand.nextBoolean() ? rand.nextDouble() : -1 *
-                    rand.nextDouble();
+        for (int c = 0; c < nss; c++) {
+            // The rand returns randomly true or false, and according to it,
+            // a positive or negative random number is chosen
+            double dxfactor = rand.nextBoolean() ? rand.nextDouble() : -1 * rand.nextDouble();
+            double dyfactor = rand.nextBoolean() ? rand.nextDouble() : -1 * rand.nextDouble();
             double dx = rx * dxfactor;
             double dy = ry * dyfactor;
             Point randomPoint = pixelCenter;
@@ -319,42 +336,77 @@ public class Camera {
         return beam;
     }
 
-
-    private  Color calcAdaptiveSuperSampling(int nX, int nY, int j, int i, int maxLevel, Color centerColor) throws IllegalAccessException {
-        if (maxLevel <= 0 )
+    /**
+     * Calculates the adaptive super-sampling color for a given pixel coordinates (j, i).
+     *
+     * @param nX          The number of pixels in the X direction.
+     * @param nY          The number of pixels in the Y direction.
+     * @param j           The X coordinate of the pixel.
+     * @param i           The Y coordinate of the pixel.
+     * @param maxLevel    The maximum level of recursion for adaptive super-sampling.
+     * @param centerColor The color at the center of the pixel.
+     * @return The calculated adaptive super-sampling color for the specified pixel.
+     * @throws IllegalAccessException if an illegal access occurs.
+     */
+    private Color calcAdaptiveSuperSampling(int nX, int nY, int j, int i, int maxLevel, Color centerColor) throws IllegalAccessException {
+        if (maxLevel <= 0)
             return centerColor;
         Color color = centerColor;
         Ray[] beam = new Ray[]{constructRay(2 * nX, 2 * nY, 2 * j, 2 * i),
                 constructRay(2 * nX, 2 * nY, 2 * j, 2 * i + 1),
                 constructRay(2 * nX, 2 * nY, 2 * j + 1, 2 * i),
-                constructRay(2 * nX, 2 * nY, 2 * j + 1 , 2 * i + 1)};
-        for (int ray = 0; ray < 4; ray ++){
+                constructRay(2 * nX, 2 * nY, 2 * j + 1, 2 * i + 1)};
+        for (int ray = 0; ray < 4; ray++) {
             Color currentColor = rayTracerBase.traceRay(beam[ray]);
             if (!currentColor.equals(centerColor))
                 currentColor = calcAdaptiveSuperSampling(2 * nX, 2 * nY,
-                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1),currentColor);
+                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1), currentColor);
             color = color.add(currentColor);
         }
         return color.reduce(5);
     }
 
+    /**
+     * Casts a beam for adaptive super-sampling at a given pixel coordinates (j, i).
+     *
+     * @param i The X coordinate of the pixel.
+     * @param j The Y coordinate of the pixel.
+     * @return The color calculated using adaptive super-sampling for the specified pixel.
+     * @throws IllegalAccessException if an illegal access occurs.
+     */
     private Color castBeamAdaptiveSuperSampling(int i, int j) throws IllegalAccessException {
         Ray center = constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i);
         Color centerColor = rayTracerBase.traceRay(center);
         return calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor);
     }
 
+    /**
+     * Casts a beam for super-sampling at a given pixel coordinates (j, i).
+     *
+     * @param j The X coordinate of the pixel.
+     * @param i The Y coordinate of the pixel.
+     * @return The color calculated using super-sampling for the specified pixel.
+     * @throws IllegalAccessException if an illegal access occurs.
+     */
     private Color castBeamSuperSampling(int j, int i) throws IllegalAccessException {
-        //  שולחת לפונקציה כדי ליצור קרניים
-        List<Ray> beam = constructBeamSuperSampling (imageWriter.getNx(),imageWriter.getNy(), j, i);
+        // Create rays for super-sampling
+        List<Ray> beam = constructBeamSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i);
         Color color = Color.BLACK;
-        // סוכם את הצבעים שכל קרן מחזירה
-        for (Ray ray : beam){
-            color = color.add(rayTracerBase.traceRay(ray));//?
+        // Sum the colors returned by each ray
+        for (Ray ray : beam) {
+            color = color.add(rayTracerBase.traceRay(ray));
         }
-        // מחזיר ממוצע
+        // Return the average color
         return color.reduce(nss);
     }
+
+    /**
+     * Renders the image using super-sampling.
+     *
+     * @return The Camera instance for method chaining.
+     * @throws IllegalAccessException if an illegal access occurs.
+     * @throws MissingResourceException if required resources are missing.
+     */
     public Camera renderImageSuperSampling() throws IllegalAccessException {
         if (imageWriter == null || rayTracerBase == null || isNaN(width) || isNaN(height) || isNaN(distance)) {
             if (imageWriter == null) {
@@ -376,14 +428,13 @@ public class Camera {
         }
         int nX = this.imageWriter.getNx();
         int nY = this.imageWriter.getNy();
-        for (int i= 0; i< nX; i++)
-            for  (int j = 0; j < nY; j++){
-                {
-                    //Ray ray = constructRay(nX, nY, j, i);
-                    Color color = castBeamAdaptiveSuperSampling(j,i);
-                    imageWriter.writePixel(j, i, color);
-                }
+        for (int i = 0; i < nX; i++) {
+            for (int j = 0; j < nY; j++) {
+                // Cast a beam for super-sampling at each pixel
+                Color color = castBeamSuperSampling(j, i);
+                imageWriter.writePixel(j, i, color);
             }
+        }
         return this;
     }
 
