@@ -141,6 +141,9 @@ public class Plane extends Geometry {
         // no intersection point  - ray and plane in opposite  direction
         return null;
     }
+    protected  void createBoundingBox() throws IllegalAccessException{
+        box=null;
+    }
 //@Override
 //protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
 //    Point p0 = ray.getP0();

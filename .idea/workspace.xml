@@ -4,22 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="mini pro2">
+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- picture 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/PixelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/PixelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Clock.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Clock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Cube.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Cube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Pyramid.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Pyramid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/Pictures.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Pictures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/Snow_man.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Snow_man.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +42,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/משפחת מקסימוב/IdeaProjects/ISE5783_9693_3069/unittests/geometries&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="scene" />
@@ -72,7 +72,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RenderTests.basicRenderTwoColorTest">
+  <component name="RunManager" selected="JUnit.Pictures">
     <configuration name="Pictures" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
@@ -154,10 +154,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RenderTests.basicRenderTwoColorTest" />
         <item itemvalue="JUnit.Pictures" />
-        <item itemvalue="JUnit.Pictures.front" />
         <item itemvalue="JUnit.Pictures.halfSide" />
+        <item itemvalue="JUnit.Pictures.front" />
+        <item itemvalue="JUnit.RenderTests.basicRenderTwoColorTest" />
         <item itemvalue="JUnit.Pictures.otherside" />
       </list>
     </recent_temporary>
@@ -424,13 +424,7 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687811054567</updated>
     </task>
-    <task id="LOCAL‎00038" summary="mini pro2">
-      <created>1687866820557</created>
-      <option name="number" value="LOCAL‎00038" />
-      <option name="presentableId" value="LOCAL‎00038" />
-      <updated>1687866820557</updated>
-    </task>
-    <option name="localTasksCounter" value="39" />
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -478,8 +472,7 @@
     <MESSAGE value="PRO7- added ReflectionRefractionTests" />
     <MESSAGE value="PRO7- picture" />
     <MESSAGE value="PRO7- picture 1" />
-    <MESSAGE value="mini pro2" />
-    <option name="LAST_COMMIT_MESSAGE" value="mini pro2" />
+    <option name="LAST_COMMIT_MESSAGE" value="PRO7- picture 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -490,18 +483,9 @@
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/geometries/Triangle.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="84" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
+          <line>72</line>
           <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/geometries/Cylinder.java</url>
-          <line>167</line>
-          <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/unittests/pictures/Snow_man.java</url>
@@ -511,15 +495,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/unittests/renderer/RenderTests.java</url>
-          <line>20</line>
-          <properties class="renderer.RenderTests" method="basicRenderTwoColorTest">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="170" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -548,11 +523,11 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ISE5783_9693_3069$IntegrationTests_CameraSphereIntersections.ic" NAME="IntegrationTests.CameraSphereIntersections Coverage Results" MODIFIED="1682615393927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/ISE5783_9693_3069$LightsTests.ic" NAME="LightsTests Coverage Results" MODIFIED="1684691922031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>lighting.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/ISE5783_9693_3069$Main.ic" NAME="Main Coverage Results" MODIFIED="1679342282667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>test.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ISE5783_9693_3069$LightsTests.ic" NAME="LightsTests Coverage Results" MODIFIED="1684691922031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>lighting.*</FILTER>
     </SUITE>
   </component>
 </project>

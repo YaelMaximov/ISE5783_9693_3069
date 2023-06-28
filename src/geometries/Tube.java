@@ -183,4 +183,8 @@ public class Tube extends RadialGeometry {
 
         return null;
     }
+    protected  void createBoundingBox() throws IllegalAccessException{
+        box=null;
+    }
+
 }

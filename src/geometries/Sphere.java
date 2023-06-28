@@ -146,4 +146,7 @@ public class Sphere extends RadialGeometry {
         return null;
 
     }
+    protected  void createBoundingBox() throws IllegalAccessException{
+        box=new AABB(center.add(new Vector(-radius,-radius,-radius)),center.add(new Vector(radius,radius,radius)));
+    }
 }

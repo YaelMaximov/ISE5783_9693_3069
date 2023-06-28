@@ -4,6 +4,7 @@ import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 import java.util.List;
+import java.util.OptionalDouble;
 
 import primitives.Point;
 import primitives.Ray;
@@ -77,10 +78,24 @@ public class Polygon extends Geometry {
          if (positive != (edge1.crossProduct(edge2).dotProduct(n) > 0))
             throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
       }
+      if (bvhIsOn)createBoundingBox();
+
    }
 
    @Override
    public Vector getNormal(Point point) { return plane.getNormal(); }
+   protected  void createBoundingBox() throws IllegalAccessException{
+      double minX = vertices.stream().mapToDouble(Point::getX).min().orElse(Double.POSITIVE_INFINITY);
+      double maxX = vertices.stream().mapToDouble(Point::getX).max().orElse(Double.NEGATIVE_INFINITY);
+
+      double minY = vertices.stream().mapToDouble(Point::getY).min().orElse(Double.POSITIVE_INFINITY);
+      double maxY = vertices.stream().mapToDouble(Point::getY).max().orElse(Double.NEGATIVE_INFINITY);
+
+      double minZ = vertices.stream().mapToDouble(Point::getZ).min().orElse(Double.POSITIVE_INFINITY);
+      double maxZ = vertices.stream().mapToDouble(Point::getZ).max().orElse(Double.NEGATIVE_INFINITY);
+
+      box=new AABB(new Point(minX,minY,minZ),new Point(maxX,maxY,maxZ));
+   }
 
    /**
     * find intersection between ray and polygon
@@ -89,7 +104,8 @@ public class Polygon extends Geometry {
     */
    @Override
    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException {
-
+      createBoundingBox();
+      if(!box.isIntersectingBoundingBox(ray)) return null;
       // find intersection between ray and plane containing the polygon
       List<GeoPoint> points=plane.findGeoIntersections(ray,maxDistance);
       // no intersections with plane , ray does not intersect polygon
@@ -143,4 +159,5 @@ public class Polygon extends Geometry {
       // all signs were matching return the intersection point
       return List.of(new GeoPoint(this,points.get(0).point));
    }
+
 }
