@@ -26,9 +26,9 @@ public class IntegrationTests {
      * @param camera    the camera used to generate rays
      * @param geometry  the geometry to test for intersections
      * @return          the total number of intersection points found
-     * @throws IllegalAccessException if the intersection calculation fails
+     * @throws IllegalArgumentException if the intersection calculation fails
      */
-    int findNumberOfIntersecions(Camera camera, Geometry geometry) throws IllegalAccessException {
+    int findNumberOfIntersecions(Camera camera, Geometry geometry) throws IllegalArgumentException {
         int points = 0;
         for (int i = 0; i <= 2; i++) {
             for (int j = 0; j <= 2; j++) {
@@ -46,7 +46,7 @@ public class IntegrationTests {
      * Test method for {@link renderer.Camera#constructRay(int, int, int, int)}.
      */
     @Test
-    void CameraSphereIntersections() throws IllegalAccessException {
+    void CameraSphereIntersections() throws IllegalArgumentException {
         Camera camera = new Camera(new Point(0, 0, 0), new Vector(0, -1, 0), new Vector(0, 0, -1));
         camera.setVPSize(3, 3);
         camera.setVPDistance(1);
@@ -77,7 +77,7 @@ public class IntegrationTests {
      * Test method for {@link renderer.Camera#constructRay(int, int, int, int)}.
      */
     @Test
-    public void testConstructRayOfPlane() throws IllegalAccessException {
+    public void testConstructRayOfPlane() throws IllegalArgumentException {
         Camera camera1 = new Camera(new Point(0, 0, 0), new Vector(0, -1, 0), new Vector(0, 0, -1));
         camera1.setVPSize(3, 3);
         camera1.setVPDistance(1);
@@ -99,7 +99,7 @@ public class IntegrationTests {
      * Test method for {@link renderer.Camera#constructRay(int, int, int, int)}.
      */
     @Test
-    public void testConstructRayOfTriangle() throws IllegalAccessException {
+    public void testConstructRayOfTriangle() throws IllegalArgumentException {
         Camera camera = new Camera(new Point(0, 0, 0), new Vector(0, -1, 0), new Vector(0, 0, -1));
         camera.setVPSize(3, 3);
         camera.setVPDistance(1);

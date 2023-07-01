@@ -19,11 +19,11 @@ class GeometriesTest {
     Geometries geometries=new Geometries(sphere,triangle,plane);
     Geometries emptyGeometries= new Geometries();
 
-    GeometriesTest() throws IllegalAccessException {
+    GeometriesTest() throws IllegalArgumentException {
     }
 
     @Test
-    void testFindIntersectionsEP() throws IllegalAccessException {
+    void testFindIntersectionsEP() throws IllegalArgumentException {
         Ray ray = new Ray(new Point(3.5,0,0),new Vector(1,0,0));
         assertEquals(2,geometries.findIntersections(ray).size(),
                 "TC-04 not all shape intersect");
@@ -33,7 +33,7 @@ class GeometriesTest {
     }
 
     @Test
-    void testFindIntersectionsBVA1() throws IllegalAccessException {
+    void testFindIntersectionsBVA1() throws IllegalArgumentException {
         // TC01 - ray intersects all of the geometries
         Ray ray = new Ray(new Point(0.5,0,0),new Vector(1,0,0));
         assertEquals(4, geometries.findIntersections(ray).size()
@@ -45,13 +45,13 @@ class GeometriesTest {
     }
 
     @Test
-    void testFindIntersectionsBVA2() throws IllegalAccessException {
+    void testFindIntersectionsBVA2() throws IllegalArgumentException {
         Ray ray = new Ray(new Point(0.5,0,0),new Vector(0,1,0));
         assertNull(geometries.findIntersections(ray),"TC-02 no intersection shapes");
     }
 
     @Test
-    void testFindIntersectionsBVA3() throws IllegalAccessException {
+    void testFindIntersectionsBVA3() throws IllegalArgumentException {
         Ray ray = new Ray(new Point(4.5,0,0),new Vector(1,0,0));
         assertEquals(1,geometries.findIntersections(ray).size(),
                 "TC-03 one shape intersect");
@@ -60,7 +60,7 @@ class GeometriesTest {
     }
 
     @Test
-    void testFindIntersectionsBVA4() throws IllegalAccessException {
+    void testFindIntersectionsBVA4() throws IllegalArgumentException {
         Ray ray = new Ray(new Point(4.5,0,0),new Vector(1,0,0));
         assertNull(emptyGeometries.findIntersections(ray),
                 "TC-04 empty");
@@ -85,7 +85,7 @@ class GeometriesTest {
      * Test method for {@link Geometries#findGeoIntersectionsHelper(Ray, double)}
      */
     @Test
-    void findGeoIntersectionsEP1() throws IllegalAccessException {
+    void findGeoIntersectionsEP1() throws IllegalArgumentException {
         // TC01 -  max distance is larger than distance to all intersection points - 4 intersections
         List<Intersectable.GeoPoint> res = geometries1.findGeoIntersectionsHelper(ray,20);
         assertEquals(List.of(gp1,gp2,gp3,gp4),res,"one point only is in boundary");
@@ -96,7 +96,7 @@ class GeometriesTest {
      * Test method for {@link Geometries#findGeoIntersectionsHelper(Ray, double)}
      */
     @Test
-    void findGeoIntersectionsEP2() throws IllegalAccessException {
+    void findGeoIntersectionsEP2() throws IllegalArgumentException {
         //TC02 -  max distance is smaller than distance to all intersection points - no intersection
         List<Intersectable.GeoPoint> res = geometries1.findGeoIntersectionsHelper(ray,2);
         assertNull(res, "points are beyond distance");
@@ -107,7 +107,7 @@ class GeometriesTest {
      * Test method for {@link Geometries#findGeoIntersectionsHelper(Ray, double)}
      */
     @Test
-    void findGeoIntersectionsEP3() throws IllegalAccessException {
+    void findGeoIntersectionsEP3() throws IllegalArgumentException {
         //TC03 -  distance to points of sphere and triangle are close enough but plane not - 3 intersection points
         List<Intersectable.GeoPoint> res = geometries1.findGeoIntersectionsHelper(ray,13.5);
         assertEquals(List.of(gp1,gp2,gp3),res,"one point only is in boundary");

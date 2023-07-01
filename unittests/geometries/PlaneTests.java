@@ -24,7 +24,7 @@ class PlaneTest {
     Plane plane = new Plane(p1, p2, p3);
     Plane pl = new Plane(new Point(0, 0, 1), new Vector(1, 1, 1));
 
-    PlaneTest() throws IllegalAccessException {
+    PlaneTest() throws IllegalArgumentException {
     }
 
 
@@ -55,7 +55,7 @@ class PlaneTest {
      * testing method {@link  geometries.Plane#getNormal(Point)}
      */
     @Test
-    void testGetNormal() throws IllegalAccessException {
+    void testGetNormal() throws IllegalArgumentException {
         // ============ Equivalence Partitions Tests ==============
         // test that normal of plane returned is equal to expected normal vector
         double x = 9 / (7 * Math.sqrt(2));
@@ -73,7 +73,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}
      */
     @Test
-    void findIntersectionsEP1() throws IllegalAccessException {
+    void findIntersectionsEP1() throws IllegalArgumentException {
         // TC01: Ray into plane
         assertEquals(
                 List.of(new Point(0.5, 0.5, 0)),
@@ -85,7 +85,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}
      */
     @Test
-    void findIntersectionsEP2() throws IllegalAccessException {
+    void findIntersectionsEP2() throws IllegalArgumentException {
         // TC02: Ray out of plane
         assertNull(pl.findIntersections(new Ray(new Point(4, 0, 0), new Vector(0, 2, 0))),
                 "Must not be plane intersection");
@@ -98,7 +98,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}
      */
     @Test
-    void findIntersectionsBVA1() throws IllegalAccessException {
+    void findIntersectionsBVA1() throws IllegalArgumentException {
 
         // TC11: Ray parallel to plane
         assertNull(pl.findIntersections(new Ray(new Point(2, 2, 2), new Vector(0, -1, 1))),
@@ -109,7 +109,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}
      */
     @Test
-    void findIntersectionsBVA2() throws IllegalAccessException {
+    void findIntersectionsBVA2() throws IllegalArgumentException {
         // TC12: Ray in plane
         assertNull(pl.findIntersections(new Ray(new Point(-2,2,1), new Vector(0, 1,-1))),
                 "Must not be plane intersection");
@@ -119,7 +119,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}
      */
     @Test
-    void findIntersectionsBVA3() throws IllegalAccessException {
+    void findIntersectionsBVA3() throws IllegalArgumentException {
         // TC13: Orthogonal ray into plane
         assertEquals(List.of(new Point(1d / 3, 1d / 3, 1d / 3)),
                 pl.findIntersections(new Ray(new Point(3,3,3), new Vector(-1, -1, -1))),
@@ -130,7 +130,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}
      */
     @Test
-    void findIntersectionsBVA4() throws IllegalAccessException {
+    void findIntersectionsBVA4() throws IllegalArgumentException {
         // TC14: Orthogonal ray out of plane
         assertNull(pl.findIntersections(new Ray(new Point(4,4,4), new Vector(1, 1, 1))),
                 "Must not be plane intersection");
@@ -141,7 +141,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}
      */
     @Test
-    void findIntersectionsBVA5() throws IllegalAccessException {
+    void findIntersectionsBVA5() throws IllegalArgumentException {
         // TC16: Orthogonal ray from plane
         assertNull(pl.findIntersections(new Ray(new Point(-2,2,1), new Vector(1, 1, 1))),
                 "Must not be plane intersection");
@@ -151,7 +151,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}
      */
     @Test
-    void findIntersectionsBVA6() throws IllegalAccessException {
+    void findIntersectionsBVA6() throws IllegalArgumentException {
         // TC17: Ray from plane
         assertNull(pl.findIntersections(new Ray(new Point(-2,2,1), new Vector(1, 1, -1))),
                 "Must not be plane intersection");
@@ -161,7 +161,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findIntersections(primitives.Ray)}
      */
     @Test
-    void findIntersectionsBVA8() throws IllegalAccessException {
+    void findIntersectionsBVA8() throws IllegalArgumentException {
         // TC18: Ray from plane's Q point
         assertNull(pl.findIntersections(new Ray(new Point(0, 0, 1), new Vector(1, 1, 0))), "Must not be plane intersection");
     }
@@ -174,7 +174,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findGeoIntersectionsHelper(Ray, double)}
      */
     @Test
-    void findGeoIntersectionsHelperTest1() throws IllegalAccessException {
+    void findGeoIntersectionsHelperTest1() throws IllegalArgumentException {
         assertNull(pl1.findGeoIntersectionsHelper(ray1,1d),"wrong zero intersections");
     }
 
@@ -182,7 +182,7 @@ class PlaneTest {
      * Test method for {@link geometries.Plane#findGeoIntersectionsHelper(Ray, double)}
      */
     @Test
-    void findGeoIntersectionsHelperTest2() throws IllegalAccessException {
+    void findGeoIntersectionsHelperTest2() throws IllegalArgumentException {
         List<Intersectable.GeoPoint> res=pl1.findGeoIntersectionsHelper(ray1,8d);
         assertEquals(List.of(gp),res,"wrong one intersections");
     }

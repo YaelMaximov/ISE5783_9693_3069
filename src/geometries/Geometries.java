@@ -6,44 +6,40 @@ import primitives.Vector;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Geometries extends Intersectable {
-    private List<Intersectable> intersectables;
+    protected List<Intersectable> intersectables;
 
     public Geometries() {
         intersectables = new LinkedList<Intersectable>();
     }
 
     public Geometries(Intersectable... geometry) {
-        intersectables = List.of(geometry);
+        if (bvhIsOn)
+            createBoundingBox();
+        //intersectables = List.of(geometry);
+        intersectables = new LinkedList<>();
+        Collections.addAll(intersectables, geometry);
     }
 
     public void add(Intersectable... geometries) {
-        intersectables.addAll(Arrays.asList(geometries));//check
+        if (bvhIsOn)
+            createBoundingBox();
+        Collections.addAll(intersectables, geometries);
+        //intersectables.addAll(Arrays.asList(geometries));//check
     }
 
 
-
-//    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
-//        List<GeoPoint> Intersections =null;
-//        for (Intersectable geometry : intersectables) {
-//            var temp = geometry.findGeoIntersections(ray);
-//            if (temp != null){
-//                if (Intersections == null) Intersections = new LinkedList<>();
-//                Intersections.addAll(temp);
-//            }
-//        }
-//        return Intersections;
-//    }
     /**
      * find intersection between ray and all geometries in the geometry collection
      * @param ray ray towards the composite of geometries
      * @return  immutable list of intersection points as  {@link GeoPoint} objects
      */
     @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) throws IllegalAccessException {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) throws IllegalArgumentException {
         List<GeoPoint> result = null;   // intersection points
 
         //for each geometry in intersect-able collection check intersection points
@@ -64,11 +60,30 @@ public class Geometries extends Intersectable {
         return result;
 
     }
-    public void add(List<Triangle> triangles) {
-        intersectables.addAll((triangles));
-    }
+    //public void add(List<Triangle> triangles) {
+    //intersectables.addAll((triangles));
+    //}
 
-    protected void createBoundingBox() throws IllegalAccessException {
-
+    @Override
+    public void createBoundingBox() {
+        if (intersectables == null)
+            return;
+        double minX = Double.POSITIVE_INFINITY;
+        double minY = Double.POSITIVE_INFINITY;
+        double minZ = Double.POSITIVE_INFINITY;
+        double maxX = Double.NEGATIVE_INFINITY;
+        double maxY = Double.NEGATIVE_INFINITY;
+        double maxZ = Double.NEGATIVE_INFINITY;
+        for (Intersectable geo : intersectables) {
+            if (geo.box != null) {
+                minX = Math.min(minX, geo.box.minimums.getX());
+                minY = Math.min(minY, geo.box.minimums.getY());
+                minZ = Math.min(minZ, geo.box.minimums.getZ());
+                maxX = Math.max(maxX, geo.box.maximums.getX());
+                maxY = Math.max(maxY, geo.box.maximums.getY());
+                maxZ = Math.max(maxZ, geo.box.maximums.getZ());
+            }
+        }
+        box = new AABB(new Point(minX, minY, minZ), new Point(maxX, maxY, maxZ));
     }
 }

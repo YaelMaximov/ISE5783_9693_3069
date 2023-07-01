@@ -20,9 +20,9 @@ public class Triangle extends Polygon {
      * @param p1 the first Point of the triangle
      * @param p2 the second Point of the triangle
      * @param p3 the third Point of the triangle
-     * @throws IllegalAccessException if any of the given points are null
+     * @throws IllegalArgumentException if any of the given points are null
      */
-    public Triangle(Point p1, Point p2, Point p3) throws IllegalAccessException {
+    public Triangle(Point p1, Point p2, Point p3) throws IllegalArgumentException {
         super(p1, p2, p3);
         if (bvhIsOn) createBoundingBox();
     }
@@ -34,9 +34,7 @@ public class Triangle extends Polygon {
      * @return immutable list of one intersection point as  {@link GeoPoint} object
      */
     @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException {
-        if(!box.isIntersectingBoundingBox(ray)) return null;
-
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalArgumentException {
         // check if ray intersects plane containing the triangle
         List<GeoPoint> result = plane.findGeoIntersections(ray);
         // no intersections

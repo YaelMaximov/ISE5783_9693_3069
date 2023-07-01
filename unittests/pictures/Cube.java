@@ -7,33 +7,24 @@ import primitives.Material;
 import primitives.Point;
 import primitives.Vector;
 
-/**
- * Represents a cube in 3D space.
- */
 public class Cube {
-    Polygon base;
-    Polygon top;
-    Polygon front;
-    Polygon back;
-    Polygon rightSide;
-    Polygon leftSide;
-    Point p2;
-    Point p3;
-    Point p4;
-    Point p5;
-    Point p6;
-    Point p7;
-    Point p8;
+    private Polygon base;
+    private Polygon top;
+    private Polygon front;
+    private Polygon back;
+    private Polygon rightSide;
+    private Polygon leftSide;
 
-    /**
-     * Constructs a cube given one corner point and dimensions along the x and y axes.
-     *
-     * @param p1 The corner point of the cube.
-     * @param zx The dimension along the x-axis.
-     * @param y  The dimension along the y-axis.
-     * @throws IllegalAccessException if an illegal access exception occurs.
-     */
-    public Cube(Point p1, double zx, double y) throws IllegalAccessException {
+    protected Point p2 ;
+    protected Point p3;
+    protected Point p4;
+    protected Point p5 ;
+    protected Point p6 ;
+    protected Point p7 ;
+    protected Point p8 ;
+
+
+    public Cube(Point p1, double zx, double y) throws IllegalArgumentException {
         p2 = p1.add(new Vector(zx, 0, 0));
         p3 = p2.add(new Vector(0, 0, zx));
         p4 = p1.add(new Vector(0, 0, zx));
@@ -48,23 +39,12 @@ public class Cube {
         back = new Polygon(p4, p3, p7, p8);
         rightSide = new Polygon(p2, p3, p7, p6);
         leftSide = new Polygon(p1, p4, p8, p5);
-    }
 
-    /**
-     * Returns the geometries representing the cube.
-     *
-     * @return The geometries representing the cube.
-     */
+    }
     public Geometries getGeometries() {
-        return new Geometries(top, base, front, back, rightSide, leftSide);
+        return new Geometries(top,base,front,back,rightSide,leftSide);
     }
 
-    /**
-     * Sets the emission color of the cube.
-     *
-     * @param color The emission color to set.
-     * @return The updated Cube object.
-     */
     public Cube setCubeEmission(Color color) {
         top = (Polygon) top.setEmission(color);
         base = (Polygon) base.setEmission(color);
@@ -74,13 +54,6 @@ public class Cube {
         leftSide = (Polygon) leftSide.setEmission(color);
         return this;
     }
-
-    /**
-     * Sets the material of the cube.
-     *
-     * @param mt The material to set.
-     * @return The updated Cube object.
-     */
     public Cube setCubeMaterial(Material mt) {
         top = (Polygon) top.setMaterial(mt);
         base = (Polygon) base.setMaterial(mt);
@@ -90,18 +63,12 @@ public class Cube {
         leftSide = (Polygon) leftSide.setMaterial(mt);
         return this;
     }
-
-    /**
-     * Calculates and returns the normal vector of the top face of the cube at the given point.
-     *
-     * @param p The point on the top face.
-     * @return The normal vector of the top face.
-     * @throws IllegalAccessException if an illegal access exception occurs.
-     */
-    public Vector getCubeTopNormal(Point p) throws IllegalAccessException {
-        Vector normal = top.getNormal(p);
-        if (normal.getY() < 0)
-            return new Vector(normal.getX(), -1 * normal.getY(), normal.getZ());
+    public Vector getCubeTopNormal(Point p) throws IllegalArgumentException {
+        Vector normal=top.getNormal(p);
+        if(normal.getY()<0)
+            return new Vector(normal.getX(), -1*normal.getY(), normal.getZ() );
         return normal;
     }
+
+
 }

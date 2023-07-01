@@ -23,11 +23,11 @@ public class ShadowTests {
       .setVPSize(200, 200).setVPDistance(1000)                                                                       //
       .setRayTracer(new RayTracerBasic(scene));
 
-    public ShadowTests() throws IllegalAccessException {
+    public ShadowTests() throws IllegalArgumentException {
     }
 
     /** Helper function for the tests in this module */
-   void sphereTriangleHelper(String pictName, Triangle triangle, Point spotLocation) throws IllegalAccessException {
+   void sphereTriangleHelper(String pictName, Triangle triangle, Point spotLocation) throws IllegalArgumentException {
       scene.geometries.add(sphere, triangle.setEmission(new Color(BLUE)).setMaterial(trMaterial));
       scene.lights.add( //
                        new SpotLight(new Color(400, 240, 0), spotLocation, new Vector(1, 1, -3)) //
@@ -39,7 +39,7 @@ public class ShadowTests {
 
    /** Produce a Pictures of a sphere and triangle with point light and shade */
    @Test
-   public void sphereTriangleInitial() throws IllegalAccessException {
+   public void sphereTriangleInitial() throws IllegalArgumentException {
       sphereTriangleHelper("shadowSphereTriangleInitial", //
                            new Triangle(new Point(-70, -40, 0), new Point(-40, -70, 0), new Point(-68, -68, -4)), //
                            new Point(-100, -100, 200));
@@ -49,7 +49,7 @@ public class ShadowTests {
 	 * Sphere-Triangle shading - move triangle up-right
 	 */
 	@Test
-	public void sphereTriangleMove1() throws IllegalAccessException {
+	public void sphereTriangleMove1() throws IllegalArgumentException {
 		sphereTriangleHelper("shadowSphereTriangleMove2", //
 				new Triangle(new Point(-62,-32,0), new Point(-32, -62, 0), new Point(-60,-60,-4)), //
 				new Point(-100, -100, 200));
@@ -59,7 +59,7 @@ public class ShadowTests {
 	 * Sphere-Triangle shading - move triangle upper-righter
 	 */
 	@Test
-	public void sphereTriangleMove2() throws IllegalAccessException {
+	public void sphereTriangleMove2() throws IllegalArgumentException {
 		sphereTriangleHelper("shadowSphereTriangleMove1", //
 		      new Triangle(new Point(-49,-19,0), new Point(-19,-49,0), new Point(-47, -47, -4)), //
 				new Point(-100, -100, 200));
@@ -67,7 +67,7 @@ public class ShadowTests {
 
    /** Sphere-Triangle shading - move spot closer */
    @Test
-   public void sphereTriangleSpot1() throws IllegalAccessException {
+   public void sphereTriangleSpot1() throws IllegalArgumentException {
       sphereTriangleHelper("shadowSphereTriangleSpot1", //
                            new Triangle(new Point(-70, -40, 0), new Point(-40, -70, 0), new Point(-68, -68, -4)), //
                            new Point(-100, -100, 200));
@@ -75,7 +75,7 @@ public class ShadowTests {
 
    /** Sphere-Triangle shading - move spot even more close */
    @Test
-   public void sphereTriangleSpot2() throws IllegalAccessException {
+   public void sphereTriangleSpot2() throws IllegalArgumentException {
       sphereTriangleHelper("shadowSphereTriangleSpot2", //
                            new Triangle(new Point(-70, -40, 0), new Point(-40, -70, 0), new Point(-68, -68, -4)), //
                            new Point(-100, -100, 250));
@@ -84,7 +84,7 @@ public class ShadowTests {
    /** Produce a Pictures of a two triangles lighted by a spot light with a Sphere
     * producing a shading */
    @Test
-   public void trianglesSphere() throws IllegalAccessException {
+   public void trianglesSphere() throws IllegalArgumentException {
       scene.setAmbientLight(new AmbientLight(new Color(WHITE), 0.15));
 
       scene.geometries.add( //

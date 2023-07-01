@@ -12,13 +12,13 @@ import static primitives.Util.isZero;
 class VectorTests {
 
 
-    VectorTests() throws IllegalAccessException {
+    VectorTests() throws IllegalArgumentException {
     }
     /**
      * Test method for {@link primitives.Vector#add(Vector)} ()}.
      */
     @Test
-    void testAdd() throws IllegalAccessException {
+    void testAdd() throws IllegalArgumentException {
         Vector v1 =new Vector(1, 2, 3);
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
@@ -30,7 +30,7 @@ class VectorTests {
     }
 
     @Test
-    void testSubtract() throws IllegalAccessException{
+    void testSubtract() throws IllegalArgumentException{
         Vector v1 =new Vector(1, 2, 3);
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
@@ -45,7 +45,7 @@ class VectorTests {
      * Test method for {@link primitives.Vector#scale(double)} .
      */
     @Test
-    void testScaling() throws IllegalAccessException {
+    void testScaling() throws IllegalArgumentException {
         Vector v1 =new Vector(1, 2, 3);
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
@@ -61,7 +61,7 @@ class VectorTests {
      * Test method for {@link primitives.Vector#dotProduct(Vector)} .
      */
     @Test
-    void testDotProduct() throws IllegalAccessException {
+    void testDotProduct() throws IllegalArgumentException {
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
         assertEquals(-28,new Vector(1, 2, 3).dotProduct(new Vector(-2, -4, -6)),"ERROR: dotProduct() wrong value");
@@ -76,7 +76,7 @@ class VectorTests {
      * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
      */
     @Test
-    void testCrossProduct() throws IllegalAccessException {
+    void testCrossProduct() throws IllegalArgumentException {
         Vector v1 = new Vector(1, 2, 3);
         // ============ Equivalence Partitions Tests ==============
         Vector v2 = new Vector(0, 3, -2);
@@ -97,7 +97,7 @@ class VectorTests {
      * Test method for {@link primitives.Vector#lengthSquared()}.
      */
     @Test
-    void testLengthSquared() throws IllegalAccessException {
+    void testLengthSquared() throws IllegalArgumentException {
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
         assertEquals(14,new Vector(1, 2, 3).lengthSquared() ,"ERROR: lengthSquared() wrong value");
@@ -106,7 +106,7 @@ class VectorTests {
      * Test method for {@link primitives.Vector#length()}.
      */
     @Test
-    void testLength() throws IllegalAccessException {
+    void testLength() throws IllegalArgumentException {
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
         assertEquals(5,new Vector(0, 3, 4).length(),"ERROR: length() wrong value");
@@ -115,7 +115,7 @@ class VectorTests {
      * Test method for {@link primitives.Vector#normalize()}.
      */
     @Test
-    void testNormalize() throws IllegalAccessException {
+    void testNormalize() throws IllegalArgumentException {
         Vector v = new Vector(1, 2, 3);
         Vector u = v.normalize();
         // ============ Equivalence Partitions Tests ==============

@@ -48,9 +48,9 @@ public class Camera {
      * @param p0  The position of the camera.
      * @param vUp The up vector of the camera.
      * @param vTo The direction vector the camera is pointing towards.
-     * @throws IllegalAccessException If vUp and vTo are not orthogonal.
+     * @throws IllegalArgumentException If vUp and vTo are not orthogonal.
      */
-    public Camera(Point p0, Vector vUp, Vector vTo) throws IllegalAccessException {
+    public Camera(Point p0, Vector vUp, Vector vTo) throws IllegalArgumentException {
         if (!isZero(vTo.dotProduct(vUp))) {
             throw new IllegalArgumentException("vTo and vUp are not orthogonal");
         }
@@ -79,9 +79,9 @@ public class Camera {
      * @param j  The x-coordinate of the pixel.
      * @param i  The y-coordinate of the pixel.
      * @return A ray passing through the specified pixel.
-     * @throws IllegalAccessException If vUp and vTo are not orthogonal.
+     * @throws IllegalArgumentException If vUp and vTo are not orthogonal.
      */
-    public Ray constructRay(int nX, int nY, int j, int i) throws IllegalAccessException {
+    public Ray constructRay(int nX, int nY, int j, int i) throws IllegalArgumentException {
         //view plane center point
         Point Pc = p0.add(vTo.scale(distance));
 
@@ -179,23 +179,13 @@ public class Camera {
     }
 
 
-    /** Cast ray from camera and color a pixel
-     * @param nX resolution on X axis (number of pixels in row)
-     * @param nY resolution on Y axis (number of pixels in column)
-     * @param col pixel's column number (pixel index in row)
-     * @param row pixel's row number (pixel index in column)
-     */
-    private void castRay(int nX, int nY, int col, int row) throws IllegalAccessException {
-        imageWriter.writePixel(col, row, rayTracerBase.traceRay(constructRay(nX, nY, col, row)));
-        pixelManager.pixelDone();
-    }
 
 
 
     /**
      * Renders the image by tracing rays for each pixel and writing the resulting colors to the {@link ImageWriter} object.
      *
-     * @throws IllegalAccessException if any required resources (such as the image writer or ray tracer) are missing or null
+     * @throws IllegalArgumentException if any required resources (such as the image writer or ray tracer) are missing or null
      */
 
 
@@ -219,62 +209,48 @@ public class Camera {
         }
         imageWriter.writeToImage();
     }
-    public Camera renderImage() throws IllegalAccessException {
-        if (imageWriter == null || rayTracerBase == null || isNaN(width) || isNaN(height) || isNaN(distance)) {
-            if (imageWriter == null) {
-                throw new MissingResourceException("missing resources", "Camera", "imageWriter");
-            }
-            if (rayTracerBase == null) {
-                throw new MissingResourceException("missing resources", "Camera", "rayTracerBase");
-            }
-            if (isNaN(width)) {
-                throw new MissingResourceException("missing resources", "Camera", "width");
-            }
-            if (isNaN(height)) {
-                throw new MissingResourceException("missing resources", "Camera", "height");
-            }
-            if (isNaN(distance)) {
-                throw new MissingResourceException("missing resources", "Camera", "distance");
-            }
-            throw new UnsupportedOperationException();
-        }
+    public Camera renderImage() throws IllegalArgumentException {
+        everythingInitialized();
         int nX = this.imageWriter.getNx();
         int nY = this.imageWriter.getNy();
-        // אחראי לניהול הפיקסליים לעיבוד
         pixelManager = new PixelManager(nY, nX,printInterval);//לחזור
         if (threadsCount == 0) {
             for (int i = 0; i < nY; ++i)
                 for (int j = 0; j < nX; ++j)
                     castRay(nX, nY, j, i);
         }
-        else {
-            //  רישמה של שירשורים
-            var threads = new LinkedList<Thread>(); // list of threads
-            // שרשורים הוסף מספר מתאים של חוטים
-            while (threadsCount-- > 0) // add appropriate number of threads
-                //הוסף שרשור עם הקוד שלו
-                threads.add(new Thread(() -> { // add a thread with its code
-                    PixelManager.Pixel pixel; // current pixel(row,col)
-                    // allocate pixel(row,col) in loop until there are no more pixels
-                    //אתר פיקסל(שורה,קול) בלולאה עד שלא יהיו יותר פיקסלים
-                    while ((pixel = pixelManager.nextPixel()) != null)
-                        // cast ray through pixel (and color it – inside castRay)
-                    {
-                        //להטיל קרן דרך פיקסל (וצבוע אותה - בתוך castRay)
-                        try {
-                            castRay(nX, nY, pixel.col(), pixel.row());
-                        } catch (IllegalAccessException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }));
-            //להתחיל את כל השרשורים
-            // start all the threads
-            for (var thread : threads) thread.start();
-            //חכה עד שכל האשכולות יסתיימו
-            // wait until all the threads have finished
-            try { for (var thread : threads) thread.join(); } catch (InterruptedException ignore) {}
+        else { // see further... option 1
+            IntStream.range(0, nY).parallel()
+                    .forEach(i -> IntStream.range(0, nX).parallel() // for each row:
+                            .forEach(j -> {
+                                try {
+                                    castRay(nX, nY, j, i);
+                                } catch (IllegalArgumentException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }));
         }
+//        else {
+//            var threads = new LinkedList<Thread>(); // list of threads
+//            while (threadsCount-- > 0) // add appropriate number of threads
+//                threads.add(new Thread(() -> { // add a thread with its code
+//                    PixelManager.Pixel pixel; // current pixel(row,col)
+//                    // allocate pixel(row,col) in loop until there are no more pixels
+//                    while ((pixel = pixelManager.nextPixel()) != null)
+//                        // cast ray through pixel (and color it – inside castRay)
+//                    {
+//                        try {
+//                            castRay(nX, nY, pixel.col(), pixel.row());
+//                        } catch (IllegalArgumentException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    }
+//                }));
+        // start all the threads
+//            for (var thread : threads) thread.start();
+//            // wait until all the threads have finished
+//            try { for (var thread : threads) thread.join(); } catch (InterruptedException ignore) {}
+//        }
         return this;
     }
 
@@ -290,39 +266,30 @@ public class Camera {
         imageWriter.writeToImage();
         return this;
     }
-    /**
-     * Constructs a beam for super-sampling at a given pixel coordinates (j, i).
-     *
-     * @param nX The number of pixels in the X direction.
-     * @param nY The number of pixels in the Y direction.
-     * @param j  The X coordinate of the pixel.
-     * @param i  The Y coordinate of the pixel.
-     * @return A list of rays for super-sampling at the specified pixel.
-     * @throws IllegalAccessException if an illegal access occurs.
-     */
-    private List<Ray> constructBeamSuperSampling(int nX, int nY, int j, int i) throws IllegalAccessException {
-        // Creating rays
-        List<Ray> beam = new LinkedList<>();
-        // Add the ray at the center of the pixel
-        beam.add(constructRay(nX, nY, j, i));
-        // Calculate the measures of each pixel
+    private List<Ray> constructBeamSuperSampling(int nX, int nY, int j, int i) throws IllegalArgumentException {
+        //creating rays
+        List<Ray> beam= new LinkedList<>();
+        //add the ray of the center of the pixel
+        beam.add(constructRay(nX,nY,j,i));
+        //calculate the measures of each pixel
         double ry = height / nY;
         double rx = width / nX;
-        // Find how many steps to go on the x and y coordinates
-        double yScale = alignZero((j - nX / 2d) * rx + rx / 2d);
-        double xScale = alignZero((i - nY / 2d) * ry + ry / 2d);
-        // Get to the middle of the picture by adding the right distance
+        //find how many steps to go on the x and y coordinates
+        double yScale = alignZero((j-nX/2d)*rx+rx/2d);
+        double xScale = alignZero((i-nY/2d)*ry+ry/2d);
+        //get to the middle of the picture by adding the right distance
         Point pixelCenter = p0.add(vTo.scale(distance));
-        if (!isZero(yScale))
+        if(!isZero(yScale))
             pixelCenter = pixelCenter.add(vRight.scale(yScale));
         if (!isZero(xScale))
-            pixelCenter = pixelCenter.add(vUp.scale(-1 * xScale));
+            pixelCenter = pixelCenter.add(vUp.scale(-1*xScale));
         Random rand = new Random();
-        for (int c = 0; c < nss; c++) {
-            // The rand returns randomly true or false, and according to it,
-            // a positive or negative random number is chosen
-            double dxfactor = rand.nextBoolean() ? rand.nextDouble() : -1 * rand.nextDouble();
-            double dyfactor = rand.nextBoolean() ? rand.nextDouble() : -1 * rand.nextDouble();
+        for (int c = 0; c<nss; c++) {
+            //the rand returns randomly true or false and according to it positive or negative random number is chosen
+            double dxfactor =  rand.nextBoolean() ? rand.nextDouble() : -1 *
+                    rand.nextDouble();
+            double dyfactor = rand.nextBoolean() ? rand.nextDouble() : -1 *
+                    rand.nextDouble();
             double dx = rx * dxfactor;
             double dy = ry * dyfactor;
             Point randomPoint = pixelCenter;
@@ -336,78 +303,54 @@ public class Camera {
         return beam;
     }
 
-    /**
-     * Calculates the adaptive super-sampling color for a given pixel coordinates (j, i).
-     *
-     * @param nX          The number of pixels in the X direction.
-     * @param nY          The number of pixels in the Y direction.
-     * @param j           The X coordinate of the pixel.
-     * @param i           The Y coordinate of the pixel.
-     * @param maxLevel    The maximum level of recursion for adaptive super-sampling.
-     * @param centerColor The color at the center of the pixel.
-     * @return The calculated adaptive super-sampling color for the specified pixel.
-     * @throws IllegalAccessException if an illegal access occurs.
-     */
-    private Color calcAdaptiveSuperSampling(int nX, int nY, int j, int i, int maxLevel, Color centerColor) throws IllegalAccessException {
-        if (maxLevel <= 0)
+
+    private  Color calcAdaptiveSuperSampling(int nX, int nY, int j, int i, int maxLevel, Color centerColor) throws IllegalArgumentException {
+        if (maxLevel <= 0 )
             return centerColor;
         Color color = centerColor;
         Ray[] beam = new Ray[]{constructRay(2 * nX, 2 * nY, 2 * j, 2 * i),
                 constructRay(2 * nX, 2 * nY, 2 * j, 2 * i + 1),
                 constructRay(2 * nX, 2 * nY, 2 * j + 1, 2 * i),
-                constructRay(2 * nX, 2 * nY, 2 * j + 1, 2 * i + 1)};
-        for (int ray = 0; ray < 4; ray++) {
+                constructRay(2 * nX, 2 * nY, 2 * j + 1 , 2 * i + 1)};
+        for (int ray = 0; ray < 4; ray ++){
             Color currentColor = rayTracerBase.traceRay(beam[ray]);
             if (!currentColor.equals(centerColor))
                 currentColor = calcAdaptiveSuperSampling(2 * nX, 2 * nY,
-                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1), currentColor);
+                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1),currentColor);
             color = color.add(currentColor);
         }
         return color.reduce(5);
     }
 
-    /**
-     * Casts a beam for adaptive super-sampling at a given pixel coordinates (j, i).
-     *
-     * @param i The X coordinate of the pixel.
-     * @param j The Y coordinate of the pixel.
-     * @return The color calculated using adaptive super-sampling for the specified pixel.
-     * @throws IllegalAccessException if an illegal access occurs.
+    /** Cast ray from camera and color a pixel
+     * @param nX resolution on X axis (number of pixels in row)
+     * @param nY resolution on Y axis (number of pixels in column)
+     * @param col pixel's column number (pixel index in row)
+     * @param row pixel's row number (pixel index in column)
      */
-    private Color castBeamAdaptiveSuperSampling(int i, int j) throws IllegalAccessException {
+    private void castRay(int nX, int nY, int col, int row) throws IllegalArgumentException {
+        imageWriter.writePixel(col, row, rayTracerBase.traceRay(constructRay(nX, nY, col, row)));
+        pixelManager.pixelDone();
+    }
+    private void castBeamAdaptiveSuperSampling( int j,int i) throws IllegalArgumentException {
         Ray center = constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i);
         Color centerColor = rayTracerBase.traceRay(center);
-        return calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor);
+        imageWriter.writePixel(j,i,calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor)) ;//check
+        pixelManager.pixelDone();
     }
 
-    /**
-     * Casts a beam for super-sampling at a given pixel coordinates (j, i).
-     *
-     * @param j The X coordinate of the pixel.
-     * @param i The Y coordinate of the pixel.
-     * @return The color calculated using super-sampling for the specified pixel.
-     * @throws IllegalAccessException if an illegal access occurs.
-     */
-    private Color castBeamSuperSampling(int j, int i) throws IllegalAccessException {
-        // Create rays for super-sampling
-        List<Ray> beam = constructBeamSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i);
+    private Color castBeamSuperSampling(int j, int i) throws IllegalArgumentException {
+        //  שולחת לפונקציה כדי ליצור קרניים
+        List<Ray> beam = constructBeamSuperSampling (imageWriter.getNx(),imageWriter.getNy(), j, i);
         Color color = Color.BLACK;
-        // Sum the colors returned by each ray
-        for (Ray ray : beam) {
-            color = color.add(rayTracerBase.traceRay(ray));
+        // סוכם את הצבעים שכל קרן מחזירה
+        for (Ray ray : beam){
+            color = color.add(rayTracerBase.traceRay(ray));//?
         }
-        // Return the average color
+        // מחזיר ממוצע
         return color.reduce(nss);
     }
-
-    /**
-     * Renders the image using super-sampling.
-     *
-     * @return The Camera instance for method chaining.
-     * @throws IllegalAccessException if an illegal access occurs.
-     * @throws MissingResourceException if required resources are missing.
-     */
-    public Camera renderImageSuperSampling() throws IllegalAccessException {
+    public void everythingInitialized(){
         if (imageWriter == null || rayTracerBase == null || isNaN(width) || isNaN(height) || isNaN(distance)) {
             if (imageWriter == null) {
                 throw new MissingResourceException("missing resources", "Camera", "imageWriter");
@@ -426,15 +369,44 @@ public class Camera {
             }
             throw new UnsupportedOperationException();
         }
+    }
+    public Camera renderImageSuperSampling() throws IllegalArgumentException {
+        everythingInitialized();
         int nX = this.imageWriter.getNx();
         int nY = this.imageWriter.getNy();
-        for (int i = 0; i < nX; i++) {
-            for (int j = 0; j < nY; j++) {
-                // Cast a beam for super-sampling at each pixel
-                Color color = castBeamSuperSampling(j, i);
-                imageWriter.writePixel(j, i, color);
+        for (int i= 0; i< nX; i++)
+            for  (int j = 0; j < nY; j++){
+                {
+                    Color color = castBeamSuperSampling(j,i);
+                    imageWriter.writePixel(j, i, color);
+                }
             }
-        }
+        return this;
+    }
+    public Camera renderImageAdaptiveSuperSampling() throws IllegalArgumentException {
+        everythingInitialized();
+        int nX = this.imageWriter.getNx();
+        int nY = this.imageWriter.getNy();
+        pixelManager = new PixelManager(nY, nX, printInterval);
+        if (threadsCount == 0)
+            for (int i= 0; i< nX; i++)
+                for  (int j = 0; j < nY; j++){
+                    {
+                        castBeamAdaptiveSuperSampling(j,i);
+
+                    }
+                }
+        else { // see further... option 1
+            IntStream.range(0, nY).parallel()
+                    .forEach(i -> IntStream.range(0, nX).parallel() // for each row:
+                            .forEach(j -> {
+                                try {
+                                    castBeamAdaptiveSuperSampling(j,i);
+                                } catch (IllegalArgumentException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }));}
+
         return this;
     }
 

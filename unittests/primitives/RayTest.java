@@ -13,7 +13,7 @@ class RayTest {
      * Test case for Ray's findClosestPoint method.
      */
     @Test
-    void findClosestPoint() throws IllegalAccessException {
+    void findClosestPoint() throws IllegalArgumentException {
         // Create a Ray with a starting point and a direction
         Ray ray = new Ray(new Point(1, 1, 1), new Vector(2, 2, 2));
 

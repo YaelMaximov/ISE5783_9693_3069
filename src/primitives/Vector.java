@@ -11,9 +11,9 @@ public class Vector extends Point {
      * @param x the x component of the vector
      * @param y the y component of the vector
      * @param z the z component of the vector
-     * @throws IllegalAccessException if the vector is zero
+     * @throws IllegalArgumentException if the vector is zero
      */
-    public Vector(double x, double y, double z) throws IllegalAccessException {
+    public Vector(double x, double y, double z) throws IllegalArgumentException {
         super(x, y, z);
         if (xyz.equals(Double3.ZERO)) {
             throw new IllegalArgumentException("Vector Zero is not allowed");
@@ -24,9 +24,9 @@ public class Vector extends Point {
      * Constructs a new vector from a Double3 object.
      *
      * @param vec3 the Double3 object representing the vector
-     * @throws IllegalAccessException if the vector is zero
+     * @throws IllegalArgumentException if the vector is zero
      */
-    public Vector(Double3 vec3) throws IllegalAccessException {
+    public Vector(Double3 vec3) throws IllegalArgumentException {
         this(vec3.d1, vec3.d2, vec3.d3);
     }
 
@@ -35,9 +35,9 @@ public class Vector extends Point {
      *
      * @param vector the other vector to add to this vector
      * @return the resulting vector
-     * @throws IllegalAccessException if the resulting vector is zero
+     * @throws IllegalArgumentException if the resulting vector is zero
      */
-    public Vector add(Vector vector) throws IllegalAccessException {
+    public Vector add(Vector vector) throws IllegalArgumentException {
         return new Vector(xyz.add(vector.xyz));
     }
 
@@ -46,9 +46,9 @@ public class Vector extends Point {
      *
      * @param rhs the scalar value to scale this vector by
      * @return the resulting vector
-     * @throws IllegalAccessException if the resulting vector is zero
+     * @throws IllegalArgumentException if the resulting vector is zero
      */
-    public Vector scale(double rhs) throws IllegalAccessException {
+    public Vector scale(double rhs) throws IllegalArgumentException {
         return new Vector(xyz.scale(rhs));
     }
 
@@ -69,9 +69,9 @@ public class Vector extends Point {
      *
      * @param other the other vector
      * @return the cross product of this vector and the other vector
-     * @throws IllegalAccessException if the resulting vector is zero
+     * @throws IllegalArgumentException if the resulting vector is zero
      */
-    public Vector crossProduct(Vector other) throws IllegalAccessException {
+    public Vector crossProduct(Vector other) throws IllegalArgumentException {
         double x = this.xyz.d2 * other.xyz.d3 - this.xyz.d3 * other.xyz.d2;
         double y = this.xyz.d3 * other.xyz.d1 - this.xyz.d1 * other.xyz.d3;
         double z = this.xyz.d1 * other.xyz.d2 - this.xyz.d2 * other.xyz.d1;
@@ -102,9 +102,9 @@ public class Vector extends Point {
      * Returns a normalized version of this vector.
      *
      * @return the normalized version of this vector
-     * @throws IllegalAccessException if the resulting vector is zero
+     * @throws IllegalArgumentException if the resulting vector is zero
      */
-    public Vector normalize() throws IllegalAccessException {
+    public Vector normalize() throws IllegalArgumentException {
         return new Vector(this.xyz.reduce(this.length()));
     }
 }

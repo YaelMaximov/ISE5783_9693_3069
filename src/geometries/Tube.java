@@ -43,7 +43,7 @@ public class Tube extends RadialGeometry {
      * @return the normal vector to the tube
      */
     @Override
-    public Vector getNormal(Point p) throws IllegalAccessException {
+    public Vector getNormal(Point p) throws IllegalArgumentException {
         Point P0 = axisRay.getP0();
         Vector v = axisRay.getDir();
         Vector P0_P = p.subtract(P0);
@@ -65,7 +65,7 @@ public class Tube extends RadialGeometry {
      * @return immutable list containing 0/1/2 intersection points as {@link GeoPoint}s objects
      */
     @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalArgumentException {
         Vector v = ray.getDir();
         Vector vt = axisRay.getDir();
         Point pa = axisRay.getP0();
@@ -183,7 +183,7 @@ public class Tube extends RadialGeometry {
 
         return null;
     }
-    protected  void createBoundingBox() throws IllegalAccessException{
+    protected  void createBoundingBox() throws IllegalArgumentException{
         box=null;
     }
 

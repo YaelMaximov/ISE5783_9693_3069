@@ -25,13 +25,13 @@ public class Ray {
      *
      * @param p0  the starting point of the ray
      * @param dir the direction vector of the ray
-     * @throws IllegalAccessException if the direction vector is the zero vector
+     * @throws IllegalArgumentException if the direction vector is the zero vector
      */
-    public Ray(Point p0, Vector dir) throws IllegalAccessException {
+    public Ray(Point p0, Vector dir) throws IllegalArgumentException {
         this.p0 = p0;
         this.dir = dir.normalize();
     }
-    public Ray(Point point, Vector lightDirection,Vector n) throws IllegalAccessException {
+    public Ray(Point point, Vector lightDirection,Vector n) throws IllegalArgumentException {
         this.dir = lightDirection;
         // Calculate an epsilon vector to slightly move the point in the direction of the normal
         Vector epsVector = n.scale(n.dotProduct(lightDirection) > 0 ? DELTA : -DELTA);
@@ -60,7 +60,7 @@ public class Ray {
         return dir;
     }
 
-    public Point getPoint(double t) throws IllegalAccessException {
+    public Point getPoint(double t) throws IllegalArgumentException {
         Vector scl_p = dir.scale(t);
         Point P = p0.add(scl_p);
         return P;

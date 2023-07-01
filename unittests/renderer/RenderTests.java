@@ -18,7 +18,7 @@ public class RenderTests {
    /** Produce a scene with basic 3D model and render it into a png image with a
     * grid */
    @Test
-   public void basicRenderTwoColorTest() throws IllegalAccessException {
+   public void basicRenderTwoColorTest() throws IllegalArgumentException {
       Scene scene = new Scene("Test scene")//
               .setAmbientLight(new AmbientLight(new Color(255, 191, 191), //
                       new Double3(1, 1, 1))) //
@@ -34,10 +34,10 @@ public class RenderTests {
       // right
       Camera camera = new Camera(new Point(Double3.ZERO), new Vector(0, 1, 0), new Vector(0, 0, -1)) //
               .setVPDistance(100) //
-              .setVPSize(500, 500) .setNss(300).setMaxLevelAdaptiveSS(3)//
+              .setVPSize(500, 500) .setNss(300).setMaxLevelAdaptiveSS(3).setThreadsCount(6)//
               .setImageWriter(new ImageWriter("base render test", 1000, 1000))
               .setRayTracer(new RayTracerBasic(scene));
-      camera.renderImageSuperSampling();
+      camera.renderImageAdaptiveSuperSampling();
       camera.printGrid(100, new Color(YELLOW));
       camera.writeToImage();
    }
@@ -46,7 +46,7 @@ public class RenderTests {
    /** Produce a scene with basic 3D model - including individual lights of the
     * bodies and render it into a png image with a grid */
    @Test
-   public void basicRenderMultiColorTest() throws IllegalAccessException {
+   public void basicRenderMultiColorTest() throws IllegalArgumentException {
       Scene scene = new Scene("Test scene")//
               .setAmbientLight(new AmbientLight(new Color(WHITE), new Double3(0.2))); //
 
@@ -75,7 +75,7 @@ public class RenderTests {
 
    /** Test for XML based scene - for bonus */
    @Test
-   public void basicRenderXml() throws IllegalAccessException {
+   public void basicRenderXml() throws IllegalArgumentException {
       Scene  scene  = new Scene("XML Test scene");
       // enter XML file name and parse from XML file into scene object
       // using the code you added in appropriate packages

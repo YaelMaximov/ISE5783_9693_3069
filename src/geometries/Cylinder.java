@@ -57,10 +57,10 @@ public class Cylinder extends Tube {
      *
      * @param point The point to calculate the normal at.
      * @return The normal vector to the cylinder at the specified point.
-     * @throws IllegalAccessException if an illegal access exception occurs.
+     * @throws IllegalArgumentException if an illegal access exception occurs.
      */
     @Override
-    public Vector getNormal(Point point) throws IllegalAccessException {
+    public Vector getNormal(Point point) throws IllegalArgumentException {
         Vector direction = axisRay.getDir();
         Point P0 = axisRay.getP0();
 
@@ -83,10 +83,10 @@ public class Cylinder extends Tube {
      * @param ray         The ray towards the cylinder.
      * @param maxDistance The maximum distance to check for intersections.
      * @return An immutable list containing 0, 1, or 2 intersection points as {@link GeoPoint} objects.
-     * @throws IllegalAccessException if an illegal access exception occurs.
+     * @throws IllegalArgumentException if an illegal access exception occurs.
      */
     @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalArgumentException {
         // Origin point of the cylinder (on the bottom base)
         Point basePoint = axisRay.getP0();
         // Point across the base point on the top base

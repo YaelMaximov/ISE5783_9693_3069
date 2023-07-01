@@ -24,7 +24,7 @@ public class ReflectionRefractionTests {
 
    /** Produce a Pictures of a sphere lighted by a spot light */
    @Test
-   public void twoSpheres() throws IllegalAccessException {
+   public void twoSpheres() throws IllegalArgumentException {
       Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 1, 0),new Vector(0, 0, -1)) //
               .setVPSize(150, 150).setVPDistance(1000);
 
@@ -45,7 +45,7 @@ public class ReflectionRefractionTests {
 
    /** Produce a Pictures of a sphere lighted by a spot light */
    @Test
-   public void twoSpheresOnMirrors() throws IllegalAccessException {
+   public void twoSpheresOnMirrors() throws IllegalArgumentException {
       Camera camera = new Camera(new Point(0, 0, 10000),new Vector(0, 1, 0), new Vector(0, 0, -1)) //
               .setVPSize(2500, 2500).setVPDistance(10000); //
 
@@ -80,7 +80,7 @@ public class ReflectionRefractionTests {
     * partially
     * transparent Sphere producing partial shadow */
    @Test
-   public void trianglesTransparentSphere() throws IllegalAccessException {
+   public void trianglesTransparentSphere() throws IllegalArgumentException {
       Camera camera = new Camera(new Point(0, 0, 1000),  new Vector(0, 1, 0),new Vector(0, 0, -1)) //
               .setVPSize(200, 200).setVPDistance(1000);
 

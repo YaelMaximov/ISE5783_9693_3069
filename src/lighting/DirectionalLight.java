@@ -16,9 +16,9 @@ public class DirectionalLight extends Light implements LightSource {
      *
      * @param intensity The intensity of the light.
      * @param direction The direction of the light.
-     * @throws IllegalAccessException if an illegal access exception occurs.
+     * @throws IllegalArgumentException if an illegal access exception occurs.
      */
-    public DirectionalLight(Color intensity, Vector direction) throws IllegalAccessException {
+    public DirectionalLight(Color intensity, Vector direction) throws IllegalArgumentException {
         super(intensity);
         this.direction = direction.normalize();
     }

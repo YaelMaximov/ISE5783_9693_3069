@@ -20,7 +20,7 @@ class SphereTests {
      * Test method for {@link geometries.Sphere#getNormal(primitives.Point)}.
      */
     @Test
-    void testGetNormal() throws IllegalAccessException {
+    void testGetNormal() throws IllegalArgumentException {
         // ============ Equivalence Partitions Tests ==============
         //TC01:There is a simple single test here
         Sphere sphere = new Sphere(1.0, new Point(1,1,1));
@@ -29,7 +29,7 @@ class SphereTests {
     }
     // * Test method for {@link geometries.Sphere#findIntsersections(Ray)}
     @Test
-    public void findIntersectionsSphere() throws IllegalAccessException
+    public void findIntersectionsSphere() throws IllegalArgumentException
     {
 
         Sphere sphere4= new Sphere(1, new Point(1,0,0));

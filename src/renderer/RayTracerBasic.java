@@ -34,10 +34,10 @@ public class RayTracerBasic extends RayTracerBase {
      *
      * @param ray the ray to be traced
      * @return the color of the ray in the scene
-     * @throws IllegalAccessException if there is an error accessing the scene or objects in the scene
+     * @throws IllegalArgumentException if there is an error accessing the scene or objects in the scene
      */
     @Override
-    public Color traceRay(Ray ray) throws IllegalAccessException {
+    public Color traceRay(Ray ray) throws IllegalArgumentException {
         GeoPoint closestPoint = findClosestIntersection(ray);
         return closestPoint == null ? scene.background : calcColor(closestPoint, ray);
     }
@@ -48,17 +48,17 @@ public class RayTracerBasic extends RayTracerBase {
      * @param gp the point to calculate the color for
      * @return the color of the point using the scene's ambient light
      */
-    private Color calcColor(GeoPoint gp, Ray ray) throws IllegalAccessException {
+    private Color calcColor(GeoPoint gp, Ray ray) throws IllegalArgumentException {
         return calcColor(gp, ray, MAX_CALC_COLOR_LEVEL, new Double3(INITIAL_K))
                 .add(scene.ambientLight.getIntensity());
     }
 
-    private Color calcColor(GeoPoint gp, Ray ray, int level, Double3 k) throws IllegalAccessException {
+    private Color calcColor(GeoPoint gp, Ray ray, int level, Double3 k) throws IllegalArgumentException {
         Color color = calcLocalEffects(gp, ray, k);
         return level == 1 ? color : color.add(calcGlobalEffects(gp, ray, level, k));
     }
 
-    private Color calcLocalEffects(GeoPoint gp, Ray ray, Double3 k) throws IllegalAccessException {
+    private Color calcLocalEffects(GeoPoint gp, Ray ray, Double3 k) throws IllegalArgumentException {
         Color color = gp.geometry.getEmission();
         Vector v = ray.getDir();
         Vector n = gp.geometry.getNormal(gp.point);
@@ -88,12 +88,12 @@ public class RayTracerBasic extends RayTracerBase {
         return material.kD.scale(Math.abs(nl));
     }
 
-    private Double3 calcSpecular(Material material, Vector n, Vector l, double nl, Vector v) throws IllegalAccessException {
+    private Double3 calcSpecular(Material material, Vector n, Vector l, double nl, Vector v) throws IllegalArgumentException {
         Vector r = l.subtract(n.scale(nl * 2)).normalize();
         return material.kS.scale(Math.pow(Math.max(0, v.scale(-1).dotProduct(r)), material.nShininess));
     }
 
-    private Color calcGlobalEffects(GeoPoint gp, Ray ray, int level, Double3 k) throws IllegalAccessException {
+    private Color calcGlobalEffects(GeoPoint gp, Ray ray, int level, Double3 k) throws IllegalArgumentException {
         Color color = Color.BLACK;
         Vector v = ray.getDir();
         Vector n = gp.geometry.getNormal(gp.point);
@@ -102,7 +102,7 @@ public class RayTracerBasic extends RayTracerBase {
                 .add(calcColorGlobalEffect(constructRefractedRay(gp, v, n), level, k, material.kT));
     }
 
-    private Color calcColorGlobalEffect(Ray ray, int level, Double3 k, Double3 kx) throws IllegalAccessException {
+    private Color calcColorGlobalEffect(Ray ray, int level, Double3 k, Double3 kx) throws IllegalArgumentException {
         Double3 kkx = k.product(kx);
         if (kkx.lowerThan(MIN_CALC_COLOR_K)) {
             return Color.BLACK;
@@ -115,7 +115,7 @@ public class RayTracerBasic extends RayTracerBase {
                 ? Color.BLACK : calcColor(gp, ray, level - 1, kkx).scale(kx);
     }
 
-    private Double3 transparency(GeoPoint geoPoint, LightSource lightSource, Vector l, Vector n) throws IllegalAccessException {
+    private Double3 transparency(GeoPoint geoPoint, LightSource lightSource, Vector l, Vector n) throws IllegalArgumentException {
         Vector lightDirection = l.scale(-1); // from point to light source
         Ray lightRay = new Ray(geoPoint.point, lightDirection, n);
         List<GeoPoint> intersections = scene.geometries.findGeoIntersections(lightRay);
@@ -135,17 +135,17 @@ public class RayTracerBasic extends RayTracerBase {
         return ktr;
     }
 
-    private Ray constructReflectedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
+    private Ray constructReflectedRay(GeoPoint gp, Vector v, Vector n) throws IllegalArgumentException {
         double nv = alignZero(n.dotProduct(v));
         Vector r = v.subtract(n.scale(nv * 2)).normalize();
         return new Ray(gp.point, r, gp.geometry.getNormal(gp.point));
     }
 
-    private Ray constructRefractedRay(GeoPoint gp, Vector v, Vector n) throws IllegalAccessException {
+    private Ray constructRefractedRay(GeoPoint gp, Vector v, Vector n) throws IllegalArgumentException {
         return new Ray(gp.point, v, gp.geometry.getNormal(gp.point));
     }
 
-    private GeoPoint findClosestIntersection(Ray ray) throws IllegalAccessException {
+    private GeoPoint findClosestIntersection(Ray ray) throws IllegalArgumentException {
         List<GeoPoint> intersections = scene.geometries.findGeoIntersections(ray);
         if (intersections == null) {
             return null;

@@ -28,7 +28,7 @@ public abstract class Geometry extends Intersectable {
      * @param p the point on the surface of the shape
      * @return the normal vector of the point on the surface of the shape
      */
-    public abstract Vector getNormal(Point p) throws IllegalAccessException;
+    public abstract Vector getNormal(Point p) throws IllegalArgumentException;
 
     public Material getMaterial() {
         return material;

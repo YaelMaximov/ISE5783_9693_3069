@@ -17,7 +17,7 @@ class TriangleTests {
      * Test method for {@link geometries.Triangle#getNormal(primitives.Point)}.
      */
     @Test
-    void testGetNormal() throws IllegalAccessException {
+    void testGetNormal() throws IllegalArgumentException {
         // ============ Equivalence Partitions Tests ==============
         // TC01: There is a simple single test here
         Triangle triangle = new Triangle(new Point(1, 0, 0), new Point(1, 1, 1), new Point(0, 0, 0));
@@ -25,7 +25,7 @@ class TriangleTests {
         assertEquals(vector, triangle.getNormal(new Point(0, 0, 0)), "Bad normal to triangle");
     }
     @Test
-    void testFindIntersectionPoints() throws IllegalAccessException {
+    void testFindIntersectionPoints() throws IllegalArgumentException {
         Point p1=new Point(0,2,-1);
         Point p2=new Point(4,2,0);
         Point p3=new Point(2,2,2);

@@ -27,8 +27,8 @@ public abstract class RayTracerBase {
      *
      * @param ray the ray to be traced
      * @return the color of the ray in the scene
-     * @throws IllegalAccessException if there is an error accessing the scene or objects in the scene
+     * @throws IllegalArgumentException if there is an error accessing the scene or objects in the scene
      */
-    public abstract Color traceRay(Ray ray) throws IllegalAccessException;
+    public abstract Color traceRay(Ray ray) throws IllegalArgumentException;
 }
 

@@ -26,7 +26,7 @@ public class Plane extends Geometry {
      * @param p3 a point on the plane
      */
 
-    public Plane(Point p1, Point p2, Point p3) throws IllegalAccessException {
+    public Plane(Point p1, Point p2, Point p3) throws IllegalArgumentException {
         // check that all three points are different
 
         if (p1.equals(p2) || p1.equals(p3) || p2.equals(p3))
@@ -57,9 +57,9 @@ public class Plane extends Geometry {
      *
      * @param p a point on the plane
      * @param v the normal vector of the plane
-     * @throws IllegalAccessException if the vector is the zero vector
+     * @throws IllegalArgumentException if the vector is the zero vector
      */
-    public Plane(Point p, Vector v) throws IllegalAccessException {
+    public Plane(Point p, Vector v) throws IllegalArgumentException {
         p0 = p;
         normal = v.normalize();
     }
@@ -95,17 +95,18 @@ public class Plane extends Geometry {
 
     /**
      * find intersection between ray and plane
+     *
      * @param ray ray towards the plane
-     * @return  immutable list of one intersection point as  {@link GeoPoint} object
+     * @return immutable list of one intersection point as  {@link GeoPoint} object
      */
 
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) throws IllegalAccessException {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalArgumentException {
         Point P0 = ray.getP0();
         Vector v = ray.getDir();
         Vector n = normal;
 
         // ray cannot start at plane's origin point
-        if(p0.equals(P0))
+        if (p0.equals(P0))
             return null;
 
         // ray points -> P = p0 + t*v_ (v_ = direction vector)
@@ -118,7 +119,7 @@ public class Plane extends Geometry {
         double nv = n.dotProduct(v);
 
         // ray direction cannot be parallel to plane orientation
-        if (isZero(nv)){
+        if (isZero(nv)) {
             return null;
         }
 
@@ -128,39 +129,21 @@ public class Plane extends Geometry {
         double nQMinusP0 = alignZero(n.dotProduct(Q_P0));
 
         //t should not be equal to 0
-        if( isZero(nQMinusP0)){
+        if (isZero(nQMinusP0)) {
             return null;
         }
         // scaling factor for ray , if value is positive
         // ray intersects plane
         double t = alignZero(nQMinusP0 / nv);
-        if (t > 0 && alignZero(t-maxDistance) <= 0){
+        if (t > 0 && alignZero(t - maxDistance) <= 0) {
             //return immutable List
             return List.of(new GeoPoint(this, ray.getPoint(t)));
         }
         // no intersection point  - ray and plane in opposite  direction
         return null;
     }
-    protected  void createBoundingBox() throws IllegalAccessException{
-        box=null;
+
+    protected void createBoundingBox() throws IllegalArgumentException {
+        box = null;
     }
-//@Override
-//protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
-//    Point p0 = ray.getP0();
-//    ray.getDir().normalize();
-//    double nv = this.normal.dotProduct(ray.getDir());
-//    if (isZero(nv))//there is not any intersection
-//        return null;
-//    double t = normal.scale(-1).dotProduct(p0.subtract(p0).scale(1 / nv));
-//    if (isZero(t)) {//The  first point of the ray in the plan(0 point)
-//        return null;
-//    }
-//    if (t < 0) {//The first point of the ray in the plain(o point)
-//        return null;
-//    } else {
-//        ArrayList<GeoPoint> arrayList = new ArrayList<GeoPoint>();
-//        Point point = p0.add(ray.getDir().scale(t));
-//        arrayList.add(new GeoPoint(this, point));
-//        return arrayList;
-//    }
 }

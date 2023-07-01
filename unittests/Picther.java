@@ -26,7 +26,7 @@ public class Picther {
      * Produce a Pictures of a sphere lighted by a spot light
      */
     @Test
-    public void twoSpheres() throws IllegalAccessException {
+    public void twoSpheres() throws IllegalArgumentException {
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 1, 0), new Vector(0, 0, -1)) //
                 .setVPSize(150, 150).setVPDistance(1000);
 
@@ -53,7 +53,7 @@ public class Picther {
      * transparent Sphere producing partial shadow
      */
     @Test
-    public void trianglesTransparentSphere() throws IllegalAccessException {
+    public void trianglesTransparentSphere() throws IllegalArgumentException {
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 1, 0), new Vector(0, 0, -1)) //
                 .setVPSize(200, 200).setVPDistance(1000);
 

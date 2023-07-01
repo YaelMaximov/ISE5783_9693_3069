@@ -40,7 +40,7 @@ public class Polygon extends Geometry {
     *                                  <li>The polygon is concave (not convex)</li>
     *                                  </ul>
     */
-   public Polygon(Point... vertices) throws IllegalAccessException {
+   public Polygon(Point... vertices) throws IllegalArgumentException {
       if (vertices.length < 3)
          throw new IllegalArgumentException("A polygon can't have less than 3 vertices");
       this.vertices = List.of(vertices);
@@ -84,7 +84,7 @@ public class Polygon extends Geometry {
 
    @Override
    public Vector getNormal(Point point) { return plane.getNormal(); }
-   protected  void createBoundingBox() throws IllegalAccessException{
+   protected  void createBoundingBox() throws IllegalArgumentException{
       double minX = vertices.stream().mapToDouble(Point::getX).min().orElse(Double.POSITIVE_INFINITY);
       double maxX = vertices.stream().mapToDouble(Point::getX).max().orElse(Double.NEGATIVE_INFINITY);
 
@@ -103,9 +103,7 @@ public class Polygon extends Geometry {
     * @return  immutable list of one intersection point as  {@link GeoPoint} object
     */
    @Override
-   protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalAccessException {
-      createBoundingBox();
-      if(!box.isIntersectingBoundingBox(ray)) return null;
+   protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalArgumentException {
       // find intersection between ray and plane containing the polygon
       List<GeoPoint> points=plane.findGeoIntersections(ray,maxDistance);
       // no intersections with plane , ray does not intersect polygon

@@ -17,9 +17,9 @@ public class SpotLight extends PointLight {
      * @param intensity  The intensity of the spotlight.
      * @param position   The position of the spotlight.
      * @param direction  The direction of the spotlight.
-     * @throws IllegalAccessException if an illegal access exception occurs.
+     * @throws IllegalArgumentException if an illegal access exception occurs.
      */
-    public SpotLight(Color intensity, Point position, Vector direction) throws IllegalAccessException {
+    public SpotLight(Color intensity, Point position, Vector direction) throws IllegalArgumentException {
         super(intensity, position);
         this.direction = direction.normalize();
     }
@@ -31,9 +31,9 @@ public class SpotLight extends PointLight {
      *
      * @param p The point for which to calculate the intensity.
      * @return The intensity of the spotlight.
-     * @throws IllegalAccessException if an illegal access exception occurs.
+     * @throws IllegalArgumentException if an illegal access exception occurs.
      */
-    public Color getIntensity(Point p) throws IllegalAccessException {
+    public Color getIntensity(Point p) throws IllegalArgumentException {
         Color basic = super.getIntensity(p);
         double max = Math.max(0, direction.dotProduct(getL(p)));
         Color IL = basic.scale(max);

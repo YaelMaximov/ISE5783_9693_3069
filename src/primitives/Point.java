@@ -34,9 +34,9 @@ public class Point {
      * Computes and returns the vector from this point to another point.
      * @param p1 the other point to compute the vector to
      * @return the vector from this point to the other point
-     * @throws IllegalAccessException if the resulting vector is a zero vector
+     * @throws IllegalArgumentException if the resulting vector is a zero vector
      */
-    public Vector subtract(Point p1) throws IllegalAccessException {
+    public Vector subtract(Point p1) throws IllegalArgumentException {
         return new Vector(xyz.subtract(p1.xyz));
     }
 
@@ -44,9 +44,9 @@ public class Point {
      * Computes and returns the point resulting from adding a vector to this point.
      * @param vector the vector to add to this point
      * @return the point resulting from adding the vector to this point
-     * @throws IllegalAccessException if the resulting vector is a zero vector
+     * @throws IllegalArgumentException if the resulting vector is a zero vector
      */
-    public Point add(Vector vector) throws IllegalAccessException {
+    public Point add(Vector vector) throws IllegalArgumentException {
         return new Point(xyz.add(vector.xyz));
     }
 

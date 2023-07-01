@@ -16,7 +16,7 @@ class CameraTests {
      * {@link renderer.Camera#constructRay(int, int, int, int)}.
      */
     @Test
-    void testConstructRay() throws IllegalAccessException {
+    void testConstructRay() throws IllegalArgumentException {
         Camera camera = new Camera(ZERO_POINT, new Vector(0, -1, 0), new Vector(0, 0, -1)).setVPDistance(10);
         String badRay = "Bad ray";
 

@@ -63,9 +63,9 @@ public class PointLight extends Light implements LightSource {
      *
      * @param p The point for which to calculate the direction vector.
      * @return The direction vector from the light source to the point.
-     * @throws IllegalAccessException if an illegal access exception occurs.
+     * @throws IllegalArgumentException if an illegal access exception occurs.
      */
-    public Vector getL(Point p) throws IllegalAccessException {
+    public Vector getL(Point p) throws IllegalArgumentException {
         Vector L = p.subtract(position);
         return L.normalize();
     }
@@ -75,9 +75,9 @@ public class PointLight extends Light implements LightSource {
      *
      * @param p The point for which to calculate the intensity.
      * @return The intensity of the light.
-     * @throws IllegalAccessException if an illegal access exception occurs.
+     * @throws IllegalArgumentException if an illegal access exception occurs.
      */
-    public Color getIntensity(Point p) throws IllegalAccessException {
+    public Color getIntensity(Point p) throws IllegalArgumentException {
         double d = position.distance(p);
         double denominator = kC + kL * d + kQ * Math.pow(d, 2);
         Color IL = getIntensity().scale(1 / denominator);

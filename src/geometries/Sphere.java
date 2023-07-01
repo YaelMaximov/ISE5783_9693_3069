@@ -42,50 +42,17 @@ public class Sphere extends RadialGeometry {
      * @return the normal vector to the sphere
      */
     @Override
-    public Vector getNormal(Point p) throws IllegalAccessException {
+    public Vector getNormal(Point p) throws IllegalArgumentException {
         return p.subtract(this.center).normalize();
     }
 
-
-    //    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
-//        Point p0 = ray.getP0();
-//        Vector v = ray.getDir();
-//        Vector u;
-//        try {
-//            u = center.subtract(p0);
-//        } catch (IllegalAccessException e) {
-//            return null;// לעבור ולתקן לא נכון!!
-//        }
-//        double tm = alignZero(v.dotProduct(u));
-//        double dSquares = tm == 0 ? u.lengthSquared() : u.lengthSquared() - tm * tm;
-//        double thSquared = alignZero(radius * radius - dSquares);
-//        if (thSquared <= 0) {
-//            return null;
-//        }
-//        double th = alignZero(Math.sqrt(thSquared));
-//        if (th == 0) {
-//            return null;
-//        }
-//        double t1 = alignZero(tm - th);
-//        double t2 = alignZero(tm + th);
-//        if (t1 <= 0 && t2 <= 0) {
-//            return null;
-//        }
-//        if (t1 > 0 && t2 > 0) {
-//            return List.of(ray.getP0().add(ray.getDir().scale(t1)), ray.getP0().add(ray.getDir().scale(t2)));//לא נכון חייבת לחזור!!
-//        }
-//        if (t1 > 0) {
-//            return List.of(ray.getP0().add(ray.getDir().scale(t1)));//לא נכון לבדוק שובב
-//        } else
-//            return List.of(ray.getP0().add(ray.getDir().scale(t2)));// לא נכון לבדוק שוב
-//    }
     /**
      * find intersection points between ray and sphere
      * @param ray ray towards the object
      * @return immutable list containing 0/1/2 intersection points as {@link GeoPoint}s objects
      */
     @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) throws IllegalAccessException {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) throws IllegalArgumentException {
         Point P0 = ray.getP0();
         Vector v = ray.getDir();
 
@@ -146,7 +113,7 @@ public class Sphere extends RadialGeometry {
         return null;
 
     }
-    protected  void createBoundingBox() throws IllegalAccessException{
+    protected  void createBoundingBox() throws IllegalArgumentException{
         box=new AABB(center.add(new Vector(-radius,-radius,-radius)),center.add(new Vector(radius,radius,radius)));
     }
 }

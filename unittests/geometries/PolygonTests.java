@@ -15,9 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class PolygonTest {
 
-    PolygonTest() throws IllegalAccessException {
-    }
-
     /**
      * Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}.
      */
@@ -34,8 +31,6 @@ class PolygonTest {
                     new Point(-1, 1, 1));
         } catch (IllegalArgumentException e) {
             fail("Failed constructing a correct polygon");
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
         }
 
         // TC02: Wrong vertices order
@@ -100,7 +95,7 @@ class PolygonTest {
      * Test method for {@link geometries.Polygon#getNormal(primitives.Point)}.
      */
     @Test
-    public void testGetNormal() throws IllegalAccessException {
+    public void testGetNormal() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: There is a simple single test here
         Polygon pl = new Polygon(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0), new Point(-1, 1, 1));
@@ -116,7 +111,7 @@ class PolygonTest {
 
     // ============ Equivalence Partitions Tests ==============
     @Test
-    void testFindIntersectionsEP1() throws IllegalAccessException {
+    void testFindIntersectionsEP1() {
         // TC01: Inside polygon
         ray = new Ray(new Point(2, 1, 0), new Vector(0, 0, 1));
         var d= square.findIntersections(ray);
@@ -124,7 +119,7 @@ class PolygonTest {
     }
 
     @Test
-    void testFindIntersectionsEP2() throws IllegalAccessException {
+    void testFindIntersectionsEP2() {
         // TC02: Against edge
         ray = new Ray(new Point(5, 1, 0), new Vector(0, 0, 1));
         assertEquals(List.of(new Point(5, 1, 2)), pl.findIntersections(ray), "wrong intersection point");
@@ -132,7 +127,7 @@ class PolygonTest {
     }
 
     @Test
-    void testFindIntersectionsEP3() throws IllegalAccessException {
+    void testFindIntersectionsEP3() {
         // TC03: Against vertex
         ray = new Ray(new Point(5, 4, 0), new Vector(0, 0, 1));
         assertEquals(List.of(new Point(5, 4, 2)), pl.findIntersections(ray), "wrong intersection point");
@@ -143,7 +138,7 @@ class PolygonTest {
 
     // =============== Boundary Values Tests ==================
     @Test
-    void testFindIntersectionsBVA1() throws IllegalAccessException {
+    void testFindIntersectionsBVA1() {
         // TC04: In vertex
         ray = new Ray(new Point(4, 3, 0), new Vector(0, 0, 1));
         assertEquals(List.of(new Point(4, 3, 2)), pl.findIntersections(ray), "wrong intersection point");
@@ -152,7 +147,7 @@ class PolygonTest {
     }
 
     @Test
-    void testFindIntersectionsBVA2() throws IllegalAccessException {
+    void testFindIntersectionsBVA2() {
         // TC05: On edge
         ray = new Ray(new Point(4, 1, 0), new Vector(0, 0, 1));
         assertEquals(List.of(new Point(4, 1, 2)), pl.findIntersections(ray), "wrong intersection point");
@@ -161,7 +156,7 @@ class PolygonTest {
 
 
     @Test
-    void testFindIntersectionsBVA3() throws IllegalAccessException {
+    void testFindIntersectionsBVA3() {
         // TC06: On edge continuation
         ray = new Ray(new Point(5, 0, 0), new Vector(0, 0, 1));
         assertEquals(List.of(new Point(5, 0, 2)), pl.findIntersections(ray), "wrong intersection point");
@@ -181,7 +176,7 @@ class PolygonTest {
      * Test method for {@link Triangle#findGeoIntersectionsHelper(Ray, double)}
      */
     @Test
-    void findGeoIntersectionsEP1() throws IllegalAccessException {
+    void findGeoIntersectionsEP1() {
         // TC01 -  max distance is smaller than distance to intersection point - no intersections
         assertNull(square1.findGeoIntersectionsHelper(ray1,2),"points are further than maxDistance");
 
@@ -191,7 +186,7 @@ class PolygonTest {
      * Test method for {@link Triangle#findGeoIntersectionsHelper(Ray, double)}
      */
     @Test
-    void findGeoIntersectionsEP2() throws IllegalAccessException {
+    void findGeoIntersectionsEP2() {
         //TC02 -  max distance is larger than distance to  intersection point - one intersection point
         List<Intersectable.GeoPoint> res = square1.findGeoIntersectionsHelper(ray1,5);
         assertEquals(List.of(gp1),res,"point is in boundary");

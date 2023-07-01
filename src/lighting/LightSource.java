@@ -21,18 +21,18 @@ public interface LightSource {
      *
      * @param p The point for which to calculate the intensity.
      * @return The intensity of the light.
-     * @throws IllegalAccessException if an illegal access exception occurs.
+     * @throws IllegalArgumentException if an illegal access exception occurs.
      */
-    Color getIntensity(Point p) throws IllegalAccessException;
+    Color getIntensity(Point p) throws IllegalArgumentException;
 
     /**
      * Returns the direction vector from the light source to the specified point.
      *
      * @param p The point for which to calculate the direction vector.
      * @return The direction vector from the light source to the point.
-     * @throws IllegalAccessException if an illegal access exception occurs.
+     * @throws IllegalArgumentException if an illegal access exception occurs.
      */
-    Vector getL(Point p) throws IllegalAccessException;
+    Vector getL(Point p) throws IllegalArgumentException;
 }
 
 

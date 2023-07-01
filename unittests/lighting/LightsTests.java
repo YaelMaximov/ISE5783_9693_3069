@@ -65,14 +65,14 @@ public class LightsTests {
     private final Geometry triangle2 = new Triangle(vertices[0], vertices[1], vertices[3])
             .setMaterial(material);
 
-    public LightsTests() throws IllegalAccessException {
+    public LightsTests() throws IllegalArgumentException {
     }
 
     /**
      * Produce a Pictures of a sphere lighted by a directional light
      */
     @Test
-    public void sphereDirectional() throws IllegalAccessException {
+    public void sphereDirectional() throws IllegalArgumentException {
 
         scene1.geometries.add(sphere);
         scene1.lights.add(new DirectionalLight(sphereLightColor, new Vector(1, 1, -0.5)));
@@ -88,7 +88,7 @@ public class LightsTests {
      * Produce a Pictures of a sphere lighted by a point light
      */
     @Test
-    public void spherePoint() throws IllegalAccessException {
+    public void spherePoint() throws IllegalArgumentException {
         scene1.geometries.add(sphere);
         scene1.lights.add(new PointLight(sphereLightColor, sphereLightPosition)
                 .setkL(0.001).setkQ(0.0002));
@@ -104,7 +104,7 @@ public class LightsTests {
      * Produce a Pictures of a sphere lighted by a spotlight
      */
     @Test
-    public void sphereSpot() throws IllegalAccessException {
+    public void sphereSpot() throws IllegalArgumentException {
         scene1.geometries.add(sphere);
         scene1.lights.add(new SpotLight(sphereLightColor, sphereLightPosition, new Vector(1, 1, -0.5))
                 .setkL(0.001).setkQ(0.0001));
@@ -120,7 +120,7 @@ public class LightsTests {
      * Produce a Pictures of a sphere lighted by all the lights
      */
     @Test
-    public void sphereAllLights() throws IllegalAccessException {
+    public void sphereAllLights() throws IllegalArgumentException {
 
         scene1.geometries.add(sphere);
        scene1.lights.add(new DirectionalLight(new Color(500, 200, 100), new Vector(1, 0, 0.5)));//purple
@@ -139,7 +139,7 @@ public class LightsTests {
      * Produce a Pictures of two triangles lighted by a directional light
      */
     @Test
-    public void trianglesDirectional() throws IllegalAccessException {
+    public void trianglesDirectional() throws IllegalArgumentException {
         scene2.geometries.add(triangle1, triangle2);
         scene2.lights.add(new DirectionalLight(trianglesLightColor, trianglesLightDirection));
 
@@ -154,7 +154,7 @@ public class LightsTests {
      * Produce a Pictures of two triangles lighted by a point light
      */
     @Test
-    public void trianglesPoint() throws IllegalAccessException {
+    public void trianglesPoint() throws IllegalArgumentException {
         scene2.geometries.add(triangle1, triangle2);
         scene2.lights.add(new PointLight(trianglesLightColor, trianglesLightPosition)
                 .setkL(0.001).setkQ(0.0002));
@@ -170,7 +170,7 @@ public class LightsTests {
      * Produce a Pictures of two triangles lighted by a spotlight
      */
     @Test
-    public void trianglesSpot() throws IllegalAccessException {
+    public void trianglesSpot() throws IllegalArgumentException {
         scene2.geometries.add(triangle1, triangle2);
         scene2.lights.add(new SpotLight(trianglesLightColor, trianglesLightPosition, trianglesLightDirection)
                 .setkL(0.001).setkQ(0.0001));
@@ -185,7 +185,7 @@ public class LightsTests {
      * Produce a Pictures of two triangles lighted by a spotlight
      */
     @Test
-    public void trianglesAllLights() throws IllegalAccessException {
+    public void trianglesAllLights() throws IllegalArgumentException {
         scene2.geometries.add(triangle1, triangle2);
         scene2.lights.add(new DirectionalLight(new Color(50,0,100), new Vector(1, 1, -0.5)));
         scene2.lights.add(new PointLight(new Color(800,100,300), new Point(-10,-70,-110))
@@ -204,7 +204,7 @@ public class LightsTests {
 //     * Produce a Pictures of a sphere lighted by a narrow spotlight
 //     */
 //    @Test
-//    public void sphereSpotSharp() throws IllegalAccessException {
+//    public void sphereSpotSharp() throws IllegalArgumentException {
 //        scene1.geometries.add(sphere);
 //        scene1.lights
 //                .add(new SpotLight(sphereLightColor, sphereLightPosition, new Vector(1, 1, -0.5))

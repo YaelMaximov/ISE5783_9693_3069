@@ -12,7 +12,7 @@ class PointTests {
      * Test method for {@link primitives.Point#add(primitives.Vector)}.
      */
     @Test
-    public void testAdd() throws IllegalAccessException {
+    public void testAdd() throws IllegalArgumentException {
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
         Vector vector=new Vector(1,2,3);
@@ -29,7 +29,7 @@ class PointTests {
      * Test method for {@link primitives.Point#subtract(primitives.Point)}.
      */
     @Test
-    void testSubtract() throws IllegalAccessException {
+    void testSubtract() throws IllegalArgumentException {
         // ============ Equivalence Partitions Tests ==============
         //TC01:simple test
         assertEquals(new Vector(3,3,3).subtract(new Point(1,1,1)),new Vector(2,2,2),"ERROR: Point - Point does not work correctly");

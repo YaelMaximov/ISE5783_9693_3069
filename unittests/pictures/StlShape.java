@@ -62,7 +62,7 @@ public class StlShape {
 
                 triangles.add(triangle);
             }
-        } catch (IOException | IllegalAccessException e) {
+        } catch (IOException | IllegalArgumentException e) {
             e.printStackTrace();
         }
 
