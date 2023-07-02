@@ -4,39 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="PRO7- picture 1">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_06_2023_13_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_06_2023_13_05__Changes_.xml" afterDir="false" />
+    <list default="true" id="56e13de4-d6b6-40fc-8784-02a4db7270a4" name="Changes" comment="mp2">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_06_2023_13_05_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_06_2023_13_05__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Cylinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Cylinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Polygon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Polygon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/DirectionalLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/LightSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/PointLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lighting/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lighting/SpotLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Ray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/primitives/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Vector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/RayTracerBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/IntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/IntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/Picther.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/Picther.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/CylinderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/GeometriesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/GeometriesTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/PlaneTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PlaneTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/PolygonTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/PolygonTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/SphereTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TriangleTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/geometries/TubeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/geometries/TubeTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/lighting/LightsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/20mm_Test_Cube_38108.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/Empire_State_Building_2896095.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/Fairy_House_780100.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/The_Simpsons_House_1135301.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/files/fairyHouse.stl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/files/fairyHouse01_top_alt_1.stl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/files/fairyHouse01_top_alt_2.stl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/files/fairyHouse01_top_simple_w_supports.stl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/images/cartoonHouse_roof2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/images/cartoonHouse_roof3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/images/fairyHouse01_top_alt_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/images/fairyHouse01_top_alt_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/images/fairyHouse01_top_simple_w_supports.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/images/fairyHouseFinished.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stl/images/fairyHouse_1mm_fix.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/pictures/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Base.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/pictures/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Building.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/pictures/Clock.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Clock.java" afterDir="false" />
@@ -44,18 +41,10 @@
       <change beforePath="$PROJECT_DIR$/unittests/pictures/CylinderBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/CylinderBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/pictures/Pictures.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Pictures.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/pictures/Pyramid.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Pyramid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/Snow_man.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/Snow_man.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/Snow_man.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/pictures/SpotStreetLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/SpotStreetLight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/StlShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/StlShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unittests/pictures/StlShape.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/unittests/pictures/StreetLamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/pictures/StreetLamp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/pictures/TeapotTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/PointTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/PointTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/RayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/RayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/primitives/VectorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/primitives/VectorTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/CameraTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/CameraTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/ReflectionRefractionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/ReflectionRefractionTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/RenderTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unittests/renderer/ShadowTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/unittests/renderer/ShadowTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +97,7 @@
       <recent name="geometries" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Pictures.front">
+  <component name="RunManager" selected="JUnit.Pictures">
     <configuration name="Pictures" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ISE5783_9693_3069" />
       <extension name="coverage">
@@ -190,9 +179,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Pictures" />
         <item itemvalue="JUnit.Pictures.front" />
         <item itemvalue="JUnit.RenderTests.basicRenderTwoColorTest" />
-        <item itemvalue="JUnit.Pictures" />
         <item itemvalue="JUnit.Pictures.halfSide" />
         <item itemvalue="JUnit.Pictures.otherside" />
       </list>
@@ -460,7 +449,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1687811054567</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL‎-00038" summary="mp2">
+      <created>1688245728079</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL‎-00038" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1688245728079</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -506,9 +502,10 @@
     <MESSAGE value="PRO7-stated step 2" />
     <MESSAGE value="PRO7- 2" />
     <MESSAGE value="PRO7- added ReflectionRefractionTests" />
-    <MESSAGE value="PRO7- picture" />
     <MESSAGE value="PRO7- picture 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="PRO7- picture 1" />
+    <MESSAGE value="PRO7- picture" />
+    <MESSAGE value="mp2" />
+    <option name="LAST_COMMIT_MESSAGE" value="mp2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -520,17 +517,8 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/renderer/RayTracerBasic.java</url>
-          <line>72</line>
+          <line>91</line>
           <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/unittests/pictures/Snow_man.java</url>
-          <line>20</line>
-          <properties class="pictures.Snow_man">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="153" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

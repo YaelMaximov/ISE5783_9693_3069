@@ -147,14 +147,34 @@ public class Camera {
         this.distance = distance;
         return this;
     }
+    /**
+     * Sets the number of rays to be used for super sampling (nss).
+     * Super sampling helps to reduce aliasing artifacts in the rendered image.
+     * Higher values of nss result in smoother images but require more computation.
+     *
+     * @param nss the number of rays to be used for super sampling
+     * @return the camera instance after setting the value of nss
+     */
     public Camera setNss(int nss) {
         this.nss = nss;
         return this;
     }
+
+    /**
+     * Sets the maximum level of adaptive super sampling (maxLevelAdaptiveSS).
+     * Adaptive super sampling is a technique that selectively applies super sampling
+     * to regions of the image where aliasing is more pronounced.
+     * Higher values of maxLevelAdaptiveSS result in finer sampling and more accurate rendering
+     * but require more computation.
+     *
+     * @param maxLevelAdaptiveSS the maximum level of adaptive super sampling
+     * @return the camera instance after setting the value of maxLevelAdaptiveSS
+     */
     public Camera setMaxLevelAdaptiveSS(int maxLevelAdaptiveSS) {
         this.maxLevelAdaptiveSS = maxLevelAdaptiveSS;
         return this;
     }
+
 
     /**
      * Sets the {@link ImageWriter} object to be used for rendering the image.
@@ -209,17 +229,26 @@ public class Camera {
         }
         imageWriter.writeToImage();
     }
+    /**
+     * Renders the image by casting rays for each pixel.
+     * The method checks if all the necessary resources are initialized.
+     * It then iterates over each pixel in the image and casts a ray for that pixel.
+     * The behavior of the ray casting can be parallelized based on the number of threads specified.
+     * The result is written to the image writer.
+     *
+     * @return the camera instance after rendering the image
+     * @throws IllegalArgumentException if there is an error accessing the scene or objects in the scene
+     */
     public Camera renderImage() throws IllegalArgumentException {
         everythingInitialized();
         int nX = this.imageWriter.getNx();
         int nY = this.imageWriter.getNy();
-        pixelManager = new PixelManager(nY, nX,printInterval);//לחזור
+        pixelManager = new PixelManager(nY, nX, printInterval);
         if (threadsCount == 0) {
             for (int i = 0; i < nY; ++i)
                 for (int j = 0; j < nX; ++j)
                     castRay(nX, nY, j, i);
-        }
-        else { // see further... option 1
+        } else {
             IntStream.range(0, nY).parallel()
                     .forEach(i -> IntStream.range(0, nX).parallel() // for each row:
                             .forEach(j -> {
@@ -230,29 +259,9 @@ public class Camera {
                                 }
                             }));
         }
-//        else {
-//            var threads = new LinkedList<Thread>(); // list of threads
-//            while (threadsCount-- > 0) // add appropriate number of threads
-//                threads.add(new Thread(() -> { // add a thread with its code
-//                    PixelManager.Pixel pixel; // current pixel(row,col)
-//                    // allocate pixel(row,col) in loop until there are no more pixels
-//                    while ((pixel = pixelManager.nextPixel()) != null)
-//                        // cast ray through pixel (and color it – inside castRay)
-//                    {
-//                        try {
-//                            castRay(nX, nY, pixel.col(), pixel.row());
-//                        } catch (IllegalArgumentException e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                    }
-//                }));
-        // start all the threads
-//            for (var thread : threads) thread.start();
-//            // wait until all the threads have finished
-//            try { for (var thread : threads) thread.join(); } catch (InterruptedException ignore) {}
-//        }
         return this;
     }
+
 
     /**
      * Writes the image to file using the ImageWriter.
@@ -266,30 +275,40 @@ public class Camera {
         imageWriter.writeToImage();
         return this;
     }
+    /**
+     * Constructs a beam of rays for regular super-sampling at the specified pixel coordinates (j, i).
+     * The method creates a list of rays that includes the center ray of the pixel and additional rays
+     * distributed around the center to perform super-sampling.
+     *
+     * @param nX the number of pixels in the x-axis of the image
+     * @param nY the number of pixels in the y-axis of the image
+     * @param j  the x-coordinate of the pixel in the image
+     * @param i  the y-coordinate of the pixel in the image
+     * @return a list of rays for super-sampling at the specified pixel coordinates
+     * @throws IllegalArgumentException if there is an error accessing the scene or objects in the scene
+     */
     private List<Ray> constructBeamSuperSampling(int nX, int nY, int j, int i) throws IllegalArgumentException {
-        //creating rays
-        List<Ray> beam= new LinkedList<>();
-        //add the ray of the center of the pixel
-        beam.add(constructRay(nX,nY,j,i));
-        //calculate the measures of each pixel
+        // creating rays
+        List<Ray> beam = new LinkedList<>();
+        // add the ray of the center of the pixel
+        beam.add(constructRay(nX, nY, j, i));
+        // calculate the measures of each pixel
         double ry = height / nY;
         double rx = width / nX;
-        //find how many steps to go on the x and y coordinates
-        double yScale = alignZero((j-nX/2d)*rx+rx/2d);
-        double xScale = alignZero((i-nY/2d)*ry+ry/2d);
-        //get to the middle of the picture by adding the right distance
+        // find how many steps to go on the x and y coordinates
+        double yScale = alignZero((j - nX / 2d) * rx + rx / 2d);
+        double xScale = alignZero((i - nY / 2d) * ry + ry / 2d);
+        // get to the middle of the picture by adding the right distance
         Point pixelCenter = p0.add(vTo.scale(distance));
-        if(!isZero(yScale))
+        if (!isZero(yScale))
             pixelCenter = pixelCenter.add(vRight.scale(yScale));
         if (!isZero(xScale))
-            pixelCenter = pixelCenter.add(vUp.scale(-1*xScale));
+            pixelCenter = pixelCenter.add(vUp.scale(-1 * xScale));
         Random rand = new Random();
-        for (int c = 0; c<nss; c++) {
-            //the rand returns randomly true or false and according to it positive or negative random number is chosen
-            double dxfactor =  rand.nextBoolean() ? rand.nextDouble() : -1 *
-                    rand.nextDouble();
-            double dyfactor = rand.nextBoolean() ? rand.nextDouble() : -1 *
-                    rand.nextDouble();
+        for (int c = 0; c < nss; c++) {
+            // the rand returns randomly true or false and according to it positive or negative random number is chosen
+            double dxfactor = rand.nextBoolean() ? rand.nextDouble() : -1 * rand.nextDouble();
+            double dyfactor = rand.nextBoolean() ? rand.nextDouble() : -1 * rand.nextDouble();
             double dx = rx * dxfactor;
             double dy = ry * dyfactor;
             Point randomPoint = pixelCenter;
@@ -303,24 +322,39 @@ public class Camera {
         return beam;
     }
 
-
-    private  Color calcAdaptiveSuperSampling(int nX, int nY, int j, int i, int maxLevel, Color centerColor) throws IllegalArgumentException {
-        if (maxLevel <= 0 )
+    /**
+     * Calculates the color using adaptive super-sampling at the specified pixel coordinates (j, i).
+     * The method constructs a beam of rays for the pixel and checks the color of each ray.
+     * If the colors differ from the center color, the method recursively calls itself with a higher level of super-sampling.
+     * The final color is obtained by summing the colors and reducing them.
+     *
+     * @param nX          the number of pixels in the x-axis of the image
+     * @param nY          the number of pixels in the y-axis of the image
+     * @param j           the x-coordinate of the pixel in the image
+     * @param i           the y-coordinate of the pixel in the image
+     * @param maxLevel    the maximum level of super-sampling
+     * @param centerColor the color of the center ray
+     * @return the final color obtained by adaptive super-sampling
+     * @throws IllegalArgumentException if there is an error accessing the scene or objects in the scene
+     */
+    private Color calcAdaptiveSuperSampling(int nX, int nY, int j, int i, int maxLevel, Color centerColor) throws IllegalArgumentException {
+        if (maxLevel <= 0)
             return centerColor;
         Color color = centerColor;
         Ray[] beam = new Ray[]{constructRay(2 * nX, 2 * nY, 2 * j, 2 * i),
                 constructRay(2 * nX, 2 * nY, 2 * j, 2 * i + 1),
                 constructRay(2 * nX, 2 * nY, 2 * j + 1, 2 * i),
-                constructRay(2 * nX, 2 * nY, 2 * j + 1 , 2 * i + 1)};
-        for (int ray = 0; ray < 4; ray ++){
+                constructRay(2 * nX, 2 * nY, 2 * j + 1, 2 * i + 1)};
+        for (int ray = 0; ray < 4; ray++) {
             Color currentColor = rayTracerBase.traceRay(beam[ray]);
             if (!currentColor.equals(centerColor))
                 currentColor = calcAdaptiveSuperSampling(2 * nX, 2 * nY,
-                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1),currentColor);
+                        2 * j + ray / 2, 2 * i + ray % 2, (maxLevel - 1), currentColor);
             color = color.add(currentColor);
         }
         return color.reduce(5);
     }
+
 
     /** Cast ray from camera and color a pixel
      * @param nX resolution on X axis (number of pixels in row)
@@ -332,25 +366,48 @@ public class Camera {
         imageWriter.writePixel(col, row, rayTracerBase.traceRay(constructRay(nX, nY, col, row)));
         pixelManager.pixelDone();
     }
-    private void castBeamAdaptiveSuperSampling( int j,int i) throws IllegalArgumentException {
+    /**
+     * Casts a beam of rays for adaptive super-sampling at the specified pixel coordinates (j, i).
+     * The method calculates the color of the center ray and then applies adaptive super-sampling
+     * to improve the color accuracy in areas of the image where aliasing is more prominent.
+     *
+     * @param j the x-coordinate of the pixel in the image
+     * @param i the y-coordinate of the pixel in the image
+     * @throws IllegalArgumentException if there is an error accessing the scene or objects in the scene
+     */
+    private void castBeamAdaptiveSuperSampling(int j, int i) throws IllegalArgumentException {
         Ray center = constructRay(imageWriter.getNx(), imageWriter.getNy(), j, i);
         Color centerColor = rayTracerBase.traceRay(center);
-        imageWriter.writePixel(j,i,calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor)) ;//check
+        imageWriter.writePixel(j, i, calcAdaptiveSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i, maxLevelAdaptiveSS, centerColor));
         pixelManager.pixelDone();
     }
 
+    /**
+     * Casts a beam of rays for regular super-sampling at the specified pixel coordinates (j, i).
+     * The method calculates the color for multiple rays in the beam and averages the colors to
+     * obtain the final color for the pixel.
+     *
+     * @param j the x-coordinate of the pixel in the image
+     * @param i the y-coordinate of the pixel in the image
+     * @return the color obtained by averaging the colors of the rays in the beam
+     * @throws IllegalArgumentException if there is an error accessing the scene or objects in the scene
+     */
     private Color castBeamSuperSampling(int j, int i) throws IllegalArgumentException {
-        //  שולחת לפונקציה כדי ליצור קרניים
-        List<Ray> beam = constructBeamSuperSampling (imageWriter.getNx(),imageWriter.getNy(), j, i);
+        List<Ray> beam = constructBeamSuperSampling(imageWriter.getNx(), imageWriter.getNy(), j, i);
         Color color = Color.BLACK;
-        // סוכם את הצבעים שכל קרן מחזירה
-        for (Ray ray : beam){
-            color = color.add(rayTracerBase.traceRay(ray));//?
+        for (Ray ray : beam) {
+            color = color.add(rayTracerBase.traceRay(ray));
         }
-        // מחזיר ממוצע
         return color.reduce(nss);
     }
-    public void everythingInitialized(){
+
+    /**
+     * Checks if all required resources are initialized, including imageWriter, rayTracerBase, width, height, and distance.
+     * Throws MissingResourceException if any of the required resources is missing.
+     *
+     * @throws IllegalArgumentException if any of the required resources is missing
+     */
+    public void everythingInitialized() throws IllegalArgumentException {
         if (imageWriter == null || rayTracerBase == null || isNaN(width) || isNaN(height) || isNaN(distance)) {
             if (imageWriter == null) {
                 throw new MissingResourceException("missing resources", "Camera", "imageWriter");
@@ -370,45 +427,61 @@ public class Camera {
             throw new UnsupportedOperationException();
         }
     }
+
+    /**
+     * Renders the image using super-sampling for improved image quality.
+     * Casts a beam of rays for each pixel in the image, applies regular super-sampling,
+     * and writes the final color to the imageWriter for each pixel.
+     *
+     * @return the camera object after rendering the image with super-sampling
+     * @throws IllegalArgumentException if there is an error accessing the scene or objects in the scene
+     */
     public Camera renderImageSuperSampling() throws IllegalArgumentException {
         everythingInitialized();
         int nX = this.imageWriter.getNx();
         int nY = this.imageWriter.getNy();
-        for (int i= 0; i< nX; i++)
-            for  (int j = 0; j < nY; j++){
-                {
-                    Color color = castBeamSuperSampling(j,i);
-                    imageWriter.writePixel(j, i, color);
-                }
+        for (int i = 0; i < nX; i++) {
+            for (int j = 0; j < nY; j++) {
+                Color color = castBeamSuperSampling(j, i);
+                imageWriter.writePixel(j, i, color);
             }
+        }
         return this;
     }
+
+    /**
+     * Renders the image using adaptive super-sampling for improved image quality.
+     * Casts a beam of rays for each pixel in the image, applies adaptive super-sampling,
+     * and writes the final color to the imageWriter for each pixel.
+     *
+     * @return the camera object after rendering the image with adaptive super-sampling
+     * @throws IllegalArgumentException if there is an error accessing the scene or objects in the scene
+     */
     public Camera renderImageAdaptiveSuperSampling() throws IllegalArgumentException {
         everythingInitialized();
         int nX = this.imageWriter.getNx();
         int nY = this.imageWriter.getNy();
         pixelManager = new PixelManager(nY, nX, printInterval);
-        if (threadsCount == 0)
-            for (int i= 0; i< nX; i++)
-                for  (int j = 0; j < nY; j++){
-                    {
-                        castBeamAdaptiveSuperSampling(j,i);
-
-                    }
+        if (threadsCount == 0) {
+            for (int i = 0; i < nX; i++) {
+                for (int j = 0; j < nY; j++) {
+                    castBeamAdaptiveSuperSampling(j, i);
                 }
-        else { // see further... option 1
+            }
+        } else {
             IntStream.range(0, nY).parallel()
-                    .forEach(i -> IntStream.range(0, nX).parallel() // for each row:
+                    .forEach(i -> IntStream.range(0, nX).parallel()
                             .forEach(j -> {
                                 try {
-                                    castBeamAdaptiveSuperSampling(j,i);
+                                    castBeamAdaptiveSuperSampling(j, i);
                                 } catch (IllegalArgumentException e) {
                                     throw new RuntimeException(e);
                                 }
-                            }));}
-
+                            }));
+        }
         return this;
     }
+
 
 
 }

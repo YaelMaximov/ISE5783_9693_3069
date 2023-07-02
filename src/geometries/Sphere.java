@@ -113,7 +113,13 @@ public class Sphere extends RadialGeometry {
         return null;
 
     }
-    protected  void createBoundingBox() throws IllegalArgumentException{
-        box=new AABB(center.add(new Vector(-radius,-radius,-radius)),center.add(new Vector(radius,radius,radius)));
+    /**
+     * Creates a bounding box for this object.
+     * The bounding box is an axis-aligned bounding box (AABB) that encloses the object.
+     * The AABB is created based on the center and radius of the object.
+     */
+    protected void createBoundingBox() {
+        box = new AABB(center.add(new Vector(-radius, -radius, -radius)), center.add(new Vector(radius, radius, radius)));
     }
+
 }

@@ -57,9 +57,8 @@ public class Plane extends Geometry {
      *
      * @param p a point on the plane
      * @param v the normal vector of the plane
-     * @throws IllegalArgumentException if the vector is the zero vector
      */
-    public Plane(Point p, Vector v) throws IllegalArgumentException {
+    public Plane(Point p, Vector v)  {
         p0 = p;
         normal = v.normalize();
     }
@@ -100,7 +99,7 @@ public class Plane extends Geometry {
      * @return immutable list of one intersection point as  {@link GeoPoint} object
      */
 
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalArgumentException {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance)  {
         Point P0 = ray.getP0();
         Vector v = ray.getDir();
         Vector n = normal;
@@ -143,7 +142,13 @@ public class Plane extends Geometry {
         return null;
     }
 
-    protected void createBoundingBox() throws IllegalArgumentException {
+    /**
+     * A plane will have no bounding box because it is an infinite body
+     * The bounding box is an axis-aligned bounding box (AABB) that encloses the object.
+
+     */
+    protected void createBoundingBox()  {
         box = null;
     }
+
 }

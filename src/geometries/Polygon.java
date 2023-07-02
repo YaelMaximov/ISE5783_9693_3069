@@ -40,7 +40,7 @@ public class Polygon extends Geometry {
     *                                  <li>The polygon is concave (not convex)</li>
     *                                  </ul>
     */
-   public Polygon(Point... vertices) throws IllegalArgumentException {
+   public Polygon(Point... vertices)  throws IllegalArgumentException{
       if (vertices.length < 3)
          throw new IllegalArgumentException("A polygon can't have less than 3 vertices");
       this.vertices = List.of(vertices);
@@ -82,9 +82,24 @@ public class Polygon extends Geometry {
 
    }
 
+   /**
+    * Returns the normal vector of the plane geometry at the specified point.
+    * This method delegates the calculation of the normal vector to the underlying plane.
+    *
+    * @param point The point on the plane.
+    * @return The normal vector of the plane.
+    */
    @Override
-   public Vector getNormal(Point point) { return plane.getNormal(); }
-   protected  void createBoundingBox() throws IllegalArgumentException{
+   public Vector getNormal(Point point) {
+      return plane.getNormal();
+   }
+
+   /**
+    * Creates a bounding box for this object.
+    * The bounding box is an axis-aligned bounding box (AABB) that encloses the object.
+    *
+    */
+   protected void createBoundingBox()  {
       double minX = vertices.stream().mapToDouble(Point::getX).min().orElse(Double.POSITIVE_INFINITY);
       double maxX = vertices.stream().mapToDouble(Point::getX).max().orElse(Double.NEGATIVE_INFINITY);
 
@@ -94,8 +109,9 @@ public class Polygon extends Geometry {
       double minZ = vertices.stream().mapToDouble(Point::getZ).min().orElse(Double.POSITIVE_INFINITY);
       double maxZ = vertices.stream().mapToDouble(Point::getZ).max().orElse(Double.NEGATIVE_INFINITY);
 
-      box=new AABB(new Point(minX,minY,minZ),new Point(maxX,maxY,maxZ));
+      box = new AABB(new Point(minX, minY, minZ), new Point(maxX, maxY, maxZ));
    }
+
 
    /**
     * find intersection between ray and polygon
@@ -103,7 +119,7 @@ public class Polygon extends Geometry {
     * @return  immutable list of one intersection point as  {@link GeoPoint} object
     */
    @Override
-   protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalArgumentException {
+   protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance)  {
       // find intersection between ray and plane containing the polygon
       List<GeoPoint> points=plane.findGeoIntersections(ray,maxDistance);
       // no intersections with plane , ray does not intersect polygon

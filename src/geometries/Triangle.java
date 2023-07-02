@@ -86,6 +86,11 @@ public class Triangle extends Polygon {
         return List.of(new GeoPoint(this, result.get(0).point));
     }
 
+    /**
+     * Returns a string representation of the Triangle object.
+     *
+     * @return A string representation of the Triangle, including the vertices and the plane it lies on.
+     */
     @Override
     public String toString() {
         return "Triangle: " +

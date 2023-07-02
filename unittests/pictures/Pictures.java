@@ -50,14 +50,12 @@ public class Pictures {
         ImageWriter imageWriter = new ImageWriter(fileName, 500, 500);
         camera.setImageWriter(imageWriter) //
                 .setRayTracer(new RayTracerBasic(scene)) //
-                .renderImageAdaptiveSuperSampling() //
+                .renderImage() //
                 .writeToImage();
     }
     public void  setupLights() throws IllegalArgumentException
     {
-
-        scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(200, 200, -10))
-                .setkL(0.0001).setkQ(0.00002));
+        scene.lights.add(new DirectionalLight(new Color(80, 26, 26), new Vector(0, -0.2, -1)));
 
         scene.lights.add(new PointLight(new Color(800, 255, 255), new Point(240, 240, -2998))
                 .setkL(0.0001).setkQ(0.00002));

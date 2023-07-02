@@ -2,68 +2,81 @@ package geometries;
 
 import primitives.Point;
 import primitives.Ray;
-import primitives.Vector;
-
-
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+
+/**
+ * The Geometries class represents a collection of intersectable geometries.
+ * It provides methods for adding geometries to the collection and finding intersections with a ray.
+ */
 public class Geometries extends Intersectable {
     protected List<Intersectable> intersectables;
 
+    /**
+     * Constructs an empty Geometries object with an empty list of intersectables.
+     */
     public Geometries() {
         intersectables = new LinkedList<Intersectable>();
     }
 
+    /**
+     * Constructs a Geometries object with the specified intersectable geometries.
+     *
+     * @param geometry The intersectable geometries to add to the collection.
+     */
     public Geometries(Intersectable... geometry) {
         if (bvhIsOn)
             createBoundingBox();
-        //intersectables = List.of(geometry);
         intersectables = new LinkedList<>();
         Collections.addAll(intersectables, geometry);
     }
 
+    /**
+     * Adds the specified intersectable geometries to the collection.
+     *
+     * @param geometries The intersectable geometries to add to the collection.
+     */
     public void add(Intersectable... geometries) {
         if (bvhIsOn)
             createBoundingBox();
         Collections.addAll(intersectables, geometries);
-        //intersectables.addAll(Arrays.asList(geometries));//check
     }
 
-
     /**
-     * find intersection between ray and all geometries in the geometry collection
-     * @param ray ray towards the composite of geometries
-     * @return  immutable list of intersection points as  {@link GeoPoint} objects
+     * Finds the intersections between a ray and all geometries in the collection.
+     *
+     * @param ray         The ray to find intersections with.
+     * @param maxDistance The maximum distance to consider for intersections.
+     * @return An immutable list of intersection points as GeoPoint objects.
+     * @throws IllegalArgumentException If the ray is null.
      */
     @Override
-    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray,double maxDistance) throws IllegalArgumentException {
+    protected List<GeoPoint> findGeoIntersectionsHelper(Ray ray, double maxDistance) throws IllegalArgumentException {
         List<GeoPoint> result = null;   // intersection points
 
-        //for each geometry in intersect-able collection check intersection points
-        for (var item: intersectables) {
+        // For each geometry in the intersectable collection, check intersection points
+        for (var item : intersectables) {
+            // Get intersection points for each specific item (item can be either geometry or a nested composite of geometries)
+            List<GeoPoint> itemList = item.findGeoIntersections(ray, maxDistance);
 
-            // get intersection point for each specific item, (item can be either geometry/nested composite of geometries)
-            List<GeoPoint> itemList = item.findGeoIntersections(ray,maxDistance);
-
-            // points were found , add to composite's total intersection points list
-            if(itemList != null) {
-                if(result==null){
-                    result= new LinkedList<>();
+            // Points were found, add them to the composite's total intersection points list
+            if (itemList != null) {
+                if (result == null) {
+                    result = new LinkedList<>();
                 }
                 result.addAll(itemList);
             }
         }
-        // return list of points - null if no intersection points were found
+        // Return the list of points, or null if no intersection points were found
         return result;
-
     }
-    //public void add(List<Triangle> triangles) {
-    //intersectables.addAll((triangles));
-    //}
 
+    /**
+     * Creates a bounding box for the collection of geometries.
+     * The bounding box is an axis-aligned bounding box (AABB) that encloses all geometries in the collection.
+     */
     @Override
     public void createBoundingBox() {
         if (intersectables == null)

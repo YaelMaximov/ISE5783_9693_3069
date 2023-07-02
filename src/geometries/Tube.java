@@ -183,8 +183,14 @@ public class Tube extends RadialGeometry {
 
         return null;
     }
-    protected  void createBoundingBox() throws IllegalArgumentException{
-        box=null;
+    /**
+     * A tube will have no bounding box because it is an infinite body
+     * The bounding box is an axis-aligned bounding box (AABB) that encloses the object.
+     * In this implementation, the bounding box is set to null, indicating that the object does not have a bounding box.
+     */
+    protected void createBoundingBox()  {
+        box = null;
     }
+
 
 }
